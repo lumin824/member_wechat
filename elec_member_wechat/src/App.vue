@@ -7,10 +7,9 @@
     </mt-header>
   <!-- <m-header></m-header>-->
     <!--<m-user></m-user>-->
- <!--  <r-index></r-index>-->
+ <!--  <r-index></r-index>
  <!--  <r-success></r-success>-->
    <r-data></r-data>
-
   </div>
 </template>
 
