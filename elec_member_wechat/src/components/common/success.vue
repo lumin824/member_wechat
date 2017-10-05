@@ -5,7 +5,7 @@
       <figure>
           <img src="static/img/smile.png" alt=""/>
           <figcaption>
-               绑定成功
+               <slot></slot>
           </figcaption>
       </figure>
 
@@ -15,7 +15,7 @@
 <style lang="less" scoped>
   div{
     max-width: 640px;
-    margin-top: 50px;
+    margin-top: 0.12rem;
     border-top: 0.5px solid #e1e1e1;
     border-bottom: 0.5px solid #e1e1e1;
     height: 1.5rem;

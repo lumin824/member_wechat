@@ -1,9 +1,9 @@
 <template>
    <div>
            <figure>
-                 <img src="static/img/userinfo.png"/>
-                 <figcaption>个人信息</figcaption>
-                 <img class="active" src="static/img/point.png" alt="">
+                  <router-link to="/userInfo"><img src="static/img/userinfo.png"/>
+                  <figcaption>个人信息</figcaption></router-link>
+                  <img class="active" src="static/img/point.png" alt="">
            </figure>
 
            <figure>
@@ -33,11 +33,11 @@
 <style lang="less" scoped>
    div{
       display: flex;
-      margin-top:0.02rem;
       height:0.55rem;
       border-bottom:1px solid #e1e1e1;
       padding: 0.05rem;
       margin-bottom:0.12rem;
+     background-color: #fff;
    }
    figure{
       flex-grow: 1;

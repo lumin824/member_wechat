@@ -18,11 +18,10 @@
 
 
 </script>
-
 <style lang="less" scoped>
      div{
         max-width: 640px;
-        margin-top: 50px;
+        margin-top: 0.12rem;
         border-top: 0.5px solid #e1e1e1;
         border-bottom: 0.5px solid #e1e1e1;
         height: 120px;
@@ -76,7 +75,7 @@
      border-top-left-radius: 0.1rem;
      border-bottom-left-radius: 0.1rem;
      position: absolute;
-     top:0.85rem;
+     top:1.2rem;
      right: 0;
    }
      .rank img:nth-child(1){
@@ -93,8 +92,6 @@
        position: relative;
        bottom:0.7em;
     }
-
-
   .rank a{
     display: inline-block;
     font-size: 0.1rem;
@@ -102,12 +99,5 @@
     left:0.02rem;
     bottom:0.12rem;
     color:rgba(6,193,174,50);
-
-
-
   }
-
-
-
-
 </style>

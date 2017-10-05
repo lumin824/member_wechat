@@ -1,12 +1,12 @@
 <template>
   <div>
-         <mt-field label="新手机号" placeholder="请输入手机号"></mt-field>
+         <mt-field label="手机号" placeholder="请输入手机号"></mt-field>
 
          <mt-field label="验证码"   placeholder="请输入验证码">
              <button v-show="show" @click="getCode(formData)" class="code">获取验证码</button>
              <button v-show="!show" class="code">{{count}} s</button>
          </mt-field>
-       <mt-button size="large" type="primary">绑定</mt-button>
+    <router-link to="/registerInfo"><mt-button size="large" type="primary">绑定</mt-button></router-link>
 
   </div>
 <!--  <div>
@@ -33,8 +33,13 @@
           show: true,
           count: '',
           timer: null,
+          title:'绑定',
+          closeButton:false
         }
       },
+    mounted:function () {
+      this.$emit('title',this.title,this.closeButton);
+    },
    // const TIME_COUNT = 60;
   methods:{
     getCode(formData){

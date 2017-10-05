@@ -66,11 +66,11 @@
       </mt-cell>
 
       <mt-cell title="手机">
-        <input type="text" value="18000000000" style="position:relative;left:50%;outline: none;border: medium;">
+        <input type="text" value="18000000000" readonly="readonly" style="position:relative;left:39%;outline: none;border: medium;"><router-link to="/changePhone"><mt-button size="small">修改</mt-button></router-link>
       </mt-cell>
 
       <mt-cell title="微信号">
-        <input type="text" value="18000000000" style="position:relative;left:50%;outline: none;border: medium;">
+        <input type="text" value="18000000000" readonly="readonly" style="position:relative;left:50%;outline: none;border: medium;">
       </mt-cell>
 
       <mt-cell title="是否公开微信号">
@@ -90,8 +90,13 @@
         //show: true,
         startDate: new Date('1970-1-1'),
         endDate: new Date(),
-        brithday:'9月29日'
+        brithday:'9月29日',
+        title:'会员中心',
+        closeButton:false,
       }
+    },
+    mounted:function () {
+      this.$emit('title',this.title,this.closeButton);
     },
     methods: {
       open(picker) {
@@ -132,9 +137,10 @@
     font-size: 0.16rem;
     background-color: #fff;
     box-shadow: none;
+  }
+  .mint-button--default{
+    /* background-color: red;*/
 
 
   }
-
-
 </style>

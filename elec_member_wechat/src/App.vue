@@ -1,36 +1,54 @@
 <template>
   <div id="app">
-    <mt-header fixed title="会员中心">
-        <router-link to="/" slot="left">
-          <mt-button icon="back">返回</mt-button>
-        </router-link>
-    </mt-header>
-  <!-- <m-header></m-header>-->
-    <!--<m-user></m-user>-->
- <!--  <r-index></r-index>
+   <!-- <m-header></m-header>
+    <m-info></m-info>-->
+   <!-- <m-nav></m-nav>-->
+ <!-- <m-user @title="getTitle"></m-user>-->
+  <!-- <r-index @title="getTitle"></r-index>-->
  <!--  <r-success></r-success>-->
-   <r-data></r-data>
+  <!-- <r-data @title="getTitle"></r-data>-->
+    <transition name="router-fade" enter-active-class="animated fadeIn"  leave-active-class="animated fadeOut" mode="out-in">
+        <router-view></router-view>
+    </transition>
   </div>
 </template>
 
 <script>
-import  Header from './components/member/header.vue'
-import  MyInfo from './components/member/myInfo.vue'
-import  MemberNav from './components/member/memberNav.vue'
-import  UserIndex from './components/member/userindex.vue'
-import  RegisterIndex from './components/register/index.vue'
-import  RegisterSuccess from './components/register/success.vue'
-import  RegisterData from './components/register/data.vue'
+/*import  Header from './components/header/header.vue'
+import  MyInfo from './components/common/myInfo.vue'
+import  MemberNav from './components/common/memberNav.vue'
+import  UserIndex from './components/common/userindex.vue'
+import  RegisterIndex from './components/common/index.vue'
+import  RegisterSuccess from './components/common/success.vue'
+import  RegisterData from './components/common/data.vue'*/
+import animate from 'animate.css'
+import  member from './pages/member/member.vue'
+
+
 export default {
+    data(){
+       return {
+         title:'',
+         closeButton:false,
+       }
+    },
     components:{
-       'm-header':Header,
+    /*   'm-header':Header,
        'm-info':MyInfo,
        'm-nav':MemberNav,
        'm-user':UserIndex,
        'r-index':RegisterIndex,
        'r-success':RegisterSuccess,
-       'r-data':RegisterData,
-    }
+       'r-data':RegisterData,*/
+        member
+    },
+ methods:{
+   /*  getTitle(title,closeButton){
+       this.title=title;
+       this.closeButton=closeButton
+     }*/
+
+ }
 }
 </script>
 <style>
