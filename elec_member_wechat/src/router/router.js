@@ -1,12 +1,5 @@
 import Vue from 'vue'
 import Router from 'vue-router'
-/*import  Header from '../components/header/header.vue'
-import  MyInfo from '../components/common/myInfo.vue'
-import  MemberNav from '../components/common/memberNav.vue'
-import  UserIndex from '../components/common/userindex.vue'
-import  RegisterIndex from '../components/common/index.vue'
-import  RegisterSuccess from '../components/common/success.vue'
-import  RegisterData from '../components/common/data.vue'*/
 const member = r => require.ensure([], () => r(require('../pages/member/member')), 'member')
 const userInfo = r => require.ensure([], () => r(require('../pages/userInfo/userInfo')), 'userInfo')
 const changePhone = r => require.ensure([], () => r(require('../pages/changPhone/changePhone')), 'changePhone')
@@ -14,6 +7,9 @@ const changeSuccess = r => require.ensure([], () => r(require('../pages/success/
 const registerInfo = r => require.ensure([], () => r(require('../pages/userBasicInfo/userBasicInfo')), 'registerInfo')
 const registerSucc = r => require.ensure([], () => r(require('../pages/registerSuccess/success.vue')), 'registerSucc')
 const register = r => require.ensure([], () => r(require('../pages/register/register.vue')), 'register')
+const squareInfo = r => require.ensure([], () => r(require('../pages/squareInfo/squareInfo')), 'squareInfo')
+const getPosition = r => require.ensure([], () => r(require('../pages/position/position')), 'getPosition')
+const sellers = r => require.ensure([], () => r(require('../pages/sellers/sellers')), 'sellers')
 Vue.use(Router)
 
 export default new Router({
@@ -61,22 +57,16 @@ export default new Router({
       path:'/registerSucc',
       component:registerSucc
     },
-
-
-/*    {
-      path: '/',
-      name: 'Hello',
-      component: Hello
-    }*/
-/*    {
-      path:'/',
-      components:{Header,MyInfo},
+    {
+      //商场简介
+      path:'/squareInfo',
+      component:squareInfo,
     },
     {
-      path:'/userInfo',
-      component:UserIndex,
-    }*/
-
+      //入驻商户(列表)
+      path:'/sellers',
+      component:sellers,
+    },
 
 
 
