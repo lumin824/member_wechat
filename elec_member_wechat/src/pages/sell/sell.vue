@@ -23,29 +23,33 @@
          </div>
         </div>
 
-        <div class="sellAdv">
-               <img  v-if="logo!=''" style="float: left;" :src="logo[0]['mapUrl']" alt="">
+        <div class="sellAdv" style="background-color:#FFFFFF;height:90px">
+              <div style="padding-top:10px"> 
+               <img  v-if="logo!=''" style="float: left;padding-right:0.2rem;margin-botton:0.2rem" :src="logo[0]['mapUrl']" alt="">
                <img  v-else style="float: left;"  src="" alt="">
                 <ul>
                     <li><h3>{{sell.shop_name}}</h3></li>
-                    <li style="font-size: 0.13rem;color: #666;margin-top: 0.05rem;">积分热度&nbsp;&nbsp;{{sell.points}}</li>
-                    <li style="font-size: 0.13rem;color: #666;">{{sell.industry_name}}</li>
+                    <li style="font-size: 0.13rem;color: #666;margin-top: 0.05rem;margin-top:0.1rem;">积分热度&nbsp;&nbsp;{{sell.points}}</li>
+                    <li style="font-size: 0.13rem;color: #666;margin-top:0.1rem;">{{sell.industry_name}}</li>
                 </ul>
-
+              </div>  
         </div>
 
-        <div class="sellInfo" style="clear: both;">
-          <hr style="border-top: 0.07rem solid #dedede;border-bottom: 0.07rem solid #dedede;">
-          <h3>商家信息</h3>
+        <div class="sellInfo" style="clear: both;background-color:#FFFFFF;margin-top:0.15rem;height:1.2rem;">
+          
+          <h2 style="color:#979797;padding-left:0.1rem;padding-top:0.15rem">商家信息</h2>
           <hr>
           <ul>
-            <li style="font-weight: bold;font-size: 0.13rem;"><a :href="lcmap[0]['mapUrl']"><img src="static/img/jf.png" style="width:0.12rem;height: 0.18rem;" class="imgPosition" alt="">{{sell.berth_number}}</a></li>
+            <li style="font-weight: bold;font-size: 0.13rem;">
+              <img src="static/img/jf.png" style="width:0.12rem;height: 0.18rem;" class="imgPosition" alt="">
+              <a :href="lcmap[0]['mapUrl']" style="margin-top:-0.3rem">{{sell.berth_number}}</a>
+            </li>
             <li><img src="static/img/phone.png" alt=""><a style="color:rgba(6,193,174,50);" @click="phone">{{tel}}</a></li>
           </ul>
         </div>
-        <div class="sqareDeil">
-          <hr style="border-top: 0.07rem solid #dedede;border-bottom: 0.07rem solid #dedede;">
-          <h3>商家介绍</h3>
+        <div class="sqareDeil" style="background-color:#FFFFFF;margin-top:0.15rem;">
+          
+          <h2 style="color:#A4A4A4;padding-left:0.1rem;padding-top:0.15rem">商家介绍</h2>
           <hr>
           <p v-html="content">
           </p>

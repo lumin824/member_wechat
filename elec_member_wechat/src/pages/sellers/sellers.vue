@@ -5,8 +5,8 @@
                    <mt-button icon="back">返回</mt-button>
                </router-link>
          </mt-header>-->
-            <div style="height: 0.2rem;">
-                <mt-search v-model="sValue"  cancel-text="取消" placeholder="请输入关键词,例如:肯德基" :result="filterResult"></mt-search>
+            <div style="height: 0.2rem; border-radius:18px;">
+                <mt-search v-model="sValue"  cancel-text="取消" placeholder="请输入关键词,例如:肯德基" :result="filterResult" ></mt-search>
             </div>
     <!--       <ul class="even">
                  <li style="position: relative;right: -0.2rem;">
@@ -35,12 +35,12 @@
                  </li>
            </ul>-->
              <div class="sortField sortType_01">
-                   <a href="javascript:"  @click="selectChange(1)">
+                   <a href="javascript:"  @click="selectChange(1)" style="border-right:1px solid #D9D9D9">
                       <span id="sp_floor">
                           {{ltext}}
                       </span>
                    </a>
-                   <a href="javascript:" @click="selectChange(2)">
+                   <a href="javascript:" @click="selectChange(2)" style="border-right:1px solid #D9D9D9">
                         <span id="sp_type">
                            {{ftext}}
                         </span>
@@ -54,8 +54,9 @@
              <div class="sortList" id="shop_type" v-show="sortList">
                       <ul>
                               <li v-show="lselected">
-                                    <a href="javascript:" @click="lTextClick('全部','')">全部</a>
+                                    <a href="javascript:"  @click="lTextClick('全部','')">全部</a>
                                     <a href="javascript:" @click="lTextClick(loption.map_name,loption.map_id)" v-for="loption in loptions">{{ loption.map_name }}</a>
+                                  
                                </li>
                               <li v-show="fselected">
                                     <a href="javascript:" @click="fTextClick('全部','')">全部</a>
@@ -362,7 +363,10 @@
     }
   }
 </script>
-<style lang="less" scoped>
+<style lang="less">
+  .mint-searchbar-inner{
+     border-radius:18px !important;
+   }
    .sortField{
      margin-top: 0.32rem;
      background-color: #fff;
@@ -568,6 +572,7 @@
      background: rgba(0,0,0,0.6);
      pointer-events: auto;
    }
+   
 </style>
 
 
