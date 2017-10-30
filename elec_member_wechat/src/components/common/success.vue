@@ -1,6 +1,4 @@
 <template>
-
-
   <div>
       <figure>
           <img src="static/img/smile.png" alt=""/>
@@ -8,7 +6,7 @@
                <slot></slot>
           </figcaption>
       </figure>
-
+    <slot name="staff"></slot>
   </div>
 </template>
 
@@ -37,6 +35,12 @@
   img{
     height: 0.7rem;
     width: 0.7rem;
+  }
+  .staff{
+    color: #333;
+    font-size: 0.12rem;
+    position: relative;
+    top:-1.42rem;
   }
 
 </style>

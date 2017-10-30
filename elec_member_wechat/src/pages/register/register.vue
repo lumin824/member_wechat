@@ -1,13 +1,11 @@
 <template>
    <div>
-       <mt-header title="绑定">
+     <!--  <mt-header title="绑定">
          <router-link to="/" slot="left">
            <mt-button icon="back">返回</mt-button>
          </router-link>
-       </mt-header>
-     <r-phone></r-phone>
-
-
+       </mt-header>-->
+       <r-phone></r-phone>
    </div>
 
 </template>
@@ -18,9 +16,6 @@
         components:{
           'r-phone':changPhone
         }
-
-
-
    }
 
 

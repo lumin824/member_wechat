@@ -14,17 +14,9 @@
 </template>
 
 <script>
-/*import  Header from './components/header/header.vue'
-import  MyInfo from './components/common/myInfo.vue'
-import  MemberNav from './components/common/memberNav.vue'
-import  UserIndex from './components/common/userindex.vue'
-import  RegisterIndex from './components/common/index.vue'
-import  RegisterSuccess from './components/common/success.vue'
-import  RegisterData from './components/common/data.vue'*/
-import animate from 'animate.css'
+import  animate from 'animate.css'
 import  member from './pages/member/member.vue'
-
-
+import  {getCookie} from './util/util'
 export default {
     data(){
        return {
@@ -47,8 +39,7 @@ export default {
        this.title=title;
        this.closeButton=closeButton
      }*/
-
- }
+ },
 }
 </script>
 <style>

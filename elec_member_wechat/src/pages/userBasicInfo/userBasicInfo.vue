@@ -1,11 +1,11 @@
 <template>
   <div>
-        <mt-header title="资料填写">
+      <!--  <mt-header title="资料填写">
           <router-link to="/" slot="left">
             <mt-button icon="back">返回</mt-button>
             <mt-button icon="close">关闭</mt-button>
           </router-link>
-        </mt-header>
+        </mt-header>-->
      <m-registerData></m-registerData>
   </div>
 </template>

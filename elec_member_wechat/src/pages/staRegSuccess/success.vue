@@ -1,12 +1,13 @@
 <template>
   <div>
-      <!--  <mt-header>
+        <mt-header>
           <router-link to="/" slot="left">
             <mt-button icon="back">返回</mt-button>
               <mt-button  icon="close">关闭</mt-button>
           </router-link>
-        </mt-header>-->
-    <r-success>注册成功</r-success>
+        </mt-header>
+    <r-success>注册成功<span class="staff" slot="staff">可直接用微信扫一扫核销</span></r-success>
+
   </div>
 </template>
 

@@ -11,12 +11,11 @@ body {
   font-family: "Helvetica Neue", Helvetica, Arial, "Microsoft Yahei UI", "Microsoft YaHei", SimHei, "\5B8B\4F53", simsun, sans-serif;
   font-size: 0.16rem;
 }
-input{
+input,h1,h3,h2{
   font-family: "Helvetica Neue", Helvetica, Arial, "Microsoft Yahei UI", "Microsoft YaHei", SimHei, "\5B8B\4F53", simsun, sans-serif;
   font-size: 0.16rem;
 
 }
-
 ul,ol {
   list-style: outside none none;
 }

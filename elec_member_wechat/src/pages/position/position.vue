@@ -1,16 +1,15 @@
 <template>
   <div>
-    <mt-header>
+<!--    <mt-header>
       <router-link to="/" slot="left">
         <mt-button icon="back">返回</mt-button>
       </router-link>
-    </mt-header>
+    </mt-header>-->
     <div class="amap-page-container">
       <el-amap vid="amapDemo" :zoom="zoom" :center="center" class="amap-demo" :plugin="plugin">
         <el-amap-info-window  :position="mywindow.position" :content="mywindow.content" :visible="mywindow.visible" :events="mywindow.events"></el-amap-info-window>
         <el-amap-marker :position="marker.position" :events="marker.events" :visible="marker.visible" :draggable="marker.draggable"></el-amap-marker>
         <el-amap-circle :center="circle.center" :radius="circle.radius" :fillOpacity="circle.fillOpacity" :events="circle.events" :strokeColor="circle.strokeColor" :strokeStyle="circle.strokeStyle" :fillColor="circle.fillColor"></el-amap-circle>
-
       </el-amap>
     </div>
   </div>
@@ -28,11 +27,12 @@
   export default {
     data () {
       return {
+        //祡荆广场坐标(121.5167,31.275101)
         zoom: 15,
-        center: [121.5167,31.275101],
+        center: [],
         circle: {
           clickable: true,
-          center: [121.5167,31.275101],
+          center: [],
           radius: 50,
           fillOpacity: 0.3,
           strokeStyle: 'dashed',
@@ -40,7 +40,7 @@
           strokeColor: '#00BFFF'
         },
         marker: {
-          position: [121.5167,31.275101],
+          position: [],
           events: {
             click: () => {
               if (this.mywindow.visible === true) {
@@ -57,7 +57,7 @@
           draggable: false
         },
         mywindow: {
-          position: [121.5167,31.275101],
+          position: [],
           /*content: '<div class="text item">控江路1628号</div>',*/
           visible: true,
           events: {
@@ -75,6 +75,13 @@
           }
         }
       }
+    },
+    mounted(){
+       this.position=[this.$route.query.longitude,this.$route.query.latitude];
+       this.center=this.position;
+       this.circle.center=this.position;
+       this.marker.position=this.position;
+       this.mywindow.position=this.position;
     }
   }
 </script>
