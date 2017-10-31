@@ -71,7 +71,7 @@
      <mt-loadmore  :bottom-method="loadBottom" :bottom-all-loaded="allLoaded" :auto-fill="false" ref="loadmore">
            <ul class="sellers">
                      <li v-for="v in pageList">
-                           <router-link :to="{path:'/sell',query:{sell_id:v.shop_id}}">
+                           <router-link :to="{path:'/sell',query:{sell_id:v.shop_id}}" style="width:100%;height:1.00rem">
                                      <div class="left">
                                        <!--:src="v.logo[0].mapUrl" -->
                                              <img :src="v.logo1" alt="">
