@@ -29,8 +29,8 @@
                <img  v-else style="float: left;"  src="" alt="">
                 <ul>
                     <li><h3>{{sell.shop_name}}</h3></li>
-                    <li style="font-size: 0.13rem;color: #666;margin-top: 0.16rem;">积分热度&nbsp;&nbsp;{{sell.points}}</li>
-                    <li style="font-size: 0.13rem;color: #666;margin-top: 0.16rem;">{{sell.industry_name}}</li>
+                    <li style="font-size: 0.13rem;color: #666;margin-top: 0.09rem;">积分热度&nbsp;&nbsp;{{sell.points}}</li>
+                    <li style="font-size: 0.13rem;color: #666;margin-top: 0.1rem;">{{sell.industry_name}}</li>
                 </ul>
               </div>  
         </div>
@@ -45,7 +45,7 @@
               <div  style="margin-top:-0.2rem;margin-left:0.4rem"><a :href="lcmap[0]['mapUrl']">{{sell.berth_number}}</a></div>
             </li>
             <li style="margin-top:0.1rem"><img src="static/img/phone.png" alt="">
-            <div  style="margin-top:-0.16rem;margin-left:0.4rem"><a style="color:rgba(6,193,174,50);" @click="phone">{{tel}}</a></div></li>
+            <div  style="margin-top:-0.18rem;margin-left:0.4rem"><a style="color:rgba(6,193,174,50);" @click="phone">{{tel}}</a></div></li>
           </ul>
         </div>
         <div class="sqareDeil" style="background-color:#FFFFFF;margin-top:0.15rem;padding-left:0.2rem;">
