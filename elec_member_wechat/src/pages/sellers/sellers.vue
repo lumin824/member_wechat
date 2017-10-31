@@ -74,7 +74,7 @@
                            <router-link :to="{path:'/sell',query:{sell_id:v.shop_id}}" style="width:100%;height:1.10rem">
                                      <div class="left">
                                        <!--:src="v.logo[0].mapUrl" -->
-                                             <img :src="v.logo1" alt="" style="width:1.2rem;height:0.85rem">
+                                             <img :src="v.logo1" alt="" style="width:1.1rem;height:0.85rem">
                                              <div class="imgright">
                                                  <h1 style="padding-bottom:0.1rem">{{v.shop_name}}</h1>
                                                  <img class="imgleft" src="static/img/jf.png" alt="">
