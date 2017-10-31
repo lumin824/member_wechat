@@ -29,8 +29,8 @@
                <img  v-else style="float: left;"  src="" alt="">
                 <ul>
                     <li><h3>{{sell.shop_name}}</h3></li>
-                    <li style="font-size: 0.07rem;color: #666;margin-top: 0.18rem;">积分热度&nbsp;&nbsp;{{sell.points}}</li>
-                    <li style="font-size: 0.13rem;color: #666;margin-top: 0.2rem;">{{sell.industry_name}}</li>
+                    <li style="font-size: 0.13rem;color: #666;margin-top: 0.16rem;">积分热度&nbsp;&nbsp;{{sell.points}}</li>
+                    <li style="font-size: 0.13rem;color: #666;margin-top: 0.16rem;">{{sell.industry_name}}</li>
                 </ul>
               </div>  
         </div>
