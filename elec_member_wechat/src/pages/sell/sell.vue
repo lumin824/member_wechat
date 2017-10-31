@@ -29,15 +29,15 @@
                <img  v-else style="float: left;"  src="" alt="">
                 <ul>
                     <li><h3>{{sell.shop_name}}</h3></li>
-                    <li style="font-size: 0.13rem;color: #666;margin-top: 0.05rem;margin-top:0.15rem;">积分热度&nbsp;&nbsp;{{sell.points}}</li>
-                    <li style="font-size: 0.13rem;color: #666;margin-top:0.15rem;">{{sell.industry_name}}</li>
+                    <li style="font-size: 0.07rem;color: #666;margin-top: 0.18rem;">积分热度&nbsp;&nbsp;{{sell.points}}</li>
+                    <li style="font-size: 0.13rem;color: #666;margin-top: 0.2rem;">{{sell.industry_name}}</li>
                 </ul>
               </div>  
         </div>
 
-        <div class="sellInfo" style="clear: both;background-color:#FFFFFF;margin-top:0.15rem;height:1.2rem;">
+        <div class="sellInfo" style="clear: both;background-color:#FFFFFF;margin-top:0.15rem;height:1.2rem;padding-left:0.2rem;">
           
-          <h2 style="color:#979797;padding-left:0.1rem;padding-top:0.15rem;">商家信息</h2>
+          <h2 style="color:#979797;padding-top:0.15rem;">商家信息</h2>
           <hr>
           <ul>
             <li style="font-weight: bold;font-size: 0.13rem;">
@@ -48,9 +48,9 @@
             <div  style="margin-top:-0.16rem;margin-left:0.4rem"><a style="color:rgba(6,193,174,50);" @click="phone">{{tel}}</a></div></li>
           </ul>
         </div>
-        <div class="sqareDeil" style="background-color:#FFFFFF;margin-top:0.15rem;">
+        <div class="sqareDeil" style="background-color:#FFFFFF;margin-top:0.15rem;padding-left:0.2rem;">
           
-          <h2 style="color:#A4A4A4;padding-left:0.1rem;padding-top:0.15rem">商家介绍</h2>
+          <h2 style="color:#A4A4A4;padding-top:0.15rem">商家介绍</h2>
           <hr>
           <p v-html="content">
           </p>
