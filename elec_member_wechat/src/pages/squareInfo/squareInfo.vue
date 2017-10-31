@@ -31,10 +31,15 @@
             </p> </strong>
             <hr>
             <ul>
-                  <li class="main"><img src="static/img/address.png" alt="">地&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;址：{{address}}<router-link :to="{ path: '/getPosition', query: { longitude: position[0],latitude:position[1] }}"><img style="width: 0.2rem;height: 0.2rem;position: relative;left:-0.1rem;"  src="static/img/gdmap.png" alt=""></router-link></li>
-                  <li><img src="static/img/optime.png" alt="">营业时间：{{openTime}}</li>
+                  <li class="main" style="font-size:0.15rem;height:0.24rem"><img src="static/img/address.png" alt="" style="width:0.2rem;height:0.2rem;">
+                  <div style="margin-left:0.04rem">地</div><div style="margin-left:0.31rem">址</div>：{{address}}
+                  <router-link :to="{ path: '/getPosition', query: { longitude: position[0],latitude:position[1] }}"><img style="width: 0.2rem;height: 0.2rem;position: relative;left:-0.1rem;"  src="static/img/gdmap.png" alt=""></router-link></li>
+                  <li style="margin-top:0.02rem;font-size:0.15rem"><img src="static/img/optime.png" alt="" style="width:0.2rem;height:0.2rem;color:#4ADBCA">
+                  <div style="margin-left:0.48rem;margin-top:-0.23rem">营业时间：{{openTime}}</div>
+                  </li>
                  <!-- <li><img style="width: 0.2rem;height: 0.12rem; margin-right: 0.07rem;  margin-left: 0.12rem;" src="static/img/carstop.png" alt="">停车信息：24小时地下车库,12元/小时</li>-->
-                  <li><img src="static/img/phone.png" alt="">联系电话：<a @click="phone">{{tel}}</a></li>
+                  <li style="font-size:0.15rem;margin-top:0.03rem;"><img src="static/img/phone.png" alt="" style="width:0.2rem;height:0.2rem;color:#4CD39B">
+                  <div style="margin-left:0.48rem;margin-top:-0.2rem">联系电话：<a @click="phone">{{tel}}</a></div></li>
             </ul>
         <br><br>
       </div>

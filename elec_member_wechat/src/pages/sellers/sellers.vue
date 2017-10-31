@@ -34,7 +34,7 @@
                      </select>
                  </li>
            </ul>-->
-             <div class="sortField sortType_01">
+             <div class="sortField sortType_01" style="border-bottom: 1px solid #eaeaea;padding:0.1rem;">
                    <a href="javascript:"  @click="selectChange(1)" style="border-right:1px solid #D9D9D9">
                       <span id="sp_floor">
                           {{ltext}}
@@ -71,15 +71,15 @@
      <mt-loadmore  :bottom-method="loadBottom" :bottom-all-loaded="allLoaded" :auto-fill="false" ref="loadmore">
            <ul class="sellers">
                      <li v-for="v in pageList">
-                           <router-link :to="{path:'/sell',query:{sell_id:v.shop_id}}" style="width:100%;height:1.00rem">
+                           <router-link :to="{path:'/sell',query:{sell_id:v.shop_id}}" style="width:100%;height:1.10rem">
                                      <div class="left">
                                        <!--:src="v.logo[0].mapUrl" -->
-                                             <img :src="v.logo1" alt="">
+                                             <img :src="v.logo1" alt="" style="width:1.2rem;height:0.85rem">
                                              <div class="imgright">
-                                                 <h1>{{v.shop_name}}</h1>
+                                                 <h1 style="padding-bottom:0.1rem">{{v.shop_name}}</h1>
                                                  <img class="imgleft" src="static/img/jf.png" alt="">
                                                  <h2>{{v.berth_number}}</h2>
-                                                 <h3>{{v.industry_name}}</h3>
+                                                 <h3 style="padding-top:0.1rem">{{v.industry_name}}</h3>
                                              </div>
                                      </div>
                                      <div class="right">
@@ -88,7 +88,6 @@
                                      </div>
                            </router-link>
                        </li>
-                   <li></li>
            </ul>
      </mt-loadmore>
    </div>
@@ -382,7 +381,6 @@
      -webkit-box-flex:1.0;
      width: 100%;
      text-align: center;
-     border-bottom: 1px solid #eaeaea;
    }
 
    .sortField a:hover{
@@ -465,7 +463,7 @@
        margin-left: 0.05rem;
    }
    .sellers .left .imgright{
-      margin-top: 0.2rem;
+      margin-top: 0.09rem;
       float: right;
       margin-left: 0.2rem;
    }

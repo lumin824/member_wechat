@@ -17,34 +17,35 @@
             <mt-swipe-item><img src="static/img/2.jpg" alt=""></mt-swipe-item>
             <mt-swipe-item><img src="static/img/3.jpg" alt=""></mt-swipe-item>-->
             <mt-swipe-item v-if="pictures!=''" v-for="v in pictures">
-                  <img :src="v.mapUrl">
+                  <img :src="v.mapUrl" style="width:1.2rem;height:0.85rem">
             </mt-swipe-item>
           </mt-swipe>
          </div>
         </div>
 
-        <div class="sellAdv" style="background-color:#FFFFFF;height:90px">
+        <div class="sellAdv" style="background-color:#FFFFFF;height:1.1rem">
               <div style="padding-top:10px"> 
-               <img  v-if="logo!=''" style="float: left;padding-right:0.2rem;margin-botton:0.2rem" :src="logo[0]['mapUrl']" alt="">
+               <img  v-if="logo!=''" style="float: left;padding-right:0.2rem;margin-botton:0.2rem;width:1.2rem;height:0.85rem" :src="logo[0]['mapUrl']" alt="">
                <img  v-else style="float: left;"  src="" alt="">
                 <ul>
                     <li><h3>{{sell.shop_name}}</h3></li>
-                    <li style="font-size: 0.13rem;color: #666;margin-top: 0.05rem;margin-top:0.1rem;">积分热度&nbsp;&nbsp;{{sell.points}}</li>
-                    <li style="font-size: 0.13rem;color: #666;margin-top:0.1rem;">{{sell.industry_name}}</li>
+                    <li style="font-size: 0.13rem;color: #666;margin-top: 0.05rem;margin-top:0.15rem;">积分热度&nbsp;&nbsp;{{sell.points}}</li>
+                    <li style="font-size: 0.13rem;color: #666;margin-top:0.15rem;">{{sell.industry_name}}</li>
                 </ul>
               </div>  
         </div>
 
         <div class="sellInfo" style="clear: both;background-color:#FFFFFF;margin-top:0.15rem;height:1.2rem;">
           
-          <h2 style="color:#979797;padding-left:0.1rem;padding-top:0.15rem">商家信息</h2>
+          <h2 style="color:#979797;padding-left:0.1rem;padding-top:0.15rem;">商家信息</h2>
           <hr>
           <ul>
             <li style="font-weight: bold;font-size: 0.13rem;">
               <img src="static/img/jf.png" style="width:0.12rem;height: 0.18rem;" class="imgPosition" alt="">
-              <a :href="lcmap[0]['mapUrl']" style="margin-top:-0.3rem">{{sell.berth_number}}</a>
+              <div  style="margin-top:-0.2rem;margin-left:0.4rem"><a :href="lcmap[0]['mapUrl']">{{sell.berth_number}}</a></div>
             </li>
-            <li><img src="static/img/phone.png" alt=""><a style="color:rgba(6,193,174,50);" @click="phone">{{tel}}</a></li>
+            <li style="margin-top:0.1rem"><img src="static/img/phone.png" alt="">
+            <div  style="margin-top:-0.16rem;margin-left:0.4rem"><a style="color:rgba(6,193,174,50);" @click="phone">{{tel}}</a></div></li>
           </ul>
         </div>
         <div class="sqareDeil" style="background-color:#FFFFFF;margin-top:0.15rem;">
