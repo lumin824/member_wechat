@@ -14,7 +14,7 @@
        <!--   <template v-for="(v,k) in pictures">
             <mt-swipe-item><img src="static/img/2.jpg" alt=""></mt-swipe-item>
           </template>-->
-          <mt-swipe-item v-for="v in pictures">
+          <mt-swipe-item v-for="v in pictures" :key="v.id">
                <img :src="v.mapUrl">
           </mt-swipe-item>
          <!-- <mt-swipe-item><img src="static/img/2.jpg" alt=""></mt-swipe-item>
@@ -22,7 +22,7 @@
         </mt-swipe>
       </div>
       <div class="sqareDeil">
-             <h3 style="font-size:20px"><strong>{{title}}</strong></h3>
+             <h3 style="font-size:20px;color:#13C2A1"><strong>{{title}}</strong></h3>
               <hr>
              <strong><p class="njky" v-html="content" style="color:#797979;line-height:20px;" >
                <!--紫荆广场是由南京康益房地产开发有限公司开发建设的商业地产项目,项目位于南京卡子门商圈,紫荆花路和宁溧路交汇处。该商圈经过多年

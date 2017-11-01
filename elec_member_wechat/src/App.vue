@@ -42,8 +42,20 @@ export default {
  },
 }
 </script>
-<style>
+<style lang="less">
   .mint-header{
     background-color: #1C1B21;
   }
+@import '~vux/src/styles/reset.less';
+@import '~vux/src/styles/1px.less';
+@import '~vux/src/styles/tap.less';
+body {
+  background-color: #F2F2F2;
+}
+html, body {
+  height: 100%;
+  width: 100%;
+  overflow-x: hidden;
+}
 </style>
+

@@ -36,32 +36,29 @@
            </ul>-->
              <div class="sortField sortType_01" style="border-bottom: 1px solid #eaeaea;padding:0.1rem;font-size:0.15rem;height:0.3rem">
                   <div style="width:33%;">
-                  <select style="height:100% ;padding-left:0.5rem;">
-                            <option value="">楼层</option>
-                            <option value="">B1</option>
-                            <option value="">L1</option>
-                            <option value="">L2</option>
-                            <option value="">L3</option>
-                            <option value="">L4</option>
-                            <option value="">L5</option>
-                            <option value="">L6</option>
-                            <option value="">L7</option>
-                            <option value="">L8</option>
-                            <option value="">L9</option>
-                  </select>
+                 <div style="margin: 0 15px;">
+                    <x-button @click.native="showPopupPicker = true" type="primary">{{value5[0] }}</x-button>
+                  </div>
+                  <group>
+                    <popup-picker :show.sync="showPopupPicker" :show-cell="false" title="TEST" :data="[['B1', 'L1', 'L2', 'L3', 'L4', 'L5', 'L6', 'L7', 'L8', 'L9']]" v-model="value5" ></popup-picker>
+                  </group>
+                
                   </div>
                   <div style="width:33%;border-left:solid 1px #D9D9D9;">
-                   <select name="vouSel" id="vouSel"style="height:100% ;padding-left:0.5rem;">
-                            <option value="">分类</option>
-                            <option value="">全部</option>
-                  </select>
+                   <div style="margin: 0 15px;">
+                    <x-button @click.native="showPopupPicker1 = true" type="primary">{{value4[0] }}</x-button>
+                  </div>
+                  <group>
+                    <popup-picker :show.sync="showPopupPicker1" :show-cell="false" title="TEST" :data="[['1', '2', '3', '4', '5']]" v-model="value4"></popup-picker>
+                  </group>
                    </div>
                   <div style="width:33%;border-left:solid 1px #D9D9D9;">
-                   <select name="vouSel" id="vouSel" style="height:100% ;padding-left:0.5rem;">
-                            <option value="">排序</option>
-                            <option value="">拼音</option>
-                            <option value="">首拼</option>
-                  </select>
+                  <div style="margin: 0 15px;">
+                    <x-button @click.native="showPopupPicker2 = true" type="primary">{{value3[0] }}</x-button>
+                  </div>
+                  <group>
+                    <popup-picker :show.sync="showPopupPicker2" :show-cell="false" title="TEST" :data="[['1', '2', '3', '4', '5']]" v-model="value3"></popup-picker>
+                  </group>
                    </div>
              </div>
              <div class="sortList" id="shop_type" v-show="sortList">
@@ -102,12 +99,19 @@
                        </li>
            </ul>
      </mt-loadmore>
+
+
    </div>
 </template>
 
 
 <script>
+import { PopupPicker, XButton } from 'vux'
   export default {
+    components: {
+    PopupPicker,
+    XButton
+  },
       data(){
           return {
             mall_id:1,
@@ -140,11 +144,18 @@
               pageSize:"5",
               mall_id:this.mall_id,
             },
+             showPopupPicker: false,
+              showPopupPicker1: false,
+               showPopupPicker2: false,
+             value5: ['楼层'],
+             value4: ['分类'],
+             value3: ['排序'],
             pageList:'',
             currentActive:-1, //当前已展开详情的标签index，-1表示全部关闭（只展开单个标签）
             allLoaded: false, //是否可以上拉属性，false可以上拉，true为禁止上拉，就是不让往上划加载数据了
             scrollMode:"auto" //移动端弹性滚动效果，touch为弹性滚动，auto是非弹性滚动
           }
+          
       },
     mounted(){
       //拼接搜索条件
@@ -374,7 +385,7 @@
     }
   }
 </script>
-<style lang="less">
+<style>
   .mint-searchbar-inner{
      border-radius:18px !important;
    }
@@ -602,6 +613,18 @@ select::-ms-expand { display: none; }
     background: transparent;
     border:none;
     outline: none;
+}
+.weui-btn{
+  color: black  !important;
+ margin-top: -0.03rem;
+}
+.weui-btn:after{
+ border: 0px !important;
+ 
+}
+.weui-btn_primary{
+  background-color: white  !important;
+  
 }
 option{
 
