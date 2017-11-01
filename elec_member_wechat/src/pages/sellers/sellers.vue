@@ -34,21 +34,21 @@
                      </select>
                  </li>
            </ul>-->
-             <div class="sortField sortType_01">
+             <div class="sortField sortType_01" style="border-bottom:1px solid #E6E6E6;">
 
-                   <a href="javascript:"  @click="selectChange(1)" style="margin-top:8px">
+                   <a href="javascript:"  @click="selectChange(1)" style="margin-top:10px">
                       <span id="sp_floor">
                           {{ltext}}
                       </span>
                    </a>
                   <div style="border-left:1px solid #E0E0E0;height:0.3rem;margin-top:10px"></div>
-                   <a href="javascript:" @click="selectChange(2)" style="margin-top:8px">
+                   <a href="javascript:" @click="selectChange(2)" style="margin-top:10px">
                         <span id="sp_type">
                            {{ftext}}
                         </span>
                    </a>
                    <div style="border-left:1px solid #E0E0E0;height:0.3rem;margin-top:10px"></div>
-                   <a href="javascript:" @click="selectChange(3)" style="margin-top:8px">
+                   <a href="javascript:" @click="selectChange(3)" style="margin-top:10px">
                        <span id="sp_sort">
                           {{otext}}
                        </span>
