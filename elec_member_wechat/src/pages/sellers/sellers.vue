@@ -34,29 +34,41 @@
                      </select>
                  </li>
            </ul>-->
-             <div class="sortField sortType_01" style="border-bottom: 1px solid #eaeaea;padding:0.1rem;">
-                   <a href="javascript:"  @click="selectChange(1)" style="border-right:1px solid #D9D9D9">
-                      <span id="sp_floor">
-                          {{ltext}}
-                      </span>
-                   </a>
-                   <a href="javascript:" @click="selectChange(2)" style="border-right:1px solid #D9D9D9">
-                        <span id="sp_type">
-                           {{ftext}}
-                        </span>
-                   </a>
-                   <a href="javascript:" @click="selectChange(3)">
-                       <span id="sp_sort">
-                          {{otext}}
-                       </span>
-                   </a>
+             <div class="sortField sortType_01" style="border-bottom: 1px solid #eaeaea;padding:0.1rem;font-size:0.15rem;height:0.3rem">
+                  <div style="width:33%;">
+                  <select style="height:100% ;padding-left:0.6rem;">
+                            <option value="">楼层</option>
+                            <option value="">B1</option>
+                            <option value="">L1</option>
+                            <option value="">L2</option>
+                            <option value="">L3</option>
+                            <option value="">L4</option>
+                            <option value="">L5</option>
+                            <option value="">L6</option>
+                            <option value="">L7</option>
+                            <option value="">L8</option>
+                            <option value="">L9</option>
+                  </select>
+                  </div>
+                  <div style="width:33%;border-left:solid 1px #D9D9D9;">
+                   <select name="vouSel" id="vouSel"style="height:100% ;padding-left:0.6rem;">
+                            <option value="">分类</option>
+                            <option value="">全部</option>
+                  </select>
+                   </div>
+                  <div style="width:33%;border-left:solid 1px #D9D9D9;">
+                   <select name="vouSel" id="vouSel" style="height:100% ;padding-left:0.6rem;">
+                            <option value="">排序</option>
+                            <option value="">拼音</option>
+                            <option value="">首拼</option>
+                  </select>
+                   </div>
              </div>
              <div class="sortList" id="shop_type" v-show="sortList">
                       <ul>
                               <li v-show="lselected">
                                     <a href="javascript:"  @click="lTextClick('全部','')">全部</a>
                                     <a href="javascript:" @click="lTextClick(loption.map_name,loption.map_id)" v-for="loption in loptions">{{ loption.map_name }}</a>
-                                  
                                </li>
                               <li v-show="fselected">
                                     <a href="javascript:" @click="fTextClick('全部','')">全部</a>
@@ -72,7 +84,7 @@
            <ul class="sellers">
                      <li v-for="v in pageList">
                            <router-link :to="{path:'/sell',query:{sell_id:v.shop_id}}" style="width:100%;height:1.10rem">
-                                     <div class="left">
+                                     <div class="left" >
                                        <!--:src="v.logo[0].mapUrl" -->
                                              <img :src="v.logo1" alt="" style="width:1.1rem;height:0.85rem">
                                              <div class="imgright">
@@ -370,11 +382,8 @@
      margin-top: 0.32rem;
      background-color: #fff;
      height: 0.5rem;
-     line-height: 0.5rem;
+     line-height: 0.3rem;
      display:flex;
-   }
-   .sortField a:nth-child(1){
-     padding: 0;
    }
    .sortField a{
      display: block;
@@ -389,11 +398,11 @@
 
    .sortField a span::after{
      display: block;
+     padding-top: -3rem;
      content: '';
      position: absolute;
      font-size: 0.8em;
      right: 0;
-     top: 50%;
      width: 0.5em;
      height: 0.5em;
      margin:-0.4em 0 0 0;
@@ -570,7 +579,34 @@
      background: rgba(0,0,0,0.6);
      pointer-events: auto;
    }
-   
+  select {
+/*Chrome和Firefox里面的边框是不一样的，所以复写了一下*/
+border: 0px;
+/*很关键：将默认的select选择框样式清除*/
+appearance:none;
+-moz-appearance:none;
+-webkit-appearance:none;
+/*加padding防止文字覆盖*/
+padding-right: 14px;
+}
+/*清除ie的默认选择框样式清除，隐藏下拉箭头*/
+select::-ms-expand { display: none; }
+
+.selected_search {
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    outline: none;
+}
+.selected_search select{
+    background: transparent;
+    border:none;
+    outline: none;
+}
+option{
+
+text-align:center;
+
+}
 </style>
 
 

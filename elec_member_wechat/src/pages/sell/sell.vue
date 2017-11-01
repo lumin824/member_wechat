@@ -17,7 +17,7 @@
             <mt-swipe-item><img src="static/img/2.jpg" alt=""></mt-swipe-item>
             <mt-swipe-item><img src="static/img/3.jpg" alt=""></mt-swipe-item>-->
             <mt-swipe-item v-if="pictures!=''" v-for="v in pictures">
-                  <img :src="v.mapUrl" style="width:1.2rem;height:0.85rem">
+                  <img :src="v.mapUrl" >
             </mt-swipe-item>
           </mt-swipe>
          </div>
