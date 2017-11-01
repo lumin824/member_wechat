@@ -1,5 +1,5 @@
 <template>
-  <div style="background-color:white">
+  <div style="background-color:#FFFFFF">
    <!-- <mt-header title="商户简介">
       <router-link to="/" slot="left">
         <mt-button icon="back">返回</mt-button>

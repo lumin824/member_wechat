@@ -9,7 +9,6 @@
 
         <div class="rank">
               <img src="static/img/jb.png" alt="">
-              
               <a style="margin-top: 0px;top: auto;bottom: 4px;">排行榜</a>
               <img class="abc" style="margin-top: 3px;margin-left: 0rem;top: auto;bottom: 3px;" src="static/img/jr.png" alt="">
         </div>
@@ -76,7 +75,7 @@
      border-top-left-radius: 0.1rem;
      border-bottom-left-radius: 0.1rem;
      position: absolute;
-     top:1.2rem;
+     top:0.8rem;
      right: 0;
    }
      .rank img:nth-child(1){
