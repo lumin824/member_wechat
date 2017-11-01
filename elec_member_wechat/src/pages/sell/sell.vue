@@ -48,7 +48,7 @@
             <div  style="margin-top:-0.18rem;margin-left:0.4rem"><a style="color:rgba(6,193,174,50);" @click="phone">{{tel}}</a></div></li>
           </ul>
         </div>
-        <div class="sqareDeil" style="background-color:#FFFFFF;margin-top:0.15rem;padding-left:0.2rem;">
+        <div class="sqareDeil" style="background-color:#FFFFFF;margin-top:0.15rem;padding-left:0.2rem;margin-bottom:0.2rem">
           
           <h2 style="color:#A4A4A4;padding-top:0.15rem">商家介绍</h2>
           <hr>
@@ -82,7 +82,7 @@
     },
     mounted(){
      this.sell_id = this.$route.query.sell_id;
-     this.$http.get('http://121.196.208.176:9001/shop/'+this.sell_id).then((data) =>{
+     this.$http.get('http://jiayuanmember.dorm9tech.com/'+this.sell_id).then((data) =>{
           this.sell = data.data;
           this.content=this.sell.intro;
           this.tel=this.sell.phone;

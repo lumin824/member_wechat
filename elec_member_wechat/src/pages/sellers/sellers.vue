@@ -36,7 +36,7 @@
            </ul>-->
              <div class="sortField sortType_01" style="border-bottom: 1px solid #eaeaea;padding:0.1rem;font-size:0.15rem;height:0.3rem">
                   <div style="width:33%;">
-                  <select style="height:100% ;padding-left:0.6rem;">
+                  <select style="height:100% ;padding-left:0.5rem;">
                             <option value="">楼层</option>
                             <option value="">B1</option>
                             <option value="">L1</option>
@@ -51,13 +51,13 @@
                   </select>
                   </div>
                   <div style="width:33%;border-left:solid 1px #D9D9D9;">
-                   <select name="vouSel" id="vouSel"style="height:100% ;padding-left:0.6rem;">
+                   <select name="vouSel" id="vouSel"style="height:100% ;padding-left:0.5rem;">
                             <option value="">分类</option>
                             <option value="">全部</option>
                   </select>
                    </div>
                   <div style="width:33%;border-left:solid 1px #D9D9D9;">
-                   <select name="vouSel" id="vouSel" style="height:100% ;padding-left:0.6rem;">
+                   <select name="vouSel" id="vouSel" style="height:100% ;padding-left:0.5rem;">
                             <option value="">排序</option>
                             <option value="">拼音</option>
                             <option value="">首拼</option>
