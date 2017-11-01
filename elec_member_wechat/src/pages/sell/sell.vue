@@ -48,11 +48,11 @@
             <div  style="margin-top:-0.22rem;margin-left:0.4rem"><a style="color:rgba(6,193,174,50);" @click="phone">{{tel}}</a></div></li>
           </ul>
         </div>
-        <div class="sqareDeil" style="background-color:#FFFFFF;margin-top:0.15rem;padding-left:0.2rem;margin-bottom:0.2rem;border-top:1px solid #D9D9D9">
+        <div class="sqareDeil" style="background-color:#FFFFFF;margin-top:0.15rem;padding-left:0.2rem;margin-bottom:0.2rem;border-top:1px solid #D9D9D9;border-bottom:1px solid #D9D9D9">
           
           <h2 style="color:#A4A4A4;padding-top:0.15rem">商家介绍</h2>
           <hr>
-          <p v-html="content">
+          <p v-html="content" style="padding-bottom:0.15rem">
           </p>
           <hr>
         </div>
