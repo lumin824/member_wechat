@@ -9,9 +9,9 @@
          <mt-navbar v-model="selected">
            
               <mt-tab-item id="1">
-                <div style="font-size:0.2rem;font-family:">  积分记录</div>
+                <div style="font-size:0.17rem;font-family:">  积分记录</div>
               </mt-tab-item>
-              <mt-tab-item id="2"><div style="font-size:0.2rem">  会员权益</div></mt-tab-item>
+              <mt-tab-item id="2"><div style="font-size:0.17rem">  会员权益</div></mt-tab-item>
          </mt-navbar>
 
          <!-- tab-container -->
