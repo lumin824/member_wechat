@@ -52,7 +52,7 @@
         <div class="sqareDeil" style="background-color:#FFFFFF;margin-top:0.15rem;padding-left:0.2rem;margin-bottom:0.2rem;">
           <h2 style="color:#A4A4A4;">商家介绍</h2>
           <hr >
-          <p v-html="content" >
+          <p v-html="content" style="padding-bottom:0.2rem">
           </p>
           <hr>
         </div>

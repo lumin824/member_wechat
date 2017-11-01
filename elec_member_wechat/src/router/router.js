@@ -26,6 +26,7 @@ const login = r => require.ensure([], () => r(require('../pages/login/login')), 
 const test = r => require.ensure([], () => r(require('../pages/test/test')), 'test')
 const car = r => require.ensure([], () => r(require('../pages/car/car')), 'car')
 const carDetail = r => require.ensure([], () => r(require('../pages/car/carDetail')), 'carDetail')
+const sell1 = r => require.ensure([], () => r(require('../pages/sell/sell1')), 'sell1')
 Vue.use(Router)
 export default new Router({
   mode:'history',//更改模式，默认为hash
@@ -167,6 +168,11 @@ export default new Router({
       //停车缴费
       path:'/carDetail',
       component:carDetail
+    },
+    {
+      //停车缴费
+      path:'/sell1',
+      component:sell1
     }
   ]
 })
