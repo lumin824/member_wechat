@@ -9,8 +9,9 @@
 
         <div class="rank">
               <img src="static/img/jb.png" alt="">
-              <a>排行榜</a>
-              <img class="abc" src="static/img/jr.png" alt="">
+              
+              <a style="margin-top: 0px;top: auto;bottom: 4px;">排行榜</a>
+              <img class="abc" style="margin-top: 3px;margin-left: 0rem;top: auto;bottom: 3px;" src="static/img/jr.png" alt="">
         </div>
     </div>
 </template>

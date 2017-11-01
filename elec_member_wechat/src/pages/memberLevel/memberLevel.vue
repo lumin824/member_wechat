@@ -7,8 +7,11 @@
          </mt-header>
          <m-header></m-header>
          <mt-navbar v-model="selected">
-           <mt-tab-item id="1">积分记录</mt-tab-item>
-           <mt-tab-item id="2">会员权益</mt-tab-item>
+           
+              <mt-tab-item id="1">
+                <div style="font-size:0.2rem;font-family:">  积分记录</div>
+              </mt-tab-item>
+              <mt-tab-item id="2"><div style="font-size:0.2rem">  会员权益</div></mt-tab-item>
          </mt-navbar>
 
          <!-- tab-container -->
@@ -22,29 +25,28 @@
 
                             </li>
                           </ul>-->
-                         <table width="100%">
-                                  <thead>
-                                          <tr>
-                                              <th>时间</th>
-                                              <th>积分</th>
-                                              <th>金额</th>
-                                              <th>商户</th>
+                         <table width="100%" style="padding-right:0px;">
+                                  <thead width="100%">
+                                          <tr style="height:0.5rem;width=100%;text-align:left">
+                                              <th style="border-bottom:1px solid #E0E0E0;padding-left:0.4rem">时间</th>
+                                              <th style="border-bottom:1px solid #E0E0E0">积分</th>
+                                              <th style="border-bottom:1px solid #E0E0E0">金额</th>
+                                              <th style="border-bottom:1px solid #E0E0E0;text-align:right;padding-right:0.5rem">商户</th>
                                           </tr>
                                   </thead>
-
-                                  <tbody>
-                                     <!--    <tr @click="showDetail">
-                                               <td>2017-09-01</td>
-                                               <td class="color">+1</td>
-                                               <td class="color">100</td>
-                                               <td>肯德基</td>
+                                  <tbody style="padding-top:0.08rem">
+                                    <!--<tr @click="showDetail">
+                                               <td >2017-09-01</td>
+                                               <td class="color" >+1</td>
+                                               <td class="color" >100</td>
+                                               <td >肯德基</td>
                                          </tr>-->
                                           <template v-for="(v,k) in pageList">
                                              <tr @click="showDetail(v,k)">
-                                                 <td>{{v.shopping_date|time}}</td>
-                                                 <td class="color">{{v.points}}</td>
-                                                 <td class="color">{{v.amount}}</td>
-                                                 <td>{{v.shop_name}}</td>
+                                                 <td style="width:1.5rem">{{v.shopping_date|time}}</td>
+                                                 <td class="color" style="text-align:left">{{v.points}}</td>
+                                                 <td class="color" style="text-align:left">{{v.amount}}</td>
+                                                 <td style="text-align:right;padding-right:0.5rem">{{v.shop_name}}</td>
                                              </tr>
                                              <!--<detail v-if="isShow" @click="test123"></detail>-->
                                             <!--<tr v-if="v.meta && Object.keys(v.meta).length" v-show="k == currentActive">-->
@@ -242,6 +244,12 @@
   }
 </script>
 <style lang="less" scoped>
+.mint-tab-item-label{
+   font-size: 0.3rem;
+}
+.mint-navbar{
+  font-family:"Helvetica Neue", Helvetica, Arial, "Microsoft Yahei UI", "Microsoft YaHei", SimHei, "\5B8B\4F53", simsun, sans-serif
+}
   .mint-navbar .mint-tab-item.is-selected{
     color: #07C0AE;
     margin-bottom: 0;

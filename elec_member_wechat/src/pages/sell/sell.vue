@@ -11,7 +11,7 @@
             <img :src="v.mapUrl">
           </mt-swipe-item>
           -->
-        <div class="test" style="height:2rem;width: 100%;">
+        <div class="test" style="height:2rem;width: 100%;height:100%">
           <mt-swipe :auto="4000">
            <!-- <mt-swipe-item @click.native="clickItem"><img src="static/img/1.jpg"  alt=""></mt-swipe-item>
             <mt-swipe-item><img src="static/img/2.jpg" alt=""></mt-swipe-item>
@@ -49,10 +49,9 @@
           </ul>
         </div>
         <div class="sqareDeil" style="background-color:#FFFFFF;margin-top:0.15rem;padding-left:0.2rem;margin-bottom:0.2rem;border-top:1px solid #D9D9D9;border-bottom:1px solid #D9D9D9">
-          
           <h2 style="color:#A4A4A4;padding-top:0.15rem">商家介绍</h2>
           <hr>
-          <p v-html="content" style="padding-bottom:0.15rem">
+          <p v-html="content" >
           </p>
           <hr>
         </div>
@@ -140,9 +139,6 @@
     font-size: 0.12rem;
     margin-bottom: 0.1rem;
     letter-spacing: 0.005rem;
-  }
-  .sellInfo ul li:nth-child(1){
-
   }
   .sellInfo ul li img{
     width: 0.11rem;

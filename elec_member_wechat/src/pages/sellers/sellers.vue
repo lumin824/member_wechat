@@ -34,32 +34,25 @@
                      </select>
                  </li>
            </ul>-->
-             <div class="sortField sortType_01" style="border-bottom: 1px solid #eaeaea;padding:0.1rem;font-size:0.15rem;height:0.3rem">
-                  <div style="width:33%;">
-                 <div style="margin: 0 15px;">
-                    <x-button @click.native="showPopupPicker = true" type="primary">{{value5[0] }}</x-button>
-                  </div>
-                  <group>
-                    <popup-picker :show.sync="showPopupPicker" :show-cell="false" title="TEST" :data="[['B1', 'L1', 'L2', 'L3', 'L4', 'L5', 'L6', 'L7', 'L8', 'L9']]" v-model="value5" ></popup-picker>
-                  </group>
-                
-                  </div>
-                  <div style="width:33%;border-left:solid 1px #D9D9D9;">
-                   <div style="margin: 0 15px;">
-                    <x-button @click.native="showPopupPicker1 = true" type="primary">{{value4[0] }}</x-button>
-                  </div>
-                  <group>
-                    <popup-picker :show.sync="showPopupPicker1" :show-cell="false" title="TEST" :data="[['1', '2', '3', '4', '5']]" v-model="value4"></popup-picker>
-                  </group>
-                   </div>
-                  <div style="width:33%;border-left:solid 1px #D9D9D9;">
-                  <div style="margin: 0 15px;">
-                    <x-button @click.native="showPopupPicker2 = true" type="primary">{{value3[0] }}</x-button>
-                  </div>
-                  <group>
-                    <popup-picker :show.sync="showPopupPicker2" :show-cell="false" title="TEST" :data="[['1', '2', '3', '4', '5']]" v-model="value3"></popup-picker>
-                  </group>
-                   </div>
+             <div class="sortField sortType_01">
+
+                   <a href="javascript:"  @click="selectChange(1)" style="margin-top:8px">
+                      <span id="sp_floor">
+                          {{ltext}}
+                      </span>
+                   </a>
+                  <div style="border-left:1px solid #E0E0E0;height:0.3rem;margin-top:10px"></div>
+                   <a href="javascript:" @click="selectChange(2)" style="margin-top:8px">
+                        <span id="sp_type">
+                           {{ftext}}
+                        </span>
+                   </a>
+                   <div style="border-left:1px solid #E0E0E0;height:0.3rem;margin-top:10px"></div>
+                   <a href="javascript:" @click="selectChange(3)" style="margin-top:8px">
+                       <span id="sp_sort">
+                          {{otext}}
+                       </span>
+                   </a>
              </div>
              <div class="sortList" id="shop_type" v-show="sortList">
                       <ul>
