@@ -1,10 +1,6 @@
 <template>
    <div>
-         <mt-header title="我的等级">
-           <router-link to="/" slot="left">
-             <mt-button icon="back">返回</mt-button>
-           </router-link>
-         </mt-header>
+        
          <m-header></m-header>
          <mt-navbar v-model="selected">
            

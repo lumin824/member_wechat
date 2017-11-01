@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div style="background-color:white">
    <!-- <mt-header title="商户简介">
       <router-link to="/" slot="left">
         <mt-button icon="back">返回</mt-button>
@@ -22,7 +22,8 @@
           </mt-swipe>
          </div>
         </div>
-        <div class="sellAdv" style="background-color:#FFFFFF;height:1.1rem;border-top:1px solid #D9D9D9;border-bottom:1px solid #D9D9D9">
+        
+        <div class="sellAdv" style="background-color:#FFFFFF;height:1.1rem;border-top:1px solid #D9D9D9;">
               <div style="padding-top:10px"> 
                <img  v-if="logo!=''" style="float: left;padding-right:0.2rem;margin-botton:0.2rem;width:1.2rem;height:0.85rem" :src="logo[0]['mapUrl']" alt="">
                <img  v-else style="float: left;"  src="" alt="">
@@ -33,8 +34,8 @@
                 </ul>
               </div>  
         </div>
-
-        <div class="sellInfo" style="clear: both;background-color:#FFFFFF;margin-top:0.15rem;height:1.2rem;padding-left:0.2rem;border-top:1px solid #D9D9D9;border-bottom:1px solid #D9D9D9">
+        <div style="border:1px solid #D9D9D9;height:0.1rem;background-color:#F4F4F4"></div>
+        <div class="sellInfo" style="clear: both;background-color:#FFFFFF;margin-top:0.15rem;height:1.2rem;padding-left:0.2rem;">
           
           <h2 style="color:#979797;padding-top:0.15rem;">商家信息</h2>
           <hr>
@@ -47,12 +48,13 @@
             <div  style="margin-top:-0.22rem;margin-left:0.4rem"><a style="color:rgba(6,193,174,50);" @click="phone">{{tel}}</a></div></li>
           </ul>
         </div>
-        <div class="sqareDeil" style="background-color:#FFFFFF;margin-top:0.15rem;padding-left:0.2rem;margin-bottom:0.2rem;border-top:1px solid #D9D9D9;border-bottom:1px solid #D9D9D9">
-          <h2 style="color:#A4A4A4;padding-top:0.15rem">商家介绍</h2>
+        <div style="border:1px solid #D9D9D9;height:0.1rem;background-color:#F4F4F4"></div>
+        <div class="sqareDeil" style="background-color:#FFFFFF;margin-top:0.15rem;padding-left:0.2rem;margin-bottom:0.2rem;">
+          <h2 style="color:#A4A4A4;">商家介绍</h2>
           <hr >
           <p v-html="content" >
           </p>
-          <hr style="padding-bottom:2rem">
+          <hr>
         </div>
   </div>
 </template>

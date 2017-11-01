@@ -71,6 +71,7 @@
                      <div class="mask" style="display: block;" @click="maskClick"></div>
              </div>
      <mt-loadmore  :bottom-method="loadBottom" :bottom-all-loaded="allLoaded" :auto-fill="false" ref="loadmore">
+        <transition name="router-fade" enter-active-class="animated fadeIn"  leave-active-class="animated fadeOut" mode="out-in">
            <ul class="sellers">
                      <li v-for="v in pageList">
                            <router-link :to="{path:'/sell',query:{sell_id:v.shop_id}}" style="width:100%;height:1.10rem">
@@ -91,6 +92,7 @@
                            </router-link>
                        </li>
            </ul>
+        </transition>
      </mt-loadmore>
 
 
