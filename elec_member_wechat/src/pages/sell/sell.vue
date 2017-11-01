@@ -49,7 +49,7 @@
           </ul>
         </div>
         <div style="border:1px solid #D9D9D9;height:0.1rem;background-color:#F4F4F4"></div>
-        <div class="sqareDeil" style="background-color:#FFFFFF;margin-top:0.15rem;padding-left:0.2rem;margin-bottom:0.2rem;">
+        <div class="sqareDeil" style="background-color:#FFFFFF;margin-top:0.15rem;padding-left:0.2rem;">
           <h2 style="color:#A4A4A4;">商家介绍</h2>
           <hr >
           <p v-html="content" style="padding-bottom:0.2rem">
