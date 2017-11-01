@@ -79,9 +79,8 @@
                                              <img :src="v.logo1" alt="" style="width:1.1rem;height:0.85rem">
                                              <div class="imgright">
                                                  <h1 style="padding-bottom:0.1rem">{{v.shop_name}}</h1>
-                                                 <img class="imgleft" src="static/img/jf.png" alt="">
                                                  <h2 style="padding-top:0.1rem">{{v.industry_name}}</h2>
-                                                 <h3>{{v.berth_number}}</h3>
+                                                 <h3><img class="imgleft" src="static/img/jf.png" alt="">{{v.berth_number}}</h3>
                                              </div>
                                      </div>
                                      <div class="right">
