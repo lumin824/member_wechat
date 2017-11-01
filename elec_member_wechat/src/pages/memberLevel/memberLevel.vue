@@ -35,12 +35,12 @@
                                           </tr>
                                   </thead>
                                   <tbody style="padding-top:0.08rem">
-                                    <!--<tr @click="showDetail">
-                                               <td >2017-09-01</td>
-                                               <td class="color" >+1</td>
-                                               <td class="color" >100</td>
-                                               <td >肯德基</td>
-                                         </tr>-->
+                                    <tr @click="showDetail">
+                                               <td style="width:1.5rem">2017-09-01</td>
+                                               <td class="color" style="text-align:left">+1</td>
+                                               <td class="color" style="text-align:left">100</td>
+                                               <td style="text-align:right;padding-right:0.5rem">肯德基</td>
+                                         </tr>
                                           <template v-for="(v,k) in pageList">
                                              <tr @click="showDetail(v,k)">
                                                  <td style="width:1.5rem">{{v.shopping_date|time}}</td>
@@ -71,15 +71,15 @@
 
 
 
-                            <!--             <tr @click="showDetail">
+                                        <!-- <tr @click="showDetail">
                                                <td>2017-09-01</td>
                                                <td class="color">+1</td>
                                                <td class="color">100</td>
                                                <td>肯德基</td>
-                                         </tr>-->
-                                        <!-- <detail v-show="true"></detail>-->
+                                         </tr>
+                                       <detail v-show="true"></detail> -->
 
-                               <!--          <tr ref="abcdef">
+                                       <tr ref="abcdef">
                                            <td colspan="2">
                                              <ul style="color: #333;text-align: left;">
                                                <li>消费时间&nbsp;&nbsp;&nbsp;&nbsp;2017-09-01 09:00</li>
@@ -88,7 +88,7 @@
                                                <li>获得积分&nbsp;&nbsp;&nbsp;&nbsp;1</li>
                                              </ul>
                                            </td>
-                                         </tr>-->
+                                         </tr>
 
                                      <!--    <tr @click="showDetail">
                                                <td>2017-09-01</td>
