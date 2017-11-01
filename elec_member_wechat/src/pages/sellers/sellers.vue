@@ -57,8 +57,8 @@
              <div class="sortList" id="shop_type" v-show="sortList">
                       <ul>
                               <li v-show="lselected">
-                                    <a href="javascript:"  @click="lTextClick('全部','')">全部</a>
-                                    <a href="javascript:" @click="lTextClick(loption.map_name,loption.map_id)" v-for="loption in loptions">{{ loption.map_name }}</a>
+                                    <a   v-on:click="lTextClick('全部','')">全部</a>
+                                    <a  v-on:click="lTextClick(loption.map_name,loption.map_id)" v-for="loption in loptions">{{ loption.map_name }}</a>
                                </li>
                               <li v-show="fselected">
                                     <a href="javascript:" @click="fTextClick('全部','')">全部</a>
@@ -72,7 +72,7 @@
              </div>
      <mt-loadmore  :bottom-method="loadBottom" :bottom-all-loaded="allLoaded" :auto-fill="false" ref="loadmore">
         <transition name="router-fade" enter-active-class="animated fadeIn"  leave-active-class="animated fadeOut" mode="out-in">
-           <ul class="sellers">
+           <ul class="sellers" v-show="showlist">
                      <li v-for="v in pageList">
                            <router-link :to="{path:'/sell',query:{sell_id:v.shop_id}}" style="width:100%;height:1.10rem">
                                      <div class="left" >
@@ -109,6 +109,7 @@ import { PopupPicker, XButton } from 'vux'
   },
       data(){
           return {
+            showlist:true,
             mall_id:1,
             ltext:'楼层',
             ftext:'分类',
@@ -259,8 +260,9 @@ import { PopupPicker, XButton } from 'vux'
     methods:{
           //1.楼层 2.分类 3.排序
           selectHasChange(option){
+                this.showlist = false;
                 this.serarchIsChange =true;
-                this.pageList = '';
+                //this.pageList = '';
                 this.searchCondition.pageNo = 1;
                 let serarhData = {};
                 //拼接搜索条件
@@ -287,10 +289,18 @@ import { PopupPicker, XButton } from 'vux'
                       resp.data[key].logo1='';
                     }
                   });
-                  this.pageList = resp.data;
+                  
                   this.isHaveMore(true);
+                  setTimeout(() => {
+                    this.pageList = resp.data;
+                    this.showlist = true;
+                  },800)
+                  
                 },err=>{
                   this.isHaveMore(false);
+                  setTimeout(() => {
+                    this.showlist = true;
+                  },800)
                 });
           },
           loadBottom(){
