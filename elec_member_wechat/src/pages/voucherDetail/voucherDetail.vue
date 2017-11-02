@@ -1,11 +1,6 @@
 <template>
    <div>
-       <mt-header>
-           <router-link to="/" slot="left">
-             <mt-button icon="back">返回</mt-button>
-             <mt-button  icon="close">关闭</mt-button>
-           </router-link>
-       </mt-header>
+      
         <h1>哈根达斯满百减十</h1>
         <div class="detail">
              <figure>
