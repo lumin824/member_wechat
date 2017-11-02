@@ -6,7 +6,10 @@ import router from './router/router'
 import axios from 'axios'
 import Mint from 'mint-ui'
 import AMap from 'vue-amap'
+import Vuex from 'vuex'
 import 'mint-ui/lib/style.css'
+
+
 Vue.prototype.$http = axios
 Vue.use(Mint);
 //高德地图
@@ -18,12 +21,52 @@ AMap.initAMapApiLoader({
 
 
 })
+Vue.use(Vuex)
 Vue.config.productionTip = false
+const store = new Vuex.Store({
+  state: {
+    user: null
+  },
+  mutations: {
+    login (state, user) {
+
+      console.log(user)
+      state.user = user
+    },
+    logout (state) {
+      state.user = null
+    }
+  }
+})
+
+router.beforeEach(async (to, from, next) => {
+  const goLogin = () => {
+    next({
+      path: '/register',
+      query: {redirect: to.fullPath}
+    })
+  }
+
+  const goNext = (user) => {
+    // user.sign = buildSign(user)
+    // store.commit('login', user)
+    next()
+  }
+
+  console.log(store.state.user)
+  console.log(to)
+  if (store.state.user || ~['/register'].indexOf(to.path)) {
+    next()
+  } else {
+    goLogin()
+  }
+})
 
 /* eslint-disable no-new */
 new Vue({
   el: '#app',
   router,
+  store,
   template: '<App/>',
   components: { App }
 })

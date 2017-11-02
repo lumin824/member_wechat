@@ -2,9 +2,9 @@
     <div>
       <img src="static/img/cat.jpg" alt="">
        <ul>
-         <li><span>张三</span><h3>黄金会员</h3></li>
-         <li>累计积分&nbsp;&nbsp;&nbsp;2000</li>
-         <li>可用积分&nbsp;&nbsp;&nbsp;2000</li>
+         <li><span> {{this.user.name}}</span><h3>{{this.user.level}}</h3></li>
+         <li>累计积分:{{this.user.cumulate_points}}</li>
+         <li>可用积分:{{this.user.usable_points}}</li>
        </ul>
 
         <div class="rank">
@@ -15,7 +15,20 @@
     </div>
 </template>
 <script>
+   export  default {
+     data(){
+        return {
+          user: {
 
+          }
+        }
+      },
+      async mounted () {
+      let {data}=await this.$http.get(`http://121.196.208.176:9001/member/m?mobile=${this.$store.state.user}`)
+      this.user=data;
+      console.log(this.user)
+      },
+   }
 
 </script>
 <style lang="less" scoped>
