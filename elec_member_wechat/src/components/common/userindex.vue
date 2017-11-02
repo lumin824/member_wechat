@@ -14,7 +14,7 @@
 
 
         <mt-cell title="生日" is-link>
-            <input type="text" @click="openByDrop($event)" v-model="calendar3.display" readonly style='position:absolute;left:26%;overflow:auto; background-attachment: fixed; background-repeat: no-repeat; border-style: solid; 
+            <input type="text" @click="openByDrop($event)" v-model="calendar3.display" readonly style='position:absolute;left:75%;overflow:auto; background-attachment: fixed; background-repeat: no-repeat; border-style: solid; 
 border-color: #FFFFFF;color:#888888'>
     </mt-cell>
      <transition name="fade">
@@ -60,7 +60,7 @@ border-color: #FFFFFF;color:#888888'>
       </mt-cell>
 
       <mt-cell title="手机">
-        <input type="text" :value="this.user.mobile" readonly="readonly" style="position:relative;left:39%;outline: none;border: medium;"><router-link to="/changePhone"><mt-button size="small">修改</mt-button></router-link>
+        <input type="text" :value="this.user.mobile" readonly="readonly" style="position:relative;left:36%;outline: none;border: medium;"><router-link to="/changePhone"><mt-button size="small">修改</mt-button></router-link>
       </mt-cell>
 
       <mt-cell title="微信号">

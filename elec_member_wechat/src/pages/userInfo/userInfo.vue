@@ -1,11 +1,6 @@
 <template>
        <div>
-              <mt-header title="个人信息">
-                 <router-link to="/" slot="left">
-                   <mt-button icon="back">返回</mt-button>
-                   <mt-button icon="close">关闭</mt-button>
-                 </router-link>
-               </mt-header>
+              
               <m-header></m-header>
               <m-user></m-user>
        </div>
