@@ -67,7 +67,7 @@ border-color: #FFFFFF;color:#888888'>
         <input type="text" :value="this.user.wechat_account" readonly="readonly" style="position:relative;left:50%;outline: none;border: medium;">
       </mt-cell>
 
-      <mt-cell title="是否公开微信号">
+      <mt-cell title="是否公开微信号" style="padding-bottom:0.2rem">
         <mt-switch v-model="value"></mt-switch>
       </mt-cell>
 
