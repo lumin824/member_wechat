@@ -1,11 +1,6 @@
 <template>
     <div>
-          <mt-header title="会员中心">
-            <router-link to="/" slot="left">
-              <mt-button icon="back">返回</mt-button>
-             <!-- <mt-button v-if="closeButton" icon="close">关闭</mt-button>-->
-            </router-link>
-          </mt-header>
+         
           <m-header></m-header>
           <m-info></m-info>
           <m-nav></m-nav>

@@ -91,12 +91,10 @@
                                      </div>
                            </router-link>
                        </li>
-                      
+                       <li v-show="notmore" style="text-align:center;color:#7D7D7D">————更多商家接入中，敬请期待————</li>
            </ul>
         </transition>
      </mt-loadmore>
-
-
    </div>
 </template>
 
@@ -110,6 +108,7 @@ import { PopupPicker, XButton } from 'vux'
   },
       data(){
           return {
+            notmore:false,
             showlist:true,
             mall_id:1,
             ltext:'楼层',
@@ -344,8 +343,11 @@ import { PopupPicker, XButton } from 'vux'
       isHaveMore(isHaveMore){
         // 是否还有下一页，如果没有就禁止上拉刷新
         this.allLoaded = true; //true是禁止上拉加载
+       
         if(isHaveMore){
           this.allLoaded = false;
+        }else{
+           this.notmore=true;
         }
       },
       selectChange(option){
