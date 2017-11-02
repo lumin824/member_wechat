@@ -1,11 +1,11 @@
 <template>
     <div>
-        <mt-cell title="姓名" style="right:2%">
+        <mt-cell title="姓名" style="right:2%;margin-left:0.03rem">
           <input type="text" :value="this.user.name" style="position:relative;left:77%;outline: none;border: medium;">
         </mt-cell>
 
 
-        <mt-cell title="性别" is-link style="right:2%">
+        <mt-cell title="性别" is-link style="right:2%;margin-left:0.03rem">
           <select style="position:relative;right: 30%;height:0.2rem" :value="this.user.sex">
             <option value="0">男</option>
             <option value="1">女</option>
@@ -13,7 +13,7 @@
         </mt-cell>
 
 
-        <mt-cell title="生日" is-link style="right:2%">
+        <mt-cell title="生日" is-link style="right:2%;margin-left:0.03rem">
             <input type="text" @click="openByDrop($event)" v-model="calendar3.display" readonly style='position:absolute;left:73%;overflow:auto; background-attachment: fixed; background-repeat: no-repeat; border-style: solid; 
 border-color: #FFFFFF;color:#888888'>
     </mt-cell>
@@ -23,19 +23,19 @@ border-color: #FFFFFF;color:#888888'>
     </div>
     </transition>
 
-      <mt-cell title="职业" is-link style="right:2%">
+      <mt-cell title="职业" is-link style="right:2%;margin-left:0.03rem">
         <select style="position:relative;right: 30%;" :value="this.user.occupation">
           <option value="0">工程师</option>
           <option value="1">医生</option>
         </select>
       </mt-cell>
 
-      <mt-cell title="地址" style="right:2%">
+      <mt-cell title="地址" style="right:2%;margin-left:0.03rem">
         <input type="text" :value="this.user.address" style="position:relative;left:77%;outline: none;border: medium;">
       </mt-cell>
 
 
-      <mt-cell title="教育程度" is-link style="right:2%">
+      <mt-cell title="教育程度" is-link style="right:2%;margin-left:0.03rem">
         <select style="position:relative;right: 30%;" :value="this.user.degree_of_education">
           <option value="0">博士</option>
           <option value="1">硕士</option>
@@ -45,29 +45,29 @@ border-color: #FFFFFF;color:#888888'>
         </select>
       </mt-cell>
 
-      <mt-cell title="收入范围" is-link style="right:2%">
+      <mt-cell title="收入范围" is-link style="right:2%;margin-left:0.03rem">
         <select style="position:relative;right: 5%;" :value="this.user.income_range">
           <option value="0">50000-100000</option>
           <option value="1">10000-50000</option>
         </select>
       </mt-cell>
 
-      <mt-cell title="兴趣爱好" is-link style="right:2%">
+      <mt-cell title="兴趣爱好" is-link style="right:2%;margin-left:0.03rem">
         <select style="position:relative;right: 30%;" :value="this.user.interest">
           <option value="0">篮球</option>
           <option value="1">游泳</option>
         </select>
       </mt-cell>
 
-      <mt-cell title="手机" style="right:3%">
+      <mt-cell title="手机" style="right:3%;margin-left:0.03rem">
         <input type="text" :value="this.user.mobile" readonly="readonly" style="position:relative;left:34%;outline: none;border: medium;"><router-link to="/changePhone"><mt-button size="small" style="background-color:#D7D7D7">修改</mt-button></router-link>
       </mt-cell>
 
-      <mt-cell title="微信号" style="right:2%">
+      <mt-cell title="微信号" style="right:2%;margin-left:0.03rem">
         <input type="text" :value="this.user.wechat_account" readonly="readonly" style="position:relative;left:50%;outline: none;border: medium;">
       </mt-cell>
 
-      <mt-cell title="是否公开微信号" style="padding-bottom:0.2rem;right:3%">
+      <mt-cell title="是否公开微信号" style="padding-bottom:0.2rem;right:3%;margin-left:0.03rem">
         <mt-switch v-model="value"></mt-switch>
       </mt-cell>
     </div>
