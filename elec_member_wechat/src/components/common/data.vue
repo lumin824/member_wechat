@@ -50,10 +50,10 @@ border-color: #FFFFFF;color:#888888'>
               
             },
             calendar3:{
-                display:'请选择日期',
+                display:"请选择日期",
                 show:false,
                 zero:true,
-                value:'请选择日期', //默认日期
+                value:[2017,11,2], //默认日期
                 lunar:true, //显示农历
                 select:(value)=>{
                     this.calendar3.show=false;
@@ -65,6 +65,7 @@ border-color: #FFFFFF;color:#888888'>
             show: true,
             count: '',
             timer: null,
+            brithday:'请选择日期',
             android:false,
         }
     },
