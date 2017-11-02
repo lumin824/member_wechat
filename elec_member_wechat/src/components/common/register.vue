@@ -60,7 +60,7 @@
                     //  window.location.href='/registerInfo?phone='+this.formData.phone;
                     alert(123)
                     let { redirect } = this.$route.query
-                    alert(1)
+                    alert(redirect)
                     this.$router.push(redirect)
                      alert(2)
                     console.log( this.$route.query);
