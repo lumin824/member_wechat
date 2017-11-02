@@ -60,9 +60,11 @@
                     //  window.location.href='/registerInfo?phone='+this.formData.phone;
                     alert(123)
                     let { redirect } = this.$route.query
+                    alert(1)
                     this.$router.push(redirect)
+                     alert(2)
                     console.log( this.$route.query);
-                    alert(4)
+                    alert(3)
               // },err=>{
               //     this.formData.code='';
               //     this.formData.v_code= '验证失败';
