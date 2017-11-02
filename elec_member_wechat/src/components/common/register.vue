@@ -59,9 +59,9 @@
                      //验证成功
                     //  window.location.href='/registerInfo?phone='+this.formData.phone;
                     alert(123)
-                    let { redirect } = this.$route.query
+                    let { redirect="/member" } = this.$route.query
                     alert(redirect)
-                    this.$router.push('/member')
+                    this.$router.push(redirect)
                      alert(2)
                     console.log( this.$route.query);
                     alert(3)
