@@ -12,7 +12,7 @@
     </mt-cell>
     <mt-cell title="生日">
             <input type="text" @click="openByDrop($event)" v-model="calendar3.display" readonly style='position:absolute;left:26%;overflow:auto; background-attachment: fixed; background-repeat: no-repeat; border-style: solid; 
-border-color: #FFFFFF'>
+border-color: #FFFFFF;color:#888888'>
     </mt-cell>
      <transition name="fade">
     <div class="calendar-dropdown"  v-if="calendar3.show" style="float:left;position:absolute;z-index:100;width:100%">
@@ -50,10 +50,10 @@ border-color: #FFFFFF'>
               
             },
             calendar3:{
-                display:"2017/11/02",
+                display:'请选择日期',
                 show:false,
                 zero:true,
-                value:[2017,11,2], //默认日期
+                value:'请选择日期', //默认日期
                 lunar:true, //显示农历
                 select:(value)=>{
                     this.calendar3.show=false;
@@ -65,9 +65,6 @@ border-color: #FFFFFF'>
             show: true,
             count: '',
             timer: null,
-            startDate: new Date('1970-1-1'),
-            endDate: new Date(),
-            brithday:'请选择日期',
             android:false,
         }
     },
