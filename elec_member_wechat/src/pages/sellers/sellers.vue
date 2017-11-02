@@ -77,7 +77,7 @@
                            <router-link :to="{path:'/sell',query:{sell_id:v.shop_id}}" style="width:100%;height:1.10rem">
                                      <div class="left" >
                                        <!--:src="v.logo[0].mapUrl" -->
-                                             <img :src="v.logo1" alt="" style="width:1.1rem;height:0.85rem">
+                                             <img :src="v.logo1" alt="" style="width:1.1rem;height:0.85rem;padding-left:0.2rem">
                                              <div class="imgright">
                                                  <h1 style="padding-bottom:0.1rem">{{v.shop_name}}</h1>
                                                  <h3 style="padding-top:-0.2rem;padding-bottom:0.01rem">{{v.industry_name}}</h3>
@@ -91,7 +91,7 @@
                                      </div>
                            </router-link>
                        </li>
-                       <li v-show="notmore" style="text-align:center;color:#7D7D7D">————更多商家接入中，敬请期待————</li>
+                       <li v-show="notmore" style="text-align:center;color:#7D7D7D;padding-top:0.05rem;padding-bottom:0.05rem">————更多商家接入中，敬请期待————</li>
            </ul>
         </transition>
      </mt-loadmore>
@@ -457,7 +457,6 @@ import { PopupPicker, XButton } from 'vux'
       background-color: #fff;
    }
    .sellers li{
-     margin-left: 0.2rem;
      clear: both;
      border-bottom: 1px solid #ddd;
    }
