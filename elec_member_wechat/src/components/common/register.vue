@@ -61,7 +61,7 @@
                     alert(123)
                     let { redirect } = this.$route.query
                     alert(redirect)
-                    this.$router.push(redirect)
+                    this.$router.push('/member')
                      alert(2)
                     console.log( this.$route.query);
                     alert(3)
