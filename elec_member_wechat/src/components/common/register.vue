@@ -58,11 +58,11 @@
                      this.$store.commit('login', this.formData.phone)
                      //验证成功
                     //  window.location.href='/registerInfo?phone='+this.formData.phone;
-
+                    alert(123)
                     let { redirect } = this.$route.query
                     this.$router.push(redirect)
-                  console.log( this.$route.query);
-
+                    console.log( this.$route.query);
+                    alert(4)
               // },err=>{
               //     this.formData.code='';
               //     this.formData.v_code= '验证失败';
