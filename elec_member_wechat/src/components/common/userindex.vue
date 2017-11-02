@@ -30,8 +30,8 @@ border-color: #FFFFFF;color:#888888'>
         </select>
       </mt-cell>
 
-      <mt-cell title="地址" style="right:2%;margin-left:0.03rem">
-        <input type="text" :value="this.user.address" style="position:relative;left:77%;outline: none;border: medium;">
+      <mt-cell title="地址" style="right:3%;margin-left:0.07rem">
+        <input type="text" :value="this.user.address" style="position:relative;outline: none;border: medium;">
       </mt-cell>
 
 
