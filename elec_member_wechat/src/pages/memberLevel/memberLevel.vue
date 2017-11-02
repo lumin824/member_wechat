@@ -25,13 +25,13 @@
                                   <thead width="100%">
                                           <tr style="height:0.5rem;width=100%;">
                                               <th style="border-bottom:1px solid #E0E0E0;">时间</th>
-                                              <th style="border-bottom:1px solid #E0E0E0">积分</th>
+                                              <th style="border-bottom:1px solid #E0E0E0;width:0.5rem">积分</th>
                                               <th style="border-bottom:1px solid #E0E0E0">金额</th>
                                               <th style="border-bottom:1px solid #E0E0E0;">商户</th>
                                           </tr>
                                   </thead>
                                   <tbody style="padding-top:0.08rem">
-                                    <tr @click="showDetail">
+                                    <tr @click="showDetaila()">
                                                <td style="width:1.5rem">2017-09-01</td>
                                                <td class="color">+1</td>
                                                <td class="color">100</td>
@@ -48,7 +48,7 @@
                                             <!--<tr v-if="v.meta && Object.keys(v.meta).length" v-show="k == currentActive">-->
                                             <tr  v-show="k == currentActive">
                                                <td colspan="2">
-                                                     <ul style="color:#333;text-align: left; margin-left: 20%;font-size: 0.12rem;">
+                                                     <ul style="color:#333;text-align: left; margin-left: 19%;font-size: 0.12rem;">
                                                          <li>消费时间&nbsp;&nbsp;&nbsp;&nbsp;{{v.shopping_date|time}}</li>
                                                          <li>消费商户&nbsp;&nbsp;&nbsp;&nbsp;{{v.shop_name}}</li>
                                                          <li>消费金额&nbsp;&nbsp;&nbsp;&nbsp;{{v.amount}}</li>
@@ -76,8 +76,8 @@
                                        <detail v-show="true"></detail> -->
 
                                        <tr ref="abcdef">
-                                           <td colspan="2">
-                                             <ul style="color: #333;text-align: left;padding-left:0.6rem">
+                                           <td colspan="2" v-show="showlist">
+                                             <ul style="color: #333;text-align: left;padding-left:0.6rem;width:100%">
                                                <li>消费时间&nbsp;&nbsp;&nbsp;&nbsp;2017-09-01 09:00</li>
                                                <li>消费商户&nbsp;&nbsp;&nbsp;&nbsp;肯德基</li>
                                                <li>消费金额&nbsp;&nbsp;&nbsp;&nbsp;100</li>
@@ -132,6 +132,7 @@
   import  global from '../../../src/components/common/Global'
   export default {
     components:{
+      
       'memberId':'',
       'm-header':Header,
       'detail': {
@@ -153,6 +154,7 @@
      /* this.$http.get('http://192.168.1.160/test').then(resp=>{
           console.log(resp);}*/
       return{
+        showlist:false,
         isShow:false,
         selected:'1',
         searchCondition:{  //分页属性
@@ -184,6 +186,9 @@
       })
     },
     methods:{
+       showDetaila(){
+         this.showlist=!this.showlist;
+      },
        loadBottom(){
          // 上拉加载
          this.more();// 上拉触发的分页查询
@@ -221,6 +226,7 @@
           this.allLoaded = false;
         }
       },
+     
       showDetail(v,k){
            //发送ajax请求
      /*      v.meta.xfsj=v.shopping_date;
