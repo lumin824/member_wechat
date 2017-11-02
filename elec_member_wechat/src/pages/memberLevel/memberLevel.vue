@@ -23,26 +23,26 @@
                           </ul>-->
                          <table width="100%" style="padding-right:0px;">
                                   <thead width="100%">
-                                          <tr style="height:0.5rem;width=100%;text-align:left">
-                                              <th style="border-bottom:1px solid #E0E0E0;padding-left:0.4rem">时间</th>
+                                          <tr style="height:0.5rem;width=100%;">
+                                              <th style="border-bottom:1px solid #E0E0E0;">时间</th>
                                               <th style="border-bottom:1px solid #E0E0E0">积分</th>
                                               <th style="border-bottom:1px solid #E0E0E0">金额</th>
-                                              <th style="border-bottom:1px solid #E0E0E0;text-align:right;padding-right:0.5rem">商户</th>
+                                              <th style="border-bottom:1px solid #E0E0E0;">商户</th>
                                           </tr>
                                   </thead>
                                   <tbody style="padding-top:0.08rem">
                                     <tr @click="showDetail">
                                                <td style="width:1.5rem">2017-09-01</td>
-                                               <td class="color" style="text-align:left">+1</td>
-                                               <td class="color" style="text-align:left">100</td>
-                                               <td style="text-align:right;padding-right:0.5rem">肯德基</td>
+                                               <td class="color">+1</td>
+                                               <td class="color">100</td>
+                                               <td >肯德基</td>
                                          </tr>
                                           <template v-for="(v,k) in pageList">
                                              <tr @click="showDetail(v,k)">
-                                                 <td style="width:1.5rem">{{v.shopping_date|time}}</td>
-                                                 <td class="color" style="text-align:left">{{v.points}}</td>
-                                                 <td class="color" style="text-align:left">{{v.amount}}</td>
-                                                 <td style="text-align:right;padding-right:0.5rem">{{v.shop_name}}</td>
+                                                 <td>{{v.shopping_date|time}}</td>
+                                                 <td class="color" >{{v.points}}</td>
+                                                 <td class="color" >{{v.amount}}</td>
+                                                 <td >{{v.shop_name}}</td>
                                              </tr>
                                              <!--<detail v-if="isShow" @click="test123"></detail>-->
                                             <!--<tr v-if="v.meta && Object.keys(v.meta).length" v-show="k == currentActive">-->
@@ -77,7 +77,7 @@
 
                                        <tr ref="abcdef">
                                            <td colspan="2">
-                                             <ul style="color: #333;text-align: left;">
+                                             <ul style="color: #333;text-align: left;padding-left:0.6rem">
                                                <li>消费时间&nbsp;&nbsp;&nbsp;&nbsp;2017-09-01 09:00</li>
                                                <li>消费商户&nbsp;&nbsp;&nbsp;&nbsp;肯德基</li>
                                                <li>消费金额&nbsp;&nbsp;&nbsp;&nbsp;100</li>
