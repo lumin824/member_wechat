@@ -63,9 +63,6 @@
   div{
     background-color: #fff;
   }
-  ul{
-    border-top: 1px solid #e1e1e1;
-  }
   ul li{
     height: 0.5rem;
     line-height: 0.5rem;

@@ -36,7 +36,6 @@
    div{
       display: flex;
       height:0.55rem;
-      border-bottom:1px solid #e1e1e1;
       padding: 0.05rem;
       margin-bottom:0.12rem;
      background-color: #fff;
