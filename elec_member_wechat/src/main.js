@@ -55,7 +55,7 @@ router.beforeEach(async (to, from, next) => {
 
   console.log(store.state.user)
   console.log(to)
-  if (store.state.user || ~['/register','/squareInfo','/sellers','/voucher'].indexOf(to.path)) {
+  if (store.state.user || ~['/register','/squareInfo','/sellers','/voucher','/sell'].indexOf(to.path)) {
     next()
   } else {
     goLogin()
