@@ -10,7 +10,6 @@
                 <mt-button size="large" @click="valid" type="primary">登陆</mt-button>
                 <mt-button size="large" @click="regis" type="primary">注册</mt-button>
           </div>
-
     </div>
 
 </template>
@@ -63,10 +62,13 @@
             this.c_state = 'error';
           }else{
             //手机号验证码都验证通过,验证验证码是否正确
+            alert(123)
             this.$http.post('http://121.196.208.176:9001/member/vcodeCheck',{'mobile':this.formData.phone,'vcode':this.formData.code }).then(data =>{
+                  alert(4)
                   //验证成功(查询用户信息) //window.location.href='/registerInfo?phone='+this.formData.phone;
                   this.$http.get(`http://121.196.208.176:9001/member/m?mobile=${this.formData.phone}`).then(resp=>{
                       //设置cookie
+                      alert(1234)
                       let data = resp.data;
                       setCookie('member_id',data.member_id,365);
                       this.$router.push('/member');

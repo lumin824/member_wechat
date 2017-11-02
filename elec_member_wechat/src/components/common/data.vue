@@ -20,7 +20,7 @@ border-color: #FFFFFF;color:#888888'>
     </div>
     </transition>
    <!-- <router-link to="/registerSucc"></router-link>-->
-    <mt-button size="large" type="primary" @click="subInfo">注册</mt-button>
+    <mt-button size="large" type="primary" @click="subInfo">绑定</mt-button>
     
   </div>
 </template>
@@ -133,8 +133,9 @@ border-color: #FFFFFF;color:#888888'>
             }, 1000)
           }
         },
+        
           //提交注册资料
-          subInfo(){
+          async subInfo(){
             if(this.formData.name==''){
               this.namePl='姓名不能为空';
               this.nameSta='error';
@@ -149,23 +150,28 @@ border-color: #FFFFFF;color:#888888'>
               });
               return false;
             }
-            if(this.formData.birthday==''){
+            if(this.calendar3.display=="请选择日期" || !this.calendar3.display || this.calendar3.display=="生日不能为空" ){
               this.birthdatySta='error';
-              this.brithday='生日不能为空';
+              this.calendar3.display='生日不能为空';
               return false;
             }else{
               this.birthdatySta='success';
             }
-            this.$http.post('http://121.196.208.176:9001/member',{'birthday':this.formData.birthday,'mallId':this.mall_id,'mobile':this.formData.phone,'name':this.formData.name,'sex':this.formData.sex,'openId':this.formData.openId}).then(data =>{
+            var a = new Date(this.calendar3.display);
+            
+            this.$http.post('http://121.196.208.176:9001/member',{'birthday':a.getTime(),'mallId':this.mall_id,'mobile':this.formData.phone,'name':this.formData.name,'sex':this.formData.sex,'openId':this.formData.openId}).then(data =>{
               if(data.data.member_id!=undefined && data.data.member_id!=''){
                 //保存cookie(设置1年有效期)
                 setCookie('member_id',data.data.member_id,365);
                 this.$router.push('/registerSucc');
+                 setTimeout(() => {
+                     this.$router.push('/member');
+                  },2000)
               }
             },err=>{
                 this.$toast({
                       message:err.response.data.content,
-                      possition:'middle',
+                      possition:'middle'
                  });
                 setTimeout(() => {
                   this.$router.push('/register');

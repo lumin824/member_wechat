@@ -6,7 +6,7 @@
              <button v-show="show" @click="getCode(formData)" class="code">获取验证码</button>
              <button v-show="!show" class="code">{{count}} s</button>
          </mt-field>
-           <mt-button size="large" @click="valid" type="primary"><slot>绑定</slot></mt-button>
+           <mt-button size="large" @click="valid" type="primary"><slot>下一步</slot></mt-button>
 
         <!-- <router-link to="/registerInfo"></router-link>-->
 
@@ -49,9 +49,7 @@
     //发送请求
     valid(){
       if(this.checkMobile(this.formData.phone)){
-            console.log('123');
             if(this.formData.code==''){
-                  console.log('123');
                   this.formData.v_code= '请先获取验证码';
                   this.c_state = 'error';
             }else{
@@ -94,15 +92,19 @@
           return false;
         }
     },
-    getCode(formData){
+    async getCode(formData){
       if (!this.timer) {
         this.count = 60;
         this.show = false;
          if(this.checkMobile(this.formData.phone)){
              this.state='success';
-             this.$http.post('http://121.196.208.176:9001/member/vcode',{'mallId':1,'mobile': formData.phone}).then(data =>{
-               console.log(data);
-             });
+             try {
+               var data=await this.$http.get(`http://121.196.208.176:9001/member/m?mobile=${formData.phone}`);
+                alert('该手机已注册');
+                location.reload()
+                return
+             } catch (error) {
+             }
              this.timer = setInterval(() => {
                if (this.count > 0 && this.count <= 60) {
                  this.count--;
