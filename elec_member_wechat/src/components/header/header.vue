@@ -36,7 +36,6 @@
         max-width: 640px;
         margin-top: 0.12rem;
         border-top: 0.5px solid #e1e1e1;
-        border-bottom: 0.5px solid #e1e1e1;
         height: 120px;
         display: flex;
         background-color: #fff;

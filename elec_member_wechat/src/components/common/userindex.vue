@@ -1,6 +1,6 @@
 <template>
     <div>
-        <mt-cell title="姓名">
+        <mt-cell title="姓名" style="border:10px">
           <input type="text" :value="this.user.name" style="position:relative;left:77%;outline: none;border: medium;">
         </mt-cell>
 
@@ -186,6 +186,9 @@ border-color: #FFFFFF;color:#888888'>
     font-size: 0.16rem;
     background-color: #fff;
     box-shadow: none;
+  }
+  .mint-cell-wrapper:first{
+    background-image: none; 
   }
   .mint-button--default{
     /* background-color: red;*/

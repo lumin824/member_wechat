@@ -1,6 +1,6 @@
 <template>
   <div>
-    <ul>
+    <ul style="padding-bottom:0.2rem">
        <li>
             <router-link to="/voucher" >
              <img src="static/img/voucher.png" alt="">
