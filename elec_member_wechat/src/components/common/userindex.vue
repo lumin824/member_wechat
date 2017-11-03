@@ -24,38 +24,41 @@ border-color: #FFFFFF;color:#888888'>
     </transition>
 
       <mt-cell title="职业" is-link style="right:2%;margin-left:0.03rem">
-        <select style="position:relative;right: 30%;" :value="this.user.occupation">
-          <option value="0">工程师</option>
-          <option value="1">医生</option>
+        <select style="position:relative;right: 5%;" :value="this.user.occupation">
+          <option value="0">请选择职业</option>
+          <option value="1">工程师</option>
+          <option value="2">医生</option>
         </select>
       </mt-cell>
 
       <mt-cell title="地址" style="right:3%;margin-left:0.07rem">
-        <input type="text" :value="this.user.address" style="position:relative;outline: none;border: medium;">
+        <input class="addre" type="text" :value="this.user.address"  placeholder="请输入地址" style="position:relative;outline: none;border: medium;text-align:right;color:#656B79">
       </mt-cell>
 
 
       <mt-cell title="教育程度" is-link style="right:2%;margin-left:0.03rem">
-        <select style="position:relative;right: 30%;" :value="this.user.degree_of_education">
-          <option value="0">博士</option>
-          <option value="1">硕士</option>
-          <option value="2">本科</option>
-          <option value="3">大专</option>
-          <option value="4">高中</option>
+        <select style="position:relative;right: 5%;" :value="this.user.degree_of_education">
+          <option value="0">请选择教育程度</option>
+          <option value="1">博士</option>
+          <option value="2">硕士</option>
+          <option value="3">本科</option>
+          <option value="4">大专</option>
+          <option value="5">高中</option>
         </select>
       </mt-cell>
 
       <mt-cell title="收入范围" is-link style="right:2%;margin-left:0.03rem">
         <select style="position:relative;right: 5%;" :value="this.user.income_range">
-          <option value="0">50000-100000</option>
-          <option value="1">10000-50000</option>
+           <option value="0">请选择收入范围</option>
+           <option value="1">10000-50000</option>
+          <option value="2">50000-100000</option>
         </select>
       </mt-cell>
-
       <mt-cell title="兴趣爱好" is-link style="right:2%;margin-left:0.03rem">
-        <select style="position:relative;right: 30%;" :value="this.user.interest">
-          <option value="0">篮球</option>
-          <option value="1">游泳</option>
+        <select style="position:relative;right: 5%;" :value="this.user.interest">
+           <option value="0">请选择兴趣爱好</option>
+          <option value="1">篮球</option>
+          <option value="2">游泳</option>
         </select>
       </mt-cell>
 
@@ -167,6 +170,9 @@ border-color: #FFFFFF;color:#888888'>
    font-family: "Helvetica Neue", Helvetica, Arial, "Microsoft Yahei UI", "Microsoft YaHei", SimHei, "\5B8B\4F53", simsun, sans-serif;
     font-size: 0.16rem;
     color: #656B79;
+  }
+  .addre:-ms-input-placeholder{
+     color: #656B79;
   }
   select{
    font-family: "Helvetica Neue", Helvetica, Arial, "Microsoft Yahei UI", "Microsoft YaHei", SimHei, "\5B8B\4F53", simsun, sans-serif;
