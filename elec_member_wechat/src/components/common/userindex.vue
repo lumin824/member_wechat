@@ -1,12 +1,12 @@
 <template>
     <div>
         <mt-cell title="姓名" style="right:2%;margin-left:0.03rem">
-          <input type="text" :value="this.user.name" style="position:relative;left:77%;outline: none;border: medium;">
+          <input id="name" type="text" :value="this.user.name" style="position:relative;left:77%;outline: none;border: medium;width:3.3rem" @change="save" >
         </mt-cell>
 
 
         <mt-cell title="性别" is-link style="right:2%;margin-left:0.03rem">
-          <select style="position:relative;right: 30%;height:0.2rem" :value="this.user.sex">
+          <select style="position:relative;right: 30%;height:0.2rem" v-model="user.sex" @change="save" >
             <option value="0">男</option>
             <option value="1">女</option>
           </select>
@@ -14,7 +14,7 @@
 
 
         <mt-cell title="生日" is-link style="right:2%;margin-left:0.03rem">
-            <input type="text" @click="openByDrop($event)" v-model="calendar3.display" readonly style='position:absolute;left:73%;overflow:auto; background-attachment: fixed; background-repeat: no-repeat; border-style: solid; 
+            <input  @change="save" id="time" type="text" @click="openByDrop($event)" v-model="calendar3.display" readonly style='position:absolute;left:73%;overflow:auto; background-attachment: fixed; background-repeat: no-repeat; border-style: solid; 
 border-color: #FFFFFF;color:#888888'>
     </mt-cell>
      <transition name="fade">
@@ -24,7 +24,7 @@ border-color: #FFFFFF;color:#888888'>
     </transition>
 
       <mt-cell title="职业" is-link style="right:2%;margin-left:0.03rem">
-        <select style="position:relative;right: 5%;" :value="this.user.occupation">
+        <select style="position:relative;right: 5%;"  v-model="user.occupation"  @change="save">
           <option value="0">请选择职业</option>
           <option value="1">工程师</option>
           <option value="2">医生</option>
@@ -32,12 +32,12 @@ border-color: #FFFFFF;color:#888888'>
       </mt-cell>
 
       <mt-cell title="地址" style="right:3%;margin-left:0.07rem">
-        <input class="addre" type="text" :value="this.user.address"  placeholder="请输入地址" style="position:relative;outline: none;border: medium;text-align:right;color:#656B79">
+        <input  @change="save" id="address"  class="addre" type="text"  v-model="user.address"  placeholder="请输入地址" style="position:relative;outline: none;border: medium;text-align:right;color:#656B79">
       </mt-cell>
 
 
       <mt-cell title="教育程度" is-link style="right:2%;margin-left:0.03rem">
-        <select style="position:relative;right: 5%;" :value="this.user.degree_of_education">
+        <select style="position:relative;right: 5%;"  v-model="user.degree_of_education"  @change="save">
           <option value="0">请选择教育程度</option>
           <option value="1">博士</option>
           <option value="2">硕士</option>
@@ -48,22 +48,21 @@ border-color: #FFFFFF;color:#888888'>
       </mt-cell>
 
       <mt-cell title="收入范围" is-link style="right:2%;margin-left:0.03rem">
-        <select style="position:relative;right: 5%;" :value="this.user.income_range">
+        <select style="position:relative;right: 5%;"  v-model="user.income_range"  @change="save">
            <option value="0">请选择收入范围</option>
            <option value="1">10000-50000</option>
           <option value="2">50000-100000</option>
         </select>
       </mt-cell>
       <mt-cell title="兴趣爱好" is-link style="right:2%;margin-left:0.03rem">
-        <select style="position:relative;right: 5%;" :value="this.user.interest">
-           <option value="0">请选择兴趣爱好</option>
+        <select style="position:relative;right: 5%;"  v-model="user.interest"  @change="save">
           <option value="1">篮球</option>
           <option value="2">游泳</option>
         </select>
       </mt-cell>
 
       <mt-cell title="手机" style="right:3%;margin-left:0.06rem">
-        <input type="text" :value="this.user.mobile" readonly="readonly" style="position:relative;left:34%;outline: none;border: medium;"><router-link to="/changePhone"><mt-button size="small" style="background-color:#D7D7D7">修改</mt-button></router-link>
+        <input  type="text" :value="this.user.mobile" readonly="readonly" style="position:relative;left:34%;outline: none;border: medium;"><router-link to="/changePhone"><mt-button size="small" style="background-color:#D7D7D7">修改</mt-button></router-link>
       </mt-cell>
 
       <mt-cell title="微信号" style="right:2%;margin-left:0.03rem">
@@ -71,8 +70,9 @@ border-color: #FFFFFF;color:#888888'>
       </mt-cell>
 
       <mt-cell title="是否公开微信号" style="padding-bottom:0.2rem;right:3%;margin-left:0.06rem">
-        <mt-switch v-model="value"></mt-switch>
+        <mt-switch v-model="user.is_public_wx" @change="save"></mt-switch>
       </mt-cell>
+
     </div>
 </template>
 
@@ -123,6 +123,27 @@ border-color: #FFFFFF;color:#888888'>
       this.$emit('title',this.title,this.closeButton);
       },
     methods: {
+      async save(){
+        let is_public_wx = this.user.is_public_wx ? 1: 0
+        if(!this.user.memberId){
+            this.user.memberId=0;
+        }else{
+          var member=this.user.memberId;
+        }
+        var time=new Date(document.getElementById("time").value);
+        await this.$http.put(`http://121.196.208.176:9001/member`,{
+          'address':document.getElementById("address").value,
+          'birthday':time.getTime(),
+          'name':document.getElementById("name").value,
+          'degreeOfEducation':this.user.degree_of_education,
+          'enablePublicWa':is_public_wx,
+          'incomeRange':this.user.income_range,
+          'interest':this.user.interest,
+          'memberId':this.user.memberId,
+          'occupation':this.user.occupation,
+          'sex':this.user.sex
+        });
+      },
       openByDrop(e){
             this.calendar3.show=true;
             this.calendar3.left=e.target.offsetLeft+19;

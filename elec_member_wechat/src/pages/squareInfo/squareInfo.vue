@@ -69,18 +69,17 @@
      },
      mounted(){
        this.$http.get(`http://121.196.208.176:9001/mall/${global.appId}`).then(data =>{
-           //是否还有下一页，加个方法判断，没有下一页要禁止上拉
-           // this.isHaveMore(data.result.haveMore);
            this.tel = data.data.mall_phone;
            this.openTime = data.data.business_hours;
            this.address= data.data.address;
            this.position = [data.data.longitude,data.data.latitude];
-          // this.position = [118.751661,31.972437];
-          // this.pictures = data.data.pictures;
            this.title=data.data.mall_name;
            this.content = data.data.intro;
-           console.log(data);
-           this.pictures = JSON.parse(data.data.pictures);
+          //  var jsonStr ='[{"id":1,"mapUrl": "http://121.196.208.176:9354/upload/images/article_1509690733343.png"},{"id":2,"mapUrl": "http://121.196.208.176:9354/upload/images/article_1509690733343.png"}]';
+            var jsonStr =data.data.pictures;
+            var jsonObj =  JSON.parse(jsonStr)
+            var jsonStr1 = JSON.stringify(jsonObj)
+           this.pictures = JSON.parse(jsonStr1);
        });
      },
        methods:{
