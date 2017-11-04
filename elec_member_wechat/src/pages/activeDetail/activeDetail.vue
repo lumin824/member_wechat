@@ -9,27 +9,27 @@
     <img src="static/img/activeTest.jpg" alt="">
     <h1 style="font-size:0.2rem">大师书法展</h1>
     <div style="background-color:#FFFFFF;margin-left:0.1rem;margin-right:0.1rem">
-        <div style="width:100%">
+        <div class="bbody" style="width:100%">
             <div style="border-left:2px solid black;height:0.2rem;width:0.02rem;margin-top:0.2rem"></div>
             <div style="padding-left:0.3rem;margin-top:-0.2rem;font-size:0.2rem;color:black">活动详情</div>
         </div>
-        <div style="width:100%;border-bottom:1px solid #E3E3E3;margin-left:0.3rem;color:#767676;padding-bottom:0.1rem;padding-top:0.1rem">
+        <div class="bbody" style="width:3.75rem;border-bottom:1px solid #E3E3E3;margin-left:0.3rem;color:#767676;padding-bottom:0.1rem;padding-top:0.1rem">
             活动时间<label style="padding-left:0.3rem">2017-07-28~2017-08-03</label>
         </div>
-        <div style="width:100%;border-bottom:1px solid #E3E3E3;margin-left:0.3rem;color:#767676;padding-bottom:0.1rem;padding-top:0.1rem">
+        <div class="bbody" style="width:3.75rem;border-bottom:1px solid #E3E3E3;margin-left:0.3rem;color:#767676;padding-bottom:0.1rem;padding-top:0.1rem">
             活动地点<label style="padding-left:0.3rem">上海世博中国馆</label>
         </div>
-        <div style="width:100%;border-bottom:1px solid #E3E3E3;margin-left:0.3rem;color:#767676;padding-bottom:0.1rem;padding-top:0.1rem">
+        <div class="bbody" style="width:3.75rem;border-bottom:1px solid #E3E3E3;margin-left:0.3rem;color:#767676;padding-bottom:0.1rem;padding-top:0.1rem">
             剩余人数<label style="padding-left:0.3rem;color:#FF8817">14</label>
         </div>
-        <div style="width:100%;border-bottom:1px solid #E3E3E3;margin-left:0.3rem;color:#767676;padding-bottom:0.1rem;padding-top:0.1rem">
+        <div class="bbody" style="width:3.75rem;border-bottom:1px solid #E3E3E3;margin-left:0.3rem;color:#767676;padding-bottom:0.1rem;padding-top:0.1rem">
             报名条件<label style="padding-left:0.3rem;color:#FF8817">10积分</label>
         </div>
-        <div style="width:100%;border-bottom:1px solid #E3E3E3;margin-left:0.3rem;color:#767676;padding-bottom:0.1rem;padding-top:0.1rem">
+        <div class="bbody" style="width:3.75rem;border-bottom:1px solid #E3E3E3;margin-left:0.3rem;color:#767676;padding-bottom:0.1rem;padding-top:0.1rem">
             活动奖励<label style="padding-left:0.3rem">签到获得10积分</label>
         </div>
     </div>
-    <div class="bbody" style="margin-left:0.1rem;margin-right:0.1rem;font-size:#B4B4B4">
+    <div class="bbody" style="margin-left:0.1rem;margin-right:0.1rem;color:#767676;padding-top:0.1rem">
         &nbsp; &nbsp; &nbsp; &nbsp;书法作为中华文化中一种独特的审美现象，它不仅是方寸间的文明，更是中国传统文化的重要组成部分，是深受广大书法爱好者喜好的中华瑰宝。作为全国收藏家传统美德
         书法作为中华文化中一种独特的审美现象，它不仅是方寸间的文明，更是中国传统文化的重要组成部分，是深受广大书法爱好者喜好的中华瑰宝。作为全国收藏家传统美德
         书法作为中华文化中一种独特的审美现象，它不仅是方寸间的文明，更是中国传统文化的重要组成部分，是深受广大书法爱好者喜好的中华瑰宝。作为全国收藏家传统美德
