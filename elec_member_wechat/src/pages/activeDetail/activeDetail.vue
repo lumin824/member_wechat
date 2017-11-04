@@ -29,7 +29,7 @@
             活动奖励<label style="padding-left:0.3rem">签到获得10积分</label>
         </div>
     </div>
-    <div class="bbody" style="margin-left:0.1rem;margin-right:0.1rem;color:#767676;padding-top:0.1rem;padding-bottom:0.8rem">
+    <div class="bbody" style="margin-left:0.1rem;margin-right:0.1rem;color:#767676;padding-top:0.1rem;padding-bottom:1rem">
         &nbsp; &nbsp; &nbsp; &nbsp;书法作为中华文化中一种独特的审美现象，它不仅是方寸间的文明，更是中国传统文化的重要组成部分，是深受广大书法爱好者喜好的中华瑰宝。作为全国收藏家传统美德
         书法作为中华文化中一种独特的审美现象，它不仅是方寸间的文明，更是中国传统文化的重要组成部分，是深受广大书法爱好者喜好的中华瑰宝。作为全国收藏家传统美德
         书法作为中华文化中一种独特的审美现象，它不仅是方寸间的文明，更是中国传统文化的重要组成部分，是深受广大书法爱好者喜好的中华瑰宝。作为全国收藏家传统美德

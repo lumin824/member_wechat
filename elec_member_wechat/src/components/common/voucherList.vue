@@ -1,7 +1,6 @@
 <template>
   <div>
   <ul class="sellers">
-    <mt-loadmore  :bottom-method="loadBottom" :bottom-all-loaded="allLoaded" :auto-fill="false" ref="loadmore">
         <li style="display:block;">
           <router-link to="/voucherDetail">
             <div class="left">
@@ -13,7 +12,7 @@
               </div>
             </div>
             <div class="right" >
-              <button style="width:0.8rem;height:0.25rem; border-radius: 0.25rem;">立即支付</button>
+              <button style="width:0.8rem;height:0.25rem; ">立即支付</button>
             </div>
           </router-link>
         </li>
@@ -29,7 +28,7 @@
               </div>
             </div>
             <div class="right">
-              <button style="width:0.8rem;height:0.25rem; border-radius: 0.25rem;">立即领取</button>
+              <button style="width:0.8rem;height:0.25rem; ">立即领取</button>
             </div>
           </router-link>
         </li>
@@ -44,12 +43,26 @@
               </div>
             </div>
             <div class="right">
-              <button style="width:0.8rem;height:0.25rem; border-radius: 0.25rem;">立即领取</button>
+              <button style="width:0.8rem;height:0.25rem; ">立即领取</button>
+            </div>
+          </router-link>
+        </li>
+         <li>
+          <router-link to="/voucherDetail">
+            <div class="left">
+              <img  src="static/img/hgds.jpg"  alt="">
+              <div class="imgright">
+                <h1 style="font-size:0.16rem;height:0.28rem"><strong>德芙巧克力 纵享新丝滑</strong></h1>
+                <h2 style="color:#828282;height:0.24rem">市场价:10元</h2>
+                <h3 style="color:#68D5C2;">10积分</h3>
+              </div>
+            </div>
+            <div class="right">
+              <button style="width:0.8rem;height:0.25rem; ">立即领取</button>
             </div>
           </router-link>
         </li>
     <li></li>
-    </mt-loadmore>
     
   </ul>
   <div style="color:#767676;padding-left:1.5rem;padding-top:0.1rem">更多券敬请期待...</div>
@@ -177,7 +190,7 @@
     float: left;
   }
   .sellers  .right{
-    margin-top: 0.4rem;
+    margin-top: 0.1rem;
     float: right;
     margin-right: 0.15rem;
   }

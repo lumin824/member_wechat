@@ -1,8 +1,8 @@
 <template>
     <!--最新活动-->
     <div style="background-color:#FFFFFF">
-           <ul style="padding-bottom:0.2rem">
-                  <li style="border-bottom:1px solid #E6E6E6;padding-bottom:0.2rem">
+           <ul>
+                  <li style="padding-bottom:0.2rem">
                     <router-link to="/activeDetail">
                         <figure>
                           
@@ -16,7 +16,8 @@
                         </div>
                         </router-link>
                   </li>
-                   <li style="border-bottom:1px solid #E6E6E6;padding-bottom:0.2rem">
+                  <div style="width:100%;height:0.1rem;background-color:#E6E6E6"></div>
+                   <li style="padding-bottom:0.2rem">
                      <router-link to="/activeDetail">
                      <figure>
                        
@@ -30,7 +31,7 @@
                      </div>
                      </router-link>
                    </li>
-                    
+                     <div style="width:100%;height:0.1rem;background-color:#E6E6E6"></div>
            </ul>
     </div>
 </template>
