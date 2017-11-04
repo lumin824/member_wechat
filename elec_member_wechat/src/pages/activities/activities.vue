@@ -1,6 +1,6 @@
 <template>
     <!--最新活动-->
-    <div>
+    <div style="background-color:#FFFFFF">
            <ul>
                   <li>
                         <figure>
@@ -9,14 +9,20 @@
                                <figcaption>花艺体验活动来啦,慢下来,给自己一朵花开的时间给自己一朵花开的时间</figcaption>
                           </router-link>
                         </figure>
-                        <div><h1>2017-09-14~2017-09-15</h1><button disabled="disabled">进行中</button></div>
+                        <div>
+                          <label style="height:0.22rem;color:#999">2017-09-14~2017-09-15</label>
+                          <button disabled="disabled" style="border: 1px solid #CACACA;width:0.6rem">进行中</button>
+                        </div>
                   </li>
                    <li>
                      <figure>
                        <img src="static/img/activeTest.jpg" alt="">
                        <figcaption>花艺体验活动来啦,慢下来,给自己一朵花开的时间给自己一朵花开的时间</figcaption>
                      </figure>
-                     <div><h1>2017-09-14~2017-09-15</h1><button disabled="disabled">进行中</button></div>
+                     <div>
+                       <label style="height:0.22rem;color:#999">2017-09-14~2017-09-15</label>
+                       <button disabled="disabled" style="border: 1px solid #CACACA;width:0.6rem">进行中</button>
+                     </div>
                    </li>
            </ul>
     </div>
