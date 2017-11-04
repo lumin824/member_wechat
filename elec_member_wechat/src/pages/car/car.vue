@@ -50,29 +50,23 @@
           <div style="padding-top:0.2rem">
             <label style="margin-left:1.7rem;color:#777777"><strong>收费标准</strong></label>
         </div>
-            <table style="border:1px solid #E2E2E2;margin-left:0.2rem;margin-top:0.1rem;width:3.8rem;text-align:center;height:2rem;color:#767676;font-size:0.15rem">
+            <table style="border:1px solid #E2E2E2;margin-left:0.2rem;margin-top:0.1rem;width:3.8rem;height:2rem;color:#767676;font-size:0.15rem">
                 <tr >
-                    <td style="border-bottom:1px solid #E2E2E2; ">时间</td>
-                    <td style="border-left:1px solid #E2E2E2; border-bottom:1px solid #E2E2E2;">收费</td>
+                    <td style="border-bottom:1px solid #E2E2E2; text-align:center;">时间</td>
+                    <td style="border-left:1px solid #E2E2E2; border-bottom:1px solid #E2E2E2;text-align:center;">收费</td>
                 </tr>
-                <tr >
-                    <td>
+                <tr style="line-height:0.3rem;">
+                    <td style="padding-left:0.3rem">
                       
                       停车不足15分钟<br />
-                      <br />
                       15分钟至1小时<br />
-                      <br />
                       超1小时后每30分钟<br />
-                      <br />
                       24小时
                     </td>
-                    <td style="border-left:1px solid #E2E2E2; ">
+                    <td style="border-left:1px solid #E2E2E2; padding-left:0.3rem">
                       免费<br />
-                      <br />
                       5元/台<br />
-                      <br />
                       2元/台<br />
-                      <br />
                       最高50元/台  
                     </td>
                 </tr>
