@@ -20,15 +20,15 @@
             </tr>
        </table>
        <div style="background-color:white;height:0.5rem;margin-top:0.3rem;font-size:0.2rem">
-           <div style="padding-top:0.1rem;padding-left:0.2rem;padding-right:0.1rem">优惠券
+           <div style="padding-left:0.2rem;padding-right:0.1rem">优惠券
             <select style="float:right;height:0.3rem;width:1rem;padding-top:-0.2rem;border: medium;height:0.42rem">
                 <option>1</option>
             </select>
             </div>
        </div> 
        <div style="background-color:white;height:0.5rem;font-size:0.2rem;">
-           <div style="padding-top:0.1rem;padding-left:0.2rem;padding-right:0.1rem">积分
-               <input type="text" style="float:right;height:100%;border: medium;text-align:center;height:0.42rem;width:70%" placeholder="请输入可用积分，当前可用积分：100">
+           <div style="padding-left:0.2rem;padding-right:0.1rem">积分
+               <input type="text" style="float:right;height:100%;border: medium;text-align:center;height:0.42rem;width:73%" placeholder="请输入可用积分，当前可用积分：100">
            </div>
            
            
