@@ -17,8 +17,8 @@
                       <img style="width: 0.2rem;height: 0.2rem;position: relative;left: 73%;top:0.05rem;" src="static/img/search.png" alt="">
                       <input type="text" placeholder="请输入搜索关键字" style="width:3rem;height:0.3rem;font-size:0.2rem;padding-top:0.1rem">
               </div>
-              <div style="margin-top:-0.3rem;margin-left:70%;width:1rem">
-                  <router-link to="/register" style="padding-top:-1rem"><h2>立即注册 >></h2></router-link>
+              <div style="margin-top:-0.3rem;margin-left:80%;width:1rem">
+                  <router-link to="/register" style="padding-top:-1rem"><h2 style="width:0.9rem">立即注册 >></h2></router-link>
               </div>
       </div>
      <m-vList style="margin-top: 0.12rem;"></m-vList>

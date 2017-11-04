@@ -45,7 +45,7 @@
           </div>
         </div>
       </div>
-      <div style="background-color:white;margin-top:0.2rem">
+      <div style="background-color:#FFFFFF;margin-top:0.2rem">
         <div>
           <div style="padding-top:0.2rem">
             <label style="margin-left:1.7rem;color:#777777"><strong>收费标准</strong></label>
@@ -71,13 +71,13 @@
                     </td>
                 </tr>
             </table>
-            <div style="margin-top:0.1rem;padding-bottom:0.2rem">
+            <div style="margin-top:0.1rem;padding-bottom:0.3rem">
               <label style="color:#767676;">注：超过一小时后，不足30分钟按30分钟收费。</label>
             </div>
         </div>
       </div>
       <router-link to="/carDetail">
-      <div style="background-color:#46D0C3;height:50px;text-align:center;padding-top:0.2rem;position:fixed;right:0;left:0;bottom:0;">
+      <div style="background-color:#46D0C3;text-align:center;padding-top:0.1rem;position:fixed;right:0;left:0;bottom:0;">
          <label style="color:white;font-size:0.2rem">缴  费</label>
       </div>
       </router-link>
