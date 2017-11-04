@@ -5,7 +5,7 @@
             <label style="margin-top:0.3rem;margin-left:0.3rem;color:#777777"><strong>剩余车位</strong></label>
           <p style="float:right;padding-right:0.2rem;color:#FB9D0A"><strong>102</strong></p>
         </div>
-        <div style="padding-top:0.3rem;margin-right:0.2rem;margin-left:0.1rem;height:1rem;">
+        <div style="padding-top:0.3rem;margin-right:0.2rem;margin-left:0.1rem;height:0.7rem;">
             <div style="border:1px solid #E2E2E2;width:0.4rem;height:0.4rem;float:left;">
               <input style="width:0.4rem;height:0.4rem;border: medium;text-align:center">
             </div>
@@ -83,7 +83,7 @@
         </div>
       </div>
       <router-link to="/carDetail">
-      <div style="background-color:#46D0C3;height:50px;position:absolute;right:0;left:0;bottom:0;text-align:center;padding-top:0.2rem;">
+      <div style="background-color:#46D0C3;height:50px;text-align:center;padding-top:0.2rem;">
          <label style="color:white;font-size:0.2rem">缴  费</label>
       </div>
       </router-link>
