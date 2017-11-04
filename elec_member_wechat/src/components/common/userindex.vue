@@ -56,6 +56,7 @@ border-color: #FFFFFF;color:#888888'>
       </mt-cell>
       <mt-cell title="兴趣爱好" is-link style="right:2%;margin-left:0.03rem">
         <select style="position:relative;right: 5%;"  v-model="user.interest"  @change="save">
+          <option value="0">请选择兴趣爱好</option>
           <option value="1">篮球</option>
           <option value="2">游泳</option>
         </select>
@@ -121,17 +122,20 @@ border-color: #FFFFFF;color:#888888'>
       var date =unixTimestamp.getDate();
       this.calendar3.display = year+"/"+month+"/"+date
       this.$emit('title',this.title,this.closeButton);
+      if(!this.user.interest){
+          this.user.interest =0;
+      }
       },
     methods: {
-      async save(){
-        let is_public_wx = this.user.is_public_wx ? 1: 0
+       save(){
+        let is_public_wx = this.user.is_public_wx ? true: false
         if(!this.user.memberId){
-            this.user.memberId=0;
+            this.user.memberId=3;
         }else{
           var member=this.user.memberId;
         }
         var time=new Date(document.getElementById("time").value);
-        await this.$http.put(`http://121.196.208.176:9001/member`,{
+        this.$http.put(`http://121.196.208.176:9001/member`,{
           'address':document.getElementById("address").value,
           'birthday':time.getTime(),
           'name':document.getElementById("name").value,
@@ -142,8 +146,27 @@ border-color: #FFFFFF;color:#888888'>
           'memberId':this.user.memberId,
           'occupation':this.user.occupation,
           'sex':this.user.sex
-        });
-      },
+        }).then(data =>{
+                
+                //保存cookie(设置1年有效期);
+                 setCookie('member_id',this.user.memberId,365);
+                this.$toast({
+                    message:'更新成功',
+                    possition:'top',
+                 });
+                 setTimeout(() => {
+                     this.$router.push('/member');
+                  },2000)
+        },err=>{
+                this.$toast({
+                    message:'更新失败',
+                    possition:'top',
+                 });
+                setTimeout(() => {
+                  this.$router.push('/member');
+                }, 2000);
+            });
+       },
       openByDrop(e){
             this.calendar3.show=true;
             this.calendar3.left=e.target.offsetLeft+19;
