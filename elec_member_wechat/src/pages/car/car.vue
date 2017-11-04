@@ -38,7 +38,7 @@
           <div style="flex:1;text-align:center">注意事项</div>
           <div style="border-bottom:0.02rem solid #E2E2E2;width:1.6rem;"></div>
         </div>
-        <div style="color:#767676;margin-left:0.2rem;margin-top:0.05rem;margin-bottom:0.2rem;font-size:0.2rem">
+        <div style="color:#767676;margin-left:0.2rem;margin-top:0.05rem;margin-bottom:0.2rem;font-size:0.15rem">
           <label >1.缴费成功后，请于30分钟内离场，超时需补交停车费<br /></label>
           <div style="padding-top:0.1rem;padding-bottom:0.1rem;">
             <label >2.若车牌识别有误，请到中央收费处缴纳</label>
@@ -77,7 +77,7 @@
         </div>
       </div>
       <router-link to="/carDetail">
-      <div style="background-color:#46D0C3;height:50px;text-align:center;padding-top:0.2rem;">
+      <div style="background-color:#46D0C3;height:50px;text-align:center;padding-top:0.2rem;position:fixed;right:0;left:0;bottom:0;">
          <label style="color:white;font-size:0.2rem">缴  费</label>
       </div>
       </router-link>

@@ -14,10 +14,12 @@
                             <option value="">停车券</option>
                        </select>
                       <lalel for="vouSel"><img style="width: 0.1rem;height: 0.07rem;position: relative;top:0.11rem;left:0.05rem;" src="static/img/xx.png" alt=""></lalel>
-                       <img style="width: 0.2rem;height: 0.2rem;position: relative;left: 73%;top:0.05rem;" src="static/img/search.png" alt="">
-                       <input type="text" placeholder="请输入搜索关键字" style="width:2.8rem;height:0.3rem;font-size:0.2rem">
+                      <img style="width: 0.2rem;height: 0.2rem;position: relative;left: 73%;top:0.05rem;" src="static/img/search.png" alt="">
+                      <input type="text" placeholder="请输入搜索关键字" style="width:2.8rem;height:0.3rem;font-size:0.2rem">
               </div>
-             <router-link to="/register"><h2>立即注册 》</h2></router-link>
+              <div style="margin-top:-0.3rem;margin-left:70%;width:1rem">
+                  <router-link to="/register" style="padding-top:-1rem"><h2>立即注册 >></h2></router-link>
+              </div>
       </div>
      <m-vList style="margin-top: 0.12rem;"></m-vList>
   </div>
@@ -48,7 +50,7 @@
   }
   .voucher img{
     width: 100%;
-    height: 2rem;
+    height: 1.8rem;
   }
   .voucher div{
     position: absolute;

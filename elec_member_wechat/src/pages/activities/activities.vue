@@ -2,7 +2,7 @@
     <!--最新活动-->
     <div style="background-color:#FFFFFF">
            <ul style="padding-bottom:0.2rem">
-                  <li>
+                  <li style="border-bottom:1px solid #E6E6E6;padding-bottom:0.2rem">
                     <router-link to="/activeDetail">
                         <figure>
                           
@@ -10,13 +10,13 @@
                                <figcaption>花艺体验活动来啦,慢下来,给自己一朵花开的时间给自己一朵花开的时间</figcaption>
                           
                         </figure>
-                        <div>
+                        <div style="border:1px solied ">
                           <label style="height:0.22rem;color:#999">2017-09-14~2017-09-15</label>
                           <button disabled="disabled" style="border: 1px solid #CACACA;width:0.6rem">进行中</button>
                         </div>
                         </router-link>
                   </li>
-                   <li>
+                   <li style="border-bottom:1px solid #E6E6E6;padding-bottom:0.2rem">
                      <router-link to="/activeDetail">
                      <figure>
                        

@@ -39,9 +39,9 @@
             <div style="color:#979797;padding-top:0.3rem;padding-left:0.2rem;">2 积分抵现条件： 100积分起抵，100积分一档。即：只能100，200,300...依此类推</div>
         </div>
         <router-link to="/carDetail">
-          <div style="height:0.6rem;position:absolute;right:0;left:0;bottom:0;padding-top:0.2rem;display:flex">
+          <div style="height:0.6rem;position:absolute;right:0;left:0;bottom:0;padding-top:0.2rem;display:flex;position:fixed;right:0;left:0;bottom:0;">
               
-              <div style="width:70%;height:100%;font-size:0.2rem;text-align:center">
+              <div style="width:70%;height:100%;font-size:0.2rem;text-align:center;">
                   <div style="padding-top:0.15rem;padding-left:1.2rem;">
                       还需支付
                     <label style="color:#00C4AB;">¥20.00</label>

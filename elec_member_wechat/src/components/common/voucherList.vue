@@ -1,4 +1,5 @@
 <template>
+  <div>
   <ul class="sellers">
     <mt-loadmore  :bottom-method="loadBottom" :bottom-all-loaded="allLoaded" :auto-fill="false" ref="loadmore">
         <li style="display:block;">
@@ -6,13 +7,13 @@
             <div class="left">
               <img  src="static/img/hgds.jpg" alt="">
               <div class="imgright">
-                <h1>哈根达斯满百减十</h1>
-                <h2>市场价:100元</h2>
-                <h3>优惠价:90元</h3>
+                <h1 style="font-size:0.16rem;height:0.28rem"><strong>哈根达斯满百减十</strong></h1>
+                <h2 style="color:#828282;height:0.24rem">市场价:100元</h2>
+                <h3 style="color:#68D5C2;">优惠价:90元</h3>
               </div>
             </div>
-            <div class="right">
-              <button>立即支付</button>
+            <div class="right" >
+              <button style="width:0.8rem;height:0.25rem; border-radius: 0.25rem;">立即支付</button>
             </div>
           </router-link>
         </li>
@@ -22,13 +23,13 @@
             <div class="left">
               <img  src="static/img/hgds.jpg" alt="">
               <div class="imgright">
-                <h1>乐町服饰专卖</h1>
-                <h2>市场价:10元</h2>
-                <h3>10积分</h3>
+                <h1 style="font-size:0.16rem;height:0.28rem"><strong>乐町服饰专卖</strong></h1>
+                <h2 style="color:#828282;height:0.24rem">市场价:10元</h2>
+                <h3 style="color:#68D5C2;">10积分</h3>
               </div>
             </div>
             <div class="right">
-              <button>立即领取</button>
+              <button style="width:0.8rem;height:0.25rem; border-radius: 0.25rem;">立即领取</button>
             </div>
           </router-link>
         </li>
@@ -37,19 +38,22 @@
             <div class="left">
               <img  src="static/img/hgds.jpg"  alt="">
               <div class="imgright">
-                <h1>德芙巧克力 纵享新丝滑</h1>
-                <h2>市场价:10元</h2>
-                <h3>10积分</h3>
+                <h1 style="font-size:0.16rem;height:0.28rem"><strong>德芙巧克力 纵享新丝滑</strong></h1>
+                <h2 style="color:#828282;height:0.24rem">市场价:10元</h2>
+                <h3 style="color:#68D5C2;">10积分</h3>
               </div>
             </div>
             <div class="right">
-              <button>立即领取</button>
+              <button style="width:0.8rem;height:0.25rem; border-radius: 0.25rem;">立即领取</button>
             </div>
           </router-link>
         </li>
     <li></li>
     </mt-loadmore>
+    
   </ul>
+  <div style="color:#767676;padding-left:1.5rem;padding-top:0.1rem">更多券敬请期待...</div>
+  </div>
 </template>
 <script>
   export default {
@@ -168,12 +172,12 @@
   .sellers  .left img:nth-child(1){
 
     height: 0.7rem;
-    width: 0.7rem;
+    width: 1rem;
     margin-top: 0.1rem;
     float: left;
   }
   .sellers  .right{
-    margin-top: 0.17rem;
+    margin-top: 0.4rem;
     float: right;
     margin-right: 0.15rem;
   }
@@ -195,9 +199,9 @@
     margin-top: 0.2rem;
   }
   .sellers .right button{
-    border: 1px solid #FFD161 ;
+    border: 1px solid #FF9700 ;
     background-color: #FFFFFF;
-    color:#FFD161 ;
+    color:#FF9700 ;
     margin-top: 0.35rem;
 
   }

@@ -37,7 +37,7 @@
         书法作为中华文化中一种独特的审美现象，它不仅是方寸间的文明，更是中国传统文化的重要组成部分，是深受广大书法爱好者喜好的中华瑰宝。作为全国收藏家传统美德
     </div>
      <!--<m-button>已报名</m-button>-->
-    <div style="background-color: #25AFA2;height: 0.6rem;color:#FFFFFF;text-align:center" >
+    <div style="background-color: #25AFA2;height: 0.6rem;color:#FFFFFF;text-align:center;position:fixed;right:0;left:0;bottom:0;" >
       <div style="padding-top:0.1rem;font-size:0.2rem;">我要报名</div>
     </div>
 
