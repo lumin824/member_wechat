@@ -6,25 +6,39 @@
           <p style="float:right;padding-right:0.2rem;color:#FB9D0A"><strong>102</strong></p>
         </div>
         <div style="padding-top:0.3rem;margin-right:0.2rem;margin-left:0.1rem;height:1rem;">
-            <div style="border:1px solid #E2E2E2;width:0.4rem;height:0.4rem;float:left;"></div>
-            <div style="border:1px solid #E2E2E2;width:0.4rem;height:0.4rem;float:left;border-left:0.02rem dashed #E2E2E2;"></div>
+            <div style="border:1px solid #E2E2E2;width:0.4rem;height:0.4rem;float:left;">
+              <input style="width:0.4rem;height:0.4rem;border: medium;text-align:center">
+            </div>
+            <div style="border:1px solid #E2E2E2;width:0.4rem;height:0.4rem;float:left;border-left:0.02rem dashed #E2E2E2;">
+              <input style="width:0.4rem;height:0.4rem;border: medium;text-align:center">
+            </div>
             <div style="border:1px solid #03C4A7;width:0.4rem;height:0.4rem;float:right; margin-left:0.05rem;">
               <label style="margin-left:0.15rem">+</label>
               <br />
               <div style="color:#ACABB1;font-size:0.1rem;margin-bottom:0.01rem">新能源</div>
             </div>
-            <div style="border:1px solid #E2E2E2;width:0.4rem;height:0.4rem;float:right;margin-left:0.05rem;"></div>
-            <div style="border:1px solid #E2E2E2;width:0.4rem;height:0.4rem;float:right;margin-left:0.05rem;"></div>
-            <div style="border:1px solid #E2E2E2;width:0.4rem;height:0.4rem;float:right;margin-left:0.05rem;"></div>
-            <div style="border:1px solid #E2E2E2;width:0.4rem;height:0.4rem;float:right;margin-left:0.05rem;"></div>
-            <div style="border:1px solid #E2E2E2;width:0.4rem;height:0.4rem;float:right;margin-left:0.05rem;"></div>
+            <div style="border:1px solid #E2E2E2;width:0.4rem;height:0.4rem;float:right;margin-left:0.05rem;">
+              <input style="width:0.4rem;height:0.4rem;border: medium;text-align:center">
+            </div>
+            <div style="border:1px solid #E2E2E2;width:0.4rem;height:0.4rem;float:right;margin-left:0.05rem;">
+              <input style="width:0.4rem;height:0.4rem;border: medium;text-align:center">
+            </div>
+            <div style="border:1px solid #E2E2E2;width:0.4rem;height:0.4rem;float:right;margin-left:0.05rem;">
+              <input style="width:0.4rem;height:0.4rem;border: medium;text-align:center">
+            </div>
+            <div style="border:1px solid #E2E2E2;width:0.4rem;height:0.4rem;float:right;margin-left:0.05rem;">
+              <input style="width:0.4rem;height:0.4rem;border: medium;text-align:center">
+            </div>
+            <div style="border:1px solid #E2E2E2;width:0.4rem;height:0.4rem;float:right;margin-left:0.05rem;">
+              <input style="width:0.4rem;height:0.4rem;border: medium;text-align:center">
+            </div>
         </div>
         <div style="display:flex;align-items:center">
           <div style="border-bottom:0.02rem solid #E2E2E2;width:1.5rem;"></div>
           <div style="flex:1;text-align:center">注意事项</div>
           <div style="border-bottom:0.02rem solid #E2E2E2;width:1.6rem;"></div>
         </div>
-        <div style="color:#767676;margin-left:0.2rem;margin-top:50px;margin-bottom:0.2rem;font-size:0.2rem">
+        <div style="color:#767676;margin-left:0.2rem;margin-top:0.05rem;margin-bottom:0.2rem;font-size:0.2rem">
           <label >1.缴费成功后，请于30分钟内离场，超时需补交停车费<br /></label>
           <div style="padding-top:0.1rem;padding-bottom:0.1rem;">
             <label >2.若车牌识别有误，请到中央收费处缴纳</label>
@@ -43,6 +57,7 @@
                 </tr>
                 <tr >
                     <td>
+                      
                       停车不足15分钟<br />
                       <br />
                       15分钟至1小时<br />
