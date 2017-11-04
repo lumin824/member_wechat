@@ -7,29 +7,39 @@
       </router-link>
     </mt-header>-->
     <img src="static/img/activeTest.jpg" alt="">
-    <h1>大师书法展</h1>
-    <div class="detail">
-  <!--    <figure>
-        <figcaption>券详情</figcaption>
-        <img src="static/img/hgds.jpg" alt="">
-      </figure>-->
-      <ul>
-        <li><h1>活动详情</h1></li>
-        <li>活动时间&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;2016-09-15~2016-09-15&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</li>
-        <li>
-           活动地点&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span>上海世博中国馆</span>
-        </li>
-        <li style="border-bottom: none;">
-           剩余人数&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span>14</span>
-        </li>
-      </ul>
+    <h1 style="font-size:0.2rem">大师书法展</h1>
+    <div style="background-color:#FFFFFF;margin-left:0.1rem;margin-right:0.1rem">
+        <div style="width:100%">
+            <div style="border-left:2px solid black;height:0.2rem;width:0.02rem;margin-top:0.2rem"></div>
+            <div style="padding-left:0.3rem;margin-top:-0.2rem;font-size:0.2rem;color:black">活动详情</div>
+        </div>
+        <div style="width:100%;border-bottom:1px solid #E3E3E3;margin-left:0.3rem;color:#767676;padding-bottom:0.1rem;padding-top:0.1rem">
+            活动时间<label style="padding-left:0.3rem">2017-07-28~2017-08-03</label>
+        </div>
+        <div style="width:100%;border-bottom:1px solid #E3E3E3;margin-left:0.3rem;color:#767676;padding-bottom:0.1rem;padding-top:0.1rem">
+            活动地点<label style="padding-left:0.3rem">上海世博中国馆</label>
+        </div>
+        <div style="width:100%;border-bottom:1px solid #E3E3E3;margin-left:0.3rem;color:#767676;padding-bottom:0.1rem;padding-top:0.1rem">
+            剩余人数<label style="padding-left:0.3rem;color:#FF8817">14</label>
+        </div>
+        <div style="width:100%;border-bottom:1px solid #E3E3E3;margin-left:0.3rem;color:#767676;padding-bottom:0.1rem;padding-top:0.1rem">
+            报名条件<label style="padding-left:0.3rem;color:#FF8817">10积分</label>
+        </div>
+        <div style="width:100%;border-bottom:1px solid #E3E3E3;margin-left:0.3rem;color:#767676;padding-bottom:0.1rem;padding-top:0.1rem">
+            活动奖励<label style="padding-left:0.3rem">签到获得10积分</label>
+        </div>
     </div>
-    <p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;每张优惠券具有一定的使用条件和期限,优惠券使用一般性规则如下:优惠券有使用期限限制,过了有效期不能使用;订单中包含特价商品
-      时不能使用优惠券,优惠券不能和其他优惠(如促销活动)同时使用;
-    </p>
-
+    <div class="bbody" style="margin-left:0.1rem;margin-right:0.1rem;font-size:#B4B4B4">
+        &nbsp; &nbsp; &nbsp; &nbsp;书法作为中华文化中一种独特的审美现象，它不仅是方寸间的文明，更是中国传统文化的重要组成部分，是深受广大书法爱好者喜好的中华瑰宝。作为全国收藏家传统美德
+        书法作为中华文化中一种独特的审美现象，它不仅是方寸间的文明，更是中国传统文化的重要组成部分，是深受广大书法爱好者喜好的中华瑰宝。作为全国收藏家传统美德
+        书法作为中华文化中一种独特的审美现象，它不仅是方寸间的文明，更是中国传统文化的重要组成部分，是深受广大书法爱好者喜好的中华瑰宝。作为全国收藏家传统美德
+        书法作为中华文化中一种独特的审美现象，它不仅是方寸间的文明，更是中国传统文化的重要组成部分，是深受广大书法爱好者喜好的中华瑰宝。作为全国收藏家传统美德
+        书法作为中华文化中一种独特的审美现象，它不仅是方寸间的文明，更是中国传统文化的重要组成部分，是深受广大书法爱好者喜好的中华瑰宝。作为全国收藏家传统美德
+    </div>
      <!--<m-button>已报名</m-button>-->
-    <m-button style="background-color: #25AFA2;height: 0.6rem;" @click.native="abc">我要报名</m-button>
+    <div style="background-color: #25AFA2;height: 0.6rem;color:#FFFFFF;text-align:center" >
+      <div style="padding-top:0.1rem;font-size:0.2rem;">我要报名</div>
+    </div>
 
   </div>
 </template>
@@ -111,5 +121,8 @@
     color: #333;
     height: 0.2rem;
     line-height: 0.2rem;
+  }
+  .bbody{
+    font-family: "Helvetica Neue", Helvetica, Arial, "Microsoft Yahei UI", "Microsoft YaHei", SimHei, "\5B8B\4F53", simsun, sans-serif
   }
 </style>

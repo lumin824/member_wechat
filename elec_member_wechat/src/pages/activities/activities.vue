@@ -4,8 +4,10 @@
            <ul>
                   <li>
                         <figure>
+                          <router-link to="/activeDetail">
                                <img src="static/img/activeTest.jpg" alt="">
                                <figcaption>花艺体验活动来啦,慢下来,给自己一朵花开的时间给自己一朵花开的时间</figcaption>
+                          </router-link>
                         </figure>
                         <div><h1>2017-09-14~2017-09-15</h1><button disabled="disabled">进行中</button></div>
                   </li>
