@@ -25,7 +25,7 @@
                 <option>1</option>
             </select>
             </div>
-       </div>
+       </div> 
        <div style="background-color:white;height:0.5rem;font-size:0.2rem;">
            <div style="padding-top:0.1rem;padding-left:0.2rem;padding-right:0.1rem">积分
                <input type="text" style="float:right;height:100%;border: medium;text-align:center;height:0.42rem;width:70%" placeholder="请输入可用积分，当前可用积分：100">
