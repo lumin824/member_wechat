@@ -1,39 +1,8 @@
 <template>
    <div>
-       <!--  <mt-header title="入驻商户">
-               <router-link to="/" slot="left">
-                   <mt-button icon="back">返回</mt-button>
-               </router-link>
-         </mt-header>-->
             <div style="height: 0.2rem; border-radius:18px;">
                 <mt-search v-model="sValue"  cancel-text="取消" placeholder="请输入关键词,例如:肯德基" :result="filterResult" ></mt-search>
             </div>
-    <!--       <ul class="even">
-                 <li style="position: relative;right: -0.2rem;">
-                       <select @change="selectChange(1)" v-model="lselected">
-                         <option value="">楼层</option>
-                         <option v-for="loption in loptions" v-bind:value="loption.map_id">
-                           {{ loption.map_name }}
-                         </option>
-                       </select>
-                 </li>
-                 <li>
-                   &lt;!&ndash;v-model="fselected"&ndash;&gt;
-                     <select v-model="fselected" @change="selectChange(2)">
-                       <option value="">分类</option>
-                         <option v-for="foption in foptions" v-bind:value="foption.industry_id">
-                           {{foption.industry_name}}
-                         </option>
-                     </select>
-                 </li>
-                 <li>
-                     <select v-model="oselected" @change="selectChange(3)">
-                       <option v-for="ooption in ooptions" v-bind:value="ooption.value">
-                         {{ ooption.text }}
-                       </option>
-                     </select>
-                 </li>
-           </ul>-->
              <div class="sortField sortType_01" style="border-bottom:1px solid #E6E6E6;">
 
                    <a href="javascript:"  @click="selectChange(1)" style="margin-top:10px">

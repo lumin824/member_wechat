@@ -63,7 +63,8 @@ border-color: #FFFFFF;color:#888888'>
       </mt-cell>
 
       <mt-cell title="手机" style="right:3%;margin-left:0.06rem">
-        <input  type="text" :value="this.user.mobile" readonly="readonly" style="position:relative;left:34%;outline: none;border: medium;"><router-link to="/changePhone"><mt-button size="small" style="background-color:#D7D7D7">修改</mt-button></router-link>
+        <input  type="text" :value="this.user.mobile" readonly="readonly" style="position:relative;left:34%;outline: none;border: medium;">
+        <router-link to="/changePhone"><mt-button size="small" style="background-color:#D7D7D7">修改</mt-button></router-link>
       </mt-cell>
 
       <mt-cell title="微信号" style="right:2%;margin-left:0.03rem">
