@@ -609,6 +609,9 @@ option{
 text-align:center;
 
 }
+  .mint-search{
+    height: 10vh !important;
+  }
 </style>
 
 

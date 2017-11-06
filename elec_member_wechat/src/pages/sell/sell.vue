@@ -181,4 +181,5 @@
   .sqareDeil ul li a{
     color:rgba(6,193,174,50);
   }
+
 </style>

@@ -1,8 +1,7 @@
 <template>
   <div>
-         <mt-field label="手机号"  type="tel"  :state="state"  v-model="formData.phone" :placeholder="placeholder"></mt-field>
-
-         <mt-field label="验证码"   :placeholder="formData.v_code"  v-model="formData.code"   :state="c_state">
+         <mt-field label="手机号"  type="tel"  :state="state"  v-model="formData.phone" :placeholder="placeholder" style="width:100%"></mt-field>
+         <mt-field label="验证码"   :placeholder="formData.v_code"  v-model="formData.code"   :state="c_state" style="width:100%">
              <button v-show="show" @click="getCode(formData)" class="code">获取验证码</button>
              <button v-show="!show" class="code">{{count}} s</button>
          </mt-field>
