@@ -1,5 +1,6 @@
 <template>
    <div>
+     <div style="position:fixed;right:0;left:0;top:0;z-index:1">
             <div style="height: 0.2rem; border-radius:18px;">
                 <mt-search v-model="sValue"  cancel-text="取消" placeholder="请输入关键词,例如:肯德基" :result="filterResult" ></mt-search>
             </div>
@@ -39,7 +40,8 @@
                       </ul>
                      <div class="mask" style="display: block;" @click="maskClick"></div>
              </div>
-     <mt-loadmore  :bottom-method="loadBottom" :bottom-all-loaded="allLoaded" :auto-fill="false" ref="loadmore">
+     </div>
+     <mt-loadmore  :bottom-method="loadBottom" :bottom-all-loaded="allLoaded" :auto-fill="false" ref="loadmore" style="margin-top:1.1rem">
         <transition name="router-fade" enter-active-class="animated fadeIn"  leave-active-class="animated fadeOut" mode="out-in">
            <ul class="sellers" v-show="showlist">
                      <li v-for="v in pageList">
@@ -60,7 +62,7 @@
                                      </div>
                            </router-link>
                        </li>
-                       <li v-show="notmore" style="text-align:center;color:#7D7D7D;padding-top:0.05rem;padding-bottom:0.05rem">————更多商家接入中，敬请期待————</li>
+                       <li v-show="notmore" style="text-align:center;color:#7D7D7D;padding-top:0.05rem;padding-bottom:0.05rem">更多商家接入中，敬请期待...</li>
            </ul>
         </transition>
      </mt-loadmore>
