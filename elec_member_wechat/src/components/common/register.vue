@@ -52,12 +52,12 @@
                   this.formData.v_code= '请先获取验证码';
                   this.c_state = 'error';
             }else{
-                 手机号验证码都验证通过,验证验证码是否正确
+                //  手机号验证码都验证通过,验证验证码是否正确
                 this.$http.post('http://121.196.208.176:9001/member/vcodeCheck',{'mobile':this.formData.phone,'vcode':this.formData.code }).then(data =>{
                      this.$store.commit('login', this.formData.phone)
                      //验证成功
-                     window.location.href='/registerInfo?phone='+this.formData.phone;
-                    let { redirect="/member" } = this.$route.query
+                    let defautlHref = '/registerInfo?phone='+this.formData.phone;
+                    let { redirect=defautlHref } = this.$route.query
                     this.$router.push(redirect)
                     console.log( this.$route.query);
               },err=>{
@@ -65,10 +65,7 @@
                   this.formData.v_code= '验证失败';
                   this.c_state = 'error';
                 });
-
                  window.location.href='/registerInfo';
-
-
             }
       }else{
           this.show = true;
@@ -121,9 +118,9 @@
             this.state='error';
              this.placeholder='请输入正确的手机号';
          }
-     /*   this.$http.post('http://121.196.208.176:9001/member/vcode',{'mallId':10,'mobile': formData.phone}).then(data =>{
-             console.log(data);
-        });*/
+        // this.$http.post('http://121.196.208.176:9001/member/vcode',{'mallId':10,'mobile': formData.phone}).then(data =>{
+        //      console.log(data);
+        // });
       }
     }
    }

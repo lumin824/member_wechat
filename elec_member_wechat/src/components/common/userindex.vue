@@ -11,8 +11,6 @@
             <option value="1">女</option>
           </select>
         </mt-cell>
-
-
         <mt-cell title="生日" is-link style="right:2%;margin-left:0.03rem">
             <input  @change="save" id="time" type="text" @click="openByDrop($event)" v-model="calendar3.display" readonly style='position:absolute;left:73%;overflow:auto; background-attachment: fixed; background-repeat: no-repeat; border-style: solid; 
 border-color: #FFFFFF;color:#888888'>
@@ -85,10 +83,8 @@ border-color: #FFFFFF;color:#888888'>
         calendar
     },
     data () {
-      
       return {
          user: {
-
           },
         value: null,
         value1: null,
@@ -130,11 +126,7 @@ border-color: #FFFFFF;color:#888888'>
     methods: {
        save(){
         let is_public_wx = this.user.is_public_wx ? true: false
-        if(!this.user.memberId){
-            this.user.memberId=3;
-        }else{
-          var member=this.user.memberId;
-        }
+        
         var time=new Date(document.getElementById("time").value);
         this.$http.put(`http://121.196.208.176:9001/member`,{
           'address':document.getElementById("address").value,
@@ -144,7 +136,7 @@ border-color: #FFFFFF;color:#888888'>
           'enablePublicWa':is_public_wx,
           'incomeRange':this.user.income_range,
           'interest':this.user.interest,
-          'memberId':this.user.memberId,
+          'memberId':this.user.member_id,
           'occupation':this.user.occupation,
           'sex':this.user.sex
         }).then(data =>{
