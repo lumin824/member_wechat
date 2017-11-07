@@ -1,7 +1,7 @@
 <template>
     <div>
         <mt-cell title="姓名" style="right:2%;margin-left:0.03rem">
-          <input id="name" type="text" :value="this.user.name" style="position:relative;left:77%;outline: none;border: medium;width:3.3rem" @change="save" >
+          <input id="name" type="text" :value="this.user.name" style="position:relative;outline: none;border: medium;text-align:right;" @change="save" >
         </mt-cell>
 
 
@@ -113,7 +113,7 @@ border-color: #FFFFFF;color:#888888'>
       let {data}=await this.$http.get(`http://121.196.208.176:9001/member/m?mobile=${this.$store.state.user}`)
       this.user=data;
 
-      var unixTimestamp = new Date(this.user.birthday * 1000)
+      var unixTimestamp = new Date(this.user.birthday)
       var year =unixTimestamp.getFullYear();
       var month =unixTimestamp.getMonth()+1;
       var date =unixTimestamp.getDate();
