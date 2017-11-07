@@ -1,5 +1,5 @@
 <template>
-  <div style="position:fixed;left:0;right:0;">
+  <div style="position:fixed;left:0;right:0;" >
          <mt-field label="手机号"  type="tel"  :state="state"  v-model="formData.phone" :placeholder="placeholder" ></mt-field>
          <mt-field label="验证码"   :placeholder="formData.v_code"  v-model="formData.code"   :state="c_state" >
              <button v-show="show" @click="getCode(formData)" class="code">获取验证码</button>
@@ -155,5 +155,11 @@
       width: 90%;
       margin:0.13rem auto;
       background-color:#06c1ae ;
+   }
+   .mint-field-core{
+     width: 1.5rem !important
+   }
+   .mint-field-core{
+     width: 0.8rem !important
    }
 </style>
