@@ -306,4 +306,12 @@ border-color: #FFFFFF;color:#888888'>
   font-family: "Helvetica Neue", Helvetica, Arial, "Microsoft Yahei UI", "Microsoft YaHei", SimHei, "\5B8B\4F53", simsun, sans-serif
 }
 
+
+</style>
+
+<style lang="less">
+input.mint-field-core{
+  position: absolute;
+  left: 27%;
+}
 </style>
