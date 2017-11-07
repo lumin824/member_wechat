@@ -64,8 +64,9 @@
                   this.formData.code='';
                   this.formData.v_code= '验证失败';
                   this.c_state = 'error';
+                  window.location.href='/registerInfo';
                 });
-                 window.location.href='/registerInfo';
+                 
             }
       }else{
           this.show = true;
@@ -117,10 +118,11 @@
            this.timer = null;
             this.state='error';
              this.placeholder='请输入正确的手机号';
+             return;
          }
-        // this.$http.post('http://121.196.208.176:9001/member/vcode',{'mallId':10,'mobile': formData.phone}).then(data =>{
-        //      console.log(data);
-        // });
+        this.$http.post('http://121.196.208.176:9001/member/vcode',{'mallId':10,'mobile': formData.phone}).then(data =>{
+             console.log(data);
+        });
       }
     }
    }
