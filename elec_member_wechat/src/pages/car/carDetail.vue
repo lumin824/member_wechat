@@ -5,20 +5,22 @@
                 你的车牌<label style="color:#A8A8A8;padding-left:0.2rem">皖H 128686</label>
             </div>
        </div>
-       <table style="margin-top:0.5rem;margin-left:0.2rem">
-            <tr>
-                <td style="align:center;font-size:0.4rem;color:#00C4AB">
-                    <strong>¥ 20.00</strong>
-                </td>
-                <td style="color:#B7B7B7;padding-left:0.3rem">
-                    入场时间:09月09日 12:30<br />
-                    <br />
-                    已停时长：2小时<br />
-                    <br />
-                    停车位置：B区108
-                </td>
-            </tr>
-       </table>
+       <div style="width:100%">
+        <table style="margin-top:0.5rem;margin-left:0.2rem;width:90%">
+                <tr>
+                    <td style="align:center;font-size:0.3rem;color:#00C4AB;padding-right:0.1rem">
+                        ¥20.00
+                    </td>
+                    <td style="color:#B7B7B7">
+                        入场时间:09月09日 12:30<br/>
+                        <br />
+                        已停时长：2小时<br />
+                        <br />
+                        停车位置：B区108
+                    </td>
+                </tr>
+        </table>
+       </div>
        <div style="background-color:white;height:0.5rem;margin-top:0.3rem;font-size:0.2rem">
            <div style="padding-left:0.2rem;padding-right:0.1rem">优惠券
             <select style="float:right;height:0.3rem;width:1rem;padding-top:-0.2rem;border: medium;height:0.42rem">
@@ -28,7 +30,7 @@
        </div> 
        <div style="background-color:white;height:0.5rem;font-size:0.2rem;">
            <div style="padding-left:0.2rem;padding-right:0.1rem">积分
-               <input type="text" style="float:right;height:100%;border: medium;text-align:center;height:0.42rem;width:73%" placeholder="请输入可用积分，当前可用积分：100">
+               <input type="text" style="float:right;height:100%;border: medium;text-align:center;height:0.42rem;width:73%" placeholder="请输入可用积分">
            </div>
            
            
@@ -42,7 +44,7 @@
           <div style="height:0.6rem;position:absolute;right:0;left:0;bottom:0;padding-top:0.2rem;display:flex;position:fixed;right:0;left:0;bottom:0;">
               
               <div style="width:70%;height:100%;font-size:0.2rem;text-align:center;background-color:#E6E6E6">
-                  <div style="padding-top:0.15rem;padding-left:1.2rem;">
+                  <div style="padding-top:0.15rem;">
                       还需支付
                     <label style="color:#00C4AB;">¥20.00</label>
                   </div>

@@ -13,9 +13,7 @@
               <input style="width:100%;height:100%;border: medium;text-align:center">
             </div>
             <div style="border:1px solid #03C4A7;width:10%;height:0.31rem;float:right; margin-left:0.05rem;">
-              <label style="margin-left:0.15rem">+</label>
-              <br />
-              <div style="color:#ACABB1;font-size:0.1rem;margin-bottom:0.01rem">新能源</div>
+              <input style="width:100%;height:100%;border: medium;text-align:center;font-size:0.01px" placeholder="新能源">
             </div>
             <div style="border:1px solid #E2E2E2;width:10%;height:0.31rem;float:right;margin-left:0.05rem;">
               <input style="width:100%;height:100%;border: medium;text-align:center">
@@ -45,7 +43,7 @@
           </div>
         </div>
       </div>
-      <div style="background-color:#FFFFFF;margin-top:0.2rem">
+      <div style="background-color:#FFFFFF;margin-top:0.2rem;">
         <div>
           <div style="padding-top:0.2rem">
             <label style="margin-left:43%;color:#777777"><strong>收费标准</strong></label>
