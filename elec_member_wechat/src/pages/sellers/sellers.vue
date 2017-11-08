@@ -168,7 +168,7 @@ import { PopupPicker, XButton } from 'vux'
          this.loptions = data.data;
       });
       //分类数据
-      this.$http.get('http://121.196.208.176:9001/mall/${this.mall_id}/industries').then(data =>{
+      this.$http.get(`http://121.196.208.176:9001/mall/${this.mall_id}/industries`).then(data =>{
          this.foptions = data.data;
     });
   },
