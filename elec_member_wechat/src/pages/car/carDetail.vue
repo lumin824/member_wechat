@@ -35,7 +35,7 @@
            
            
        </div>
-        <div>
+        <div style="margin-bottom:0.8rem;padding-right:10%">
             <div style="color:#F79E07;padding-top:0.3rem;padding-left:0.2rem;">温馨提醒</div>
             <div style="color:#979797;padding-top:0.3rem;padding-left:0.2rem;">1 积分抵现金比例： 100积分=1元人民币；</div>
             <div style="color:#979797;padding-top:0.3rem;padding-left:0.2rem;">2 积分抵现条件： 100积分起抵，100积分一档。即：只能100，200,300...依此类推</div>
