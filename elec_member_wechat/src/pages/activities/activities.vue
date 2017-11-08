@@ -4,7 +4,7 @@
            <ul>
                   <li style="padding-bottom:0.2rem">
                     <router-link to="/activeDetail">
-                        <figure style="background:url('static/img/activeTest.jpg');width:3.2rem;height:2rem">
+                        <figure style="background:url('static/img/activeTest.jpg');height:2rem">
                           
                                <figcaption style="padding-top:1.5rem;">花艺体验活动来啦,慢下来,给自己一朵花开的时间给自己一朵花开的时间</figcaption>
                           
@@ -18,7 +18,7 @@
                   <div style="width:100%;height:0.1rem;background-color:#E6E6E6"></div>
                    <li style="padding-bottom:0.2rem">
                      <router-link to="/activeDetail">
-                     <figure style="background:url('static/img/activeTest.jpg');width:3.2rem;height:2rem">
+                     <figure style="background:url('static/img/activeTest.jpg');height:2rem">
                           
                                <figcaption style="padding-top:1.5rem;">花艺体验活动来啦,慢下来,给自己一朵花开的时间给自己一朵花开的时间</figcaption>
                           

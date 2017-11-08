@@ -47,7 +47,6 @@ border-color: #FFFFFF;color:#888888'>
               sex:'',
               birthday:'',
               openId:12345678,
-              
             },
             calendar3:{
                 display:"请选择日期",

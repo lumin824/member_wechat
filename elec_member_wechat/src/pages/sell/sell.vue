@@ -97,7 +97,6 @@
             var jsonStr1 = JSON.stringify(jsonObj)
            this.pictures = JSON.parse(jsonStr1);
           }
-
       });
     }
   }
