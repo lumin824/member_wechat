@@ -86,12 +86,16 @@
           this.sell = data.data;
           this.content=this.sell.intro;
           this.tel=this.sell.phone;
-          this.lcmap = JSON.parse(this.sell.map_picture);
+          this.lcmap = this.sell.map_picture;
+          
           if(this.sell.logo.length>0){
             this.logo = JSON.parse(this.sell.logo);
           }
           if(this.sell.pictures.length>0){
-            this.pictures = JSON.parse(this.sell.pictures);
+            var jsonStr =this.sell.pictures;
+             var jsonObj =  JSON.parse(jsonStr)
+            var jsonStr1 = JSON.stringify(jsonObj)
+           this.pictures = JSON.parse(jsonStr1);
           }
 
       });
