@@ -2,15 +2,15 @@
   <div>
       <div class="voucher">
              <img  v-bind:src="logo" alt="">
-              <div style="width:90%">
-                       <select name="vouSel" id="vouSel "style="font-size:0.15rem;">
+              <div style="margin-top:-2rem;width:100%;margin-left:0.5rem">
+                       <select name="vouSel" id="vouSel "style="font-size:0.15rem;padding-left:0.2rem;width:60%">
                             <option value="">券</option>
                             <option value="">积分券</option>
                             <option value="">停车券</option>
                        </select>
-                      <lalel for="vouSel"><img style="width: 0.1rem;height: 0.07rem;position: relative;top:0.11rem;left:0.05rem;" src="static/img/xx.png" alt=""></lalel>
-                      <img style="width: 0.2rem;height: 0.2rem;position: relative;left: 73%;top:0.05rem;" src="static/img/search.png" alt="">
-                      <input type="text" placeholder="请输入搜索关键字" style="width:100%;height:0.3rem;font-size:0.2rem;padding-top:0.1rem">
+                      <lalel for="vouSel"><img style="width: 0.1rem;height: 0.07rem;" src="static/img/xx.png" alt=""></lalel>
+                      <img style="width: 0.2rem;height: 0.2rem;padding-left:1.8rem;" src="static/img/search.png" alt="">
+                      <input type="text" placeholder="请输入搜索关键字" style="height:0.3rem;font-size:0.2rem;padding-top:0.1rem">
               </div>
               <div style="margin-top:-0.3rem;margin-left:80%;width:1rem">
                   <router-link to="/register" style="padding-top:-1rem"><h2 style="width:0.9rem">立即注册 >></h2></router-link>
@@ -48,9 +48,7 @@
     height: 1.8rem;
   }
   .voucher div{
-    position: absolute;
-    top:0.1rem;
-    display: flex;
+    margin-top: 0.1rem;
     text-align: center;
   }
   .voucher  select{
@@ -60,8 +58,6 @@
     -webkit-tap-highlight-color: rgba(0,0,0,0);
     color: #EEFFFD;
     outline:none;
-    position: relative;
-    left: 0.2rem;
   }
   .voucher select:hover{
     border:none;

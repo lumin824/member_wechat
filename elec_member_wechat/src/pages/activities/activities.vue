@@ -4,10 +4,9 @@
            <ul>
                   <li style="padding-bottom:0.2rem">
                     <router-link to="/activeDetail">
-                        <figure>
+                        <figure style="background:url('static/img/activeTest.jpg');width:3.2rem;height:2rem">
                           
-                               <img src="static/img/activeTest.jpg" alt="">
-                               <figcaption>花艺体验活动来啦,慢下来,给自己一朵花开的时间给自己一朵花开的时间</figcaption>
+                               <figcaption style="padding-top:1.5rem;">花艺体验活动来啦,慢下来,给自己一朵花开的时间给自己一朵花开的时间</figcaption>
                           
                         </figure>
                         <div style="border:1px solied ">
@@ -19,12 +18,11 @@
                   <div style="width:100%;height:0.1rem;background-color:#E6E6E6"></div>
                    <li style="padding-bottom:0.2rem">
                      <router-link to="/activeDetail">
-                     <figure>
-                       
-                       <img src="static/img/activeTest.jpg" alt="">
-                       <figcaption>花艺体验活动来啦,慢下来,给自己一朵花开的时间给自己一朵花开的时间</figcaption>
-                       
-                     </figure>
+                     <figure style="background:url('static/img/activeTest.jpg');width:3.2rem;height:2rem">
+                          
+                               <figcaption style="padding-top:1.5rem;">花艺体验活动来啦,慢下来,给自己一朵花开的时间给自己一朵花开的时间</figcaption>
+                          
+                        </figure>
                      <div>
                        <label style="height:0.22rem;color:#999">2017-09-14~2017-09-15</label>
                        <button disabled="disabled" style="border: 1px solid #CACACA;width:0.6rem">进行中</button>
