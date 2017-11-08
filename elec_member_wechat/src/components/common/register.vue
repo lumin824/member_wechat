@@ -66,7 +66,6 @@
                   this.c_state = 'error';
                   window.location.href='/registerInfo';
                 });
-                 
             }
       }else{
           this.show = true;
