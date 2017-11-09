@@ -59,7 +59,7 @@
     
 
   </ul>
-  <div style="color:#767676;padding-left:35%;padding-top:0.1rem">更多券敬请期待...</div>
+  <div style="color:#767676;text-align:center;width:100%;padding-top:0.1rem">更多券敬请期待...</div>
   </div>
 </template>
 <script>
