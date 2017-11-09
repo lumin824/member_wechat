@@ -88,7 +88,7 @@
      border-bottom-left-radius: 0.1rem;
      position: absolute;
      top:0.8rem;
-     right: 0;
+     right: 2%;
    }
      .rank img:nth-child(1){
        height: 0.2rem;

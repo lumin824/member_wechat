@@ -7,39 +7,39 @@
 
 
         <mt-cell title="性别" is-link style="right:2%;margin-left:0.03rem">
-          <select style="position:relative;right: 30%;height:0.2rem" v-model="user.sex" @change="save" >
+          <select style="position:relative;right:30%;height:0.2rem" v-model="user.sex" @change="save" >
             <option value="0">男</option>
             <option value="1">女</option>
           </select>
         </mt-cell>
         <mt-cell title="生日" is-link style="right:2%;margin-left:0.03rem">
-            <input id="time" type="text" @click="openByDrop($event)" v-model="calendar3.display"  readonly
+            <input  @change="save" id="time" type="text" @click="openByDrop($event)" v-model="calendar3.display" readonly 
                 style='position:absolute;left:69%;overflow:auto; background-attachment: fixed; 
                      background-repeat: no-repeat; border-style: solid; border-color: #FFFFFF;color:#888888;'>
        </mt-cell>
      <transition name="fade">
-    <!-- <div class="calendar-dropdown" @change="save"  v-if="calendar3.show" style="float:left;position:absolute;z-index:100;width:100%">
+    <div class="calendar-dropdown" v-if="calendar3.show" style="float:left;position:absolute;z-index:100;width:100%">
         <calendar :zero="calendar3.zero" :lunar="calendar3.lunar" :value="calendar3.value" :begin="calendar3.begin" :end="calendar3.end" @select="calendar3.select"></calendar>
-    </div> -->
+    </div>
     </transition>
 
       <mt-cell title="职业" is-link style="right:2%;margin-left:0.03rem">
-        <select class="occupation_drop-down" style="position:relative;left:45%"  v-model="user.occupation"  @change="save">
-          <option value="0">请选择职业</option>
+        <select style="position:relative;left:5%" v-model="user.occupation"  @change="save">
+         <option value="0">请选择</option>
           <option value="1">工程师</option>
           <option value="2">医生</option>
         </select>
       </mt-cell>
 
       <mt-cell title="地址" style="right:3%;margin-left:0.07rem">
-        <input  @change="save" id="address"  class="addre" type="text"  v-model="user.address"  placeholder="请输入地址"
+        <input  @change="save" id="address" class="addre" type="text" v-model="user.address" placeholder="请输入地址"
            style="position:relative;outline: none;border: medium;text-align:right;color:#656B79;left:-7%">
       </mt-cell>
 
 
       <mt-cell title="教育程度" is-link style="right:2%;margin-left:0.03rem">
-        <select style="position:relative;left:75%"  v-model="user.degree_of_education"  @change="save">
-          <option value="0">请选择教育程度</option>
+        <select style="position:relative;left:15%" v-model="user.degree_of_education" @change="save">
+          <option class="op1" value="0">请选择</option>
           <option value="1">博士</option>
           <option value="2">硕士</option>
           <option value="3">本科</option>
@@ -49,19 +49,30 @@
       </mt-cell>
 
       <mt-cell title="收入范围" is-link style="right:2%;margin-left:0.03rem">
-        <select style="position:relative;left:10%"  v-model="user.income_range"  @change="save">
+        <select style="position:relative;left:5%" v-model="user.income_range" @change="save">
            <option value="0">请选择收入范围</option>
            <option value="1">10000-50000</option>
-          <option value="2">50000-100000</option>
+           <option value="2">50000-100000</option>
         </select>
       </mt-cell>
-      <mt-cell title="兴趣爱好" is-link style="right:2%;margin-left:0.03rem">
-        <select style="position:relative;left:70%"  v-model="user.interest"  @change="save">
-          <option value="0">请选择兴趣爱好</option>
+     <mt-cell title="兴趣爱好" is-link style="right:2%;margin-left:0.03rem">
+        <select style="position:relative;left:5%" v-model="user.interest" @change="save">
+          <option value="0">请选择</option>
           <option value="1">篮球</option>
           <option value="2">游泳</option>
         </select>
       </mt-cell>
+      <!-- <asp:HiddenField ID="hfddlList" runat="server" 
+       Value='{k:1,v:"南京"}|{k:2,v:"上海"}|{k:3,v:"扬州"}|{k:4,v:"苏州"}
+       |{k:5,v:"无锡"}|{k:6,v:"常州"}|{k:7,v:"盐城"}|{k:8,v:"徐州"}
+       |{k:9,v:"泰州"}|{k:10,v:"淮安"}' />
+
+        <div class="testContainer">
+            <div style="margin-left: 300px; height: 30px;">
+                <asp:TextBox ID="txtTest" runat="server" Width="150px"></asp:TextBox>
+                <asp:HiddenField ID="hfTest" runat="server" Value="3,5" />
+            </div>
+        </div> -->
 
       <mt-cell title="手机" style="right:3%;margin-left:0.06rem">
         <input  type="text" :value="this.user.mobile" readonly="readonly" style="position:relative;left:34%;outline: none;border: medium;">
@@ -102,14 +113,12 @@
                 display:'',
                 show:false,
                 zero:true,
-                value:'', //默认日期
+                value:[2017,11,2], //默认日期
                 lunar:true, //显示农历
                 select:(value)=>{
-                  console.log(value)
                     this.calendar3.show=false;
                     this.calendar3.value=value;
                     this.calendar3.display=value.join("/");
-                    this.save()
                 }
             },
       }
@@ -119,12 +128,10 @@
       this.user=data;
 
       var unixTimestamp = new Date(this.user.birthday)
-      
       var year =unixTimestamp.getFullYear();
       var month =unixTimestamp.getMonth()+1;
       var date =unixTimestamp.getDate();
       this.calendar3.display = year+"/"+month+"/"+date
-      console.log(this.calendar3.display)
       this.$emit('title',this.title,this.closeButton);
       if(!this.user.interest){
           this.user.interest =0;
@@ -132,14 +139,9 @@
       },
     methods: {
        save(){
-         alert(1)
-         
-        
         let is_public_wx = this.user.is_public_wx ? true: false
         
-        console.log(this.calendar3.display)
-        var time=new Date(this.calendar3.display);
-         console.log(time.getTime())
+        var time=new Date(document.getElementById("time").value);
         this.$http.put(`http://121.196.208.176:9001/member`,{
           'address':document.getElementById("address").value,
           'birthday':time.getTime(),
@@ -152,6 +154,7 @@
           'occupation':this.user.occupation,
           'sex':this.user.sex
         }).then(data =>{
+                
                 //保存cookie(设置1年有效期);
                  setCookie('member_id',this.user.memberId,365);
                 this.$toast({
@@ -161,14 +164,15 @@
                  setTimeout(() => {
                      this.$router.push('/member');
                   },2000)
-        },err=>{
-                this.$toast({
-                    message:'更新失败',
-                    possition:'top',
-                 });
-                setTimeout(() => {
-                  this.$router.push('/member');
-                }, 2000);
+        }
+        ,err=>{
+                // this.$toast({
+                //     message:'更新失败',
+                //     possition:'top',
+                //  });
+                // setTimeout(() => {
+                //   this.$router.push('/member');
+                // }, 2000);
             });
        },
       openByDrop(e){
@@ -208,11 +212,7 @@
 </script>
 
 <style lang="less" scoped>
-
-.occupation_drop-down>option{
-  font:100;
-}
-
+  
   div{
       margin-top: 0.17rem;
       background-color: #fff;
@@ -247,9 +247,8 @@
   .mint-cell-wrapper:first{
     background-image: none; 
   }
-  .mint-button--default{
-    /* background-color: red;*/
+  // .mint-button--default{
+  //   /* background-color: red;*/
 
-
-  }
+  // }
 </style>

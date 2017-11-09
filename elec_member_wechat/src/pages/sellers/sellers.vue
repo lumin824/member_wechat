@@ -120,7 +120,7 @@ import { PopupPicker, XButton } from 'vux'
             pageList:'',
             currentActive:-1, //当前已展开详情的标签index，-1表示全部关闭（只展开单个标签）
             allLoaded: false, //是否可以上拉属性，false可以上拉，true为禁止上拉，就是不让往上划加载数据了
-            scrollMode:"auto" //移动端弹性滚动效果，touch为弹性滚动，auto是非弹性滚动
+            scrollMode:"touch" //移动端弹性滚动效果，touch为弹性滚动，auto是非弹性滚动
           }
           
       },
