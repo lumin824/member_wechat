@@ -63,10 +63,10 @@
                            </router-link>
                        </li>
                        <li v-show="notmore" style="text-align:center;color:#7D7D7D;padding-top:0.05rem;padding-bottom:0.05rem">更多商家接入中，敬请期待...</li>
+                       <li style="position:fixed;bottom:0;left:0;right:0;"></li>
            </ul>
         </transition>
      </mt-loadmore>
-     <div style="position:fixed;bottom:0;width:100%;left:0;right:0;"></div>
    </div>
 </template>
 
