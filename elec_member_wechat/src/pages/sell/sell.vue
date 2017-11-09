@@ -42,7 +42,7 @@
           <ul>
             <li style="font-weight: bold;font-size: 0.13rem;">
               <img src="static/img/jf.png" style="width:0.12rem;height: 0.18rem;" class="imgPosition" alt="">
-              <div  style="margin-top:-0.27rem;margin-left:0.4rem"><a :href="lcmap[0]">{{sell.berth_number}}</a></div>
+              <div  style="margin-top:-0.27rem;margin-left:0.4rem"><a :href="lcmap">{{sell.berth_number}}</a></div>
             </li>
             <li style="margin-top:0.1rem"><img src="static/img/phone.png" alt="">
             <div  style="margin-top:-0.22rem;margin-left:0.4rem"><a style="color:rgba(6,193,174,50);" @click="phone">{{tel}}</a></div></li>
@@ -87,7 +87,7 @@
           this.content=this.sell.intro;
           this.tel=this.sell.phone;
           this.lcmap = this.sell.map_picture;
-          
+
           if(this.sell.logo.length>0){
             this.logo = this.sell.logo;
           }
