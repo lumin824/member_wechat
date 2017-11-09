@@ -1,71 +1,65 @@
 <template>
   <div>
-  <ul class="sellers">
-        <li style="display:block;">
-          <router-link to="/voucherDetail">
-            <div class="left">
-              <img  src="static/img/hgds.jpg" alt="">
-              <div class="imgright">
-                <h1 style="font-size:0.16rem;height:0.28rem"><strong>哈根达斯满百减十</strong></h1>
-                <h2 style="color:#828282;height:0.24rem">市场价:100元</h2>
-                <h3 style="color:#68D5C2;">优惠价:90元</h3>
-              </div>
-            </div>
-            <div class="right" >
-              <button style="width:0.8rem;height:0.25rem; ">立即支付</button>
-            </div>
-          </router-link>
-        </li>
+  <ul class="sellers" style="margin-top:1.9rem;">
 
-        <li>
-          <router-link to="/voucherDetail">
-            <div class="left">
-              <img  src="static/img/hgds.jpg" alt="">
-              <div class="imgright">
-                <h1 style="font-size:0.16rem;height:0.28rem"><strong>乐町服饰专卖</strong></h1>
-                <h2 style="color:#828282;height:0.24rem">市场价:10元</h2>
-                <h3 style="color:#68D5C2;">10积分</h3>
-              </div>
-            </div>
-            <div class="right">
-              <button style="width:0.8rem;height:0.25rem; ">立即领取</button>
-            </div>
-          </router-link>
-        </li>
-        <li>
-          <router-link to="/voucherDetail">
-            <div class="left">
-              <img  src="static/img/hgds.jpg"  alt="">
-              <div class="imgright">
-                <h1 style="font-size:0.16rem;height:0.28rem"><strong>德芙巧克力 纵享新丝滑</strong></h1>
-                <h2 style="color:#828282;height:0.24rem">市场价:10元</h2>
-                <h3 style="color:#68D5C2;">10积分</h3>
-              </div>
-            </div>
-            <div class="right">
-              <button style="width:0.8rem;height:0.25rem; ">立即领取</button>
-            </div>
-          </router-link>
-        </li>
-         <li>
-          <router-link to="/voucherDetail">
-            <div class="left">
-              <img  src="static/img/hgds.jpg"  alt="">
-              <div class="imgright">
-                <h1 style="font-size:0.16rem;height:0.28rem"><strong>德芙巧克力 纵享新丝滑</strong></h1>
-                <h2 style="color:#828282;height:0.24rem">市场价:10元</h2>
-                <h3 style="color:#68D5C2;">10积分</h3>
-              </div>
-            </div>
-            <div class="right">
-              <button style="width:0.8rem;height:0.25rem; ">立即领取</button>
-            </div>
-          </router-link>
-        </li>
-    <li></li>
+     <router-link to="/voucherDetail" tag="li" style="display:flex;height:100px;">
+        <div style="width:76px;padding:10px;">
+          <div style="background-image:url(static/img/hgds.jpg);height:100%;width:100%;background-size:cover;"></div>
+        </div>
+        <div style="flex:1;display:flex;flex-direction:column;justify-content:center;">
+          <h1 style="font-size:0.16rem;height:0.28rem"><strong>哈根达斯满百减十</strong></h1>
+          <h2 style="color:#828282;height:0.24rem">市场价:100元</h2>
+          <h3 style="color:#68D5C2;">优惠价:90元</h3>
+        </div>
+        <div style="width:96px;display:flex;align-items: center;" >
+          <button style="width:0.8rem;height:0.25rem;">立即支付</button>
+        </div>
+      </router-link>
+
+    <router-link to="/voucherDetail" tag="li" style="display:flex;height:100px;">
+        <div style="width:76px;padding:10px;">
+          <div style="background-image:url(static/img/hgds.jpg);height:100%;width:100%;background-size:cover;"></div>
+        </div>
+        <div style="flex:1;display:flex;flex-direction:column;justify-content:center;">
+          <h1 style="font-size:0.16rem;height:0.28rem"><strong>哈根达斯满百减十</strong></h1>
+          <h2 style="color:#828282;height:0.24rem">市场价:100元</h2>
+          <h3 style="color:#68D5C2;">优惠价:90元</h3>
+        </div>
+        <div style="width:96px;display:flex;align-items: center;" >
+          <button style="width:0.8rem;height:0.25rem;">立即支付</button>
+        </div>
+      </router-link>
+
+   <router-link to="/voucherDetail" tag="li" style="display:flex;height:100px;">
+        <div style="width:76px;padding:10px;">
+          <div style="background-image:url(static/img/hgds.jpg);height:100%;width:100%;background-size:cover;"></div>
+        </div>
+        <div style="flex:1;display:flex;flex-direction:column;justify-content:center;">
+          <h1 style="font-size:0.16rem;height:0.28rem"><strong>哈根达斯满百减十</strong></h1>
+          <h2 style="color:#828282;height:0.24rem">市场价:100元</h2>
+          <h3 style="color:#68D5C2;">优惠价:90元</h3>
+        </div>
+        <div style="width:96px;display:flex;align-items: center;" >
+          <button style="width:0.8rem;height:0.25rem;">立即领取</button>
+        </div>
+      </router-link>
+ <router-link to="/voucherDetail" tag="li" style="display:flex;height:100px;">
+        <div style="width:76px;padding:10px;">
+          <div style="background-image:url(static/img/hgds.jpg);height:100%;width:100%;background-size:cover;"></div>
+        </div>
+        <div style="flex:1;display:flex;flex-direction:column;justify-content:center;">
+          <h1 style="font-size:0.16rem;"><strong>德芙巧克力 纵向新丝滑</strong></h1>
+          <h2 style="color:#828282;height:0.24rem">市场价:100元</h2>
+          <h3 style="color:#68D5C2;">优惠价:90元</h3>
+        </div>
+        <div style="width:96px;display:flex;align-items: center;" >
+          <button style="width:0.8rem;height:0.25rem;">立即领取</button>
+        </div>
+      </router-link>
     
+
   </ul>
-  <div style="color:#767676;padding-left:1.5rem;padding-top:0.1rem">更多券敬请期待...</div>
+  <div style="color:#767676;padding-left:35%;padding-top:0.1rem">更多券敬请期待...</div>
   </div>
 </template>
 <script>
@@ -146,6 +140,13 @@
   }
 </script>
 <style lang="less" scoped>
+
+  li>div>button{
+    border: 0.01rem solid #FF9700;
+    background-color:#FFFFFF;
+    color:#FF9700;
+  }
+
   .even{
     background-color: #fff;
     margin-top: 0.32rem;
@@ -179,20 +180,15 @@
     clear: both;
     border-bottom: 1px solid #e6e6e6;
   }
-  .sellers  .left{
+  .sellers .left{
     float: left;
+    
+    //width: 5%;
   }
-  .sellers  .left img:nth-child(1){
-
-    height: 0.7rem;
-    width: 1rem;
-    margin-top: 0.1rem;
-    float: left;
-  }
-  .sellers  .right{
-    margin-top: 0.1rem;
+  .sellers .right{
+    margin-top: 5%;
     float: right;
-    margin-right: 0.15rem;
+    margin-right: 5%;
   }
   .sellers  .right img{
     display: inline-block;

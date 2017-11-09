@@ -1,19 +1,27 @@
 <template>
   <div>
-      <div class="voucher">
-             <img  v-bind:src="logo" alt="">
-              <div style="margin-top:-2rem;width:100%;margin-left:0.5rem">
-                       <select name="vouSel" id="vouSel "style="font-size:0.15rem;padding-left:0.2rem;width:60%">
-                            <option value="">券</option>
-                            <option value="">积分券</option>
-                            <option value="">停车券</option>
-                       </select>
-                      <lalel for="vouSel"><img style="width: 0.1rem;height: 0.07rem;" src="static/img/xx.png" alt=""></lalel>
-                      <img style="width: 0.2rem;height: 0.2rem;padding-left:1.8rem;" src="static/img/search.png" alt="">
-                      <input type="text" placeholder="请输入搜索关键字" style="height:0.3rem;font-size:0.2rem;padding-top:0.1rem">
-              </div>
+      <div class="voucher" style="background-image:url(/static/img/voucherLogo.4d27212.jpg);height:180px;background-size:100% auto;background-repeat: no-repeat;">
+         <div style="display:flex;align-items: center;">
+           <div>
+             <select name="vouSel" id="vouSel "style="font-size:0.15rem;padding-left:0.2rem;width:60%">
+                  <option value="">券</option>
+                  <option value="">积分券</option>
+                  <option value="">停车券</option>
+              </select>
+           </div>
+           <div>
+             <img style="width: 0.1rem;height: 0.07rem;" src="static/img/xx.png" alt="" class="xia">
+           </div>
+           <div style="flex:1;display:flex;" class="th">
+             <input type="text" placeholder="请输入搜索关键字" class="sou" style="height:0.33rem;width:65%">
+             <img class="sercher" style="width: 0.2rem;height: 0.2rem; " src="static/img/search.png" alt="">
+           </div>
+         </div>
+             
               <div style="margin-top:-0.3rem;margin-left:80%;width:1rem">
-                  <router-link to="/register" style="padding-top:-1rem"><h2 style="width:0.9rem">立即注册 >></h2></router-link>
+                  <router-link to="/register" style="padding-top:-1rem">
+                    <h2 style="width:0.9rem; padding-left: 25%;margin-top: -30%;" class="add">立即注册 >></h2>
+                  </router-link>
               </div>
       </div>
      <m-vList style="margin-top: 0.12rem;"></m-vList>
@@ -33,12 +41,30 @@
        }
     },
     methods:{
+
+
+
     }
   }
 </script>
 
 <style lang="less" scoped>
+  .th{
+    padding-left: 5%;
+  }
+  .sou{
+    padding-right: 25%;
+  }
+  .sercher{
+    position: fixed;
+    left: 83%;
+    top: 3.9%;
+  }
   .voucher{
+    position: fixed;
+    left: 0%;
+    right: 0%;
+    top: 0%;
   }
   .voucher img{
     width: 100%;
@@ -46,7 +72,6 @@
   }
   .voucher div{
     margin-top: 0.1rem;
-    text-align: center;
   }
   .voucher  select{
     border:0;
@@ -64,9 +89,9 @@
     border-radius: 0.2rem;
     border: 0;
     outline: none;
-    height: 0.25rem;
-    width: 2.2rem;
+    height: 20%;
     text-indent: 0.16rem;
+    text-align:left;
   }
   ::-webkit-input-placeholder{
     font-size: 0.13rem;
