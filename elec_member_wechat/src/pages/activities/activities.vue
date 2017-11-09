@@ -6,7 +6,7 @@
                         <figure style="background:url('static/img/activeTest.jpg');height:2rem">
                           
                                <figcaption style="padding-top:1.5rem;">
-                                 <div style=" background-color: rgba(0,0,0,0.2);color:#FFF">花艺体验活动来啦,慢下来,给自己一朵花开的时间给自己一朵花开的时间</div>
+                                 <div style="position:absolute;left:0;right:0;  background-color: rgba(0,0,0,0.2);color:#FFF">花艺体验活动来啦,慢下来,给自己一朵花开的时间给自己一朵花开的时间</div>
 
                                  </figcaption>
                           
@@ -20,7 +20,7 @@
                      <router-link to="/activeDetail" tag="li" style="padding-bottom:0.2rem">
                      <figure style="background:url('static/img/activeTest.jpg');height:2rem;">
                                <figcaption style="padding-top:1.5rem;">
-                                 <div style=" background-color: rgba(0,0,0,0.2);color:#FFF">花艺体验活动来啦,慢下来,给自己一朵花开的时间给自己一朵花开的时间</div>
+                                 <div style="position:absolute;left:0;right:0; background-color: rgba(0,0,0,0.2);color:#FFF">花艺体验活动来啦,慢下来,给自己一朵花开的时间给自己一朵花开的时间</div>
                               </figcaption>
                         </figure>
                      <div class="time">
@@ -33,6 +33,7 @@
            <div style="text-align:center;width:100%">更多活动敬请期待...</div>
     </div>
 </template>
+
 <style lang="less" scoped>
   .act{
       font-family:-apple-system-font, "Helvetica Neue", sans-serif

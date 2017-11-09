@@ -18,7 +18,6 @@
           <m-header style="margin-bottom: 0.1rem;"></m-header>
           <m-vList></m-vList>
   </div>
-
 </template>
 
 <script>
