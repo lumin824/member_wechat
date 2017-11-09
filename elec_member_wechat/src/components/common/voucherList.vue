@@ -1,6 +1,6 @@
 <template>
   <div>
-  <ul class="sellers" style="margin-top:1.9rem;">
+  <ul class="sellers" >
 
      <router-link to="/voucherDetail" tag="li" style="display:flex;height:100px;">
         <div style="width:76px;padding:10px;">

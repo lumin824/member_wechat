@@ -1,7 +1,8 @@
 <template>
     <div>
         <mt-cell title="姓名" style="right:2%;margin-left:0.03rem">
-          <input id="name" type="text" :value="this.user.name" style="position:relative;outline: none;border: medium;text-align:right;" @change="save" >
+          <input id="name" type="text" :value="this.user.name" 
+            style="position:relative;outline: none;border: medium;text-align:right;left:-7%" @change="save" >
         </mt-cell>
 
 
@@ -12,17 +13,18 @@
           </select>
         </mt-cell>
         <mt-cell title="生日" is-link style="right:2%;margin-left:0.03rem">
-            <input  @change="save" id="time" type="text" @click="openByDrop($event)" v-model="calendar3.display" readonly style='position:absolute;left:73%;overflow:auto; background-attachment: fixed; background-repeat: no-repeat; border-style: solid; 
-border-color: #FFFFFF;color:#888888'>
-    </mt-cell>
+            <input id="time" type="text" @click="openByDrop($event)" v-model="calendar3.display"  readonly
+                style='position:absolute;left:69%;overflow:auto; background-attachment: fixed; 
+                     background-repeat: no-repeat; border-style: solid; border-color: #FFFFFF;color:#888888;'>
+       </mt-cell>
      <transition name="fade">
-    <div class="calendar-dropdown"  v-if="calendar3.show" style="float:left;position:absolute;z-index:100;width:100%">
+    <!-- <div class="calendar-dropdown" @change="save"  v-if="calendar3.show" style="float:left;position:absolute;z-index:100;width:100%">
         <calendar :zero="calendar3.zero" :lunar="calendar3.lunar" :value="calendar3.value" :begin="calendar3.begin" :end="calendar3.end" @select="calendar3.select"></calendar>
-    </div>
+    </div> -->
     </transition>
 
       <mt-cell title="职业" is-link style="right:2%;margin-left:0.03rem">
-        <select style="position:relative;right: 5%;"  v-model="user.occupation"  @change="save">
+        <select class="occupation_drop-down" style="position:relative;left:45%"  v-model="user.occupation"  @change="save">
           <option value="0">请选择职业</option>
           <option value="1">工程师</option>
           <option value="2">医生</option>
@@ -30,12 +32,13 @@ border-color: #FFFFFF;color:#888888'>
       </mt-cell>
 
       <mt-cell title="地址" style="right:3%;margin-left:0.07rem">
-        <input  @change="save" id="address"  class="addre" type="text"  v-model="user.address"  placeholder="请输入地址" style="position:relative;outline: none;border: medium;text-align:right;color:#656B79">
+        <input  @change="save" id="address"  class="addre" type="text"  v-model="user.address"  placeholder="请输入地址"
+           style="position:relative;outline: none;border: medium;text-align:right;color:#656B79;left:-7%">
       </mt-cell>
 
 
       <mt-cell title="教育程度" is-link style="right:2%;margin-left:0.03rem">
-        <select style="position:relative;right: 5%;"  v-model="user.degree_of_education"  @change="save">
+        <select style="position:relative;left:75%"  v-model="user.degree_of_education"  @change="save">
           <option value="0">请选择教育程度</option>
           <option value="1">博士</option>
           <option value="2">硕士</option>
@@ -46,14 +49,14 @@ border-color: #FFFFFF;color:#888888'>
       </mt-cell>
 
       <mt-cell title="收入范围" is-link style="right:2%;margin-left:0.03rem">
-        <select style="position:relative;right: 5%;"  v-model="user.income_range"  @change="save">
+        <select style="position:relative;left:10%"  v-model="user.income_range"  @change="save">
            <option value="0">请选择收入范围</option>
            <option value="1">10000-50000</option>
           <option value="2">50000-100000</option>
         </select>
       </mt-cell>
       <mt-cell title="兴趣爱好" is-link style="right:2%;margin-left:0.03rem">
-        <select style="position:relative;right: 5%;"  v-model="user.interest"  @change="save">
+        <select style="position:relative;left:70%"  v-model="user.interest"  @change="save">
           <option value="0">请选择兴趣爱好</option>
           <option value="1">篮球</option>
           <option value="2">游泳</option>
@@ -62,7 +65,7 @@ border-color: #FFFFFF;color:#888888'>
 
       <mt-cell title="手机" style="right:3%;margin-left:0.06rem">
         <input  type="text" :value="this.user.mobile" readonly="readonly" style="position:relative;left:34%;outline: none;border: medium;">
-        <router-link to="/changePhone"><mt-button size="small" style="background-color:#D7D7D7">修改</mt-button></router-link>
+        <router-link to="/changePhone"><mt-button size="small" style="background-color:#F2F2F2">修改</mt-button></router-link>
       </mt-cell>
 
       <mt-cell title="微信号" style="right:2%;margin-left:0.03rem">
@@ -99,12 +102,14 @@ border-color: #FFFFFF;color:#888888'>
                 display:'',
                 show:false,
                 zero:true,
-                value:[2017,11,2], //默认日期
+                value:'', //默认日期
                 lunar:true, //显示农历
                 select:(value)=>{
+                  console.log(value)
                     this.calendar3.show=false;
                     this.calendar3.value=value;
                     this.calendar3.display=value.join("/");
+                    this.save()
                 }
             },
       }
@@ -114,10 +119,12 @@ border-color: #FFFFFF;color:#888888'>
       this.user=data;
 
       var unixTimestamp = new Date(this.user.birthday)
+      
       var year =unixTimestamp.getFullYear();
       var month =unixTimestamp.getMonth()+1;
       var date =unixTimestamp.getDate();
       this.calendar3.display = year+"/"+month+"/"+date
+      console.log(this.calendar3.display)
       this.$emit('title',this.title,this.closeButton);
       if(!this.user.interest){
           this.user.interest =0;
@@ -125,9 +132,14 @@ border-color: #FFFFFF;color:#888888'>
       },
     methods: {
        save(){
+         alert(1)
+         
+        
         let is_public_wx = this.user.is_public_wx ? true: false
         
-        var time=new Date(document.getElementById("time").value);
+        console.log(this.calendar3.display)
+        var time=new Date(this.calendar3.display);
+         console.log(time.getTime())
         this.$http.put(`http://121.196.208.176:9001/member`,{
           'address':document.getElementById("address").value,
           'birthday':time.getTime(),
@@ -140,7 +152,6 @@ border-color: #FFFFFF;color:#888888'>
           'occupation':this.user.occupation,
           'sex':this.user.sex
         }).then(data =>{
-                
                 //保存cookie(设置1年有效期);
                  setCookie('member_id',this.user.memberId,365);
                 this.$toast({
@@ -197,6 +208,11 @@ border-color: #FFFFFF;color:#888888'>
 </script>
 
 <style lang="less" scoped>
+
+.occupation_drop-down>option{
+  font:100;
+}
+
   div{
       margin-top: 0.17rem;
       background-color: #fff;
