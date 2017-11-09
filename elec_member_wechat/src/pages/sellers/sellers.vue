@@ -139,7 +139,8 @@ import { PopupPicker, XButton } from 'vux'
             data:serarhData,
           }).then(resp=>{
             resp.data.forEach((v,k)=>{
-              resp.data[k].logo = JSON.parse(resp.data[k].logo);
+              console.log(resp.data[k].logo);
+              resp.data[k].logo =resp.data[k].logo;
             })
             resp.data.forEach((val,key)=>{
               if(val.logo.length!=0){
@@ -195,7 +196,7 @@ import { PopupPicker, XButton } from 'vux'
                     data:serarhData,
                   }).then(resp=>{
                     resp.data.forEach((v,k)=>{
-                      resp.data[k].logo = JSON.parse(resp.data[k].logo);
+                      resp.data[k].logo = resp.data[k].logo;
                     })
                     resp.data.forEach((val,key)=>{
                       if(val.logo.length!=0){
@@ -251,7 +252,7 @@ import { PopupPicker, XButton } from 'vux'
                   data:serarhData,
                 }).then(resp=>{
                   resp.data.forEach((v,k)=>{
-                    resp.data[k].logo = JSON.parse(resp.data[k].logo);
+                    resp.data[k].logo = resp.data[k].logo;
                   })
                   resp.data.forEach((val,key)=>{
                     if(val.logo.length!=0){
@@ -291,7 +292,7 @@ import { PopupPicker, XButton } from 'vux'
                               data:this.oldSearchCondition,
                             }).then(resp=>{
                               resp.data.forEach((v,k)=>{
-                                resp.data[k].logo = JSON.parse(resp.data[k].logo);
+                                resp.data[k].logo =resp.data[k].logo;
                               })
                               resp.data.forEach((val,key)=>{
                                 if(val.logo.length!=0){
