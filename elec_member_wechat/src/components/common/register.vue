@@ -56,7 +56,7 @@
                 // this.$http.post('http://121.196.208.176:9001/member/vcodeCheck',{'mobile':this.formData.phone,'vcode':this.formData.code }).then(data =>{
                      this.$store.commit('login', this.formData.phone)
                      //验证成功
-                    let defautlHref = '/registerInfo?phone='+this.formData.phone;
+                    let defautlHref = '/member?phone='+this.formData.phone;
                     let { redirect=defautlHref } = this.$route.query
                     this.$router.push(redirect)
                     console.log( this.$route.query);
