@@ -22,15 +22,15 @@
         </table>
        </div>
        <div style="background-color:white;height:0.5rem;margin-top:0.3rem;font-size:0.2rem">
-           <div style="padding-left:0.2rem;padding-right:0.1rem">优惠券
-            <select style="float:right;height:0.3rem;width:1rem;padding-top:-0.2rem;border: medium;height:0.42rem">
-                <option>1</option>
-            </select>
+           <div style="padding-left:0.04rem;padding-right:0.1rem">
+                <group>
+                    <popup-radio title="优惠券" :options="options1" v-model="option1" placeholder="请选择优惠券"></popup-radio>
+                </group>
             </div>
        </div> 
        <div style="background-color:white;height:0.5rem;font-size:0.2rem;">
            <div style="padding-left:0.2rem;padding-right:0.1rem">积分
-               <input type="text" style="float:right;height:100%;border: medium;text-align:center;height:0.42rem;width:73%" placeholder="请输入可用积分">
+               <input type="text" style="float:right;height:100%;border: medium;text-align:right;height:0.42rem;width:73%;padding-right:0.15rem" placeholder="请输入可用积分">
            </div>
            
            
@@ -56,5 +56,27 @@
         </router-link>
     </div>
 </template>
+<script>
+import { Group, PopupRadio } from 'vux'
 
+export default {
+  components: {
+    Group,
+    PopupRadio
+  },
+  data () {
+    return {
+      options1: ['A', 'B', 'C'],
+    }
+  }
+}
+</script>
+
+<style scoped>
+.demo3-slot {
+  text-align: center;
+  padding: 8px 0;
+  color: #888;
+}
+</style>
 
