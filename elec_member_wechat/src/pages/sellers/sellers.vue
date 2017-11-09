@@ -48,7 +48,7 @@
                            <router-link :to="{path:'/sell',query:{sell_id:v.shop_id}}" style="width:100%;height:1.10rem">
                                      <div class="left" >
                                        <!--:src="v.logo[0].mapUrl" -->
-                                             <img :src="v.logo1" alt="" style="width:1.1rem;height:0.85rem;padding-left:0.2rem">
+                                             <img :src="v.logo" alt="" style="width:1.1rem;height:0.85rem;padding-left:0.2rem">
                                              <div class="imgright">
                                                  <h1 style="padding-bottom:0.1rem">{{v.shop_name}}</h1>
                                                  <h3 style="padding-top:-0.2rem;padding-bottom:0.01rem">{{v.industry_name}}</h3>
@@ -139,8 +139,7 @@ import { PopupPicker, XButton } from 'vux'
             data:serarhData,
           }).then(resp=>{
             resp.data.forEach((v,k)=>{
-              console.log(resp.data[k].logo);
-              resp.data[k].logo =resp.data[k].logo;
+              resp.data[k].logo = resp.data[k].logo;
             })
             resp.data.forEach((val,key)=>{
               if(val.logo.length!=0){
@@ -151,19 +150,7 @@ import { PopupPicker, XButton } from 'vux'
             });
             this.pageList = resp.data;
           })
- /*      this.$http.post('http://121.196.208.176:9001/shop',{'mall_id':10,'industry_id':0,'map_id':0,'sort':'sort','page':this.searchCondition.pageNo,'size':this.searchCondition.pageSize}).then(data =>{
-             data.data.forEach((v,k)=>{
-                  data.data[k].logo = JSON.parse(data.data[k].logo);
-             })
-             data.data.forEach((val,key)=>{
-              if(val.logo.length!=0){
-                  data.data[key].logo1=val.logo[0].mapUrl;
-                }else{
-                  data.data[key].logo1='';
-                }
-           });
-           this.pageList = data.data;
-      });*/
+
       //楼层数据
       this.$http.get(`http://121.196.208.176:9001/mall/${this.mall_id}/planeMaps`).then(data =>{
          this.loptions = data.data;
@@ -200,6 +187,7 @@ import { PopupPicker, XButton } from 'vux'
                     })
                     resp.data.forEach((val,key)=>{
                       if(val.logo.length!=0){
+                        console.log(val.logo[0])
                         resp.data[key].logo1=val.logo[0].mapUrl;
                       }else{
                         resp.data[key].logo1='';
@@ -211,22 +199,6 @@ import { PopupPicker, XButton } from 'vux'
                     this.isHaveMore(false);
                   });
                 }
-  /*              this.$http.post('http://121.196.208.176:9001/shop',{'mall_id':10,'keywords':this.value}).then(data =>{
-                  data.data.forEach((v,k)=>{
-                    data.data[k].logo = JSON.parse(data.data[k].logo);
-                  })
-                  data.data.forEach((val,key)=>{
-                    if(val.logo.length!=0){
-                      data.data[key].logo1=val.logo[0].mapUrl;
-                    }else{
-                      data.data[key].logo1='';
-                    }
-                  });
-                  this.pageList=data.data;
-                },err=>{
-                  this.pageList=data.data;
-                });*/
-            //return this.defaultResult.filter(value => new RegExp(this.value, 'i').test(value));
           }
     },
     methods:{
@@ -256,6 +228,7 @@ import { PopupPicker, XButton } from 'vux'
                   })
                   resp.data.forEach((val,key)=>{
                     if(val.logo.length!=0){
+                     
                       resp.data[key].logo1=val.logo[0].mapUrl;
                     }else{
                       resp.data[key].logo1='';
@@ -283,7 +256,6 @@ import { PopupPicker, XButton } from 'vux'
         loadPageList(){
                       this.sValue = '';
                             this.serarchIsChange =true;
-                            console.log('aaa');
                             this.searchCondition.pageNo = parseInt(this.searchCondition.pageNo) + 1;
                             this.oldSearchCondition.page=this.searchCondition.pageNo;
                             this.$http({
@@ -292,7 +264,7 @@ import { PopupPicker, XButton } from 'vux'
                               data:this.oldSearchCondition,
                             }).then(resp=>{
                               resp.data.forEach((v,k)=>{
-                                resp.data[k].logo =resp.data[k].logo;
+                                resp.data[k].logo = resp.data[k].logo;
                               })
                               resp.data.forEach((val,key)=>{
                                 if(val.logo.length!=0){
