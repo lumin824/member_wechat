@@ -1,6 +1,6 @@
 <template>
    <div>
-     <div style="position:fixed;right:0;left:0;top:0;z-index:1">
+     <div style="position:fixed;right:0;left:0;top:0;z-index:1;background-color:#F2F2F2;">
             <div style="height: 0.2rem; border-radius:18px;">
                 <mt-search v-model="sValue"  cancel-text="取消" placeholder="请输入关键词,例如:肯德基" :result="filterResult" ></mt-search>
             </div>
@@ -62,14 +62,14 @@
                                      </div>
                            </router-link>
                        </li>
-                       <li v-show="notmore" style="text-align:center;color:#7D7D7D;padding-top:0.05rem;padding-bottom:0.05rem">更多商家接入中，敬请期待...</li>
-                       <li style="position:fixed;bottom:0;left:0;right:0;"></li>
+                      
+                      
            </ul>
         </transition>
      </mt-loadmore>
+         <div v-show="notmore" style="text-align:center;color:#7D7D7D;padding-top:0.05rem;padding-bottom:0.05rem;">更多商家接入中，敬请期待...</div>
    </div>
 </template>
-
 
 <script>
 import { PopupPicker, XButton } from 'vux'
@@ -109,7 +109,7 @@ import { PopupPicker, XButton } from 'vux'
             defaultResult:'',
             searchCondition:{  //
               pageNo:"1",
-              pageSize:"5",
+              pageSize:"200",
               mall_id:this.mall_id,
             },
              showPopupPicker: false,
@@ -212,8 +212,8 @@ import { PopupPicker, XButton } from 'vux'
                 let serarhData = {};
                 //拼接搜索条件
                 serarhData.mall_id=this.mall_id;
-                if(this.lsselected!='')serarhData.industry_id = this.lsselected;
-                if(this.fsfselected!='')serarhData.map_id = this.fsfselected;
+                if(this.lsselected!='')serarhData.map_id = this.lsselected;
+                if(this.fsfselected!='')serarhData.industry_id= this.fsfselected;
                 if(this.osselected!='')serarhData.sort = this.osselected;
                 serarhData.page =  this.searchCondition.pageNo;
                 serarhData.size = this.searchCondition.pageSize;
@@ -586,6 +586,7 @@ text-align:center;
   .mint-search{
     height: 10vh !important;
   }
+
 </style>
 
 

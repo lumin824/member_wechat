@@ -140,7 +140,7 @@
    .main{
      display: flex;
      width: 3rem;
-     lign-items:flex-start;
+     align-items:flex-start;
    }
    .njky{
       font-family: Tahoma, Helvetica, Arial, "Microsoft Yahei","微软雅黑", STXihei, "华文细黑", sans-serif;

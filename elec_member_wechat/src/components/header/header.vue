@@ -39,6 +39,7 @@
         height: 120px;
         display: flex;
         background-color: #fff;
+        z-index: 3;
      }
      img{
        border-radius: 50%;
@@ -88,7 +89,7 @@
      border-bottom-left-radius: 0.1rem;
      position: absolute;
      top:0.8rem;
-     right: 2%;
+     right: 0;
    }
      .rank img:nth-child(1){
        height: 0.2rem;
