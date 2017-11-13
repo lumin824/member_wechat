@@ -1,4 +1,5 @@
 <template>
+<scroller  lock-x  @on-scroll="onScroll" ref="scrollerEvent">
   <div>
       <!--  <mt-header :title="title">
             <router-link to="/" slot="left">
@@ -44,10 +45,13 @@
         <br><br>
       </div>
   </div>
+</scroller>
 </template>
 <script>
    import global from '../../../src/components/common/Global.vue'
+   import { Scroller } from 'vux'
    export default {
+      components: {Scroller},
      data(){
        return {
             //地址
