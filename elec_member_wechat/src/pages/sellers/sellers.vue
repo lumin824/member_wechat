@@ -65,8 +65,8 @@
       </transition>
     </mt-loadmore> -->
 
-    <scroller style="margin-top:1rem"  lock-x  @on-scroll="onScroll" ref="scrollerEvent">
-      <div class="box2">
+    <scroller style="margin-top:1rem;"  lock-x  @on-scroll="onScroll" ref="scrollerEvent">
+      <div class="box2" style="padding-bottom:1rem">
         <ul class="sellers" v-show="showlist">
           <li v-for="v in pageList">
             <router-link :to="{path:'/sell',query:{sell_id:v.shop_id}}" style="width:100%;height:1.10rem">
@@ -87,9 +87,10 @@
           </li>
         </ul>
       </div>
+       <div v-show="notmore" style="text-align:center;color:#7D7D7D;padding-top:0.05rem;padding-bottom:0.05rem;">更多商家接入中，敬请期待...</div>
     </scroller>
 
-  <div v-show="notmore" style="text-align:center;color:#7D7D7D;padding-top:0.05rem;padding-bottom:0.05rem;">更多商家接入中，敬请期待...</div>
+ 
 </div>
 </template>
 
