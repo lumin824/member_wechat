@@ -1,15 +1,16 @@
 <template>
   <div class="act" >
-    <ul style="background-color:#E6E6E6">
-      <router-link v-for="o in list" to="/activeDetail" tag="li" style="padding-bottom:0.2rem;background-color:#fff;">
+    <ul style="background-color:#fff;padding:8px;">
+      <router-link v-for="o in list" to="/activeDetail" tag="li" style="padding-bottom:10px;border-bottom:1px solid #ddd;">
         <figure style="background:url('static/img/activeTest.jpg');height:2rem">
           <figcaption>
-            <div style="position:relative;left:0;right:0;  background-color: rgba(0,0,0,0.2);color:#FFF; padding: 0 5%;">花艺体验活动来啦,慢下来,给自己一朵花开的时间给自己一朵花开的时间</div>
+            <div style="flex:1;"></div>
+            <div style="font-size:0.6em;background-color: rgba(0,0,0,0.6);color:#FFF; padding: 5px;">缤纷天地万圣市集距离开始时间已不足24小事。。。</div>
           </figcaption>
         </figure>
-        <div class="time" style="border:1px solied;background ">
-          <label style="height:0.22rem;color:#999">2017-09-14~2017-09-15</label>
-          <button disabled="disabled" style="border: 1px solid #CACACA;width:0.6rem">未签到</button>
+        <div class="time" style="border:1px solied;background;">
+          <div style="font-size:0.6em;color:#999;">2017-09-14~2017-09-15</div>
+          <div style="font-size:0.6em;color:#999;">未签到</div>
         </div>
       </router-link>
     </ul>
@@ -65,9 +66,10 @@
   }
   figure figcaption{
     display: flex;
+    flex-direction: column;
     text-align: justify;
     color: #333;
-    padding-top:1.5rem;
+    height: 100%;
   }
   button{
     border-radius: 0.03rem;
