@@ -15,6 +15,11 @@
     </div>
 </template>
 <script>
+import  global from '../../../src/components/common/Global.vue'
+import {
+  mapState,
+} from 'vuex';
+
    export  default {
      data(){
         return {
@@ -23,10 +28,16 @@
           }
         }
       },
+      computed: {
+        ...mapState({
+          member_id: state => state.user,
+        }),
+      },
       async mounted () {
-      let {data}=await this.$http.get(`http://121.196.208.176:9001/member/m?mobile=${this.$store.state.user}`)
-      this.user=data;
-      console.log(this.user)
+
+        let { data } = await this.$http.get(`http://121.196.208.176:9001/member/${this.member_id}?mallId=${global.mallId}`)
+        this.user=data;
+        console.log(this.user)
       },
    }
 
