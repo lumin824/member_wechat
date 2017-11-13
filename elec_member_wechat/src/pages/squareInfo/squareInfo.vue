@@ -1,4 +1,5 @@
 <template>
+<scroller  lock-x  @on-scroll="onScroll" ref="scrollerEvent">
   <div>
       <!--  <mt-header :title="title">
             <router-link to="/" slot="left">
@@ -10,7 +11,7 @@
         <mt-swipe :auto="4000">
          <!-- <mt-swipe-item v-for="(item,index) in pictures">
              <img src="{{item.mapUrl}}" alt="">
-          </mt-swipe-item>-->
+          </mt-swipe-item>--> 
        <!--   <template v-for="(v,k) in pictures">
             <mt-swipe-item><img src="static/img/2.jpg" alt=""></mt-swipe-item>
           </template>-->
@@ -25,7 +26,7 @@
              <h3 style="font-size:20px;color:#13C2A1;margin-bottom:0.1rem"><strong>{{title}}</strong></h3>
               <hr>
              <strong><p class="njky" v-html="content" style="color:#797979;line-height:20px;" >
-               <!--紫荆广场是由南京康益房地产开发有限公司开发建设的商业地产项目,项目位于南京卡子门商圈,紫荆花路和宁溧路交汇处。该商圈经过多年
+               <!--紫荆广场是由南京康益房地产开发有限公司开发建设的商业地产项目,asdasdas项目位于南京卡子门商圈,紫荆花路和宁溧路交汇处。该商圈经过多年
                打造已经开成汽车贸易、家具市场为核心的商业格局。宜家、红星美凯龙、月星家居等商业巨头云集此地。交通便捷成熟、地铁三号线,宁溧快速
                通道、机场高速环绕左右,已经投入使用的高铁南站近在咫尺。此处本项目紧邻南京宁南高档住宅区,该住宅区域内有10万常住人口-->
             </p> </strong>
@@ -44,10 +45,13 @@
         <br><br>
       </div>
   </div>
+</scroller>
 </template>
 <script>
    import global from '../../../src/components/common/Global.vue'
+   import { Scroller } from 'vux'
    export default {
+      components: {Scroller},
      data(){
        return {
             //地址
