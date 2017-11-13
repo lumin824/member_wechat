@@ -41,42 +41,66 @@
                      <div class="mask" style="display: block;" @click="maskClick"></div>
              </div>
      </div>
-     <mt-loadmore  :bottom-method="loadBottom" :bottom-all-loaded="allLoaded" :auto-fill="false" ref="loadmore" style="margin-top:1.1rem">
-        <transition name="router-fade" enter-active-class="animated fadeIn"  leave-active-class="animated fadeOut" mode="out-in">
-           <ul class="sellers" v-show="showlist">
-                     <li v-for="v in pageList">
-                           <router-link :to="{path:'/sell',query:{sell_id:v.shop_id}}" style="width:100%;height:1.10rem">
-                                     <div class="left" >
-                                       <!--:src="v.logo[0].mapUrl" -->
-                                             <img :src="v.logo" alt="" style="width:1.1rem;height:0.85rem;padding-left:0.2rem">
-                                             <div class="imgright">
-                                                 <h1 style="padding-bottom:0.1rem">{{v.shop_name}}</h1>
-                                                 <h3 style="padding-top:-0.2rem;padding-bottom:0.01rem">{{v.industry_name}}</h3>
-                                                 <img class="imgleft" src="static/img/jf.png" style="padding-top:0.03rem" alt="">
-                                                 <h2>{{v.berth_number}}</h2>
-                                             </div>
-                                     </div>
-                                     <div class="right">
-                                             <img src="static/img/lc.png" alt="">
-                                             <h3>{{v.points}}</h3>
-                                     </div>
-                           </router-link>
-                       </li>
-                      
-                      
-           </ul>
-        </transition>
-     </mt-loadmore>
-         <div v-show="notmore" style="text-align:center;color:#7D7D7D;padding-top:0.05rem;padding-bottom:0.05rem;">更多商家接入中，敬请期待...</div>
-   </div>
+    <!-- <mt-loadmore  :bottom-method="loadBottom" :bottom-all-loaded="allLoaded" :auto-fill="false" ref="loadmore" style="margin-top:1.1rem">
+      <transition name="router-fade" enter-active-class="animated fadeIn"  leave-active-class="animated fadeOut" mode="out-in">
+        <ul class="sellers" v-show="showlist">
+          <li v-for="v in pageList">
+            <router-link :to="{path:'/sell',query:{sell_id:v.shop_id}}" style="width:100%;height:1.10rem">
+              <div class="left" >
+                <img :src="v.logo" alt="" style="width:1.1rem;height:0.85rem;padding-left:0.2rem">
+                <div class="imgright">
+                  <h1 style="padding-bottom:0.1rem">{{v.shop_name}}</h1>
+                  <h3 style="padding-top:-0.2rem;padding-bottom:0.01rem">{{v.industry_name}}</h3>
+                  <img class="imgleft" src="static/img/jf.png" style="padding-top:0.03rem" alt="">
+                  <h2>{{v.berth_number}}</h2>
+                </div>
+              </div>
+              <div class="right">
+                 <img src="static/img/lc.png" alt="">
+                 <h3>{{v.points}}</h3>
+              </div>
+            </router-link>
+          </li>
+        </ul>
+      </transition>
+    </mt-loadmore> -->
+
+    <scroller style="margin-top:1rem"  lock-x  @on-scroll="onScroll" ref="scrollerEvent">
+      <div class="box2">
+        <ul class="sellers" v-show="showlist">
+          <li v-for="v in pageList">
+            <router-link :to="{path:'/sell',query:{sell_id:v.shop_id}}" style="width:100%;height:1.10rem">
+              <div class="left" >
+                <img :src="v.logo" alt="" style="width:1.1rem;height:0.85rem;padding-left:0.2rem">
+                <div class="imgright">
+                  <h1 style="padding-bottom:0.1rem">{{v.shop_name}}</h1>
+                  <h3 style="padding-top:-0.2rem;padding-bottom:0.01rem">{{v.industry_name}}</h3>
+                  <img class="imgleft" src="static/img/jf.png" style="padding-top:0.03rem" alt="">
+                  <h2>{{v.berth_number}}</h2>
+                </div>
+              </div>
+              <div class="right">
+                 <img src="static/img/lc.png" alt="">
+                 <h3>{{v.points}}</h3>
+              </div>
+            </router-link>
+          </li>
+        </ul>
+      </div>
+    </scroller>
+
+  <div v-show="notmore" style="text-align:center;color:#7D7D7D;padding-top:0.05rem;padding-bottom:0.05rem;">更多商家接入中，敬请期待...</div>
+</div>
 </template>
 
 <script>
 import { PopupPicker, XButton } from 'vux'
+import { Scroller } from 'vux'
   export default {
     components: {
     PopupPicker,
-    XButton
+    XButton,
+    Scroller
   },
       data(){
           return {

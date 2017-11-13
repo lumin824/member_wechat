@@ -6,8 +6,8 @@
         </mt-cell>
 
 
-        <mt-cell title="性别" is-link style="right:2%;margin-left:0.03rem">
-          <select style="position:relative;right:30%;height:0.2rem" v-model="user.sex" @change="save" >
+        <mt-cell title="性别" is-link style="right:2%;margin-left:0.03rem;">
+          <select style="position:relative;right:-3%;height:0.2rem;width:2.3rem;padding-left: 2.1rem;" v-model="user.sex" @change="save">
             <option value="0">男</option>
             <option value="1">女</option>
           </select>
@@ -18,9 +18,9 @@
                      background-repeat: no-repeat; border-style: solid; border-color: #FFFFFF;color:#888888;'>
        </mt-cell>
      <transition name="fade">
-    <div class="calendar-dropdown" v-if="calendar3.show" style="float:left;position:absolute;z-index:100;width:100%">
+    <!-- <div class="calendar-dropdown" v-if="calendar3.show" style="float:left;position:absolute;z-index:100;width:100%">
         <calendar :zero="calendar3.zero" :lunar="calendar3.lunar" :value="calendar3.value" :begin="calendar3.begin" :end="calendar3.end" @select="calendar3.select"></calendar>
-    </div>
+    </div> -->
     </transition>
 
       <mt-cell title="职业" is-link style="right:2%;margin-left:0.03rem">
@@ -35,18 +35,26 @@
         <input  @change="save" id="address" class="addre" type="text" v-model="user.address" placeholder="请输入地址"
            style="position:relative;outline: none;border: medium;text-align:right;color:#656B79;left:-7%">
       </mt-cell>
-
-
       <mt-cell title="教育程度" is-link style="right:2%;margin-left:0.03rem">
         <select style="position:relative;left:15%" v-model="user.degree_of_education" @change="save">
-          <option class="op1" value="0">请选择</option>
-          <option value="1">博士</option>
+          <option value="0">请选择</option>
+          <option value="1" selected>博士</option>
           <option value="2">硕士</option>
           <option value="3">本科</option>
           <option value="4">大专</option>
           <option value="5">高中</option>
         </select>
       </mt-cell>
+      <!-- <div style="position:relative;">   
+        <span style="margin-left:100px;width:0px;overflow:hidden" >   
+            <select style="position:relative;left:15%" v-model="user.degree_of_education" @change="save">   
+            <option value="A">A</option>   
+            <option value="B">B</option>   
+            <option value="C">C</option>   
+            </select>  
+        </span>  
+        <input name="box" id="box" style="width:100px;position:absolute;left:0px;height:25px">   
+      </div> -->
 
       <mt-cell title="收入范围" is-link style="right:2%;margin-left:0.03rem">
         <select style="position:relative;left:5%" v-model="user.income_range" @change="save">
@@ -62,18 +70,6 @@
           <option value="2">游泳</option>
         </select>
       </mt-cell>
-      <!-- <asp:HiddenField ID="hfddlList" runat="server" 
-       Value='{k:1,v:"南京"}|{k:2,v:"上海"}|{k:3,v:"扬州"}|{k:4,v:"苏州"}
-       |{k:5,v:"无锡"}|{k:6,v:"常州"}|{k:7,v:"盐城"}|{k:8,v:"徐州"}
-       |{k:9,v:"泰州"}|{k:10,v:"淮安"}' />
-
-        <div class="testContainer">
-            <div style="margin-left: 300px; height: 30px;">
-                <asp:TextBox ID="txtTest" runat="server" Width="150px"></asp:TextBox>
-                <asp:HiddenField ID="hfTest" runat="server" Value="3,5" />
-            </div>
-        </div> -->
-
       <mt-cell title="手机" style="right:3%;margin-left:0.06rem">
         <input  type="text" :value="this.user.mobile" readonly="readonly" style="position:relative;left:34%;outline: none;border: medium;">
         <router-link to="/changePhone"><mt-button size="small" style="background-color:#F2F2F2">修改</mt-button></router-link>
@@ -124,7 +120,7 @@
       }
     },
      async mounted () {
-      let {data}=await this.$http.get(`http://121.196.208.176:9001/member/m?mobile=${this.$store.state.user}`)
+      let {data} = await this.$http.get(`http://121.196.208.176:9001/member/m?mobile=${this.$store.state.user}`)
       this.user=data;
 
       var unixTimestamp = new Date(this.user.birthday)
@@ -154,7 +150,6 @@
           'occupation':this.user.occupation,
           'sex':this.user.sex
         }).then(data =>{
-                
                 //保存cookie(设置1年有效期);
                  setCookie('member_id',this.user.memberId,365);
                 this.$toast({
@@ -216,6 +211,7 @@
   div{
       margin-top: 0.17rem;
       background-color: #fff;
+      
   }
  /* border:none;
   outline:medium;*/
