@@ -11,7 +11,7 @@
         <mt-swipe :auto="4000">
          <!-- <mt-swipe-item v-for="(item,index) in pictures">
              <img src="{{item.mapUrl}}" alt="">
-          </mt-swipe-item>-->
+          </mt-swipe-item>--> 
        <!--   <template v-for="(v,k) in pictures">
             <mt-swipe-item><img src="static/img/2.jpg" alt=""></mt-swipe-item>
           </template>-->
