@@ -1,17 +1,20 @@
 <template>
-    <div style="position:fixed;top:0;left:0;right:0;">
-      <img src="static/img/cat.jpg" alt="">
-       <ul>
-         <li><span> {{this.user.name}}</span><h3>{{this.user.level}}</h3></li>
-         <li>累计积分:{{this.user.cumulate_points}}</li>
-         <li>可用积分:{{this.user.usable_points}}</li>
-       </ul>
-
-        <div class="rank">
-              <img src="static/img/jb.png" alt="">
-              <a style="margin-top: 0px;top: auto;bottom: 4px;">排行榜</a>
-              <img class="abc" style="margin-top: 3px;margin-left: 0rem;top: auto;bottom: 3px;" src="static/img/jr.png" alt="">
+    <div >
+      <div style="width:100%">
+        <div style="width:76%">
+          <img src="static/img/cat.jpg" alt="">
+          <ul>
+            <li><span> {{this.user.name}}</span><h3>{{this.user.level}}</h3></li>
+            <li>累计积分:{{this.user.cumulate_points}}</li>
+            <li>可用积分:{{this.user.usable_points}}</li>
+          </ul>
         </div>
+          <div class="rank" style="margin-top:0.7rem">
+                <img src="static/img/jb.png" alt="">
+                <a style="margin-top: 0px;top: auto;bottom: 4px;">排行榜</a>
+                <img class="abc" style="margin-top: 3px;margin-left: 0rem;top: auto;bottom: 3px;" src="static/img/jr.png" alt="">
+          </div>
+      </div>
     </div>
 </template>
 <script>
@@ -96,9 +99,6 @@ import {
      border:none;
      border-top-left-radius: 0.1rem;
      border-bottom-left-radius: 0.1rem;
-     position: absolute;
-     top:0.8rem;
-     right: 0;
    }
      .rank img:nth-child(1){
        height: 0.2rem;

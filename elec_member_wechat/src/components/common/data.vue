@@ -52,7 +52,7 @@ border-color: #FFFFFF;color:#888888'>
                 display:"请选择日期",
                 show:false,
                 zero:true,
-                value:[2017,11,2], //默认日期
+                value:[1990,11,2], //默认日期
                 lunar:true, //显示农历
                 select:(value)=>{
                     this.calendar3.show=false;

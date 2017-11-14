@@ -1,5 +1,5 @@
 <template>
-   <div style="margin-top:1.23rem">
+   <div>
 
          <m-header></m-header>
          <mt-navbar v-model="selected">

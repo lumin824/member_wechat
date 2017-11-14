@@ -6,29 +6,31 @@
           <p style="float:right;padding-right:0.2rem;color:#FB9D0A"><strong>102</strong></p>
         </div>
         <div style="padding-top:0.3rem;margin-right:0.2rem;margin-left:0.1rem;height:0.7rem;">
-            <div style="border:1px solid #E2E2E2;width:10%;height:0.31rem;float:left;">
-              <input style="width:100%;height:100%;border: medium;text-align:center">
+
+            <div style="border:1px solid #E2E2E2;width:10%;height:0.31rem;float:left;" id="div1">
+              <input @keyup="press1($event)" ref="input1" style="width:100%;height:100%;border: medium;text-align:center;" maxlength="1" autofocus="autofocus">
             </div>
-            <div style="border:1px solid #E2E2E2;width:10%;height:0.31rem;float:left;border-left:0.02rem dashed #E2E2E2;">
-              <input style="width:100%;height:100%;border: medium;text-align:center">
+            <div style="border:1px solid #E2E2E2;width:10%;height:0.31rem;float:left;border-left:0.02rem dashed #E2E2E2;" id="div2">
+              <input @keyup="press2($event)" ref="input2" style="width:100%;height:100%;border: medium;text-align:center" maxlength="1">
             </div>
+
             <div style="border:1px solid #03C4A7;width:10%;height:0.31rem;float:right; margin-left:0.05rem;">
-              <input style="width:100%;height:100%;border: medium;text-align:center;font-size:0.01px;" placeholder="新能源">
+              <input @keyup="press8($event)" ref="input8" style="width:100%;height:100%;border: medium;text-align:center;font-size:0.01px;" placeholder="新能源" maxlength="1">
             </div>
             <div style="border:1px solid #E2E2E2;width:10%;height:0.31rem;float:right;margin-left:0.05rem;">
-              <input style="width:100%;height:100%;border: medium;text-align:center">
+              <input @keyup="press7($event)" ref="input7"  style="width:100%;height:100%;border: medium;text-align:center" maxlength="1">
             </div>
             <div style="border:1px solid #E2E2E2;width:10%;height:0.31rem;float:right;margin-left:0.05rem;">
-              <input style="width:100%;height:100%;border: medium;text-align:center">
+              <input @keyup="press6($event)" ref="input6" style="width:100%;height:100%;border: medium;text-align:center" maxlength="1">
             </div>
             <div style="border:1px solid #E2E2E2;width:10%;height:0.31rem;float:right;margin-left:0.05rem;">
-              <input style="width:100%;height:100%;border: medium;text-align:center">
+              <input @keyup="press5($event)" ref="input5" style="width:100%;height:100%;border: medium;text-align:center" maxlength="1">
             </div>
             <div style="border:1px solid #E2E2E2;width:10%;height:0.31rem;float:right;margin-left:0.05rem;">
-              <input style="width:100%;height:100%;border: medium;text-align:center">
+              <input @keyup="press4($event)" ref="input4" style="width:100%;height:100%;border: medium;text-align:center" maxlength="1">
             </div>
             <div style="border:1px solid #E2E2E2;width:10%;height:0.31rem;float:right;margin-left:0.05rem;">
-              <input style="width:100%;height:100%;border: medium;text-align:center">
+              <input @keyup="press3($event)" ref="input3" style="width:100%;height:100%;border: medium;text-align:center" maxlength="1">
             </div>
         </div>
         <div style="display:flex;align-items:center">
@@ -80,7 +82,96 @@
       </div>
       </router-link>
     </div>
-     
 </template>
+<script>
+// $(function(){
+//   var a = docuemnt.getElementById("div1").getElementsByTagName("input");
+//   if(a.length==1){
+//     docuemnt.getElementById("div2").getElementsByTagName("input").focus();
+//   }
+// })
+export default {
+  components: {
+  },
+  data () {
+    return {
+      options1: ['A', 'B', 'C'],
+    }
+  },
+  methods: {
+    press1({key, keyCode}) {
+      if(keyCode == 8){
+        this.$refs.input1.value='';
+      } else if(key == 'a'){
+        this.$refs.input1.value='';
+      }else{
+        this.$refs.input2.focus()
+      }
+    },
+    press2({key, keyCode}) {
+      if(keyCode == 8){
+        this.$refs.input1.focus()
+      } else if(key == 'a'){
+        this.$refs.input2.value='';
+      }else{
+        this.$refs.input3.focus()
+      }
+    },
+    press3({key, keyCode}) {
+      if(keyCode == 8){
+        this.$refs.input2.focus()
+      } else if(key == 'a'){
+        this.$refs.input3.value='';
+      }else{
+        this.$refs.input4.focus()
+      }
+    },
+    press4({key, keyCode}) {
+       if(keyCode == 8){
+        this.$refs.input3.focus()
+      } else if(key == 'a'){
+        this.$refs.input4.value='';
+      }else{
+        this.$refs.input5.focus()
+      }
+    },
+    press5({key, keyCode}) {
+       if(keyCode == 8){
+        this.$refs.input4.focus()
+      } else if(key == 'a'){
+        this.$refs.input5.value='';
+      }else{
+        this.$refs.input6.focus()
+      }
+    },
+    press6({key, keyCode}) {
+       if(keyCode == 8){
+        this.$refs.input5.focus()
+      } else if(key == 'a'){
+        this.$refs.input6.value='';
+      }else{
+        this.$refs.input7.focus()
+      }
+    },
+    press7({key, keyCode}) {
+       if(keyCode == 8){
+        this.$refs.input6.focus()
+      } else if(key == 'a'){
+        this.$refs.input7.value='';
+      }else{
+        this.$refs.input8.focus()
+      }
+    },
+    press8({key, keyCode}) {
+       if(keyCode == 8){
+        this.$refs.input7.focus()
+      } else if(key == 'a'){
+        this.$refs.input3.value='';
+      }
+    }
+  }
+}
+</script>
+
 
 
