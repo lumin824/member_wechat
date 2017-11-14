@@ -63,9 +63,9 @@
     margin-left: 5%;
   }
   .sercher{
-    position: fixed;
-    left: 88%;
-    top: 4%;
+    position: absolute;
+    left: 87%;
+    top: 15%;
   }
   .voucher{
     position: fixed;
@@ -111,7 +111,7 @@
    select option{
      background-color: #9D9D9D;
    }
-  .voucher a{
+  .voucher a{ 
     font-size: 0.15rem;
     color: #F9E60E;
     position: absolute;

@@ -1,5 +1,5 @@
 <template>
-<scroller  lock-x  @on-scroll="onScroll" ref="scrollerEvent">
+<scroller  lock-x    ref="scrollerEvent">
   <div>
       <div class="test" style="height:2rem;width: 100%;">
         <mt-swipe :auto="4000">

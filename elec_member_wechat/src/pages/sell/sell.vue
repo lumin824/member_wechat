@@ -1,5 +1,5 @@
 <template>
-<scroller    @on-scroll="onScroll" lock-x ref="scrollerEvent">
+<scroller      lock-x ref="scrollerEvent">
   <div style="background-color:#FFFFFF">
    <!-- <mt-header title="商户简介">
       <router-link to="/" slot="left">
@@ -23,9 +23,8 @@
           </mt-swipe>
          </div>
         </div>
-
         <div class="sellAdv" style="background-color:#FFFFFF;height:1.1rem;border-top:1px solid #D9D9D9;">
-              <div style="padding-top:10px">
+              <div style="padding-top:10px"> 
                <img  v-if="logo!=''" style="float: left;padding-right:0.2rem;margin-botton:0.2rem;width:1.2rem;height:0.85rem" :src="this.sell.logo" alt="">
                <img  v-else style="float: left;"  src="" alt="">
                 <ul>
@@ -33,11 +32,11 @@
                     <li style="font-size: 0.13rem;color: #666;margin-top: 0.09rem;">积分热度&nbsp;&nbsp;{{sell.points}}</li>
                     <li style="font-size: 0.13rem;color: #666;margin-top: 0.1rem;">{{sell.industry_name}}</li>
                 </ul>
-              </div>
+              </div>  
         </div>
         <div style="border:1px solid #D9D9D9;height:0.1rem;background-color:#F4F4F4"></div>
         <div class="sellInfo" style="clear: both;background-color:#FFFFFF;margin-top:0.15rem;height:1.2rem;padding-left:0.2rem;">
-
+          
           <h2 style="color:#979797;padding-top:0.15rem;">商家信息</h2>
           <hr>
           <ul>
@@ -92,7 +91,7 @@ import { Scroller } from 'vux'
           this.sell = data.data;
           this.content=this.sell.intro;
           this.tel=this.sell.phone;
-          this.lcmap = this.sell.map_picture ? this.sell.map_picture.replace('121.196.208.176:9354', 'jiayuanMember.dorm9tech.com') : '';
+          this.lcmap = this.sell.map_picture;
 
           if(this.sell.logo.length>0){
             this.logo = this.sell.logo;
