@@ -1,5 +1,5 @@
 <template>
-<scroller    @on-scroll="onScroll" lock-x ref="scrollerEvent">
+<scroller      lock-x ref="scrollerEvent">
   <div style="background-color:#FFFFFF">
    <!-- <mt-header title="商户简介">
       <router-link to="/" slot="left">
@@ -23,7 +23,6 @@
           </mt-swipe>
          </div>
         </div>
-        
         <div class="sellAdv" style="background-color:#FFFFFF;height:1.1rem;border-top:1px solid #D9D9D9;">
               <div style="padding-top:10px"> 
                <img  v-if="logo!=''" style="float: left;padding-right:0.2rem;margin-botton:0.2rem;width:1.2rem;height:0.85rem" :src="this.sell.logo" alt="">

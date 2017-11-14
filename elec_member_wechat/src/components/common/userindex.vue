@@ -77,7 +77,7 @@
 
       <mt-cell title="微信号" style="right:2%;margin-left:0.03rem">
         <!-- <input type="text" :value="this.user.wechat_account" readonly="readonly" style="position:relative;left:50%;outline: none;border: medium;"> -->
-        <input  @change="save" id="address" class="addre" type="text" v-model="user.wechat_account" placeholder="请输入微信号"
+        <input  @change="save"  class="addre" type="text" v-model="user.wechat_account" placeholder="请输入微信号"
            style="position:relative;outline: none;border: medium;
            text-align:right;color:#656B79;left:-7%;height:0.4rem">
       </mt-cell>
@@ -112,7 +112,7 @@
                 display:'',
                 show:false,
                 zero:true,
-                value:[2017,11,2], //默认日期
+                value:[1990,11,2], //默认日期
                 lunar:true, //显示农历
                 select:(value)=>{
                     this.calendar3.show=false;
