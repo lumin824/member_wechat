@@ -146,6 +146,7 @@
         let files = e.target.files || e.dataTransfer.files
         if (!files.length) return
         this.createImage(files)
+        e.target.value = ''
       },
       loadBottom(){
           // 上拉加载
