@@ -1,5 +1,5 @@
 <template>
-   <div>
+   <div style="margin-top:1.23rem">
            <figure>
                   <router-link to="/userInfo"><img src="static/img/userinfo.png"/>
                   <figcaption>个人信息</figcaption></router-link>

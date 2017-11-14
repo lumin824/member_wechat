@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div style="margin-top:0.1rem">
     <ul style="padding-bottom:0.2rem">
        <li>
             <router-link to="/voucher" >
