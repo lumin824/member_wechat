@@ -1,7 +1,7 @@
 <template>
     <div >
       <div style="width:100%">
-        <div style="width:76%">
+        <div style="width:70%">
           <img src="static/img/cat.jpg" alt="">
           <ul>
             <li><span> {{this.user.name}}</span><h3>{{this.user.level}}</h3></li>
@@ -9,7 +9,8 @@
             <li>可用积分:{{this.user.usable_points}}</li>
           </ul>
         </div>
-          <div class="rank" style="margin-top:0.7rem">
+         <div style="width:11%"></div>
+          <div class="rank" style="margin-top:0.7rem;width:80px">
                 <img src="static/img/jb.png" alt="">
                 <a style="margin-top: 0px;top: auto;bottom: 4px;">排行榜</a>
                 <img class="abc" style="margin-top: 3px;margin-left: 0rem;top: auto;bottom: 3px;" src="static/img/jr.png" alt="">
@@ -27,7 +28,6 @@ import {
      data(){
         return {
           user: {
-
           }
         }
       },

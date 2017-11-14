@@ -1,12 +1,12 @@
 <template>
   <div>
-    <mt-navbar v-model="selected">
+    <mt-navbar v-model="selected" style="position:fixed;top:0;left:0;right:0;">
         <mt-tab-item id="1">未使用</mt-tab-item>
         <mt-tab-item id="3">已使用</mt-tab-item>
     </mt-navbar>
 
     <!-- tab-container -->
-    <mt-tab-container v-model="selected">
+    <mt-tab-container v-model="selected" style="margin-top:49px;">
       <mt-tab-container-item id="1">
         <!--<mt-cell v-for="n in 10" :title="'内容 ' + n" />-->
         <!-- <mt-loadmore :top-method="loadTop" :bottom-method="loadBottom" :bottom-all-loaded="allLoaded" :auto-fill="false" ref="loadmore">-->
