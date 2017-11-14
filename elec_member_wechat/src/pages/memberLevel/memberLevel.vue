@@ -7,7 +7,7 @@
               <mt-tab-item id="1">
                 <div style="font-size:0.17rem;font-family:">  积分记录</div>
               </mt-tab-item>
-              <mt-tab-item id="2"><div style="font-size:0.17rem">  会员权益</div></mt-tab-item>
+              <a style="flex:1;display:flex;align-items:center;justify-content:center;" href="https://mp.weixin.qq.com/s/N40si0A7iUNUXRK85sxjZQ" target="_blank">会员权益</a>
          </mt-navbar>
 
          <!-- tab-container -->
