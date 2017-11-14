@@ -64,7 +64,9 @@
   </div>
 </template>
 <script>
-  import  global from '../../../src/components/common/Global'
+  import {
+    apiHost,
+  } from '../../../src/components/common/Global'
   import moment from 'moment';
   import {
     mapState,
@@ -113,8 +115,7 @@
           title:'删除确认',
           content: '确认删除小票？',
           onConfirm: async ()=>{
-
-            await this.$http.delete(`http://121.196.208.176:9001/member/ticket/${ticketId}`)
+            await this.$http.delete(`${apiHost}/member/ticket/${ticketId}`)
             await this.reload()
           }
         })
@@ -131,7 +132,7 @@
           }
         };
         formData.append('file',files[0]);
-        await this.$http.post(`http://121.196.208.176:9001/member/uploadTicket/${this.member_id}`,formData,config)
+        await this.$http.post(`${apiHost}/member/uploadTicket/${this.member_id}`,formData,config)
         await this.reload();
       },
       onFileChange (e) {
@@ -153,7 +154,7 @@
         this.searchCondition.pageNo = parseInt(this.searchCondition.pageNo) + 1;
         this.$http({
           method: 'get',
-          url: `http://121.196.208.176:9001/member/${this.member_id}/tickets?page=${this.searchCondition.pageNo}&&size=${this.searchCondition.pageSize}`,
+          url: `${apiHost}/member/${this.member_id}/tickets?page=${this.searchCondition.pageNo}&&size=${this.searchCondition.pageSize}`,
         }).then(resp => {
           this.pageList = this.pageList.concat(resp.data);
           this.$nextTick(function () {
@@ -193,16 +194,6 @@
     font-size: 0.2rem;
     margin-top: 0.06rem;
     margin-bottom: 0.1rem;
-  }
-  ul {
-  }
-  ul li ul {
-    float: left;
-    font-size: 0.14rem;
-  }
-  ul li ul li {
-    margin-left: 0.05rem;
-    text-align: left;
   }
   textarea{
      overflow: scroll;
