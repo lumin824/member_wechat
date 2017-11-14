@@ -111,7 +111,7 @@
    select option{
      background-color: #9D9D9D;
    }
-  .voucher a{
+  .voucher a{ 
     font-size: 0.15rem;
     color: #F9E60E;
     position: absolute;
