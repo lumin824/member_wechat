@@ -1,68 +1,78 @@
 <template>
- <div>
-  <!--   <mt-header title="小票上传">
-       <router-link to="/" slot="left">
-         <mt-button icon="back">返回</mt-button>
-        &lt;!&ndash; <mt-button  icon="close">关闭</mt-button>&ndash;&gt;
-       </router-link>
-     </mt-header>-->
-     <figure>
-         <img @click="clickCamera" src="static/img/camera.png" alt="">
-         <figcaption> 点击上传
-                      <div style="display: none;"><input id="uploadFile" type="file"  @change="onFileChange"></div>
-         </figcaption>
-     </figure>
-    <t-line>我的上传记录</t-line>
-    <!--<h3 style="font-size: 0.15rem;color: #333;">暂无上传记录</h3>-->
-   <mt-loadmore  :bottom-method="loadBottom" :bottom-all-loaded="allLoaded" :auto-fill="false" ref="loadmore">
-         <ul>
-              <!--   <li v-if="pageList==''" >
-                   <h3 style="font-size: 0.15rem;color: #333;">暂无上传记录</h3>
-                 </li>-->
-                <li  v-for="v in pageList">
-                       <!--已处理通过div-->
-                       <div v-if="v.handle_status==0">
-                                 <img :src="v.file_url" alt="">
-                                 <ul>
-                                   <li>处理状态:&nbsp;<span style="background: #5FB878;color: #fff;border-radius: 0.02rem;padding: 0.02rem;">已处理</span></li>
-                                   <li>回复:&nbsp;&nbsp;<textarea readonly>已处理通过样式</textarea></li>
-                                 </ul>
-                                 <p>上传时间:{{v.upload_date|time }}</p>
-                       </div>
-                      <div v-else-if="v.handle_status==1">
-                              <img :src="v.file_url" alt="">
-                              <ul>
-                                <li>处理状态:&nbsp;<span style="background: #FF6839;color: #fff;border-radius: 0.02rem;padding: 0.02rem;">未通过</span></li>
-                                <li>回复:&nbsp;&nbsp;<textarea readonly>已处理未通过样式</textarea></li>
-                              </ul>
-                              <mt-button size="small" @click="delTicket(v.ticket_id)">删除</mt-button>
-                              <p>上传时间:{{v.upload_date }}</p>
-                      </div>
-                    <div v-else-if="v.handle_status==2">
-                          <img :src="v.file_url" alt="">
-                          <ul>
-                            <li>处理状态:&nbsp;<span style="background: #68A3D5;color: #fff;border-radius: 0.02rem;padding: 0.02rem;">未处理</span></li>
-                          </ul>
-                          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<mt-button size="small" @click="delTicket(v.ticket_id)">删除</mt-button>
-                          <p>上传时间:{{v.upload_date |time}}</p>
-                    </div>
-               </li>
-         </ul>
-   </mt-loadmore>
-    <br>
-   <t-point></t-point>
-   <p style="font-size: 0.13rem;color: #333;margin: 0.7rem 0 0.1rem 0;position: relative;bottom:10px;">最终解释权归本公司所有</p>
- </div>
+  <div style="display:flex;flex-direction:column;min-height:100%;background-color:#fff;align-items:center;">
+    <figure>
+      <img @click="clickCamera" src="static/img/camera.png" alt="">
+      <figcaption> 点击上传
+        <div style="display: none;"><input id="uploadFile" type="file"  @change="onFileChange"></div>
+      </figcaption>
+    </figure>
+
+    <div style="display:flex;align-items:center;width:100%;">
+      <div style="flex:1;border-top:1px solid #ccc;"></div>
+      <div style="margin:0 20px;font-size:0.9em;color:#686868;">我的上传记录</div>
+      <div style="flex:1;border-top:1px solid #ccc;"></div>
+    </div>
+
+    <ul style="margin-top:10px;width:100%;">
+      <li v-if="!pageList.length" style="text-align:center;margin-bottom:20px;font-size:0.9em;">
+        暂无上传记录
+      </li>
+      <li v-for="v in pageList" v-else style="margin:0 8px;">
+        <div v-if="v.handle_status==0">
+          <img :src="v.file_url" alt="">
+          <ul>
+            <li>处理状态:&nbsp;<span style="background: #5FB878;color: #fff;border-radius: 0.02rem;padding: 0.02rem;">已处理</span></li>
+            <li>回复:&nbsp;&nbsp;<textarea readonly>已处理通过样式</textarea></li>
+          </ul>
+          <p>上传时间:{{v.upload_date|time }}</p>
+        </div>
+        <div v-else-if="v.handle_status==1">
+          <img :src="v.file_url" alt="">
+          <ul>
+            <li>处理状态:&nbsp;<span style="background: #FF6839;color: #fff;border-radius: 0.02rem;padding: 0.02rem;">未通过</span></li>
+            <li>回复:&nbsp;&nbsp;<textarea readonly>已处理未通过样式</textarea></li>
+          </ul>
+          <mt-button size="small" @click="delTicket(v.ticket_id)">删除</mt-button>
+          <p>上传时间:{{v.upload_date }}</p>
+        </div>
+        <div v-else-if="v.handle_status==2" style="background-color:#f9fafb;">
+          <div style="display:flex;padding:10px 10px;">
+            <img :src="v.file_url" alt="" style="max-width:96px;max-height:80px;">
+            <div style="margin:5px;font-size:0.9em;flex:1;">
+              <div>处理状态：<span style="color:#ff8100;">未处理</span></div>
+              <div>处理回复：</div>
+              <mt-button size="small" @click="delTicket(v.ticket_id)" style="float:right;">删除</mt-button>
+            </div>
+          </div>
+          <p style="border-top: 1px dashed #ccc;font-size: 0.9em;margin:10px;padding:5px;color:#959697;margin-top:0;">上传时间：{{v.upload_date |time}}</p>
+        </div>
+      </li>
+    </ul>
+
+    <div style="display:flex;font-size:0.9em;color:#666;margin: 0 10px;flex:1;">
+      <div style="white-space:nowrap;">温馨提示：</div>
+       <ul style="text-align:left;text-indent:-0.9em;margin-left:0.9em;">
+         <li>
+           1 小票有效期有三个月，请及时上传
+         </li>
+         <li>
+           2 后台人员尽快为您录入，如有问题可电话 <a style="color:#06c1ae;" href="tel:021-65708888">021-65708888</a>
+         </li>
+       </ul>
+    </div>
+    <p style="font-size: 0.13rem;color: #333;margin: 0.7rem 0 0.1rem 0;position: relative;bottom:10px;">最终解释权归本公司所有</p>
+  </div>
 </template>
 <script>
-  import  orderLine from '../../../src/components/common/orderLine.vue'
-  import  point from  '../../../src/components/common/point.vue'
-  import  {getCookie} from '../../../src/util/util'
   import  global from '../../../src/components/common/Global'
+
+  import {
+    mapState,
+  } from 'vuex';
+
   export default {
     data(){
         return {
-             member_id:'',
              defaultResult:'',
              searchCondition:{  //
               pageNo:"1",
@@ -75,9 +85,10 @@
             scrollMode:"auto" //移动端弹性滚动效果，touch为弹性滚动，auto是非弹性滚动
         }
     },
-    components:{
-      't-line':orderLine,
-      't-point':point
+    computed: {
+      ...mapState({
+        member_id: state => state.user,
+      }),
     },
     filters:{
        time(value){
@@ -90,89 +101,48 @@
          return y+"/"+m.substring(m.length-2,m.length)+"/"+d.substring(d.length-2,d.length)+' '+H+':'+minu;
        }
     },
-      mounted(){
-        this.member_id = getCookie('member_id');
-        this.$http.get(`http://121.196.208.176:9001/member/${this.member_id}/tickets`,{page:this.searchCondition.pageNo,size:this.searchCondition.pageSize}).then(data =>{
-            this.pageList = data.data;
-        },err=>{
-
-        });
-      },
+    mounted(){
+      this.reload();
+    },
     methods:{
-         delTicket(ticketId){
-                 let url = `http://121.196.208.176:9001/member/ticket/${ticketId}`
-                 let xhr = new XMLHttpRequest();
-                 xhr.timeout=3000;
-                 xhr.open("DELETE",url);
-                 xhr.setRequestHeader("X-Requested-With", "XMLHttpRequest"); //请求头部，需要服务端同时设置
-                 xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
-                 xhr.onload = function (e) {
-                   if(xhr.readyState == 4 && xhr.status == 200){
-                       let data = xhr.response;
-                      setTimeout(window.location.reload(),2000);
-                   }
-                 }
-                 xhr.send();
-   /*              setTimeout(()=>{
-                   /!*       //删除成功,刷新页面
-                           this.$http.get(`http://121.196.208.176:9001/member/${this.member_id}/tickets`).then(data =>{
-                           this.pageList = data.data;
-                           console.log(this.tickets);
-                         },err=>{
-                           console.log(err);
-                         });
-                         this.$router.push('/registerSucc');
-      *!/                        this.$router.push('/ticketsUpload');
-                 },2000);*/
-         },
-         clickCamera(){
-           if(getCookie('member_id')==null){
-                   this.$toast({
-                     message:'请先登陆!',
-                     possition:'top',
-                   });
-                     setTimeout(this.$router.push('/login'),3000);
-                     return false;
-                   }
-                  document.getElementById('uploadFile').click();
-         },
-        createImage(files){
-            let formData = new FormData();
-            let config = {
-              headers: {
-                'Content-Type': 'multipart/form-data'
-              }
-            };
-            //formData.append('memberId', getCookie('member_id'));
-            formData.append('file',files[0]);
-            //${getCookie('member_id')}'http://121.196.208.176:9001/member/uploadTicket/16 http://localhost/uploadTicket/16 ${getCookie('member_id')}
-            this.$http.post(`http://121.196.208.176:9001/member/uploadTicket/${this.member_id}`,formData,config).then(data =>{
-              if(data.status===200){
-                this.$http.get(`http://121.196.208.176:9001/member/${this.member_id}/tickets`).then(data =>{
-                  this.pageList = data.data;
-                  console.log(this.tickets);
-                },err=>{
-                  console.log(err);
-                });
-              }
-          },err=>{
-            console.log(err);
-          });
-        },
-         onFileChange (e) {
-           let files = e.target.files || e.dataTransfer.files
-           console.log(files[0]);
-           if (!files.length) return
-           this.createImage(files)
-        },
-
-        loadBottom(){
+      async reload(){
+        try{
+          let { data } = await this.$http.get(`http://121.196.208.176:9001/member/${this.member_id}/tickets`,{page:this.searchCondition.pageNo,size:this.searchCondition.pageSize});
+          this.pageList = data;
+        }catch (e){
+          this.pageList = [];
+        }
+      },
+      async delTicket(ticketId){
+        await this.$http.delete(`http://121.196.208.176:9001/member/ticket/${ticketId}`)
+        await this.reload()
+      },
+      clickCamera(){
+        document.getElementById('uploadFile').click();
+      },
+      async createImage(files){
+        let formData = new FormData();
+        let config = {
+          headers: {
+            'Content-Type': 'multipart/form-data'
+          }
+        };
+        formData.append('file',files[0]);
+        await this.$http.post(`http://121.196.208.176:9001/member/uploadTicket/${this.member_id}`,formData,config)
+        await this.reload();
+      },
+      onFileChange (e) {
+        let files = e.target.files || e.dataTransfer.files
+        if (!files.length) return
+        this.createImage(files)
+      },
+      loadBottom(){
           // 上拉加载
           this.more();// 上拉触发的分页查询
           this.$refs.loadmore.onBottomLoaded();// 固定方法，查询完要调用一次，用于重新定位
         },
       loadPageList() {
-        let member_id = getCookie('member_id');
+        let member_id = this.member_id;
 /*        this.$http.get(`http://121.196.208.176:9001/member/${member_id}/tickets`,{page:this.searchCondition.pageNo,size:this.searchCondition.pageSize}).then(data =>{
           this.pageList = data.data;
         },err=>{
@@ -208,10 +178,6 @@
   }
 </script>
 <style lang="less" scoped>
-  div{
-    text-align: center;
-    background-color: #fff;
-  }
   figure{
   }
   figure img{
@@ -228,31 +194,19 @@
     margin-bottom: 0.1rem;
   }
   ul {
-    margin-top: 0.15rem;
   }
-  ul li div{
-    background-color: #fafafa;
-    padding: 0.02rem 0;
-  }
-  ul li div img {
-    width: 1rem;
-    height: 0.8rem;
-    margin-bottom: 0.1rem;
-    margin-left: 0.21rem;
-    margin-top: 0.15rem;
-    float: left;
-  }
-  ul li div p{
-     border-top:1px dashed #ccc;
-     text-align: left;
-     margin-left: 0.2rem;
-     font-size: 0.13rem;
-     color: #666;
-     margin-top:0.15rem;
-     background-color: #fafafa;
-     padding: 0.05rem;
-     clear: both;
-  }
+
+  // ul li div p{
+  //    border-top:1px dashed #ccc;
+  //    text-align: left;
+  //    margin-left: 0.2rem;
+  //    font-size: 0.13rem;
+  //    color: #666;
+  //    margin-top:0.15rem;
+  //    background-color: #fafafa;
+  //    padding: 0.05rem;
+  //    clear: both;
+  // }
   ul li ul {
     float: left;
     font-size: 0.14rem;
@@ -271,9 +225,5 @@
      border: 0.01rem solid #ccc;
      -webkit-appearance: none;
      width: 1.2rem;
-  }
-  ul li div button{
-       position: relative;
-        top:0.6rem;
   }
 </style>
