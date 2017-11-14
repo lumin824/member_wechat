@@ -44,7 +44,6 @@ import {
 </script>
 <style lang="less" scoped>
      div{
-        max-width: 640px;
         border-top: 0.5px solid #e1e1e1;
         height: 120px;
         display: flex;
@@ -78,7 +77,7 @@ import {
         font-weight:600;
         margin-right: 5px;
         color: #333;
-   }  
+   }
    ul li h3{
         display:inline-block;
         background-color: #76dace;
