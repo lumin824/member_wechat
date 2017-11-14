@@ -50,7 +50,7 @@
     </ul>
 
     <div style="display:flex;font-size:0.9em;color:#666;margin: 0 10px;flex:1;">
-      <div style="white-space:nowrap;">温馨提示：</div>
+      <div style="white-space:nowrap;width:4.5em;">温馨提示：</div>
        <ul style="text-align:left;text-indent:-0.9em;margin-left:0.9em;">
          <li>
            1 小票有效期有三个月，请及时上传
@@ -178,8 +178,6 @@
   }
 </script>
 <style lang="less" scoped>
-  figure{
-  }
   figure img{
     width: 0.8rem;
     height: 0.8rem;
@@ -195,18 +193,6 @@
   }
   ul {
   }
-
-  // ul li div p{
-  //    border-top:1px dashed #ccc;
-  //    text-align: left;
-  //    margin-left: 0.2rem;
-  //    font-size: 0.13rem;
-  //    color: #666;
-  //    margin-top:0.15rem;
-  //    background-color: #fafafa;
-  //    padding: 0.05rem;
-  //    clear: both;
-  // }
   ul li ul {
     float: left;
     font-size: 0.14rem;
