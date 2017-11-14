@@ -1,5 +1,5 @@
 <template>
-  <scroller lock-x style="height:100%;">
+  <scroller lock-x>
   <div style="display:flex;flex-direction:column;min-height:100%;background-color:#fff;align-items:center;">
     <figure>
       <img @click="clickCamera" src="static/img/camera.png" alt="">
@@ -107,7 +107,9 @@
     methods:{
       async reload(){
         try{
-          let { data } = await this.$http.get(`http://121.196.208.176:9001/member/${this.member_id}/tickets`,{page:this.searchCondition.pageNo,size:this.searchCondition.pageSize});
+          let { data } = await this.$http.get(`http://121.196.208.176:9001/member/${this.member_id}/tickets`,{
+            params: {mallId: global.mallId}
+          });
           this.pageList = data;
         }catch (e){
           this.pageList = [];
@@ -136,6 +138,7 @@
           }
         };
         formData.append('file',files[0]);
+        formData.append('mallId', 1);
         await this.$http.post(`${apiHost}/member/uploadTicket/${this.member_id}`,formData,config)
         await this.reload();
       },
