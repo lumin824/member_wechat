@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div style="margin-top:1.24rem">
          <mt-field label="新手机号" placeholder="请输入手机号"></mt-field>
 
          <mt-field label="验证码"   placeholder="请输入验证码">
