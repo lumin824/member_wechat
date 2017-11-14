@@ -37,7 +37,7 @@
         </div>
         <div v-else-if="v.handle_status==2" style="background-color:#f9fafb;">
           <div style="display:flex;padding:10px 10px;">
-            <img :src="v.file_url" alt="" style="max-width:96px;max-height:80px;">
+            <img :src="v.file_url" alt="" style="width:96px;height:96px;">
             <div style="margin:5px;font-size:0.9em;flex:1;">
               <div>处理状态：<span style="color:#ff8100;">未处理</span></div>
               <div>处理回复：</div>
@@ -49,8 +49,8 @@
       </li>
     </ul>
 
-    <div style="display:flex;font-size:0.9em;color:#666;margin: 0 10px;flex:1;">
-      <div style="white-space:nowrap;">温馨提示：</div>
+    <div style="display:flex;font-size:12px;color:#666;margin: 0 10px;flex:1;">
+      <div style="white-space:nowrap;width:80px;">温馨提示：</div>
        <ul style="text-align:left;text-indent:-0.9em;margin-left:0.9em;">
          <li>
            1 小票有效期有三个月，请及时上传
@@ -65,7 +65,7 @@
 </template>
 <script>
   import  global from '../../../src/components/common/Global'
-
+  import moment from 'moment';
   import {
     mapState,
   } from 'vuex';
@@ -92,13 +92,7 @@
     },
     filters:{
        time(value){
-         let date =  new Date(value);
-         let y = 1900+date.getYear();
-         let m = "0"+(date.getMonth()+1);
-         let d = "0"+date.getDate();
-         let H = date.getHours();
-         let minu= date.getMinutes();
-         return y+"/"+m.substring(m.length-2,m.length)+"/"+d.substring(d.length-2,d.length)+' '+H+':'+minu;
+         return moment.unix(value / 1000).format('YYYY/MM/DD hh:mm')
        }
     },
     mounted(){
@@ -114,8 +108,17 @@
         }
       },
       async delTicket(ticketId){
-        await this.$http.delete(`http://121.196.208.176:9001/member/ticket/${ticketId}`)
-        await this.reload()
+
+        this.$vux.confirm.show({
+          title:'删除确认',
+          content: '确认删除小票？',
+          onConfirm: async ()=>{
+
+            await this.$http.delete(`http://121.196.208.176:9001/member/ticket/${ticketId}`)
+            await this.reload()
+          }
+        })
+
       },
       clickCamera(){
         document.getElementById('uploadFile').click();
@@ -178,8 +181,6 @@
   }
 </script>
 <style lang="less" scoped>
-  figure{
-  }
   figure img{
     width: 0.8rem;
     height: 0.8rem;
@@ -195,18 +196,6 @@
   }
   ul {
   }
-
-  // ul li div p{
-  //    border-top:1px dashed #ccc;
-  //    text-align: left;
-  //    margin-left: 0.2rem;
-  //    font-size: 0.13rem;
-  //    color: #666;
-  //    margin-top:0.15rem;
-  //    background-color: #fafafa;
-  //    padding: 0.05rem;
-  //    clear: both;
-  // }
   ul li ul {
     float: left;
     font-size: 0.14rem;

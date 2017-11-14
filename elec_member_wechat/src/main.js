@@ -9,6 +9,8 @@ import AMap from 'vue-amap'
 import Vuex from 'vuex'
 import 'mint-ui/lib/style.css'
 
+import { ConfirmPlugin } from 'vux'
+Vue.use(ConfirmPlugin)
 
 Vue.prototype.$http = axios
 Vue.use(Mint);
