@@ -73,7 +73,7 @@
         loptions: [
           { text: '楼层', value: '0' },
           { text: '一层', value: '1' },
-          { text: '二层', value: '2' },
+          { text: '二层', value: '2' },   
           { text: '三层', value: '3' }
         ],
         foptions: [
