@@ -25,7 +25,7 @@
              </div>
              <div class="sortList" id="shop_type" v-show="sortList">
                       <ul>
-                        <scroller @on-scroll="onScroll" lock-x ref="scrollerEvent" style="height:300px;">
+                        <scroller    @on-scroll="onScroll" lock-x ref="scrollerEvent" style="height:300px;">
                               <li v-show="lselected">
                                     <a   v-on:click="lTextClick('全部','')">全部</a>
                                     <a  v-on:click="lTextClick(loption.map_name,loption.map_id)" v-for="loption in loptions">{{ loption.map_name }}</a>
@@ -39,7 +39,7 @@
                                     <a href="javascript:" @click="oTextClick(ooption.text,ooption.value)" v-for="ooption in ooptions">{{ ooption.text }}</a>
                               </li> 
                           </scroller>                             
-                      </ul>
+                      </ul> 
                      <div class="mask" style="display: block;" @click="maskClick"></div>
              </div>
      </div>
@@ -597,7 +597,6 @@ text-align:center;
   .mint-search{
     height: 10vh !important;
   }
-
 </style>
 
 
