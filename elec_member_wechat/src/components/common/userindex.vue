@@ -1,5 +1,5 @@
 <template>
-    <div>
+    <div style="margin-top:1.23rem">
         <mt-cell title="姓名" style="right:2%;margin-left:0.03rem">
           <!-- :value="this.user.name"  ↓ -->
           <input id="name" type="text" v-model="user.name"

@@ -1,5 +1,5 @@
 <template>
-    <div>
+    <div style="position:fixed;top:0;left:0;right:0;">
       <img src="static/img/cat.jpg" alt="">
        <ul>
          <li><span> {{this.user.name}}</span><h3>{{this.user.level}}</h3></li>
@@ -45,7 +45,6 @@ import {
 <style lang="less" scoped>
      div{
         max-width: 640px;
-        margin-top: 0.12rem;
         border-top: 0.5px solid #e1e1e1;
         height: 120px;
         display: flex;

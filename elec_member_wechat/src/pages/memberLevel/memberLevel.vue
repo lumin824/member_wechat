@@ -1,5 +1,5 @@
 <template>
-   <div>
+   <div style="margin-top:1.23rem">
         
          <m-header></m-header>
          <mt-navbar v-model="selected">
@@ -16,11 +16,7 @@
                  <!--<mt-cell v-for="n in 10" :title="'内容 ' + n" />-->
                      <!-- <mt-loadmore :top-method="loadTop" :bottom-method="loadBottom" :bottom-all-loaded="allLoaded" :auto-fill="false" ref="loadmore">-->
                       <mt-loadmore  :bottom-method="loadBottom" :bottom-all-loaded="allLoaded" :auto-fill="false" ref="loadmore">
-                        <!--  <ul class="list" v-for="(val, key) in pageList">
-                            <li>
-
-                            </li>
-                          </ul>-->
+                     
                          <table width="100%" style="padding-right:0px;">
                                   <thead width="100%">
                                           <tr style="height:0.5rem;width=100%;">
