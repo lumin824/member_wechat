@@ -1,4 +1,5 @@
 <template>
+  <scroller lock-x style="height:100%;">
   <div style="display:flex;flex-direction:column;min-height:100%;background-color:#fff;align-items:center;">
     <figure>
       <img @click="clickCamera" src="static/img/camera.png" alt="">
@@ -62,10 +63,12 @@
     </div>
     <p style="font-size: 0.13rem;color: #333;margin: 0.7rem 0 0.1rem 0;position: relative;bottom:10px;">最终解释权归本公司所有</p>
   </div>
+  </scroller>
 </template>
 <script>
   import global from '../../../src/components/common/Global'
   import moment from 'moment';
+  import { Scroller } from 'vux'
   import {
     mapState,
   } from 'vuex';
@@ -73,6 +76,7 @@
   const { apiHost } = global;
 
   export default {
+    components: {Scroller},
     data(){
         return {
              defaultResult:'',
