@@ -10,7 +10,7 @@
       <mt-tab-container-item id="1">
         <!--<mt-cell v-for="n in 10" :title="'内容 ' + n" />-->
         <!-- <mt-loadmore :top-method="loadTop" :bottom-method="loadBottom" :bottom-all-loaded="allLoaded" :auto-fill="false" ref="loadmore">-->
-        <mt-loadmore  :bottom-method="loadBottom" :bottom-all-loaded="allLoaded" :auto-fill="false" ref="loadmore">
+        <scroller lock-x ref="scrollerEvent"  >
              <ul>
                       <li>   
                            <img src="static/img/hgds.jpg" alt="">
@@ -37,7 +37,7 @@
                            </div>
                      </li>
              </ul>
-        </mt-loadmore>
+        </scroller>
       </mt-tab-container-item>
       <mt-tab-container-item id="2">
         <iframe name="a_iframe" id="'a_iframe'"  src="" marginwidth="0" marginheight="0"   frameborder="0" WIDTH="100%" height="500"></iframe>
@@ -50,8 +50,10 @@
   import  Header from '../../../src/components/header/header.vue'
   import  {getCookie} from '../../../src/util/util'
   import  global from '../../../src/components/common/Global'
+  import { Scroller } from 'vux'
   export default {
     components:{
+      Scroller,
       'memberId':'',
       'm-header':Header,
       'detail': {
