@@ -1,20 +1,8 @@
 <template>
 <scroller  lock-x  @on-scroll="onScroll" ref="scrollerEvent">
   <div>
-      <!--  <mt-header :title="title">
-            <router-link to="/" slot="left">
-              <mt-button icon="back">返回</mt-button>
-              <mt-button  icon="close">关闭</mt-button>
-            </router-link>
-        </mt-header>-->
       <div class="test" style="height:2rem;width: 100%;">
         <mt-swipe :auto="4000">
-         <!-- <mt-swipe-item v-for="(item,index) in pictures">
-             <img src="{{item.mapUrl}}" alt="">
-          </mt-swipe-item>--> 
-       <!--   <template v-for="(v,k) in pictures">
-            <mt-swipe-item><img src="static/img/2.jpg" alt=""></mt-swipe-item>
-          </template>-->
           <mt-swipe-item v-for="v in pictures" :key="v.id">
                <img :src="v.mapUrl">
           </mt-swipe-item>

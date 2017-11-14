@@ -1,30 +1,34 @@
 <template>
     <div>
         <mt-cell title="姓名" style="right:2%;margin-left:0.03rem">
-          <input id="name" type="text" :value="this.user.name" 
-            style="position:relative;outline: none;border: medium;text-align:right;left:-7%" @change="save" >
+          <!-- :value="this.user.name"  ↓ -->
+          <input id="name" type="text" value="徐磊111"
+            style="position:relative;outline: none;border: medium;
+                text-align:right;left:-7%;height:0.4rem" @change="save">
         </mt-cell>
 
 
         <mt-cell title="性别" is-link style="right:2%;margin-left:0.03rem;">
-          <select style="position:relative;right:-3%;height:0.2rem;width:2.3rem;padding-left: 2.1rem;" v-model="user.sex" @change="save">
+          <select style="position:relative;right:-3%;height:0.2rem;width:2.3rem;padding-left: 2.1rem;height:0.4rem" v-model="user.sex" @change="save">
             <option value="0">男</option>
             <option value="1">女</option>
           </select>
         </mt-cell>
         <mt-cell title="生日" is-link style="right:2%;margin-left:0.03rem">
             <input  @change="save" id="time" type="text" @click="openByDrop($event)" v-model="calendar3.display" readonly 
-                style='position:absolute;left:69%;overflow:auto; background-attachment: fixed; 
-                     background-repeat: no-repeat; border-style: solid; border-color: #FFFFFF;color:#888888;'>
+                style='position:relative;outline: none;border: medium;text-align:right;color:#656B79;left:-1%;height:0.4rem'>
+                     <!--width:1.0rem;position:absolute;left:17%;overflow:auto; background-attachment: fixed; 
+                     background-repeat: no-repeat; border-style: solid; border-color: #FFFFFF;color:#888888;
+                     padding-left: 50% -->
        </mt-cell>
      <transition name="fade">
-    <!-- <div class="calendar-dropdown" v-if="calendar3.show" style="float:left;position:absolute;z-index:100;width:100%">
+    <div class="calendar-dropdown" v-if="calendar3.show" style="float:left;position:absolute;z-index:100;width:100%">
         <calendar :zero="calendar3.zero" :lunar="calendar3.lunar" :value="calendar3.value" :begin="calendar3.begin" :end="calendar3.end" @select="calendar3.select"></calendar>
-    </div> -->
+    </div>
     </transition>
 
       <mt-cell title="职业" is-link style="right:2%;margin-left:0.03rem">
-        <select style="position:relative;left:5%" v-model="user.occupation"  @change="save">
+        <select style="position:relative;right:-3%;height:0.2rem;width:2.3rem;padding-left:1.8rem;height:0.4rem" v-model="user.occupation"  @change="save">
          <option value="0">请选择</option>
           <option value="1">工程师</option>
           <option value="2">医生</option>
@@ -33,46 +37,42 @@
 
       <mt-cell title="地址" style="right:3%;margin-left:0.07rem">
         <input  @change="save" id="address" class="addre" type="text" v-model="user.address" placeholder="请输入地址"
-           style="position:relative;outline: none;border: medium;text-align:right;color:#656B79;left:-7%">
+           style="position:relative;outline: none;border: medium;
+           text-align:right;color:#656B79;left:-7%;height:0.4rem">
       </mt-cell>
       <mt-cell title="教育程度" is-link style="right:2%;margin-left:0.03rem">
-        <select style="position:relative;left:15%" v-model="user.degree_of_education" @change="save">
+        <select style="position:relative;right:-3%;height:0.4rem;width:2rem;padding-left:1.5rem" v-model="user.degree_of_education" @change="save">
           <option value="0">请选择</option>
-          <option value="1" selected>博士</option>
+          <option value="1">博士</option>
           <option value="2">硕士</option>
           <option value="3">本科</option>
           <option value="4">大专</option>
           <option value="5">高中</option>
         </select>
       </mt-cell>
-      <!-- <div style="position:relative;">   
-        <span style="margin-left:100px;width:0px;overflow:hidden" >   
-            <select style="position:relative;left:15%" v-model="user.degree_of_education" @change="save">   
-            <option value="A">A</option>   
-            <option value="B">B</option>   
-            <option value="C">C</option>   
-            </select>  
-        </span>  
-        <input name="box" id="box" style="width:100px;position:absolute;left:0px;height:25px">   
-      </div> -->
 
       <mt-cell title="收入范围" is-link style="right:2%;margin-left:0.03rem">
-        <select style="position:relative;left:5%" v-model="user.income_range" @change="save">
+        <select style="position:relative;right:-3%;height:0.4rem;width:2rem;padding-left:0.95rem" v-model="user.income_range" @change="save">
            <option value="0">请选择收入范围</option>
            <option value="1">10000-50000</option>
            <option value="2">50000-100000</option>
         </select>
       </mt-cell>
      <mt-cell title="兴趣爱好" is-link style="right:2%;margin-left:0.03rem">
-        <select style="position:relative;left:5%" v-model="user.interest" @change="save">
+        <select style="position:relative;right:-3%;height:0.4rem;width:2rem;padding-left:1.5rem" v-model="user.interest" @change="save">
           <option value="0">请选择</option>
           <option value="1">篮球</option>
           <option value="2">游泳</option>
         </select>
       </mt-cell>
       <mt-cell title="手机" style="right:3%;margin-left:0.06rem">
-        <input  type="text" :value="this.user.mobile" readonly="readonly" style="position:relative;left:34%;outline: none;border: medium;">
-        <router-link to="/changePhone"><mt-button size="small" style="background-color:#F2F2F2">修改</mt-button></router-link>
+        <input  type="text" :value="this.user.mobile" readonly="readonly" style="position:relative;left:-5%;outline: none;border: medium;width:1.3rem;">
+        <!-- <router-link to="/changePhone"><mt-button size="small" style="background-color:#F2F2F2">修改</mt-button></router-link> -->
+        <div style="margin-top:-2%">
+          <router-link to="/changePhone">
+            <img src="static/img/updatephone.png" style="width:0.28rem;height:0.28rem" alt="">
+          </router-link>
+        </div>
       </mt-cell>
 
       <mt-cell title="微信号" style="right:2%;margin-left:0.03rem">

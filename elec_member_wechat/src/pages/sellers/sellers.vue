@@ -1,11 +1,10 @@
 <template>
    <div>
-     <div style="position:fixed;right:0;left:0;top:0;z-index:1;background-color:#F2F2F2;">
+     <div style="position:fixed;right:0;left:0;top:0;z-index:1;background-color:#F2F2F2;" class="div1">
             <div style="height: 0.2rem; border-radius:18px;">
                 <mt-search v-model="sValue"  cancel-text="取消" placeholder="请输入关键词,例如:肯德基" :result="filterResult" ></mt-search>
             </div>
              <div class="sortField sortType_01" style="border-bottom:1px solid #E6E6E6;">
-
                    <a href="javascript:"  @click="selectChange(1)" style="margin-top:10px">
                       <span id="sp_floor">
                           {{ltext}}
@@ -26,9 +25,11 @@
              </div>
              <div class="sortList" id="shop_type" v-show="sortList">
                       <ul>
+                        <scroller @on-scroll="onScroll" lock-x ref="scrollerEvent" style="height:300px;">
                               <li v-show="lselected">
                                     <a   v-on:click="lTextClick('全部','')">全部</a>
                                     <a  v-on:click="lTextClick(loption.map_name,loption.map_id)" v-for="loption in loptions">{{ loption.map_name }}</a>
+                                    
                                </li>
                               <li v-show="fselected">
                                     <a href="javascript:" @click="fTextClick('全部','')">全部</a>
@@ -36,35 +37,12 @@
                               </li>
                               <li v-show="oselected">
                                     <a href="javascript:" @click="oTextClick(ooption.text,ooption.value)" v-for="ooption in ooptions">{{ ooption.text }}</a>
-                              </li>
+                              </li> 
+                          </scroller>                             
                       </ul>
                      <div class="mask" style="display: block;" @click="maskClick"></div>
              </div>
      </div>
-    <!-- <mt-loadmore  :bottom-method="loadBottom" :bottom-all-loaded="allLoaded" :auto-fill="false" ref="loadmore" style="margin-top:1.1rem">
-      <transition name="router-fade" enter-active-class="animated fadeIn"  leave-active-class="animated fadeOut" mode="out-in">
-        <ul class="sellers" v-show="showlist">
-          <li v-for="v in pageList">
-            <router-link :to="{path:'/sell',query:{sell_id:v.shop_id}}" style="width:100%;height:1.10rem">
-              <div class="left" >
-                <img :src="v.logo" alt="" style="width:1.1rem;height:0.85rem;padding-left:0.2rem">
-                <div class="imgright">
-                  <h1 style="padding-bottom:0.1rem">{{v.shop_name}}</h1>
-                  <h3 style="padding-top:-0.2rem;padding-bottom:0.01rem">{{v.industry_name}}</h3>
-                  <img class="imgleft" src="static/img/jf.png" style="padding-top:0.03rem" alt="">
-                  <h2>{{v.berth_number}}</h2>
-                </div>
-              </div>
-              <div class="right">
-                 <img src="static/img/lc.png" alt="">
-                 <h3>{{v.points}}</h3>
-              </div>
-            </router-link>
-          </li>
-        </ul>
-      </transition>
-    </mt-loadmore> -->
-
     <scroller style="margin-top:1rem;"  lock-x  @on-scroll="onScroll" ref="scrollerEvent">
       <div class="box2" style="padding-bottom:1rem">
         <ul class="sellers" v-show="showlist">
@@ -87,7 +65,7 @@
           </li>
         </ul>
       </div>
-       <div v-show="notmore" style="text-align:center;color:#7D7D7D;padding-top:0.05rem;padding-bottom:0.05rem;">更多商家接入中，敬请期待...</div>
+      <div v-show="notmore" style="text-align:center;color:#7D7D7D;padding-top:0.05rem;padding-bottom:0.05rem;">更多商家接入中，敬请期待...</div>
     </scroller>
 
  
@@ -364,6 +342,11 @@ import { Scroller } from 'vux'
   }
 </script>
 <style>
+  .mint-searchbar{
+    position: absolute;
+    left: 0px;
+    right: 0px;
+  }
   .mint-searchbar-inner{
      border-radius:18px !important;
    }
@@ -512,7 +495,6 @@ import { Scroller } from 'vux'
      margin:0;
      padding: 0;
      border:0;
-     outline: 0;
      font-weight: inherit;
      font-size:100%;
      font-family: inherit;
@@ -526,7 +508,11 @@ import { Scroller } from 'vux'
 
    }
    .sortList ul li{
-     padding:1em 0 5em 1em;
+     /* padding:1em 0 5em 1em; */
+     position: relative;
+     left: 0px;
+     right: 0px;
+
    }
    .sortList ul li a{
      display: block;
