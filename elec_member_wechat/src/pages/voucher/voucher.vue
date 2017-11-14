@@ -63,9 +63,9 @@
     margin-left: 5%;
   }
   .sercher{
-    position: fixed;
-    left: 88%;
-    top: 4%;
+    position: absolute;
+    left: 87%;
+    top: 15%;
   }
   .voucher{
     position: fixed;
