@@ -78,7 +78,7 @@ import {
         font-weight:600;
         margin-right: 5px;
         color: #333;
-   }
+   }  
    ul li h3{
         display:inline-block;
         background-color: #76dace;
