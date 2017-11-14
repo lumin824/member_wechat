@@ -173,8 +173,8 @@ import { Scroller } from 'vux'
                   let serarhData = {};
                   //拼接搜索条件
                   serarhData.mall_id=this.mall_id;
-                  if(this.lsselected!='')serarhData.industry_id = this.fsfselected;
-                  if(this.fsfselected!='')serarhData.map_id = this.lsselected;
+                  if(this.fsfselected!='')serarhData.industry_id = this.fsfselected;
+                  if(this.lsselected!='')serarhData.map_id = this.lsselected;
                   if(this.osselected!='')serarhData.sort = this.osselected;
                   serarhData.page =  this.searchCondition.pageNo;
                   serarhData.size = this.searchCondition.pageSize;
@@ -220,6 +220,7 @@ import { Scroller } from 'vux'
                 if(this.osselected!='')serarhData.sort = this.osselected;
                 serarhData.page =  this.searchCondition.pageNo;
                 serarhData.size = this.searchCondition.pageSize;
+                serarhData.keywords = this.sValue;
                 //条件变化重新初始化
                 this.oldSearchCondition = serarhData;
                 this.$http({
@@ -349,6 +350,9 @@ import { Scroller } from 'vux'
   }
   .mint-searchbar-inner{
      border-radius:18px !important;
+   }
+   .mint-search-list {
+     height: 0;
    }
    .sortField{
      margin-top: 0.32rem;
