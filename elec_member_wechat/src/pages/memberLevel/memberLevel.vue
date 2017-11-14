@@ -1,9 +1,9 @@
 <template>
    <div style="margin-top:1.23rem">
-        
+
          <m-header></m-header>
          <mt-navbar v-model="selected">
-           
+
               <mt-tab-item id="1">
                 <div style="font-size:0.17rem;font-family:">  积分记录</div>
               </mt-tab-item>
@@ -16,7 +16,7 @@
                  <!--<mt-cell v-for="n in 10" :title="'内容 ' + n" />-->
                      <!-- <mt-loadmore :top-method="loadTop" :bottom-method="loadBottom" :bottom-all-loaded="allLoaded" :auto-fill="false" ref="loadmore">-->
                       <mt-loadmore  :bottom-method="loadBottom" :bottom-all-loaded="allLoaded" :auto-fill="false" ref="loadmore">
-                     
+
                          <table width="100%" style="padding-right:0px;">
                                   <thead width="100%">
                                           <tr style="height:0.5rem;width=100%;">
@@ -126,14 +126,22 @@
   import  Header from '../../../src/components/header/header.vue'
   import  {getCookie} from '../../../src/util/util'
   import  global from '../../../src/components/common/Global'
+  import {
+    mapState,
+  } from 'vuex';
   export default {
     components:{
-      
+
       'memberId':'',
       'm-header':Header,
       'detail': {
            template:'<tr><td colspan="2"><ul style="color:#333;text-align: left; margin-left: 20%;font-size: 0.12rem;"><li>消费时间&nbsp;&nbsp;&nbsp;&nbsp;2017-09-01 09:00</li><li>消费商户&nbsp;&nbsp;&nbsp;&nbsp;肯德基</li><li>消费金额&nbsp;&nbsp;&nbsp;&nbsp;100</li><li>获得积分&nbsp;&nbsp;&nbsp;&nbsp;1</li></ul></td></tr>'
       }
+    },
+    computed: {
+      ...mapState({
+        member_id: state => state.user,
+      }),
     },
     filters:{
       time(value){
@@ -164,12 +172,11 @@
       }
     },
     mounted(){
-      this.memberId=getCookie('member_id');
       //this.loadPageList();  //初次访问查询列表
       this.$http({
         method: 'post',
         //url: `http://121.196.208.176:9001/member/${this.memberId}/pointsList`,
-        url: `http://121.196.208.176:9001/member/${this.memberId}/pointsList`,
+        url: `http://121.196.208.176:9001/member/${this.member_id}/pointsList`,
         data: {mallId:global.mallId,page:this.searchCondition.pageNo,size:this.searchCondition.pageSize}
       }).then(resp => {
         console.log(resp);
@@ -194,7 +201,7 @@
         this.searchCondition.pageNo = parseInt(this.searchCondition.pageNo) + 1;
         this.$http({
           method: 'post',
-          url: `http://121.196.208.176:9001/member/${this.memberId}/pointsList`,
+          url: `http://121.196.208.176:9001/member/${this.member_id}/pointsList`,
           data: {mallId:global.mallId,page:this.searchCondition.pageNo,size:this.searchCondition.pageSize}
         }).then(resp => {
           this.pageList = this.pageList.concat(resp.data);
@@ -222,7 +229,7 @@
           this.allLoaded = false;
         }
       },
-     
+
       showDetail(v,k){
            //发送ajax请求
      /*      v.meta.xfsj=v.shopping_date;
