@@ -1,5 +1,5 @@
 <template>
-    <div style="margin-top:1.23rem">
+    <div>
         <mt-cell title="姓名" style="right:2%;margin-left:0.03rem">
           <!-- :value="this.user.name"  ↓ -->
           <input id="name" type="text" v-model="user.name"
@@ -256,8 +256,4 @@ import {
   .mint-cell-wrapper:first{
     background-image: none;
   }
-  // .mint-button--default{
-  //   /* background-color: red;*/
-
-  // }
 </style>
