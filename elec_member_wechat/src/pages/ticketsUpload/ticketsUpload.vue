@@ -65,7 +65,7 @@
 </template>
 <script>
   import  global from '../../../src/components/common/Global'
-
+  import moment from 'moment';
   import {
     mapState,
   } from 'vuex';
@@ -92,13 +92,7 @@
     },
     filters:{
        time(value){
-         let date =  new Date(value);
-         let y = 1900+date.getYear();
-         let m = "0"+(date.getMonth()+1);
-         let d = "0"+date.getDate();
-         let H = date.getHours();
-         let minu= date.getMinutes();
-         return y+"/"+m.substring(m.length-2,m.length)+"/"+d.substring(d.length-2,d.length)+' '+H+':'+minu;
+         return moment.unix(value / 1000).format('YYYY/MM/DD hh:mm')
        }
     },
     mounted(){
