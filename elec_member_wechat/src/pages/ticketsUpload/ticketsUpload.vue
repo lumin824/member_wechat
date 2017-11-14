@@ -64,13 +64,13 @@
   </div>
 </template>
 <script>
-  import {
-    apiHost,
-  } from '../../../src/components/common/Global'
+  import global from '../../../src/components/common/Global'
   import moment from 'moment';
   import {
     mapState,
   } from 'vuex';
+
+  const { apiHost } = global;
 
   export default {
     data(){
