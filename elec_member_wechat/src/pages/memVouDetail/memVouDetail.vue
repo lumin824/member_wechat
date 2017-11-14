@@ -12,7 +12,7 @@
         <!-- <mt-loadmore :top-method="loadTop" :bottom-method="loadBottom" :bottom-all-loaded="allLoaded" :auto-fill="false" ref="loadmore">-->
         <mt-loadmore  :bottom-method="loadBottom" :bottom-all-loaded="allLoaded" :auto-fill="false" ref="loadmore">
              <ul>
-                      <li>
+                      <li>   
                            <img src="static/img/hgds.jpg" alt="">
                             <div style="width:68%">
                                   <h1>乐町满百减五</h1>
