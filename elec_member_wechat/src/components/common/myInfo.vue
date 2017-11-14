@@ -20,7 +20,7 @@
            </figure>
 
            <figure>
-             <router-link to="/memVoucher">
+             <router-link to="/memvouDetail">
              <img src="static/img/certificate.png"/>
              <figcaption>我的券</figcaption></router-link>
              <img class="active" src="static/img/point.png" alt="">

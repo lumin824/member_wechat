@@ -1,14 +1,8 @@
 <template>
   <div>
-<!--    <mt-header title="我的等级">
-      <router-link to="/" slot="left">
-        <mt-button icon="back">返回</mt-button>
-      </router-link>
-    </mt-header>
-    <m-header></m-header>-->
     <mt-navbar v-model="selected">
         <mt-tab-item id="1">未使用</mt-tab-item>
-        <mt-tab-item id="2">已使用</mt-tab-item>
+        <mt-tab-item id="3">已使用</mt-tab-item>
     </mt-navbar>
 
     <!-- tab-container -->
@@ -20,26 +14,26 @@
              <ul>
                       <li>
                            <img src="static/img/hgds.jpg" alt="">
-                            <div>
+                            <div style="width:68%">
                                   <h1>乐町满百减五</h1>
-                                  <h3>有效期:2017-09-15-2017-09-16</h3>
+                                  <h3>有效期:2017-09-15 ~ 2017-09-16</h3>
                             </div>
                       </li>
                          <!--未激活样式-->
                      <li>
                            <img src="static/img/hgds.jpg" alt="">
-                           <div>
+                           <div  style="width:68%">
                              <h1>德芙满百减十</h1>
-                             <h3>有效期:2017-09-15-2017-09-16</h3>
+                             <h3>有效期:2017-09-15 ~ 2017-09-16</h3>
                            </div>
-                           <button class="noActive">未激活</button>
+                           <button class="noActive" style="height:0.35rem;width:0.8rem;margin-right:1%">未激活</button>
                      </li>
                           <!--已过期样式-->
                      <li class="disabled">
                                <img src="static/img/hgds.jpg" alt="">
-                           <div>
+                           <div  style="width:68%">
                                <h1>乐町满百减五</h1>
-                               <h3>有效期:2017-09-15-2017-09-16</h3>
+                               <h3>有效期:2017-09-15 ~ 2017-09-16</h3>
                            </div>
                      </li>
              </ul>
@@ -176,12 +170,13 @@
     margin-top:0.12rem;
   }
    ul li{
+     
      display: flex;
      height: 1rem;
      border-bottom: .01rem solid #e6e6e6;
    }
    ul li div{
-
+     
    }
   ul li div h1{
     color: #333;
@@ -201,12 +196,11 @@
    .noActive{
       color: #fff;
       height: 0.28rem;
-      margin: .35rem 0 .35rem 13%;
+      margin-top:0.4rem; 
       background-color: #FF9900;
       border: 0;
       outline: none;
       border-radius: .03rem;
-      padding: 0 0.1rem;
    }
    .disabled{
 
