@@ -51,7 +51,7 @@
 
     <div style="display:flex;font-size:0.9em;color:#666;margin: 0 10px;flex:1;">
       <div style="white-space:nowrap;background-color:red;">温馨提示：</div>
-       <ul style="text-align:left;text-indent:-0.9em;margin-left:0.9em;background-color:green;">
+       <ul style="text-align:left;background-color:green;">
          <li>
            1 小票有效期有三个月，请及时上传
          </li>
