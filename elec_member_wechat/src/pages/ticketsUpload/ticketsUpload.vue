@@ -114,8 +114,17 @@
         }
       },
       async delTicket(ticketId){
-        await this.$http.delete(`http://121.196.208.176:9001/member/ticket/${ticketId}`)
-        await this.reload()
+
+        this.$vux.confirm.show({
+          title:'删除确认',
+          content: '确认删除小票？',
+          onConfirm: async ()=>{
+
+            await this.$http.delete(`http://121.196.208.176:9001/member/ticket/${ticketId}`)
+            await this.reload()
+          }
+        })
+
       },
       clickCamera(){
         document.getElementById('uploadFile').click();
