@@ -25,11 +25,11 @@
              </div>
              <div class="sortList" id="shop_type" v-show="sortList">
                       <ul>
-                        <scroller      lock-x ref="scrollerEvent" style="height:300px;">
+                        <scroller lock-x ref="scrollerEvent" height="300px" >
                               <li v-show="lselected">
-                                    <a   v-on:click="lTextClick('全部','')">全部</a>
-                                    <a  v-on:click="lTextClick(loption.map_name,loption.map_id)" v-for="loption in loptions">{{ loption.map_name }}</a>
-                                    
+                                <a v-on:click="lTextClick('全部','')">全部</a>
+                                <a v-on:click="lTextClick(loption.map_name,loption.map_id)" v-for="loption in loptions">{{ loption.map_name }}</a>
+
                                </li>
                               <li v-show="fselected">
                                     <a href="javascript:" @click="fTextClick('全部','')">全部</a>
@@ -37,9 +37,9 @@
                               </li>
                               <li v-show="oselected">
                                     <a href="javascript:" @click="oTextClick(ooption.text,ooption.value)" v-for="ooption in ooptions">{{ ooption.text }}</a>
-                              </li> 
-                          </scroller>                             
-                      </ul> 
+                              </li>
+                          </scroller>
+                      </ul>
                      <div class="mask" style="display: block;" @click="maskClick"></div>
              </div>
      </div>
@@ -68,7 +68,7 @@
       <div v-show="notmore" style="text-align:center;color:#7D7D7D;padding-top:0.05rem;padding-bottom:0.05rem;">更多商家接入中，敬请期待...</div>
     </scroller>
 
- 
+
 </div>
 </template>
 
@@ -126,7 +126,7 @@ import { Scroller } from 'vux'
             allLoaded: false, //是否可以上拉属性，false可以上拉，true为禁止上拉，就是不让往上划加载数据了
             scrollMode:"touch" //移动端弹性滚动效果，touch为弹性滚动，auto是非弹性滚动
           }
-          
+
       },
     mounted(){
       //拼接搜索条件
@@ -232,19 +232,19 @@ import { Scroller } from 'vux'
                   })
                   resp.data.forEach((val,key)=>{
                     if(val.logo.length!=0){
-                     
+
                       resp.data[key].logo1=val.logo[0].mapUrl;
                     }else{
                       resp.data[key].logo1='';
                     }
                   });
-                  
+
                   this.isHaveMore(true);
                   setTimeout(() => {
                     this.pageList = resp.data;
                     this.showlist = true;
                   },800)
-                  
+
                 },err=>{
                   this.isHaveMore(false);
                   setTimeout(() => {
@@ -291,7 +291,7 @@ import { Scroller } from 'vux'
       isHaveMore(isHaveMore){
         // 是否还有下一页，如果没有就禁止上拉刷新
         this.allLoaded = true; //true是禁止上拉加载
-       
+
         if(isHaveMore){
           this.allLoaded = false;
         }else{
@@ -509,17 +509,17 @@ import { Scroller } from 'vux'
    }
    .sortList ul li{
      /* padding:1em 0 5em 1em; */
-     position: relative;
+     /*position: relative;
      left: 0px;
-     right: 0px;
+     right: 0px;*/
 
    }
    .sortList ul li a{
-     display: block;
-     width: 50%;
+     display: inline-block;
+     width: 49%;
      line-height: 3em;
-     float: left;
-     position: relative;
+     /*float: left;*/
+     /*position: relative;*/
      text-decoration: none;
      text-transform: none;
      color:#666;
@@ -583,11 +583,11 @@ select::-ms-expand { display: none; }
 }
 .weui-btn:after{
  border: 0px !important;
- 
+
 }
 .weui-btn_primary{
   background-color: white  !important;
-  
+
 }
 option{
 
@@ -598,6 +598,3 @@ text-align:center;
     height: 10vh !important;
   }
 </style>
-
-
-
