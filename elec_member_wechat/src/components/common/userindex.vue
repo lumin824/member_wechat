@@ -1,10 +1,6 @@
 <template>
     <div>
         <mt-cell title="姓名" style="right:2%;margin-left:0.03rem">
-          <!-- :value="this.user.name"  ↓ -->
-          <input id="name" type="text" value="徐磊111"
-            style="position:relative;outline: none;border: medium;
-                text-align:right;left:-7%;height:0.4rem" @change="save">
         </mt-cell>
 
 
@@ -15,11 +11,6 @@
           </select>
         </mt-cell>
         <mt-cell title="生日" is-link style="right:2%;margin-left:0.03rem">
-            <input  @change="save" id="time" type="text" @click="openByDrop($event)" v-model="calendar3.display" readonly 
-                style='position:relative;outline: none;border: medium;text-align:right;color:#656B79;left:-1%;height:0.4rem'>
-                     <!--width:1.0rem;position:absolute;left:17%;overflow:auto; background-attachment: fixed; 
-                     background-repeat: no-repeat; border-style: solid; border-color: #FFFFFF;color:#888888;
-                     padding-left: 50% -->
        </mt-cell>
      <transition name="fade">
     <div class="calendar-dropdown" v-if="calendar3.show" style="float:left;position:absolute;z-index:100;width:100%">
@@ -88,9 +79,19 @@
 
 <script>
  import calendar from '../common/calendar.vue'
+ import  global from '../../../src/components/common/Global.vue'
+
+ import {
+   mapState,
+ } from 'vuex';
   export default {
       components: {
         calendar
+    },
+    computed: {
+      ...mapState({
+        member_id: state => state.user,
+      }),
     },
     data () {
       return {
@@ -104,7 +105,7 @@
         brithday:'9月29日',
         title:'会员中心',
         closeButton:false,
-        
+
          calendar3:{
                 display:'',
                 show:false,
@@ -120,7 +121,9 @@
       }
     },
      async mounted () {
-      let {data} = await this.$http.get(`http://121.196.208.176:9001/member/m?mobile=${this.$store.state.user}`)
+       let { data } = await this.$http.get(`http://121.196.208.176:9001/member/${this.member_id}?mallId=${global.mallId}`)
+
+      // let {data} = await this.$http.get(`http://121.196.208.176:9001/member/m?mobile=${this.$store.state.user}`)
       this.user=data;
 
       var unixTimestamp = new Date(this.user.birthday)
@@ -136,7 +139,7 @@
     methods: {
        save(){
         let is_public_wx = this.user.is_public_wx ? true: false
-        
+
         var time=new Date(document.getElementById("time").value);
         this.$http.put(`http://121.196.208.176:9001/member`,{
           'address':document.getElementById("address").value,
@@ -151,7 +154,7 @@
           'sex':this.user.sex
         }).then(data =>{
                 //保存cookie(设置1年有效期);
-                 setCookie('member_id',this.user.memberId,365);
+                 //setCookie('member_id',this.user.memberId,365);
                 this.$toast({
                     message:'更新成功',
                     possition:'top',
@@ -174,7 +177,7 @@
             this.calendar3.show=true;
             this.calendar3.left=e.target.offsetLeft+19;
             this.calendar3.top=e.target.offsetTop+70;
-           
+
             e.stopPropagation();
             window.setTimeout(()=>{
                 document.addEventListener("click",(e)=>{
@@ -207,11 +210,11 @@
 </script>
 
 <style lang="less" scoped>
-  
+
   div{
       margin-top: 0.17rem;
       background-color: #fff;
-      
+
   }
  /* border:none;
   outline:medium;*/
@@ -241,7 +244,7 @@
     box-shadow: none;
   }
   .mint-cell-wrapper:first{
-    background-image: none; 
+    background-image: none;
   }
   // .mint-button--default{
   //   /* background-color: red;*/

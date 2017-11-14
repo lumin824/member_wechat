@@ -1,6 +1,6 @@
 <template>
     <div>
-         
+
           <m-header></m-header>
           <m-info></m-info>
           <m-nav></m-nav>
@@ -12,15 +12,23 @@
   import  MemberNav from '../../../src/components/common/memberNav.vue'
   import  {getCookie} from '../../../src/util/util'
   import  global from '../../../src/components/common/Global.vue'
+  import {
+    mapState,
+  } from 'vuex';
   export  default {
     components:{
       'm-header':Header,
       'm-info':MyInfo,
       'm-nav':MemberNav,
     },
+    computed: {
+      ...mapState({
+        member_id: state => state.user,
+      }),
+    },
     mounted(){
       //let member_id = getCookie('member_id');
-      let member_id = 9;
+      let member_id = this.member_id;
      // let exdate = new Date();
       if(member_id==null){
                 this.$toast({
@@ -30,9 +38,9 @@
                 setTimeout(this.$router.push('/login'),3000);
                 return false;
       }else{
-              this.$http.get(`http://121.196.208.176:9001/member/${member_id}?mallId=${global.mallId}`).then(data =>{
-                console.log(data.data);
-        });
+        //       this.$http.get(`http://121.196.208.176:9001/member/${member_id}?mallId=${global.mallId}`).then(data =>{
+        //         console.log(data.data);
+        // });
       }
     }
   }

@@ -23,14 +23,16 @@ AMap.initAMapApiLoader({
 })
 Vue.use(Vuex)
 Vue.config.productionTip = false
+
+let user = localStorage.getItem('user')
+user = user ? JSON.parse(user) : null
 const store = new Vuex.Store({
   state: {
-    user: null
+    user: user
   },
   mutations: {
     login (state, user) {
-
-      console.log(user)
+      localStorage.setItem('user', JSON.stringify(user));
       state.user = user
     },
     logout (state) {

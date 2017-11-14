@@ -11,7 +11,7 @@
                 <label class="radio radio2" v-else><input name="radio" v-model="formData.sex"  type="radio" value="1">女</label>
     </mt-cell>
     <mt-cell title="生日">
-            <input type="text" @click="openByDrop($event)" v-model="calendar3.display" readonly style='position:absolute;left:26%;overflow:auto; background-attachment: fixed; background-repeat: no-repeat; border-style: solid; 
+            <input type="text" @click="openByDrop($event)" v-model="calendar3.display" readonly style='position:absolute;left:26%;overflow:auto; background-attachment: fixed; background-repeat: no-repeat; border-style: solid;
 border-color: #FFFFFF;color:#888888'>
     </mt-cell>
      <transition name="fade">
@@ -21,7 +21,7 @@ border-color: #FFFFFF;color:#888888'>
     </transition>
    <!-- <router-link to="/registerSucc"></router-link>-->
     <mt-button size="large" type="primary" @click="subInfo">绑定</mt-button>
-    
+
   </div>
 </template>
 <script>
@@ -34,7 +34,7 @@ border-color: #FFFFFF;color:#888888'>
         calendar
     },
     data(){
-      
+
         return {
             namePl:'请输入姓名',
             nameSta:'',
@@ -74,14 +74,15 @@ border-color: #FFFFFF;color:#888888'>
           if(isAndroid){
               this.android=true;
           }
-          this.formData.phone = this.getParam('phone');
+          let { phone } = this.$route.query
+          this.formData.phone = phone;
      },
       methods:{
         openByDrop(e){
             this.calendar3.show=true;
             this.calendar3.left=e.target.offsetLeft+19;
             this.calendar3.top=e.target.offsetTop+70;
-           
+
             e.stopPropagation();
             window.setTimeout(()=>{
                 document.addEventListener("click",(e)=>{
@@ -132,7 +133,7 @@ border-color: #FFFFFF;color:#888888'>
             }, 1000)
           }
         },
-        
+
           //提交注册资料
           async subInfo(){
             if(this.formData.name==''){
@@ -157,11 +158,13 @@ border-color: #FFFFFF;color:#888888'>
               this.birthdatySta='success';
             }
             var a = new Date(this.calendar3.display);
-            
+
             this.$http.post('http://121.196.208.176:9001/member',{'birthday':a.getTime(),'mallId':this.mall_id,'mobile':this.formData.phone,'name':this.formData.name,'sex':this.formData.sex,'openId':this.formData.openId}).then(data =>{
-              if(data.data.member_id!=undefined && data.data.member_id!=''){
+              const { member_id } = data.data;
+              if(member_id){
                 //保存cookie(设置1年有效期)
-                setCookie('member_id',data.data.member_id,365);
+
+                this.$store.commit('login', member_id)
                 this.$router.push('/registerSucc');
                  setTimeout(() => {
                      this.$router.push('/member');
