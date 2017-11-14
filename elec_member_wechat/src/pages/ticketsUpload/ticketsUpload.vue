@@ -37,7 +37,7 @@
         </div>
         <div v-else-if="v.handle_status==2" style="background-color:#f9fafb;">
           <div style="display:flex;padding:10px 10px;">
-            <img :src="v.file_url" alt="" style="max-width:96px;max-height:80px;">
+            <img :src="v.file_url" alt="" style="width:96px;height:96px;">
             <div style="margin:5px;font-size:0.9em;flex:1;">
               <div>处理状态：<span style="color:#ff8100;">未处理</span></div>
               <div>处理回复：</div>
