@@ -1,4 +1,5 @@
 <template>
+<scroller    @on-scroll="onScroll" lock-x ref="scrollerEvent">
   <div style="background-color:#FFFFFF">
    <!-- <mt-header title="商户简介">
       <router-link to="/" slot="left">
@@ -57,9 +58,14 @@
           <hr>
         </div>
   </div>
+</scroller>
 </template>
 <script>
+import { Scroller } from 'vux'
   export default {
+     components: {
+    Scroller
+  },
     data(){
       return {
         tel:'',
