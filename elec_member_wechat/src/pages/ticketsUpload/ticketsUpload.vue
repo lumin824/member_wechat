@@ -20,21 +20,24 @@
       </li>
       <li v-for="v in pageList" v-else style="margin:0 8px;">
         <div v-if="v.handle_status==0">
-          <img :src="v.file_url" alt="">
-          <ul>
-            <li>处理状态:&nbsp;<span style="background: #5FB878;color: #fff;border-radius: 0.02rem;padding: 0.02rem;">已处理</span></li>
-            <li>回复:&nbsp;&nbsp;<textarea readonly>已处理通过样式</textarea></li>
-          </ul>
-          <p>上传时间:{{v.upload_date|time }}</p>
+          <div style="display:flex;padding:10px 10px;">
+            <img :src="v.file_url" alt="" style="width:96px;height:96px;">
+            <div style="margin:5px;font-size:0.9em;flex:1;">
+              <div>处理状态：<span style="color:#ff8100;">已处理</span></div>
+              <div>处理回复：{{v.responses}}</div>
+            </div>
+          </div>
+          <p style="border-top: 1px dashed #ccc;font-size: 0.9em;margin:10px;padding:5px;color:#959697;margin-top:0;">上传时间：{{v.upload_date |time}}</p>
         </div>
         <div v-else-if="v.handle_status==1">
-          <img :src="v.file_url" alt="">
-          <ul>
-            <li>处理状态:&nbsp;<span style="background: #FF6839;color: #fff;border-radius: 0.02rem;padding: 0.02rem;">未通过</span></li>
-            <li>回复:&nbsp;&nbsp;<textarea readonly>已处理未通过样式</textarea></li>
-          </ul>
-          <mt-button size="small" @click="delTicket(v.ticket_id)">删除</mt-button>
-          <p>上传时间:{{v.upload_date }}</p>
+          <div style="display:flex;padding:10px 10px;">
+            <img :src="v.file_url" alt="" style="width:96px;height:96px;">
+            <div style="margin:5px;font-size:0.9em;flex:1;">
+              <div>处理状态：<span style="color:#ff8100;">未通过</span></div>
+              <div>处理回复：{{v.responses}}</div>
+            </div>
+          </div>
+          <p style="border-top: 1px dashed #ccc;font-size: 0.9em;margin:10px;padding:5px;color:#959697;margin-top:0;">上传时间：{{v.upload_date |time}}</p>
         </div>
         <div v-else-if="v.handle_status==2" style="background-color:#f9fafb;">
           <div style="display:flex;padding:10px 10px;">
