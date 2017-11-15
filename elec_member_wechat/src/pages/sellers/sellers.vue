@@ -55,7 +55,7 @@
                   <img class="imgleft" src="static/img/jf.png" style="" alt="">
                   <h2>{{v.berth_number}}</h2>
                   <h3 style="padding-top:-0.2rem;padding-bottom:0.01rem">{{v.industry_name}}</h3>
-                  
+
                 </div>
               </div>
               <div class="right">
@@ -76,278 +76,262 @@
 <script>
 import { PopupPicker, XButton } from 'vux'
 import { Scroller } from 'vux'
-  export default {
-    components: {
+import _ from 'lodash';
+export default {
+  components: {
     PopupPicker,
     XButton,
     Scroller
   },
-      data(){
-          return {
-            notmore:false,
-            showlist:true,
-            mall_id:1,
-            ltext:'楼层',
-            ftext:'分类',
-            otext:'排序',
-            sells:'',
-            sValue:'',
-            sortList:false,
-            lselected: false,
-            fselected: false,
-            oselected: false,
-            lsselected:'',
-            fsfselected:'',
-            osselected:'',
-            loptions: '',
-            foptions:'',
-            ooptions:[
-              { text: '热度', value: '0' },
-              { text: '首拼', value: '1' },
-            ],
-            //用来记录搜索条件是否发生改变
-            oldSearchCondition:'',
-            //搜索条件是否发生变化
-            serarchIsChange:false,
-            // 默认数据
-            defaultResult:'',
-            searchCondition:{  //
-              pageNo:"1",
-              pageSize:"200",
-              mall_id:this.mall_id,
-            },
-            showPopupPicker: false,
-            showPopupPicker1: false,
-            showPopupPicker2: false,
-             value5: ['楼层'],
-             value4: ['分类'],
-             value3: ['排序'],
-            pageList:'',
-            currentActive:-1, //当前已展开详情的标签index，-1表示全部关闭（只展开单个标签）
-            allLoaded: false, //是否可以上拉属性，false可以上拉，true为禁止上拉，就是不让往上划加载数据了
-            scrollMode:"touch" //移动端弹性滚动效果，touch为弹性滚动，auto是非弹性滚动
-          }
-
+  data(){
+    return {
+      notmore:false,
+      showlist:true,
+      mall_id:1,
+      ltext:'楼层',
+      ftext:'分类',
+      otext:'排序',
+      sells:'',
+      sValue:'',
+      sortList:false,
+      lselected: false,
+      fselected: false,
+      oselected: false,
+      lsselected:'',
+      fsfselected:'',
+      osselected:'',
+      loptions: '',
+      foptions:'',
+      ooptions:[
+        { text: '热度', value: '0' },
+        { text: '首拼', value: '1' },
+      ],
+      //用来记录搜索条件是否发生改变
+      oldSearchCondition:'',
+      //搜索条件是否发生变化
+      serarchIsChange:false,
+      // 默认数据
+      defaultResult:'',
+      searchCondition:{  //
+        pageNo:"1",
+        pageSize:"200",
+        mall_id:this.mall_id,
       },
-    mounted(){
-      //拼接搜索条件
-      let serarhData = {};
-      serarhData.mall_id=this.mall_id;
-      serarhData.page =  this.searchCondition.pageNo;
-      serarhData.size = this.searchCondition.pageSize;
-      //条件变化重新初始化
-      this.serarchIsChange = true;
-      this.oldSearchCondition = serarhData;
-          this.$http({
-            method: 'post',
-            url:'http://121.196.208.176:9001/shop',
-            data:serarhData,
-          }).then(resp=>{
-            resp.data.forEach((v,k)=>{
-              resp.data[k].logo = resp.data[k].logo;
-            })
-            resp.data.forEach((val,key)=>{
-              if(val.logo.length!=0){
-                resp.data[key].logo1=val.logo[0].mapUrl;
-              }else{
-                resp.data[key].logo1='';
-              }
-            });
-            this.pageList = resp.data;
-          })
-
-      //楼层数据
-      this.$http.get(`http://121.196.208.176:9001/mall/${this.mall_id}/planeMaps`).then(data =>{
-         this.loptions = data.data;
+      showPopupPicker: false,
+      showPopupPicker1: false,
+      showPopupPicker2: false,
+       value5: ['楼层'],
+       value4: ['分类'],
+       value3: ['排序'],
+      pageList:'',
+      currentActive:-1, //当前已展开详情的标签index，-1表示全部关闭（只展开单个标签）
+      allLoaded: false, //是否可以上拉属性，false可以上拉，true为禁止上拉，就是不让往上划加载数据了
+      scrollMode:"touch" //移动端弹性滚动效果，touch为弹性滚动，auto是非弹性滚动
+    }
+  },
+  mounted(){
+    //拼接搜索条件
+    let serarhData = {};
+    serarhData.mall_id=this.mall_id;
+    serarhData.page =  this.searchCondition.pageNo;
+    serarhData.size = this.searchCondition.pageSize;
+    //条件变化重新初始化
+    this.serarchIsChange = true;
+    this.oldSearchCondition = serarhData;
+    this.$http({
+      method: 'post',
+      url:'http://121.196.208.176:9001/shop',
+      data:serarhData,
+    }).then(resp=>{
+      resp.data.forEach((v,k)=>{
+        resp.data[k].logo = resp.data[k].logo;
+      })
+      resp.data.forEach((val,key)=>{
+        if(val.logo.length!=0){
+          resp.data[key].logo1=val.logo[0].mapUrl;
+        }else{
+          resp.data[key].logo1='';
+        }
       });
-      //分类数据
-      this.$http.get(`http://121.196.208.176:9001/mall/${this.mall_id}/industries`).then(data =>{
-         this.foptions = data.data;
+      this.pageList = resp.data;
+    })
+
+    //楼层数据
+    this.$http.get(`http://121.196.208.176:9001/mall/${this.mall_id}/planeMaps`).then(data =>{
+      this.loptions = data.data;
+    });
+    //分类数据
+    this.$http.get(`http://121.196.208.176:9001/mall/${this.mall_id}/industries`).then(data =>{
+      this.foptions = data.data;
     });
   },
-    computed: {
-          filterResult() {
-                if(this.sValue!='')this.serarchIsChange=false;
-                if(!this.serarchIsChange){
-                  this.pageList = '';
-                  this.searchCondition.pageNo = 1;
-                  let serarhData = {};
-                  //拼接搜索条件
-                  serarhData.mall_id=this.mall_id;
-                  if(this.fsfselected!='')serarhData.industry_id = this.fsfselected;
-                  if(this.lsselected!='')serarhData.map_id = this.lsselected;
-                  if(this.osselected!='')serarhData.sort = this.osselected;
-                  serarhData.page =  this.searchCondition.pageNo;
-                  serarhData.size = this.searchCondition.pageSize;
-                  serarhData.keywords = this.sValue;
-                  //条件变化重新初始化
-                  this.oldSearchCondition = serarhData;
-                  this.$http({
-                    method: 'post',
-                    url:'http://121.196.208.176:9001/shop',
-                    data:serarhData,
-                  }).then(resp=>{
-                    resp.data.forEach((v,k)=>{
-                      resp.data[k].logo = resp.data[k].logo;
-                    })
-                    resp.data.forEach((val,key)=>{
-                      if(val.logo.length!=0){
-                        console.log(val.logo[0])
-                        resp.data[key].logo1=val.logo[0].mapUrl;
-                      }else{
-                        resp.data[key].logo1='';
-                      }
-                    });
-                    this.pageList = resp.data;
-                    this.isHaveMore(true);
-                  },err=>{
-                    this.isHaveMore(false);
-                  });
-                }
-          }
-    },
-    methods:{
-          //1.楼层 2.分类 3.排序
-          selectHasChange(option){
-                this.showlist = false;
-                this.serarchIsChange =true;
-                //this.pageList = '';
-                this.searchCondition.pageNo = 1;
-                let serarhData = {};
-                //拼接搜索条件
-                serarhData.mall_id=this.mall_id;
-                if(this.lsselected!='')serarhData.map_id = this.lsselected;
-                if(this.fsfselected!='')serarhData.industry_id= this.fsfselected;
-                if(this.osselected!='')serarhData.sort = this.osselected;
-                serarhData.page =  this.searchCondition.pageNo;
-                serarhData.size = this.searchCondition.pageSize;
-                serarhData.keywords = this.sValue;
-                //条件变化重新初始化
-                this.oldSearchCondition = serarhData;
-                this.$http({
-                  method: 'post',
-                  url:'http://121.196.208.176:9001/shop',
-                  data:serarhData,
-                }).then(resp=>{
-                  resp.data.forEach((v,k)=>{
-                    resp.data[k].logo = resp.data[k].logo;
-                  })
-                  resp.data.forEach((val,key)=>{
-                    if(val.logo.length!=0){
-
-                      resp.data[key].logo1=val.logo[0].mapUrl;
-                    }else{
-                      resp.data[key].logo1='';
-                    }
-                  });
-
-                  this.isHaveMore(true);
-                  setTimeout(() => {
-                    this.pageList = resp.data;
-                    this.showlist = true;
-                  },800)
-
-                },err=>{
-                  this.isHaveMore(false);
-                  setTimeout(() => {
-                    this.showlist = true;
-                  },800)
-                });
-          },
-          loadBottom(){
-          // 上拉加载
-              this.more();// 上拉触发的分页查询
-              this.$refs.loadmore.onBottomLoaded();// 固定方法，查询完要调用一次，用于重新定位
-         },
-        loadPageList(){
-                      this.sValue = '';
-                            this.serarchIsChange =true;
-                            this.searchCondition.pageNo = parseInt(this.searchCondition.pageNo) + 1;
-                            this.oldSearchCondition.page=this.searchCondition.pageNo;
-                            this.$http({
-                              method: 'post',
-                              url:'http://121.196.208.176:9001/shop',
-                              data:this.oldSearchCondition,
-                            }).then(resp=>{
-                              resp.data.forEach((v,k)=>{
-                                resp.data[k].logo = resp.data[k].logo;
-                              })
-                              resp.data.forEach((val,key)=>{
-                                if(val.logo.length!=0){
-                                  resp.data[key].logo1=val.logo[0].mapUrl;
-                                }else{
-                                  resp.data[key].logo1='';
-                                }
-                              });
-                              this.pageList = this.pageList.concat(resp.data);
-                              this.$nextTick(function () {
-                                this.scrollMode = "touch"
-                              });
-                            },error=>{
-                              this.isHaveMore(false);
-                            })
-        },
-      more(){
-        this.loadPageList();
-      },
-      isHaveMore(isHaveMore){
-        // 是否还有下一页，如果没有就禁止上拉刷新
-        this.allLoaded = true; //true是禁止上拉加载
-
-        if(isHaveMore){
-          this.allLoaded = false;
-        }else{
-           this.notmore=true;
-        }
-      },
-      selectChange(option){
-         this.sortList = true;
-         if(option==1){
-           this.lselected = true;
-         }else if(option==2){
-           this.fselected = true;
-         }else if(option==3){
-           this.oselected = true;
-         }
-      },
-      lTextClick(text,id){
-        this.lselected=false;
-        this.sortList = false;
-        this.ltext=text;
-        this.lsselected=id;
-        this.selectHasChange();
-      },
-      fTextClick(text,id){
-        this.fselected = false;
-        this.sortList = false;
-        this.ftext=text;
-        this.fsfselected=id;
-        this.selectHasChange();
-      },
-      oTextClick(text,id){
-        this.oselected=false;
-        this.sortList = false;
-        this.otext=text;
-        this.osselected = id;
-        this.selectHasChange();
-
-      },
-      maskClick(){
-        this.oselected=false;
-        this.lselected=false;
-        this.fselected = false;
-        this.sortList = false;
+  computed: {
+    filterResult() {
+      if(this.sValue!='')this.serarchIsChange=false;
+      if(!this.serarchIsChange){
+        this.pageList = '';
+        this.searchCondition.pageNo = 1;
+        let serarhData = {};
+        //拼接搜索条件
+        serarhData.mall_id=this.mall_id;
+        if(this.fsfselected!='')serarhData.industry_id = this.fsfselected;
+        if(this.lsselected!='')serarhData.map_id = this.lsselected;
+        if(this.osselected!='')serarhData.sort = this.osselected;
+        serarhData.page =  this.searchCondition.pageNo;
+        serarhData.size = this.searchCondition.pageSize;
+        serarhData.keywords = this.sValue;
+        //条件变化重新初始化
+        this.oldSearchCondition = serarhData;
+        this.$http({
+          method: 'post',
+          url:'http://121.196.208.176:9001/shop',
+          data:serarhData,
+        }).then(resp=>{
+          resp.data.forEach((v,k)=>{
+            resp.data[k].logo = resp.data[k].logo;
+          })
+          resp.data.forEach((val,key)=>{
+            if(val.logo.length!=0){
+              console.log(val.logo[0])
+              resp.data[key].logo1=val.logo[0].mapUrl;
+            }else{
+              resp.data[key].logo1='';
+            }
+          });
+          this.pageList = resp.data;
+          this.isHaveMore(true);
+        },err=>{
+          this.isHaveMore(false);
+        });
       }
+    }
+  },
+  methods:{
+    //1.楼层 2.分类 3.排序
+    async selectHasChange(option){
+      this.showlist = false;
+      this.serarchIsChange =true;
+      //this.pageList = '';
+      this.searchCondition.pageNo = 1;
+      let serarhData = {};
+      //拼接搜索条件
+      serarhData.mall_id=this.mall_id;
+      if(this.lsselected!='')serarhData.map_id = this.lsselected;
+      if(this.fsfselected!='')serarhData.industry_id= this.fsfselected;
+      if(this.osselected!='')serarhData.sort = this.osselected;
+      serarhData.page =  this.searchCondition.pageNo;
+      serarhData.size = this.searchCondition.pageSize;
+      serarhData.keywords = this.sValue;
+      //条件变化重新初始化
+      this.oldSearchCondition = serarhData;
+
+      try{
+        const { data } = await this.$http.post('http://121.196.208.176:9001/shop', serarhData)
+
+        const list = _.map(data, o=>({
+          ...o,
+          logo1: o.logo.length ? o.logo[0].mapUrl : '',
+        }))
+
+        this.isHaveMore(true);
+        setTimeout(() => {
+          this.pageList = list;
+          this.showlist = true;
+        },800)
+      }catch(e){
+        setTimeout(() => {
+          this.pageList = [];
+          this.showlist = true;
+        },800)
+      }
+    },
+
+    loadPageList(){
+      this.sValue = '';
+      this.serarchIsChange =true;
+      this.searchCondition.pageNo = parseInt(this.searchCondition.pageNo) + 1;
+      this.oldSearchCondition.page=this.searchCondition.pageNo;
 
 
+      this.$http({
+        method: 'post',
+        url:'http://121.196.208.176:9001/shop',
+        data:this.oldSearchCondition,
+      }).then(resp=>{
+        resp.data.forEach((v,k)=>{
+          resp.data[k].logo = resp.data[k].logo;
+        })
+        resp.data.forEach((val,key)=>{
+          if(val.logo.length!=0){
+            resp.data[key].logo1=val.logo[0].mapUrl;
+          }else{
+            resp.data[key].logo1='';
+          }
+        });
+        this.pageList = this.pageList.concat(resp.data);
+        this.$nextTick(function () {
+          this.scrollMode = "touch"
+        });
+      },error=>{
+        this.isHaveMore(false);
+      })
+    },
+    isHaveMore(isHaveMore){
+      // 是否还有下一页，如果没有就禁止上拉刷新
+      this.allLoaded = true; //true是禁止上拉加载
+
+      if(isHaveMore){
+        this.allLoaded = false;
+      }else{
+         this.notmore=true;
+      }
+    },
+    selectChange(option){
+       this.sortList = true;
+       if(option==1){
+         this.lselected = true;
+       }else if(option==2){
+         this.fselected = true;
+       }else if(option==3){
+         this.oselected = true;
+       }
+    },
+    lTextClick(text,id){
+      this.lselected=false;
+      this.sortList = false;
+      this.ltext=text;
+      this.lsselected=id;
+      this.selectHasChange();
+    },
+    fTextClick(text,id){
+      this.fselected = false;
+      this.sortList = false;
+      this.ftext=text;
+      this.fsfselected=id;
+      this.selectHasChange();
+    },
+    oTextClick(text,id){
+      this.oselected=false;
+      this.sortList = false;
+      this.otext=text;
+      this.osselected = id;
+      this.selectHasChange();
+
+    },
+    maskClick(){
+      this.oselected=false;
+      this.lselected=false;
+      this.fselected = false;
+      this.sortList = false;
     }
   }
+}
 </script>
 <style>
   .mintui-search:before{
     font-size: 20px;
     /* margin-right:40%; */
-  } 
+  }
   .mint-searchbar{
     position: absolute;
     left: 0px;
