@@ -13,7 +13,7 @@
           <div style="font-size:0.6em;color:#059CFF;">未签到</div>
         </div>
       </router-link>
-    </ul>
+    </ul> 
     <div style="text-align:center;width:100%">更多活动敬请期待...</div>
   </div>
 </template>

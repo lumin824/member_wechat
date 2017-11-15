@@ -12,7 +12,7 @@
           <div style="font-size:0.6em;color:#999;">2017.09.14~2017.09.15</div>
           <div style="font-size:0.6em;color:#059CFF;">未签到</div>
         </div>
-      </router-link>
+      </router-link> 
     </ul>
     <div style="text-align:center;width:100%">更多活动敬请期待...</div>
   </div>
