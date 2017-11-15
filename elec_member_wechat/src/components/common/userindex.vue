@@ -2,7 +2,7 @@
     <div>
         <mt-cell title="姓名" style="right:2%;margin-left:0.03rem">
           <!-- :value="this.user.name"  ↓ -->
-          <input id="name" type="text" v-model="user.name"
+          <input id="name" type="text" v-model="user.name" placeholder="请输入真实姓名"
             style="position:relative;outline: none;border: medium;
                 text-align:right;left:-17%;height:0.4rem" @change="save">
         </mt-cell>
@@ -29,7 +29,7 @@
 
       <mt-cell title="职业" is-link style="right:2%;margin-left:0.03rem">
         <select style="position:relative;right:-1%;height:0.2rem;width:2.4rem;padding-left:1.8rem;height:0.4rem" v-model="user.occupation"  @change="save">
-          <option value="0">请选择</option>
+          <option value="0">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;无</option>
           <option value="1">工程师</option>
           <option value="2">&nbsp;&nbsp;&nbsp;&nbsp;医生</option>
         </select>
@@ -38,11 +38,11 @@
       <mt-cell title="地址" style="right:3%;margin-left:0.07rem">
         <input  @change="save" id="address" class="addre" type="text" v-model="user.address" placeholder="请输入地址"
            style="position:relative;outline: none;border: medium;
-           text-align:right;color:#656B79;left:-15%;height:0.4rem">
+           text-align:right;color:#656B79;left:-11%;height:0.4rem">
       </mt-cell>
       <mt-cell title="教育程度" is-link style="right:2%;margin-left:0.03rem">
         <select style="position:relative;right:4%;height:0.4rem;width:2rem;padding-left:1.5rem" v-model="user.degree_of_education" @change="save">
-          <option value="0">请选择</option>
+          <option value="0">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;无</option>
           <option value="1">&nbsp;&nbsp;&nbsp;&nbsp;博士</option>
           <option value="2">&nbsp;&nbsp;&nbsp;&nbsp;硕士</option>
           <option value="3">&nbsp;&nbsp;&nbsp;&nbsp;本科</option>
@@ -52,21 +52,22 @@
       </mt-cell>
 
       <mt-cell title="收入范围" is-link style="right:2%;margin-left:0.03rem">
-        <select style="position:relative;right:4%;height:0.4rem;width:2.08rem;padding-left:0.95rem" v-model="user.income_range" @change="save">
-           <!-- <option value="0">请选择收入范围</option> -->
+        <select style="position:relative;right:4%;height:0.4rem;width:2.08rem;padding-left:0.95rem" v-model="user.income_range"  @change="save">
+           <option value="0">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;无</option>
            <option value="1">&nbsp;&nbsp;&nbsp;&nbsp;10000-50000</option>
            <option value="2">&nbsp;&nbsp;50000-100000</option>
         </select>
       </mt-cell>
      <mt-cell title="兴趣爱好" is-link style="right:2%;margin-left:0.03rem">
-        <select style="position:relative;right:4%;height:0.4rem;width:2rem;padding-left:1.5rem" v-model="user.interest" @change="save">
-          <option value="0">请选择</option>
+        <select style="position:relative;right:4%;height:0.4rem;width:2rem;padding-left:1.5rem" v-model="user.interest"  @change="save">
+          <option value="0">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;无</option>
           <option value="1">&nbsp;&nbsp;&nbsp;&nbsp;篮球</option>
           <option value="2">&nbsp;&nbsp;&nbsp;&nbsp;游泳</option>
         </select>
       </mt-cell>
       <mt-cell title="手机" style="right:3%;margin-left:0.07rem">
-        <input  type="text" :value="this.user.mobile" readonly="readonly" style="position:relative;left:21%;outline: none;border: medium;width:1.1rem;">
+        <input  type="text" :value="this.user.mobile" readonly="readonly" style="position:relative;left:20%;outline: none;border: medium;width:1.1rem;">
         <!-- <router-link to="/changePhone"><mt-button size="small" style="background-color:#F2F2F2">修改</mt-button></router-link> -->
         <div style="margin-top:-2%;margin-left:20%;">
           <router-link to="/changePhone">
@@ -172,7 +173,6 @@ import {
         console.log('change', value)
       },
        save(value){
-         alert(new Date(value).getTime())
         let is_public_wx = this.user.is_public_wx ? true: false
         var time=new Date(value);
         this.$http.put(`http://121.196.208.176:9001/member`,{
