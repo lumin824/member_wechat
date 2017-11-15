@@ -47,9 +47,12 @@
     },
     //发送请求
     valid(){
-      if(this.checkMobile(this.formData.phone)){
+      if(this.checkMobile(this.formData.phone)){ 
             if(this.formData.code==''){
                   this.formData.v_code= '请先获取验证码';
+                  this.c_state = 'error';
+            }else if(this.formData.code.length<6){
+                   this.formData.v_code= '请输入正确的验证码';
                   this.c_state = 'error';
             }else{
                 //  手机号验证码都验证通过,验证验证码是否正确

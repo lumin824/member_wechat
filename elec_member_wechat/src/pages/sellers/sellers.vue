@@ -52,9 +52,10 @@
                 <img :src="v.logo" alt="" style="width:1.1rem;height:0.85rem;padding-left:0.2rem">
                 <div class="imgright">
                   <h1 style="padding-bottom:0.1rem">{{v.shop_name}}</h1>
-                  <h3 style="padding-top:-0.2rem;padding-bottom:0.01rem">{{v.berth_number}}</h3>
-                  <img class="imgleft" src="static/img/jf.png" style="padding-top:0.03rem" alt="">
-                  <h2>{{v.industry_name}}</h2>
+                  <img class="imgleft" src="static/img/jf.png" style="" alt="">
+                  <h2>{{v.berth_number}}</h2>
+                  <h3 style="padding-top:-0.2rem;padding-bottom:0.01rem">{{v.industry_name}}</h3>
+                  
                 </div>
               </div>
               <div class="right">
@@ -115,9 +116,9 @@ import { Scroller } from 'vux'
               pageSize:"200",
               mall_id:this.mall_id,
             },
-             showPopupPicker: false,
-              showPopupPicker1: false,
-               showPopupPicker2: false,
+            showPopupPicker: false,
+            showPopupPicker1: false,
+            showPopupPicker2: false,
              value5: ['楼层'],
              value4: ['分类'],
              value3: ['排序'],
