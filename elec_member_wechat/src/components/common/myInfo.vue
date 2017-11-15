@@ -18,9 +18,8 @@
                  <figcaption>我的活动</figcaption></router-link>
                  <img class="active" src="static/img/point.png" alt="">
            </figure>
-
            <figure>
-             <router-link to="/memvouDetail">
+             <router-link to="/memVoucher">
              <img src="static/img/certificate.png"/>  
              <figcaption>我的券</figcaption></router-link>
              <img class="active" src="static/img/point.png" alt="">

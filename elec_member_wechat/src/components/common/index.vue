@@ -9,15 +9,6 @@
     <router-link to="/changeSuccess"><mt-button size="large" type="primary">绑定</mt-button></router-link>
 
   </div>
-<!--  <div>
-    <div class="input-div" v-show="formData.phone">
-      <input type="text" class="input code" name="code" v-model.trim="formData.code" placeholder="验证码">
-      <button @click="getCode(formData)" class="code-btn" :disabled="!show">
-        <span v-show="show">获取验证码</span>
-        <span v-show="!show" class="count">{{count}} s</span>
-      </button>
-    </div>
-  </div>-->
 
 </template>
 
