@@ -1,20 +1,16 @@
 <template>
     <div >
       <div style="width:100%">
-        <div style="width:70%">
+        <div style="width:30%;margin-left:0.3rem">
           <img src="static/img/cat.jpg" alt="">
+         </div>
+         <div style="width:70%">
           <ul>
             <li><span> {{this.user.name}}</span><h3>{{this.user.level}}</h3></li>
             <li>累计积分:{{this.user.cumulate_points}}</li>
             <li>可用积分:{{this.user.usable_points}}</li>
           </ul>  
-        </div>
-         <div style="width:11%"></div>
-          <div class="rank" style="margin-top:0.7rem;width:80px">
-                <img src="static/img/jb.png" alt="">
-                <a style="margin-top: 0px;top: auto;bottom: 4px;">排行榜</a>
-                <img class="abc" style="margin-top: 3px;margin-left: 0rem;top: auto;bottom: 3px;" src="static/img/jr.png" alt="">
-          </div>
+         </div>
       </div>
     </div>
 </template>

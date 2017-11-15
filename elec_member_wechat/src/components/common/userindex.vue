@@ -2,9 +2,9 @@
     <div>
         <mt-cell title="姓名" style="right:2%;margin-left:0.03rem">
           <!-- :value="this.user.name"  ↓ -->
-          <input id="name" type="text" v-model="user.name"
+          <input id="name" type="text" v-model="user.name" placeholder="请输入真实姓名"
             style="position:relative;outline: none;border: medium;
-                text-align:right;left:-7%;height:0.4rem" @change="save">
+                text-align:right;left:-17%;height:0.4rem" @change="save">
         </mt-cell>
 
 
@@ -14,22 +14,22 @@
             <option value="1">女</option>
           </select>
         </mt-cell>
-        <mt-cell title="生日" is-link style="right:2%;margin-left:0.03rem">
-            <input  @change="save" id="time" type="text" @click="openByDrop($event)" v-model="calendar3.display" readonly
-                style='position:relative;outline: none;border: medium;text-align:right;color:#656B79;left:-5%;height:0.4rem'>
-                     <!--width:1.0rem;position:absolute;left:17%;overflow:auto; background-attachment: fixed;
-                     background-repeat: no-repeat; border-style: solid; border-color: #FFFFFF;color:#888888;
-                     padding-left: 50% -->
+        <mt-cell title="生日"  style="right:2%;margin-left:0.03rem">
+           <input id="name" type="text" v-model="this.value1"
+            style="position:relative;outline: none;border: medium;
+                text-align:right;left:-17%;height:0.4rem" readonly="readonly">
+          <!-- <datetime  v-model="this.value1" :start-date="startDate"  @on-change="save"  style="padding-right: 15px;color:#656B79;border-right-width: 23px;">
+
+        </datetime>
+         <div style="">
+          <img src="static/img/rightLogo.png" alt="" style="padding-bottom: 17px;padding-left: 0px;padding-right: 4px;">
+        </div> -->
        </mt-cell>
-     <transition name="fade">
-    <div class="calendar-dropdown" v-if="calendar3.show" style="float:left;position:absolute;z-index:100;width:100%">
-        <calendar :zero="calendar3.zero" :lunar="calendar3.lunar" :value="calendar3.value" :begin="calendar3.begin" :end="calendar3.end" @select="calendar3.select"></calendar>
-    </div>
-    </transition>
+     
 
       <mt-cell title="职业" is-link style="right:2%;margin-left:0.03rem">
-        <select style="position:relative;right:-3%;height:0.2rem;width:2.4rem;padding-left:1.8rem;height:0.4rem" v-model="user.occupation"  @change="save">
-          <option value="0">请选择</option>
+        <select style="position:relative;right:-1%;height:0.2rem;width:2.4rem;padding-left:1.8rem;height:0.4rem" v-model="user.occupation"  @change="save">
+          <option value="0">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;无</option>
           <option value="1">工程师</option>
           <option value="2">&nbsp;&nbsp;&nbsp;&nbsp;医生</option>
         </select>
@@ -38,39 +38,40 @@
       <mt-cell title="地址" style="right:3%;margin-left:0.07rem">
         <input  @change="save" id="address" class="addre" type="text" v-model="user.address" placeholder="请输入地址"
            style="position:relative;outline: none;border: medium;
-           text-align:right;color:#656B79;left:-7%;height:0.4rem">
+           text-align:right;color:#656B79;left:-11%;height:0.4rem">
       </mt-cell>
       <mt-cell title="教育程度" is-link style="right:2%;margin-left:0.03rem">
-        <select style="position:relative;right:-3%;height:0.4rem;width:2rem;padding-left:1.5rem" v-model="user.degree_of_education" @change="save">
-          <option value="0">请选择</option>
-          <option value="1">&nbsp;&nbsp;博士</option>
-          <option value="2">&nbsp;&nbsp;硕士</option>
-          <option value="3">&nbsp;&nbsp;本科</option>
-          <option value="4">&nbsp;&nbsp;大专</option>
-          <option value="5">&nbsp;&nbsp;高中</option>
+        <select style="position:relative;right:4%;height:0.4rem;width:2rem;padding-left:1.5rem" v-model="user.degree_of_education" @change="save">
+          <option value="0">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;无</option>
+          <option value="1">&nbsp;&nbsp;&nbsp;&nbsp;博士</option>
+          <option value="2">&nbsp;&nbsp;&nbsp;&nbsp;硕士</option>
+          <option value="3">&nbsp;&nbsp;&nbsp;&nbsp;本科</option>
+          <option value="4">&nbsp;&nbsp;&nbsp;&nbsp;大专</option>
+          <option value="5">&nbsp;&nbsp;&nbsp;&nbsp;高中</option>
         </select>
       </mt-cell>
 
       <mt-cell title="收入范围" is-link style="right:2%;margin-left:0.03rem">
-        <select style="position:relative;right:-3%;height:0.4rem;width:2.08rem;padding-left:0.95rem" v-model="user.income_range" @change="save">
-           <option value="0">请选择收入范围</option>
-           <option value="1">&nbsp;&nbsp;10000-50000</option>
+        <select style="position:relative;right:4%;height:0.4rem;width:2.08rem;padding-left:0.95rem" v-model="user.income_range"  @change="save">
+           <option value="0">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;无</option>
+           <option value="1">&nbsp;&nbsp;&nbsp;&nbsp;10000-50000</option>
            <option value="2">&nbsp;&nbsp;50000-100000</option>
         </select>
       </mt-cell>
      <mt-cell title="兴趣爱好" is-link style="right:2%;margin-left:0.03rem">
-        <select style="position:relative;right:-1.9%;height:0.4rem;width:2rem;padding-left:1.5rem" v-model="user.interest" @change="save">
-          <option value="0">请选择</option>
-          <option value="1" selected>篮球</option>
-          <option value="2">游泳</option>
+        <select style="position:relative;right:4%;height:0.4rem;width:2rem;padding-left:1.5rem" v-model="user.interest"  @change="save">
+          <option value="0">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;无</option>
+          <option value="1">&nbsp;&nbsp;&nbsp;&nbsp;篮球</option>
+          <option value="2">&nbsp;&nbsp;&nbsp;&nbsp;游泳</option>
         </select>
       </mt-cell>
-      <mt-cell title="手机" style="right:3%;margin-left:0.06rem">
-        <input  type="text" :value="this.user.mobile" readonly="readonly" style="position:relative;left:-1%;outline: none;border: medium;width:1.1rem;">
+      <mt-cell title="手机" style="right:3%;margin-left:0.07rem">
+        <input  type="text" :value="this.user.mobile" readonly="readonly" style="position:relative;left:20%;outline: none;border: medium;width:1.1rem;">
         <!-- <router-link to="/changePhone"><mt-button size="small" style="background-color:#F2F2F2">修改</mt-button></router-link> -->
-        <div style="margin-top:-2%">
+        <div style="margin-top:-2%;margin-left:20%;">
           <router-link to="/changePhone">
-            <img src="static/img/updatephone.png" style="width:0.28rem;height:0.28rem" alt="">
+            <img src="static/img/updatephone.png" style="width:0.5rem;height:0.28rem" alt="">
           </router-link>
         </div>
       </mt-cell>
@@ -92,128 +93,154 @@
 <script>
 import  global from '../../../src/components/common/Global.vue'
 import calendar from '../common/calendar.vue'
+import { Datetime, Group, XButton } from 'vux'
 import {
   mapState,
 } from 'vuex';
 
-export default {
-  components: {
-    calendar
-  },
-  computed: {
-    ...mapState({
-      member_id: state => state.user,
-    }),
-  },
-  data () {
-    return {
-      user: {},
-      value: null,
-      value1: null,
-      //show: true,
-      startDate: new Date('1970-1-1'),
-      endDate: new Date(),
-      brithday:'9月29日',
-      title:'会员中心',
-      closeButton:false,
-      calendar3:{
-        display:'',
-        show:false,
-        zero:true,
-        value:[1990,11,2], //默认日期
-        lunar:true, //显示农历
-        select:(value)=>{
-          this.calendar3.show=false;
-          this.calendar3.value=value;
-          this.calendar3.display=value.join("/");
-        }
-      },
-    }
-  },
-  async mounted () {
-    let { data } = await this.$http.get(`http://121.196.208.176:9001/member/${this.member_id}?mallId=${global.mallId}`)
-    this.user = data;
-    var unixTimestamp = new Date(this.user.birthday)
-    var year = unixTimestamp.getFullYear();
-    var month = unixTimestamp.getMonth()+1;
-    var date = unixTimestamp.getDate();
-    this.calendar3.display = year+"/"+month+"/"+date
-    this.$emit('title',this.title,this.closeButton);
-    if(!this.user.interest){
-        this.user.interest = 0;
-    }
-  },
-  methods: {
-    save(){
-      let is_public_wx = this.user.is_public_wx ? true: false
+  export default {
+      components: {
+        calendar,
+        Datetime,
+        Group,
+        XButton
+    },
+    computed: {
+      ...mapState({
+        member_id: state => state.user,
+      }),
+    },
+    data () {
+      return {
+         user: {
+          },
+         value: null,
+        value1: '',
+        //show: true,
+         startDate: '1970-01-01',
+        brithday:'9月29日',
+        title:'会员中心',
+        closeButton:false,
 
-      var time=new Date(document.getElementById("time").value);
-      this.$http.put(`http://121.196.208.176:9001/member`,{
-        'address':document.getElementById("address").value,
-        'birthday':time.getTime(),
-        'name':document.getElementById("name").value,
-        'degreeOfEducation':this.user.degree_of_education,
-        'enablePublicWa':is_public_wx,
-        'incomeRange':this.user.income_range,
-        'interest':this.user.interest,
-        'memberId':this.user.member_id,
-        'occupation':this.user.occupation,
-        'sex':this.user.sex
-      }).then(data =>{
-        //保存cookie(设置1年有效期);
-        setCookie('member_id',this.user.memberId,365);
-        this.$toast({
-          message:'更新成功',
-          possition:'top',
-        });
-        setTimeout(() => {
-           this.$router.push('/member');
-        },2000)
+         calendar3:{
+                display:'',
+                show:false,
+                zero:true,
+                value:[1990,11,2], //默认日期
+                lunar:true, //显示农历
+                select:(value)=>{
+                    this.calendar3.show=false;
+                    this.calendar3.value=value;
+                    this.calendar3.display=value.join("/");
+                }
+            },
       }
-      ,err=>{
-              // this.$toast({
-              //     message:'更新失败',
-              //     possition:'top',
-              //  });
-              // setTimeout(() => {
-              //   this.$router.push('/member');
-              // }, 2000);
-      });
     },
-    openByDrop(e){
-          this.calendar3.show=true;
-          this.calendar3.left=e.target.offsetLeft+19;
-          this.calendar3.top=e.target.offsetTop+70;
+     async mounted () {
+       let { data } = await this.$http.get(`http://121.196.208.176:9001/member/${this.member_id}?mallId=${global.mallId}`)
+        this.user = data;
 
-          e.stopPropagation();
-          window.setTimeout(()=>{
-              document.addEventListener("click",(e)=>{
-                  this.calendar3.show=false;
-                  document.removeEventListener("click",()=>{},false);
-              },false);
-          },1000)
+      var unixTimestamp = new Date(this.user.birthday)
+      var year = unixTimestamp.getFullYear();
+      var month = unixTimestamp.getMonth() + 1;
+      var date = unixTimestamp.getDate();
+      this.value1 = year+"-"+month+"-"+date
+      this.$emit('title',this.title,this.closeButton);
+      if(!this.user.interest){
+          this.user.interest =0;
+      }
       },
-      openByDialog(){
-          this.calendar4.show=true;
-      },
-      closeByDialog(){
-          this.calendar4.show=false;
-      },
-      changeEvents(){
-          this.calendar1.events={
-              '2017-7-20':'$'+(Math.random()*1000>>0),
-              '2017-7-21':'$'+(Math.random()*1000>>0),
-              '2017-7-22':'$'+(Math.random()*1000>>0),
+    methods: {
+      showPlugin () {
+        this.$vux.datetime.show({
+          placeholder:'请选择生日',
+          cancelText: '取消',
+          confirmText: '确定',
+          format: 'YYYY-MM-DD',
+          value: '2017-05-20',
+          onConfirm (val) {
+            console.log('plugin confirm', val)
+          },
+          onShow () {
+            console.log('plugin show')
+          },
+          onHide () {
+            console.log('plugin hide')
           }
+        })
       },
-    open(picker) {
-      this.$refs[picker].open();
-    },
-    handleChange(value) {
-      this.brithday=`${value.getMonth()+1}月${value.getDate()}日`;
-    },
+      change (value) {
+        console.log('change', value)
+      },
+       save(value){
+        let is_public_wx = this.user.is_public_wx ? true: false
+        var time=new Date(value);
+        this.$http.put(`http://121.196.208.176:9001/member`,{
+          'address':document.getElementById("address").value,
+          'birthday':time.getTime(),
+          'name':document.getElementById("name").value,
+          'degreeOfEducation':this.user.degree_of_education,
+          'enablePublicWa':is_public_wx,
+          'incomeRange':this.user.income_range,
+          'interest':this.user.interest,
+          'memberId':this.user.member_id,
+          'occupation':this.user.occupation,
+          'sex':this.user.sex
+        }).then(data =>{
+                //保存cookie(设置1年有效期);
+                 setCookie('member_id',this.user.memberId,365);
+                this.$toast({
+                    message:'更新成功',
+                    possition:'top',
+                 });
+                 setTimeout(() => {
+                     this.$router.push('/member');
+                  },2000)
+        }
+        ,err=>{
+                // this.$toast({
+                //     message:'更新失败',
+                //     possition:'top',
+                //  });
+                // setTimeout(() => {
+                //   this.$router.push('/member');
+                // }, 2000);
+            });
+       },
+      openByDrop(e){
+            this.calendar3.show=true;
+            this.calendar3.left=e.target.offsetLeft+19;
+            this.calendar3.top=e.target.offsetTop+70;
+
+            e.stopPropagation();
+            window.setTimeout(()=>{
+                document.addEventListener("click",(e)=>{
+                    this.calendar3.show=false;
+                    document.removeEventListener("click",()=>{},false);
+                },false);
+            },1000)
+        },
+        openByDialog(){
+            this.calendar4.show=true;
+        },
+        closeByDialog(){
+            this.calendar4.show=false;
+        },
+        changeEvents(){
+            this.calendar1.events={
+                '2017-7-20':'$'+(Math.random()*1000>>0),
+                '2017-7-21':'$'+(Math.random()*1000>>0),
+                '2017-7-22':'$'+(Math.random()*1000>>0),
+            }
+        },
+      open(picker) {
+        this.$refs[picker].open();
+      },
+      handleChange(value) {
+        this.brithday=`${value.getMonth()+1}月${value.getDate()}日`;
+      },
+    }
   }
-}
 </script>
 
 <style lang="less" scoped>

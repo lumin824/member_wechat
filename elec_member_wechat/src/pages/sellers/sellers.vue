@@ -2,7 +2,7 @@
    <div>
      <div style="position:fixed;right:0;left:0;top:0;z-index:1;background-color:#F2F2F2;" class="div1">
             <div style="height: 0.2rem; border-radius:18px;">
-                <mt-search v-model="sValue"  cancel-text="取消" placeholder="请输入关键词,例如:肯德基" :result="filterResult" ></mt-search>
+                <mt-search v-model="sValue"  cancel-text="取消" placeholder="请输入关键词,例如:肯德基" :result="filterResult"></mt-search>
             </div>
              <div class="sortField sortType_01" style="border-bottom:1px solid #E6E6E6;">
                    <a href="javascript:"  @click="selectChange(1)" style="margin-top:10px">
@@ -26,8 +26,8 @@
              <div class="sortList" id="shop_type" v-show="sortList">
                       <ul>
                         <scroller lock-x ref="scrollerEvent" height="300px" >
-                              <li v-show="lselected">
-                                <a v-on:click="lTextClick('全部','')">全部</a>
+                              <li v-show="lselected" class="li1">
+                                <a v-on:click="lTextClick('全部','')" style="float:left;">全部</a>
                                 <a v-on:click="lTextClick(loption.map_name,loption.map_id)" v-for="loption in loptions">{{ loption.map_name }}</a>
 
                                </li>
@@ -52,9 +52,9 @@
                 <img :src="v.logo" alt="" style="width:1.1rem;height:0.85rem;padding-left:0.2rem">
                 <div class="imgright">
                   <h1 style="padding-bottom:0.1rem">{{v.shop_name}}</h1>
-                  <h3 style="padding-top:-0.2rem;padding-bottom:0.01rem">{{v.industry_name}}</h3>
+                  <h3 style="padding-top:-0.2rem;padding-bottom:0.01rem">{{v.berth_number}}</h3>
                   <img class="imgleft" src="static/img/jf.png" style="padding-top:0.03rem" alt="">
-                  <h2>{{v.berth_number}}</h2>
+                  <h2>{{v.industry_name}}</h2>
                 </div>
               </div>
               <div class="right">
@@ -343,6 +343,10 @@ import { Scroller } from 'vux'
   }
 </script>
 <style>
+  .mintui-search:before{
+    font-size: 20px;
+    /* margin-right:40%; */
+  } 
   .mint-searchbar{
     position: absolute;
     left: 0px;
@@ -445,6 +449,7 @@ import { Scroller } from 'vux'
        color:#666;
        float: right;
        margin-left: 0.05rem;
+       margin-top: -11%;
    }
    .sellers .left .imgright{
       margin-top: 0.09rem;
@@ -522,7 +527,7 @@ import { Scroller } from 'vux'
      display: inline-block;
      width: 49%;
      line-height: 3em;
-     /*float: left;*/
+     /* float: left; */
      /*position: relative;*/
      text-decoration: none;
      text-transform: none;
