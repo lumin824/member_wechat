@@ -20,7 +20,7 @@
       </div>
       <div style="border-bottom:1px solid #E6E6E6;margin-left:20px;margin-right:20px;margin-top:20px"></div>
       <div style="width:60%;margin-left:20%;padding-bottom:20px"><img src="static/img/1510724764.png"/></div>
-    </div>
+    </div>  
 
   
     <div>
