@@ -63,7 +63,7 @@
                   this.formData.code='';
                   this.formData.v_code= '验证失败';
                   this.c_state = 'error';
-                  window.location.href='/registerInfo';
+                  window.location.href='/register';
                 });
             }
       }else{
