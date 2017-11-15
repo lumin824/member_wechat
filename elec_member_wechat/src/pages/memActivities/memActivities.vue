@@ -9,8 +9,8 @@
           </figcaption>
         </figure>
         <div class="time" style="border:1px solied;background;">
-          <div style="font-size:0.6em;color:#999;">2017-09-14~2017-09-15</div>
-          <div style="font-size:0.6em;color:#999;">未签到</div>
+          <div style="font-size:0.6em;color:#999;">2017.09.14~2017.09.15</div>
+          <div style="font-size:0.6em;color:#059CFF;">未签到</div>
         </div>
       </router-link>
     </ul>
