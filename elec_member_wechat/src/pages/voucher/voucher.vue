@@ -4,7 +4,6 @@
       <div>
         <div style="height:200px;background-image:url(static/img/quan.jpg);background-size: contain;">
         </div>
-
         <div style="margin-top:20px;">
           <router-link to="/voucherDetail" style="display:flex;background-color:#fff;margin-top:1px;" v-for="o in list">
             <div style="width:96px;height:96px;display:flex;align-items:center;justify-content:center;">
@@ -47,9 +46,6 @@
 </template>
 
 <script>
-import voucherList  from '../../components/common/voucherList.vue'
-import voucherLogo from '../../../static/img/voucherLogo.jpg'
-
 import { TransferDom, Popup, Scroller } from 'vux'
 import _ from 'lodash'
 
@@ -58,14 +54,12 @@ export  default {
     TransferDom
   },
   components:{
-    'm-vList':voucherList,
     Popup, Scroller,
   },
   data(){
     return{
       scrollTop: 0,
       show10: false,
-      logo:voucherLogo,
       list: [1,2,3,4,5,6,7,8],
       type: 1,
       typeList: [{id:1, name:'免费领券'}, {id:2, name:'团购券'}, {id:3, name:'停车券'}],
