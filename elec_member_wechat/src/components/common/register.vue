@@ -65,7 +65,7 @@
                   this.c_state = 'error';
                   window.location.href='/register';
                 });
-            }
+            } 
       }else{
           this.show = true;
           clearInterval(this.timer);
