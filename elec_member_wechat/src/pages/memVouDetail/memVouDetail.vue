@@ -32,7 +32,7 @@
       <div style="background-color:#46D0C3;height:50px;text-align:center;padding-top:20px;position:fixed;right:0;left:0;bottom:0;">
         <label style="color:white;font-size:20px">积分不足</label>
       </div>
-    </router-link>
+    </router-link>   
   </div>
 </template>
 
