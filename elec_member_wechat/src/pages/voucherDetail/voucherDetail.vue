@@ -9,7 +9,7 @@
 
       <div style="display:flex;">
         <img src="static/img/hgds.jpg" style="width:96px;height:96px;">
-        <div style="display:flex;color:#777879;font-size:0.7em;">
+        <div style="display:flex;color:#777879;font-size:0.7em;flex:1;">
           <div style="display:flex;flex-direction:column;">
             <div style="flex:1;border-bottom:1px solid #ddd;display:flex;align-items:center;">活动时间</div>
             <div style="flex:1;border-bottom:1px solid #ddd;display:flex;align-items:center;">已领取</div>
