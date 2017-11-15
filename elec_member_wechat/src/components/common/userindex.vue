@@ -96,127 +96,124 @@ import {
   mapState,
 } from 'vuex';
 
-  export default {
-      components: {
-        calendar
-    },
-    computed: {
-      ...mapState({
-        member_id: state => state.user,
-      }),
-    },
-    data () {
-      return {
-         user: {
-          },
-        value: null,
-        value1: null,
-        //show: true,
-        startDate: new Date('1970-1-1'),
-        endDate: new Date(),
-        brithday:'9月29日',
-        title:'会员中心',
-        closeButton:false,
-
-         calendar3:{
-                display:'',
-                show:false,
-                zero:true,
-                value:[1990,11,2], //默认日期
-                lunar:true, //显示农历
-                select:(value)=>{
-                    this.calendar3.show=false;
-                    this.calendar3.value=value;
-                    this.calendar3.display=value.join("/");
-                }
-            },
-      }
-    },
-     async mounted () {
-       let { data } = await this.$http.get(`http://121.196.208.176:9001/member/${this.member_id}?mallId=${global.mallId}`)
-       this.user=data;
-
-      var unixTimestamp = new Date(this.user.birthday)
-      var year =unixTimestamp.getFullYear();
-      var month =unixTimestamp.getMonth()+1;
-      var date =unixTimestamp.getDate();
-      this.calendar3.display = year+"/"+month+"/"+date
-      this.$emit('title',this.title,this.closeButton);
-      if(!this.user.interest){
-          this.user.interest =0;
-      }
-      },
-    methods: {
-       save(){
-        let is_public_wx = this.user.is_public_wx ? true: false
-
-        var time=new Date(document.getElementById("time").value);
-        this.$http.put(`http://121.196.208.176:9001/member`,{
-          'address':document.getElementById("address").value,
-          'birthday':time.getTime(),
-          'name':document.getElementById("name").value,
-          'degreeOfEducation':this.user.degree_of_education,
-          'enablePublicWa':is_public_wx,
-          'incomeRange':this.user.income_range,
-          'interest':this.user.interest,
-          'memberId':this.user.member_id,
-          'occupation':this.user.occupation,
-          'sex':this.user.sex
-        }).then(data =>{
-                //保存cookie(设置1年有效期);
-                 setCookie('member_id',this.user.memberId,365);
-                this.$toast({
-                    message:'更新成功',
-                    possition:'top',
-                 });
-                 setTimeout(() => {
-                     this.$router.push('/member');
-                  },2000)
+export default {
+  components: {
+    calendar
+  },
+  computed: {
+    ...mapState({
+      member_id: state => state.user,
+    }),
+  },
+  data () {
+    return {
+      user: {},
+      value: null,
+      value1: null,
+      //show: true,
+      startDate: new Date('1970-1-1'),
+      endDate: new Date(),
+      brithday:'9月29日',
+      title:'会员中心',
+      closeButton:false,
+      calendar3:{
+        display:'',
+        show:false,
+        zero:true,
+        value:[1990,11,2], //默认日期
+        lunar:true, //显示农历
+        select:(value)=>{
+          this.calendar3.show=false;
+          this.calendar3.value=value;
+          this.calendar3.display=value.join("/");
         }
-        ,err=>{
-                // this.$toast({
-                //     message:'更新失败',
-                //     possition:'top',
-                //  });
-                // setTimeout(() => {
-                //   this.$router.push('/member');
-                // }, 2000);
-            });
-       },
-      openByDrop(e){
-            this.calendar3.show=true;
-            this.calendar3.left=e.target.offsetLeft+19;
-            this.calendar3.top=e.target.offsetTop+70;
-
-            e.stopPropagation();
-            window.setTimeout(()=>{
-                document.addEventListener("click",(e)=>{
-                    this.calendar3.show=false;
-                    document.removeEventListener("click",()=>{},false);
-                },false);
-            },1000)
-        },
-        openByDialog(){
-            this.calendar4.show=true;
-        },
-        closeByDialog(){
-            this.calendar4.show=false;
-        },
-        changeEvents(){
-            this.calendar1.events={
-                '2017-7-20':'$'+(Math.random()*1000>>0),
-                '2017-7-21':'$'+(Math.random()*1000>>0),
-                '2017-7-22':'$'+(Math.random()*1000>>0),
-            }
-        },
-      open(picker) {
-        this.$refs[picker].open();
-      },
-      handleChange(value) {
-        this.brithday=`${value.getMonth()+1}月${value.getDate()}日`;
       },
     }
+  },
+  async mounted () {
+    let { data } = await this.$http.get(`http://121.196.208.176:9001/member/${this.member_id}?mallId=${global.mallId}`)
+    this.user = data;
+    var unixTimestamp = new Date(this.user.birthday)
+    var year = unixTimestamp.getFullYear();
+    var month = unixTimestamp.getMonth()+1;
+    var date = unixTimestamp.getDate();
+    this.calendar3.display = year+"/"+month+"/"+date
+    this.$emit('title',this.title,this.closeButton);
+    if(!this.user.interest){
+        this.user.interest = 0;
+    }
+  },
+  methods: {
+    save(){
+      let is_public_wx = this.user.is_public_wx ? true: false
+
+      var time=new Date(document.getElementById("time").value);
+      this.$http.put(`http://121.196.208.176:9001/member`,{
+        'address':document.getElementById("address").value,
+        'birthday':time.getTime(),
+        'name':document.getElementById("name").value,
+        'degreeOfEducation':this.user.degree_of_education,
+        'enablePublicWa':is_public_wx,
+        'incomeRange':this.user.income_range,
+        'interest':this.user.interest,
+        'memberId':this.user.member_id,
+        'occupation':this.user.occupation,
+        'sex':this.user.sex
+      }).then(data =>{
+        //保存cookie(设置1年有效期);
+        setCookie('member_id',this.user.memberId,365);
+        this.$toast({
+          message:'更新成功',
+          possition:'top',
+        });
+        setTimeout(() => {
+           this.$router.push('/member');
+        },2000)
+      }
+      ,err=>{
+              // this.$toast({
+              //     message:'更新失败',
+              //     possition:'top',
+              //  });
+              // setTimeout(() => {
+              //   this.$router.push('/member');
+              // }, 2000);
+      });
+    },
+    openByDrop(e){
+          this.calendar3.show=true;
+          this.calendar3.left=e.target.offsetLeft+19;
+          this.calendar3.top=e.target.offsetTop+70;
+
+          e.stopPropagation();
+          window.setTimeout(()=>{
+              document.addEventListener("click",(e)=>{
+                  this.calendar3.show=false;
+                  document.removeEventListener("click",()=>{},false);
+              },false);
+          },1000)
+      },
+      openByDialog(){
+          this.calendar4.show=true;
+      },
+      closeByDialog(){
+          this.calendar4.show=false;
+      },
+      changeEvents(){
+          this.calendar1.events={
+              '2017-7-20':'$'+(Math.random()*1000>>0),
+              '2017-7-21':'$'+(Math.random()*1000>>0),
+              '2017-7-22':'$'+(Math.random()*1000>>0),
+          }
+      },
+    open(picker) {
+      this.$refs[picker].open();
+    },
+    handleChange(value) {
+      this.brithday=`${value.getMonth()+1}月${value.getDate()}日`;
+    },
   }
+}
 </script>
 
 <style lang="less" scoped>
