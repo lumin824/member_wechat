@@ -1,6 +1,6 @@
 <template>
     <div >
-      <div style="width:100%">
+      <div style="width:100%;border-bottom:1px solid #D6D6D6">
         <div style="width:30%;margin-left:0.3rem">
           <img src="static/img/cat.jpg" alt="">
          </div>

@@ -1,5 +1,5 @@
 <template>
-   <div>
+   <div >
            <figure>
                   <router-link to="/userInfo"><img src="static/img/userinfo.png"/>
                   <figcaption>个人信息</figcaption></router-link>
@@ -22,7 +22,6 @@
              <figcaption>我的券</figcaption></router-link>
            </figure>
    </div>
-
 </template>
 <script>
 
