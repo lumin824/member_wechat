@@ -25,7 +25,7 @@
       return {
         list: [1,2,3,4,5,6]
       }
-    },
+    }, 
     async mounted(){
 
       // const list = await this.$http.post('http://121.196.208.176:9001/activity')
