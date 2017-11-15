@@ -47,7 +47,7 @@
     },
     //发送请求
     valid(){
-      if(this.checkMobile(this.formData.phone)){
+      if(this.checkMobile(this.formData.phone)){ 
             if(this.formData.code==''){
                   this.formData.v_code= '请先获取验证码';
                   this.c_state = 'error';
