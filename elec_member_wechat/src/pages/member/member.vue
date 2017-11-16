@@ -1,49 +1,125 @@
 <template>
     <div>
+      <div style="display:flex;background-color:#fff;margin-top:20px;border-top:1px solid #e1e1e1;">
+        <div>
+          <img src="static/img/cat.jpg" style="border-radius:50%;width:80px;height:80px;margin:20px;">
+        </div>
+        <div>
+          <div style="margin-top:20px;font-size:1.1em;">{{user.name}} <span style="background-color:#56ded3;color:#fff;padding:2px 5px;font-size:0.9em;border-radius:3px;">{{user.level}}</span></div>
+          <div style="font-size:0.9em;color:#7f8081;">累计积分<span style="margin-left:10px;">{{user.cumulate_points}}</span></div>
+          <div style="font-size:0.9em;color:#7f8081;">可用积分<span style="margin-left:10px;">{{user.usable_points}}</span></div>
+        </div>
+      </div>
 
-          <m-header></m-header>
-          <m-info></m-info>
-          <m-nav></m-nav>
+      <div style="display:flex;background-color:#fff;font-size:0.8em;text-align:center;padding:10px 0;border-top:1px solid #e1e1e1;border-bottom:1px solid #e1e1e1;">
+        <router-link to="/userInfo" style="flex:1;display:flex;flex-direction:column;align-items:center;">
+          <img src="static/img/userinfo.png" style="width:24px;height:24px;"/>
+          <div style="margin-top:5px;">个人信息</div>
+        </router-link>
+        <div style="border-left:1px solid #e1e1e1;"></div>
+        <router-link to="/memberLevel" style="flex:1;display:flex;flex-direction:column;align-items:center;">
+          <div><img src="static/img/level.png" style="width:25px;height:25px;"/></div>
+          <div style="margin-top:5px;">我的等级</div>
+        </router-link>
+        <div style="border-left:1px solid #e1e1e1;"></div>
+        <router-link to="/memActivities" style="flex:1;display:flex;flex-direction:column;align-items:center;">
+          <div><img src="static/img/activity.png" style="width:25px;height:25px;"/></div>
+          <div style="margin-top:5px;">我的活动</div>
+        </router-link>
+        <div style="border-left:1px solid #e1e1e1;"></div>
+        <router-link to="/memVoucher" style="flex:1;display:flex;flex-direction:column;align-items:center;">
+          <div><img src="static/img/certificate.png" style="width:25px;height:25px;"/></div>
+          <div style="margin-top:5px;">我的券</div>
+        </router-link>
+      </div>
+
+      <div style="background-color:#fff;margin-top:10px;font-size:0.9em;border-top:1px solid #e1e1e1;border-bottom:1px solid #e1e1e1;">
+        <router-link to="/voucher" style="display:flex;">
+          <div style="display:flex;align-items:center;">
+            <img src="static/img/voucher.png" style="width:25px;height:25px;margin:0 20px;">
+          </div>
+          <div style="flex:1;display:flex;border-bottom:1px solid #e1e1e1;align-items:center;padding-right:10px;">
+            <div style="flex:1;margin:10px;">优惠券</div>
+            <span class="iconfont icon-right" style="color:#797979;"></span>
+          </div>
+        </router-link>
+
+        <router-link to="/activities" style="display:flex;">
+          <div style="display:flex;align-items:center;">
+            <img src="static/img/latestactive.png" style="width:25px;height:25px;margin:0 20px;">
+          </div>
+          <div style="flex:1;display:flex;border-bottom:1px solid #e1e1e1;align-items:center;padding-right:10px;">
+            <div style="flex:1;margin:10px;">最新活动</div>
+            <span class="iconfont icon-right" style="color:#797979;"></span>
+          </div>
+        </router-link>
+
+        <router-link to="/car" style="display:flex;">
+          <div style="display:flex;align-items:center;">
+            <img src="static/img/stopcar.png" style="width:25px;height:25px;margin:0 20px;">
+          </div>
+          <div style="flex:1;display:flex;border-bottom:1px solid #e1e1e1;align-items:center;padding-right:10px;">
+            <div style="flex:1;margin:10px;">停车缴费</div>
+            <span class="iconfont icon-right" style="color:#797979;"></span>
+          </div>
+        </router-link>
+
+        <router-link to="" style="display:flex;">
+          <div style="display:flex;align-items:center;">
+            <img src="static/img/cash.png" style="width:25px;height:25px;margin:0 20px;">
+          </div>
+          <div style="flex:1;display:flex;border-bottom:1px solid #e1e1e1;align-items:center;padding-right:10px;">
+            <div style="flex:1;margin:10px;">积分抵现</div>
+            <span class="iconfont icon-right" style="color:#797979;"></span>
+          </div>
+        </router-link>
+
+        <router-link to="/ticketsUpload" style="display:flex;">
+          <div style="display:flex;align-items:center;">
+            <img src="static/img/upload.png" style="width:25px;height:25px;margin:0 20px;">
+          </div>
+          <div style="flex:1;display:flex;border-bottom:1px solid #e1e1e1;align-items:center;padding-right:10px;">
+            <div style="flex:1;margin:10px;">小票上传</div>
+            <span class="iconfont icon-right" style="color:#797979;"></span>
+          </div>
+        </router-link>
+
+        <router-link to="" style="display:flex;">
+          <div style="display:flex;align-items:center;">
+            <img src="static/img/record.png" style="width:25px;height:25px;margin:0 20px;">
+          </div>
+          <div style="flex:1;display:flex;align-items:center;padding-right:10px;">
+            <div style="flex:1;margin:10px;">商户记录</div>
+            <span class="iconfont icon-right" style="color:#797979;"></span>
+          </div>
+        </router-link>
+      </div>
     </div>
 </template>
 <script>
-  import  Header from '../../../src/components/header/header.vue'
-  import  MyInfo from '../../../src/components/common/myInfo.vue'
-  import  MemberNav from '../../../src/components/common/memberNav.vue'
-  import  {getCookie} from '../../../src/util/util'
-  import  global from '../../../src/components/common/Global.vue'
-  import {
-    mapState,
-  } from 'vuex';
-  export  default {
-    components:{
-      'm-header':Header,
-      'm-info':MyInfo,
-      'm-nav':MemberNav,
-    },
-    computed: {
-      ...mapState({
-        member_id: state => state.user,
-      }),
-    },
-    mounted(){
-      //let member_id = getCookie('member_id');
-      let member_id = this.member_id;
-     // let exdate = new Date();
-      if(member_id==null){
-                this.$toast({
-                  message:'请先登陆!',
-                  possition:'top',
-                });
-                setTimeout(this.$router.push('/login'),3000);
-                return false;
-      }else{
-        //       this.$http.get(`http://121.196.208.176:9001/member/${member_id}?mallId=${global.mallId}`).then(data =>{
-        //         console.log(data.data);
-        // });
-      }
+import  global from '../../../src/components/common/Global.vue'
+import {
+  mapState,
+} from 'vuex';
+export  default {
+  components:{
+  },
+  data() {
+    return {
+      user: {},
     }
+  },
+  computed: {
+    ...mapState({
+      member_id: state => state.user,
+    }),
+  },
+  async mounted(){
+    let member_id = this.member_id;
+    let { data } = await this.$http.get(`${global.apiHost}/member/${this.member_id}?mallId=${global.mallId}`)
+    this.user=data;
   }
+}
 </script>
 <style  lang="less" scoped>
 </style>
