@@ -15,7 +15,7 @@
             <div style="padding-top:10px;color:#737373">
               <div style="font-size:10px">状态 <label style="padding-left:12%;color:#FF951D;">未激活</label></div>
             </div>
-        </div>
+        </div> 
       </div>
       <div style="border-bottom:1px solid #E6E6E6;margin-left:20px;margin-right:20px;"></div>
       <div style="width:60%;margin-left:20%;padding-bottom:20px"><img src="static/img/1510724764.png"/></div>
