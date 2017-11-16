@@ -219,7 +219,6 @@ export default {
         }else{
           this.popupSelected = _.concat(this.popupSelected, id)
         }
-        console.log(this.popupSelected)
       }else{
         if(this.user[this.popupKey] != id){
           this.user[this.popupKey] = id
@@ -239,9 +238,9 @@ export default {
   async mounted(){
     let member_id = this.member_id;
     let { data } = await this.$http.get(`${global.apiHost}/member/${this.member_id}?mallId=${global.mallId}`)
-    data.interest = _.map(data.interest.split(','), parseInt)
+
+    data.interest = data.interest ? _.map(data.interest.split(','), parseInt) : [];
     this.user=data;
-    console.log(this.user)
   }
 }
 </script>
