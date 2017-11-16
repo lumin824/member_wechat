@@ -2,7 +2,10 @@
   <div>
     <scroller lock-x @on-scroll="handleScroll">
       <div>
-        <div style="height:200px;background-image:url(static/img/quan.jpg);background-size: contain;">
+        <div style="height:200px;background-image:url(static/img/quan.jpg);background-repeat:no-repeat;background-size: auto 100%;background-position:center;background-color:#64d9a6;position:relative;">
+          <router-link :to="{ path: member_id ? '/memVoucher':'/register' }" style="position:absolute;bottom:0;right:0;padding:10px;color:#ffed00;">
+            {{member_id?'查看我的券':'立即注册 》'}}
+          </router-link>
         </div>
         <div style="margin-top:20px;">
           <router-link to="/voucherDetail" style="display:flex;background-color:#fff;margin-top:1px;" v-for="o in list">
@@ -48,6 +51,9 @@
 <script>
 import { TransferDom, Popup, Scroller } from 'vux'
 import _ from 'lodash'
+import {
+  mapState,
+} from 'vuex';
 
 export  default {
   directives: {
@@ -62,14 +68,16 @@ export  default {
       show10: false,
       list: [1,2,3,4,5,6,7,8],
       type: 1,
-      typeList: [{id:1, name:'免费领券'}, {id:2, name:'团购券'}, {id:3, name:'停车券'}],
+      typeList: [{id:1, name:'券'}, {id:2, name:'团购券'}, {id:3, name:'停车券'}],
     }
   },
   computed: {
     typeName() {
       return (_.find(this.typeList, {id: this.type}) || {}).name;
     },
-
+    ...mapState({
+      member_id: state => state.user,
+    }),
   },
   methods:{
     handleScroll({top}) {
