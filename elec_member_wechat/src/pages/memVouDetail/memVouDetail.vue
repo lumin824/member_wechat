@@ -6,19 +6,18 @@
         <div style="padding-left:20px;margin-top:-20px;color:black" class="Coupon" >券详情</div>
       </div>
       <div style="width:100%;height:120px;">
-        <div style="width:35%;height:100%;float:left"><img src="static/img/hgds.jpg" alt=""></div>
+        <div style="width:35%;height:100%;float:left"><img style="height:80%;width:100%" src="static/img/hgds.jpg" alt=""></div>
         <div style="width:65%;height:70%;float:right;margin-top:20px">
             <div><h2>哈根达斯满百减十</h2></div>
             <div style="padding-top:10px;border-bottom : 1px solid #E6E6E6;margin-right:10px;color:#737373">
-              <div>有效期<label style="padding-left:10%">2018-01-01~2018-09-11</label></div>
+              <div style="font-size:10px">有效期<label style="padding-left:10%;font-size:10px">2018-01-01~2018-09-11</label></div>
             </div>
             <div style="padding-top:10px;color:#737373">
-              <div>状态 <label style="padding-left:12%;color:#FF951D">未激活</label></div>
+              <div style="font-size:10px">状态 <label style="padding-left:12%;color:#FF951D;">未激活</label></div>
             </div>
-        </div>
-        
+        </div> 
       </div>
-      <div style="border-bottom:1px solid #E6E6E6;margin-left:20px;margin-right:20px;margin-top:20px"></div>
+      <div style="border-bottom:1px solid #E6E6E6;margin-left:20px;margin-right:20px;"></div>
       <div style="width:60%;margin-left:20%;padding-bottom:20px"><img src="static/img/1510724764.png"/></div>
     </div>  
 
