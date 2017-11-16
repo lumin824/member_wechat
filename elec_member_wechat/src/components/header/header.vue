@@ -1,10 +1,10 @@
 <template>
     <div >
-      <div style="width:100%;border-bottom:1px solid #D6D6D6">
-        <div style="width:30%;margin-left:0.3rem">
+      <div style="width:100%; border-bottom:1px solid #D6D6D6">
+        <div style="width:30%;margin-left:0.3rem ;border-bottom:1px solid #D6D6D6">
           <img src="static/img/cat.jpg" alt="">
          </div>
-         <div style="width:70%">
+         <div style="width:70% ;border-bottom:1px solid #D6D6D6">
           <ul>
             <li><span> {{this.user.name}}</span><h3>{{this.user.level}}</h3></li>
             <li>累计积分:{{this.user.cumulate_points}}</li>

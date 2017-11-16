@@ -77,7 +77,8 @@
       </mt-cell>
 
       <mt-cell title="微信号" style="right:2%;margin-left:0.03rem">
-        <input type="text" :value="this.user.wechat_account" readonly="readonly" style="position:relative;left:50%;outline: none;border: medium;">
+        <input type="text" :value="this.user.wechat_account"   style="position:relative;outline: none;border: medium;
+           text-align:right;color:#656B79;left:-18%;height:0.4rem"  @change="save">
         <!-- <input  @change="save" class="addre" type="text" v-model="user.wechat_account" placeholder="请输入微信号"
            style="position:relative;outline: none;border: medium;
            text-align:right;color:#656B79;left:-7%;height:0.4rem"> -->
@@ -185,7 +186,8 @@ import {
           'interest':this.user.interest,
           'memberId':this.user.member_id,
           'occupation':this.user.occupation,
-          'sex':this.user.sex
+          'sex':this.user.sex,
+          
         }).then(data =>{
                 //保存cookie(设置1年有效期);
                  setCookie('member_id',this.user.memberId,365);
