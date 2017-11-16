@@ -1,6 +1,6 @@
 <template>
   <scroller lock-x>
-    <div style="margin-bottom:20px;">
+    <div>
       <div style="display:flex;background-color:#fff;margin-top:20px;border-top:1px solid #e1e1e1;border-bottom:1px solid #e1e1e1;">
         <div>
           <img src="static/img/cat.jpg" style="border-radius:50%;width:80px;height:80px;margin:20px;">
@@ -125,6 +125,7 @@
       </div>
 
       <datetime v-model="value9" :show.sync="visibility"></datetime>
+      <div style="height:20px;"></div>
     </div>
   </scroller>
 </template>
