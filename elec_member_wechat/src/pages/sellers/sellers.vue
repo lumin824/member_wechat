@@ -237,12 +237,12 @@ export default {
         setTimeout(() => {
           this.pageList = list;
           this.showlist = true;
-        },800)
+        },200)
       }catch(e){
         setTimeout(() => {
           this.pageList = [];
           this.showlist = true;
-        },800)
+        },200)
       }
     },
 
