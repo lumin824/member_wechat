@@ -11,8 +11,8 @@
       </div>
     </div>
 
-    <div @click="$vux.confirm.prompt('111', {title:'1111222'})" style="margin-top:10px;background:#fff;border-top:1px solid #e1e1e1;">
-      <div style="display:flex;border-bottom:1px solid #e1e1e1;">
+    <div style="margin-top:10px;background:#fff;border-top:1px solid #e1e1e1;">
+      <div @click="$vux.confirm.prompt('111', {title:'1111222'})" style="display:flex;border-bottom:1px solid #e1e1e1;">
         <div style="padding:10px;margin-left:10px;">姓名</div>
         <div style="flex:1;text-align:right;padding:10px;">{{user.name}}</div>
         <div style="padding:10px;padding-left:0;">
