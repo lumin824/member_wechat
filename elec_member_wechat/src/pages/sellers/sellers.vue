@@ -21,7 +21,7 @@
          </router-link>
 
          <p v-if="loading" style="text-align:center;">
-           <inline-loading></inline-loading><span style="vertical-align:middle;display:inline-block;font-size:14px;">&nbsp;&nbsp;商户查询中</span>
+           <inline-loading></inline-loading><span style="vertical-align:middle;display:inline-block;font-size:14px;">&nbsp;&nbsp;商户接入中...</span>
          </p>
          <div v-else style="text-align:center;color:#7D7D7D;padding-top:0.05rem;padding-bottom:0.05rem;padding-bottom:100px;">更多商家接入中，敬请期待...</div>
        </div>
