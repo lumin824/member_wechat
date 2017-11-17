@@ -1,6 +1,6 @@
 <template>
    <div>
-     <scroller lock-x>
+     <scroller lock-x ref="scroller">
        <div style="margin-top:100px;">
          <router-link :to="{path:'/sell',query:{sell_id:o.shop_id}}" style="display:flex;background-color:#fff;margin-top:1px;" v-for="o in list">
            <div style="width:116px;height:96px;display:flex;align-items:center;justify-content:center;">
@@ -153,6 +153,12 @@ export default {
       }catch(e){
         this.list = []
       }
+
+      this.$nextTick(() => {
+        this.$refs.scroller.reset({
+          top: 0
+        })
+      })
 
     },
   }
