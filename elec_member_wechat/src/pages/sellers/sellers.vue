@@ -1,19 +1,7 @@
 <template>
    <div>
-     <div style="height:44px;">
-       <search v-model="searchParams.keywords" @on-change="reload" @on-submit="reload" placeholder="请输入关键词，例如：肯德基" possition="static"></search>
-     </div>
-
-     <div style="display:flex;text-align:center;background-color:#fff;padding:10px 0;border-bottom:1px solid #e1e1e1;">
-       <div @click="openPopup('map_id')" style="flex:1">{{popupName('map_id')}}</div>
-       <div style="border-left:1px solid #e1e1e1;"></div>
-       <div @click="openPopup('industry_id')" style="flex:1">{{popupName('industry_id')}}</div>
-       <div style="border-left:1px solid #e1e1e1;"></div>
-       <div @click="openPopup('sort')" style="flex:1">{{popupName('sort')}}</div>
-     </div>
-
      <scroller lock-x>
-       <div>
+       <div style="margin-top:100px;">
          <router-link :to="{path:'/sell',query:{sell_id:o.shop_id}}" style="display:flex;background-color:#fff;margin-top:1px;" v-for="o in list">
            <div style="width:116px;height:96px;display:flex;align-items:center;justify-content:center;">
              <img :src="o.logo" style="width:100px;height:80px;">
@@ -37,6 +25,19 @@
        </div>
      </scroller>
 
+     <div style="position:fixed;top:0;right:0;left:0;">
+       <div style="height:44px;">
+         <search v-model="searchParams.keywords" @on-change="reload" @on-submit="reload" placeholder="请输入关键词，例如：肯德基" position="static"></search>
+       </div>
+
+       <div style="display:flex;text-align:center;background-color:#fff;padding:10px 0;border-bottom:1px solid #e1e1e1;">
+         <div @click="openPopup('map_id')" style="flex:1">{{popupName('map_id')}}</div>
+         <div style="border-left:1px solid #e1e1e1;"></div>
+         <div @click="openPopup('industry_id')" style="flex:1">{{popupName('industry_id')}}</div>
+         <div style="border-left:1px solid #e1e1e1;"></div>
+         <div @click="openPopup('sort')" style="flex:1">{{popupName('sort')}}</div>
+       </div>
+     </div>
 
      <div v-transfer-dom>
        <popup v-model="popup" position="top" style="margin-top:44px;background-color:#fff;">
