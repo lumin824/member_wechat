@@ -124,9 +124,8 @@
           </div>
         </popup>
       </div>
-
+      <div style="padding-bottom:100px;"></div>
       <datetime v-model="value9" :show.sync="visibility"></datetime>
-      <div style="height:40px;"></div>
     </div>
   </scroller>
 </template>

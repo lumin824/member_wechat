@@ -20,8 +20,7 @@
            </div>
          </router-link>
 
-         <div style="text-align:center;color:#7D7D7D;padding-top:0.05rem;padding-bottom:0.05rem;">更多商家接入中，敬请期待...</div>
-         <div style="height:40px;"></div>
+         <div style="text-align:center;color:#7D7D7D;padding-top:0.05rem;padding-bottom:0.05rem;padding-bottom:100px;">更多商家接入中，敬请期待...</div>
        </div>
      </scroller>
 
