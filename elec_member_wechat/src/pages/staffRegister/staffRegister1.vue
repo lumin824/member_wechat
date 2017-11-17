@@ -1,6 +1,6 @@
 <template>
   <div>
-    核销人员注册 於凯强
+    核销人员注册 於凯强OK
   </div>
 </template>
 
