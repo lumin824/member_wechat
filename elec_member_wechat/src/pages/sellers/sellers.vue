@@ -20,7 +20,10 @@
            </div>
          </router-link>
 
-         <div style="text-align:center;color:#7D7D7D;padding-top:0.05rem;padding-bottom:0.05rem;padding-bottom:100px;">更多商家接入中，敬请期待...</div>
+         <p v-if="loading" style="text-align:center;">
+           <inline-loading></inline-loading><span style="vertical-align:middle;display:inline-block;font-size:14px;">&nbsp;&nbsp;商户查询中</span>
+         </p>
+         <div v-else style="text-align:center;color:#7D7D7D;padding-top:0.05rem;padding-bottom:0.05rem;padding-bottom:100px;">更多商家接入中，敬请期待...</div>
        </div>
      </scroller>
 
@@ -57,17 +60,18 @@
 
 <script>
 import global from '../../../src/components/common/Global.vue'
-import { Search, TransferDom, Popup, Datetime, Scroller } from 'vux'
+import { Search, TransferDom, Popup, Datetime, Scroller, InlineLoading } from 'vux'
 import _ from 'lodash';
 export default {
   directives: {
     TransferDom
   },
   components: {
-    Popup, Scroller, Search,
+    Popup, Scroller, Search, InlineLoading
   },
   data(){
     return {
+      loading: false,
       list: [],
       popup: false,
       popupTitle: '',
@@ -86,7 +90,6 @@ export default {
           {id:2, name:'首拼'}
         ],
       },
-
       searchParams: {
         map_id: undefined,
         industry_id: undefined,
@@ -138,11 +141,13 @@ export default {
     async choosePopup(id) {
 
       this.searchParams[this.popupKey] = id;
-      await this.reload()
       this.popup = false;
+      await this.reload()
     },
 
     async reload() {
+      this.loading = true;
+      this.list = []
       try{
         this.list = (await this.$http.post(`${global.apiHost}/shop`, {
           mall_id: global.mallId,
@@ -151,8 +156,8 @@ export default {
           ...this.searchParams,
         })).data
       }catch(e){
-        this.list = []
       }
+      this.loading = false;
 
       this.$nextTick(() => {
         this.$refs.scroller.reset({
