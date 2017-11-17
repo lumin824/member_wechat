@@ -110,7 +110,8 @@
         <popup v-model="popup" position="bottom" style="background-color:#fff;">
           <div style="padding:10px;text-align:center;position:relative;">
             <div>{{popupTitle}}</div>
-            <div v-if="popupSelected instanceof Array" @click="closePopup" style="position:absolute;right:5px;bottom:5px;top:5px;display:flex;align-items:center;padding:0 20px;background-color:#56ded3;border-radius:5px;color:#fff;">确定</div>
+            <div v-if="popupSelected instanceof Array" @click="closePopup" style="position:absolute;right:0;bottom:5px;top:5px;display:flex;align-items:center;padding:0 15px;color:#04BE02;">确定</div>
+            <div @click="closePopup" style="position:absolute;left:0;bottom:5px;top:5px;display:flex;align-items:center;padding:0 15px;color:#828282;">取消</div>
           </div>
 
           <div @click="choosePopup(o.id)" v-for="o in popupList[popupKey]" style="display:flex;border-top:1px solid #e1e1e1;">
