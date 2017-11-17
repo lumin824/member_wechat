@@ -26,147 +26,43 @@ const login = r => require.ensure([], () => r(require('../pages/login/login')), 
 const test = r => require.ensure([], () => r(require('../pages/test/test')), 'test')
 const car = r => require.ensure([], () => r(require('../pages/car/car')), 'car')
 const carDetail = r => require.ensure([], () => r(require('../pages/car/carDetail')), 'carDetail')
+
+const staffRegister0 = r => require.ensure([], () => r(require('../pages/staffRegister/staffRegister0')), 'staffRegister0')
+const staffRegister1 = r => require.ensure([], () => r(require('../pages/staffRegister/staffRegister1')), 'staffRegister1')
+
 Vue.use(Router)
 export default new Router({
   mode:'history',//更改模式，默认为hash
   routes: [
     //地址为空时跳转member页面
-    {
-      path: '',
-      redirect: '/member'
-    },
-    {
-      path: '/member',
-      component: member,
-    },
-    {
-      path: '/userInfo',
-      component: userInfo,
-    /*  children:[
-        {
-          path:'/userInfo/changePhone',
-          component:changePhone,
-        }
-      ]*/
-    },
-     {
-      path: '/changePhone',
-      component:changePhone,
-     },
-    {
-      path: '/changeSuccess',
-      component:changeSuccess,
-    },
-    {
-      //核销人员注册
-      path:'/staffRegister',
-      component:staffRegister,
-    },
-    {
-      //注册成功
-      path:'/staRegSuccess',
-      component:staRegSuccess,
-    },
-
-    {
-       //会员注册
-      path: '/register',
-      component:register,
-    },
-    {
-      //注册资料填写
-      path: '/registerInfo',
-      component:registerInfo,
-    },
-    {
-      //注册成功
-      path:'/registerSucc',
-      component:registerSucc
-    },
-    {
-      //商场简介
-      path:'/squareInfo',
-      component:squareInfo,
-    },
-    {
-      //定位
-     path:'/getPosition',
-     /*:longitude/:latitude*/
-     component:getPosition,
-    },
-    {
-      //入驻商户(列表)
-      path:'/sellers',
-      component:sellers,
-    },
-    {
-      path:'/sell',
-      component:sell,
-    },
-    {
-      //小票上传
-      path:'/ticketsUpload',
-      component:ticketsUpload,
-    },
-    {
-      //我的等级
-      path:'/memberLevel',
-      component:memberLevel,
-    },
-     //优惠券
-    {
-      path:'/voucher',
-      component:voucher
-    },
-    //优惠券(会员)
-    {
-      path:'/memVoucher',
-      component:memVoucher
-    },
-    //券详情
-    {
-      path:'/voucherDetail',
-      component:voucherDetail
-    },
-    //最新活动
-    {
-      path:'/activities',
-      component:activities
-    },
-    //我的活动
-    {
-      path:'/memActivities',
-      component:memActivities
-    },
-    //活动详情
-    {
-      path:'/activeDetail',
-      component:activeDetail
-    },
-    //活动详情
-    {
-      path:'/memVouDetail',
-      component:memVouDetail
-    },
-    //登陆接口
-    {
-      path:'/login',
-      component:login
-    },
-    {
-      //测试
-      path:'/test',
-      component:test,
-    },
-    {
-      //停车缴费
-      path:'/car',
-      component:car
-    },
-    {
-      //停车缴费
-      path:'/carDetail',
-      component:carDetail
-    }
+    { path: '', redirect: '/member'},
+    { path: '/member', component: member},
+    { path: '/userInfo', component: userInfo},
+    { path: '/changePhone', component:changePhone},
+    { path: '/changeSuccess', component:changeSuccess, },
+    { path:'/staffRegister', component:staffRegister, }, //核销人员注册
+    { path:'/staffRegister0', component:staffRegister0, }, //核销人员注册
+    { path:'/staffRegister1', component:staffRegister1, }, //核销人员注册
+    { path:'/staRegSuccess', component:staRegSuccess, }, //注册成功
+    { path: '/register', component:register, }, //会员注册
+    { path: '/registerInfo', component:registerInfo, }, //注册资料填写
+    { path:'/registerSucc', component:registerSucc }, //注册成功
+    { path:'/squareInfo', component:squareInfo, }, //商场简介
+    { path:'/getPosition', component:getPosition, }, //定位
+    { path:'/sellers', component:sellers, }, //入驻商户(列表)
+    { path:'/sell', component:sell, },
+    { path:'/ticketsUpload', component:ticketsUpload, }, //小票上传
+    { path:'/memberLevel', component:memberLevel, }, //我的等级
+    { path:'/voucher', component:voucher }, //优惠券
+    { path:'/memVoucher', component:memVoucher }, //优惠券(会员)
+    { path:'/voucherDetail', component:voucherDetail }, //券详情
+    { path:'/activities', component:activities }, //最新活动
+    { path:'/memActivities', component:memActivities }, //我的活动
+    { path:'/activeDetail', component:activeDetail }, //活动详情
+    { path:'/memVouDetail', component:memVouDetail }, //活动详情
+    { path:'/login', component:login }, //登陆接口
+    { path:'/test', component:test, }, //测试
+    { path:'/car', component:car }, //停车缴费
+    { path:'/carDetail', component:carDetail } //停车缴费
   ]
 })
