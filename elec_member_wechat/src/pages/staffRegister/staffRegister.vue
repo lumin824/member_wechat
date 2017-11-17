@@ -1,35 +1,39 @@
 <template>
-  <div style="margin-top:10px;background:#fff;border-top:1px solid #e1e1e1;">
-    <div style="display:flex;border-bottom:1px solid #e1e1e1;">
-      <div style="width:70px;padding:10px;margin-left:10px;">姓名</div>
-      <div style="flex:1;padding:10px;">
-        <input type="text" placeholder="请输入姓名" />
+  <div>
+    <div style="margin-top:10px;background:#fff;border-top:1px solid #e1e1e1;">
+      <div style="display:flex;border-bottom:1px solid #e1e1e1;">
+        <div style="width:70px;padding:10px;margin-left:10px;color:#00c9b2;">姓名</div>
+        <div style="flex:1;padding:10px;">
+          <input type="text" placeholder="请输入姓名" />
+        </div>
+      </div>
+
+      <div style="display:flex;border-bottom:1px solid #e1e1e1;">
+        <div style="width:70px;padding:10px;margin-left:10px;color:#00c9b2;">联系电话</div>
+        <div style="flex:1;padding:10px;">
+          <input type="number" placeholder="请输入联系电话" />
+        </div>
+      </div>
+
+      <div style="display:flex;border-bottom:1px solid #e1e1e1;">
+        <div style="width:70px;padding:10px;margin-left:10px;color:#00c9b2;">类别</div>
+        <div style="flex:1;padding:10px;">
+          <checker v-model="user.leibie" default-item-class="demo5-item" selected-item-class="demo5-item-selected" :radio-required="true">
+            <checker-item v-for="o in popupList.leibie" :value="o.id">{{o.name}}</checker-item>
+          </checker>
+        </div>
+      </div>
+
+      <div @click="openPopup('bumen', '请选择部门')" style="display:flex;border-bottom:1px solid #e1e1e1;">
+        <div style="width:70px;padding:10px;margin-left:10px;color:#00c9b2;">部门</div>
+        <div style="flex:1;padding:10px;">{{popupName('bumen')}}</div>
+        <div style="padding:10px;padding-left:0;width:16px;">
+          <span class="iconfont icon-right" style="color:#797979;"></span>
+        </div>
       </div>
     </div>
 
-    <div style="display:flex;border-bottom:1px solid #e1e1e1;">
-      <div style="width:70px;padding:10px;margin-left:10px;">联系电话</div>
-      <div style="flex:1;padding:10px;">
-        <input type="number" placeholder="请输入联系电话" />
-      </div>
-    </div>
-
-    <div style="display:flex;border-bottom:1px solid #e1e1e1;">
-      <div style="width:70px;padding:10px;margin-left:10px;">类别</div>
-      <div style="flex:1;padding:10px;">
-        <checker v-model="user.leibie" default-item-class="demo1-item" selected-item-class="demo1-item-selected" :radio-required="true">
-          <checker-item v-for="o in popupList.leibie" :value="o.id">{{o.name}}</checker-item>
-        </checker>
-      </div>
-    </div>
-
-    <div @click="openPopup('bumen', '请选择部门')" style="display:flex;border-bottom:1px solid #e1e1e1;">
-      <div style="width:70px;padding:10px;margin-left:10px;">部门</div>
-      <div style="flex:1;padding:10px;">{{popupName('bumen')}}</div>
-      <div style="padding:10px;padding-left:0;width:16px;">
-        <span class="iconfont icon-right" style="color:#797979;"></span>
-      </div>
-    </div>
+    <div style="background-color:#00c9b2;color:#fff;padding:10px;text-align:center;margin-top:20px;margin: 20px;border-radius:5px;">注册</div>
 
     <div v-transfer-dom>
       <popup v-model="popup" position="bottom" style="background-color:#fff;">
@@ -53,14 +57,14 @@
 </template>
 
 <script>
-import { Checker, CheckerItem, TransferDom, Popup, Datetime, Scroller } from 'vux'
+import { XButton, Checker, CheckerItem, TransferDom, Popup, Datetime, Scroller } from 'vux'
 import _ from 'lodash'
 export default {
   directives: {
     TransferDom
   },
   components: {
-    Popup,
+    Popup, XButton,
     Datetime, Scroller,Checker, CheckerItem,
   },
   data() {
@@ -145,50 +149,9 @@ input {
 .box {
   padding: 0 15px;
 }
-.demo1-item {
-  border: 1px solid #ececec;
-  padding: 5px 15px;
-}
-.demo1-item-selected {
-  border: 1px solid green;
-}
-.demo2-item {
-  width: 40px;
-  height: 40px;
-  border: 1px solid #ccc;
-  display: inline-block;
-  border-radius: 50%;
-  line-height: 40px;
-  text-align: center;
-}
-.demo2-item-selected {
-  border-color: green;
-}
-.demo3-item {
-  padding: 5px 5px;
-  font-size: 0;
-}
-.demo3-item-selected {
-  outline: 1px solid #8B8AEE;
-}
-.demo4-item {
-  background-color: #ddd;
-  color: #222;
-  font-size: 14px;
-  padding: 5px 10px;
-  margin-right: 10px;
-  line-height: 18px;
-  border-radius: 15px;
-}
-.demo4-item-selected {
-  background-color: #FF3B3B;
-  color: #fff;
-}
-.demo4-item-disabled {
-  color: #999;
-}
+
 .demo5-item {
-  width: 100px;
+  width: 80px;
   height: 26px;
   line-height: 26px;
   text-align: center;
@@ -198,6 +161,6 @@ input {
   margin-right: 6px;
 }
 .demo5-item-selected {
-  border-color: #ff4a00;
+  border-color: #00c9b2;
 }
 </style>
