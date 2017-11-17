@@ -126,7 +126,7 @@
       </div>
 
       <datetime v-model="value9" :show.sync="visibility"></datetime>
-      <div style="height:20px;"></div>
+      <div style="height:40px;"></div>
     </div>
   </scroller>
 </template>
