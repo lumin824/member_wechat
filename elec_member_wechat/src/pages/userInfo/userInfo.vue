@@ -15,7 +15,7 @@
       <div style="margin-top:10px;background:#fff;border-top:1px solid #e1e1e1;">
         <div @click="openEdit('name', '请输入姓名')" style="display:flex;border-bottom:1px solid #e1e1e1;">
           <div style="padding:10px;margin-left:10px;">姓名</div>
-          <div style="flex:1;text-align:right;padding:10px;">{{user.name}}</div>
+          <div style="flex:1;text-align:right;padding:10px;color:#7f8081;">{{user.name}}</div>
           <div style="padding:10px;padding-left:0;width:16px;">
             <span class="iconfont icon-right" style="color:#797979;"></span>
           </div>
@@ -23,7 +23,7 @@
 
         <div @click="openPopup('sex', '请选择性别')" style="display:flex;border-bottom:1px solid #e1e1e1;">
           <div style="padding:10px;margin-left:10px;">性别</div>
-          <div style="flex:1;text-align:right;padding:10px;">{{popupName('sex')}}</div>
+          <div style="flex:1;text-align:right;padding:10px;color:#7f8081;">{{popupName('sex')}}</div>
           <div style="padding:10px;padding-left:0;width:16px;">
             <span class="iconfont icon-right" style="color:#797979;"></span>
           </div>
@@ -31,7 +31,7 @@
 
         <div @click="!user.birthday_modified && openDatetime('birthday', '请选择生日', 'YYYY-MM-DD', 'ms')" style="display:flex;border-bottom:1px solid #e1e1e1;">
           <div style="padding:10px;margin-left:10px;">生日</div>
-          <div style="flex:1;text-align:right;padding:10px;">{{user.birthday | unix('YYYY-MM-DD', 'ms')}}</div>
+          <div style="flex:1;text-align:right;padding:10px;color:#7f8081;">{{user.birthday | unix('YYYY-MM-DD', 'ms')}}</div>
           <div style="padding:10px;padding-left:0;width:16px;">
             <span v-if="!user.birthday_modified" class="iconfont icon-right" style="color:#797979;"></span>
           </div>
@@ -39,7 +39,7 @@
 
         <div @click="openPopup('occupation', '请选择职业')" style="display:flex;border-bottom:1px solid #e1e1e1;">
           <div style="padding:10px;margin-left:10px;">职业</div>
-          <div style="flex:1;text-align:right;padding:10px;">{{popupName('occupation')}}</div>
+          <div style="flex:1;text-align:right;padding:10px;color:#7f8081;">{{popupName('occupation')}}</div>
           <div style="padding:10px;padding-left:0;width:16px;">
             <span class="iconfont icon-right" style="color:#797979;"></span>
           </div>
@@ -47,7 +47,7 @@
 
         <div @click="openEdit('address', '请输入地址')" style="display:flex;border-bottom:1px solid #e1e1e1;">
           <div style="padding:10px;margin-left:10px;">地址</div>
-          <div style="flex:1;text-align:right;padding:10px;text-overflow:ellipsis;white-space:nowrap;overflow:hidden;">{{user.address}}</div>
+          <div style="flex:1;text-align:right;padding:10px;color:#7f8081;text-overflow:ellipsis;white-space:nowrap;overflow:hidden;">{{user.address}}</div>
           <div style="padding:10px;padding-left:0;width:16px;">
             <span class="iconfont icon-right" style="color:#797979;"></span>
           </div>
@@ -55,7 +55,7 @@
 
         <div @click="openPopup('degree_of_education', '请选择教育程度')" style="display:flex;border-bottom:1px solid #e1e1e1;">
           <div style="padding:10px;margin-left:10px;">教育程度</div>
-          <div style="flex:1;text-align:right;padding:10px;">{{popupName('degree_of_education')}}</div>
+          <div style="flex:1;text-align:right;padding:10px;color:#7f8081;">{{popupName('degree_of_education')}}</div>
           <div style="padding:10px;padding-left:0;width:16px;">
             <span class="iconfont icon-right" style="color:#797979;"></span>
           </div>
@@ -63,7 +63,7 @@
 
         <div @click="openPopup('income_range', '请选择收入范围')" style="display:flex;border-bottom:1px solid #e1e1e1;">
           <div style="padding:10px;margin-left:10px;">收入范围</div>
-          <div style="flex:1;text-align:right;padding:10px;">{{popupName('income_range')}}</div>
+          <div style="flex:1;text-align:right;padding:10px;color:#7f8081;">{{popupName('income_range')}}</div>
           <div style="padding:10px;padding-left:0;width:16px;">
             <span class="iconfont icon-right" style="color:#797979;"></span>
           </div>
@@ -71,7 +71,7 @@
 
         <div @click="openPopup('interest', '请选择兴趣爱好')" style="display:flex;border-bottom:1px solid #e1e1e1;">
           <div style="padding:10px;margin-left:10px;">兴趣爱好</div>
-          <div style="flex:1;text-align:right;padding:10px;text-overflow:ellipsis;white-space:nowrap;overflow:hidden;">{{popupName('interest')}}</div>
+          <div style="flex:1;text-align:right;padding:10px;color:#7f8081;text-overflow:ellipsis;white-space:nowrap;overflow:hidden;">{{popupName('interest')}}</div>
           <div style="padding:10px;padding-left:0;width:16px;">
             <span class="iconfont icon-right" style="color:#797979;"></span>
           </div>
@@ -79,17 +79,17 @@
 
         <router-link to="/changePhone" style="display:flex;border-bottom:1px solid #e1e1e1;">
           <div style="padding:10px;margin-left:10px;">手机</div>
-          <div style="flex:1;text-align:right;padding:10px;">{{user.mobile}}</div>
+          <div style="flex:1;text-align:right;padding:10px;color:#7f8081;">{{user.mobile}}</div>
           <div style="padding:10px;padding-left:0;width:16px;">
             <span class="iconfont icon-right" style="color:#797979;"></span>
           </div>
         </router-link>
 
-        <div @click="false && openEdit('wechat_account', '请输入微信号')" style="display:flex;border-bottom:1px solid #e1e1e1;">
+        <div @click="openEdit('wechat_account', '请输入微信号')" style="display:flex;border-bottom:1px solid #e1e1e1;">
           <div style="padding:10px;margin-left:10px;">微信号</div>
-          <div style="flex:1;text-align:right;padding:10px;">{{user.wechat_account}}</div>
+          <div style="flex:1;text-align:right;padding:10px;color:#7f8081;">{{user.wechat_account}}</div>
           <div style="padding:10px;padding-left:0;width:16px;">
-            <span v-if="false" class="iconfont icon-right" style="color:#797979;"></span>
+            <span class="iconfont icon-right" style="color:#797979;"></span>
           </div>
         </div>
 
@@ -111,7 +111,7 @@
           <div style="padding:10px;text-align:center;position:relative;">
             <div>{{popupTitle}}</div>
             <div v-if="popupSelected instanceof Array" @click="closePopup" style="position:absolute;right:0;bottom:5px;top:5px;display:flex;align-items:center;padding:0 15px;color:#04BE02;">确定</div>
-            <div @click="closePopup" style="position:absolute;left:0;bottom:5px;top:5px;display:flex;align-items:center;padding:0 15px;color:#828282;">取消</div>
+            <div @click="popup=false" style="position:absolute;left:0;bottom:5px;top:5px;display:flex;align-items:center;padding:0 15px;color:#828282;">取消</div>
           </div>
 
           <div @click="choosePopup(o.id)" v-for="o in popupList[popupKey]" style="display:flex;border-top:1px solid #e1e1e1;">
@@ -125,13 +125,13 @@
         </popup>
       </div>
       <div style="padding-bottom:100px;"></div>
-      <datetime v-model="value9" :show.sync="visibility"></datetime>
+      <datetime :show="false"></datetime>
     </div>
   </scroller>
 </template>
 
 <script>
-import  global from '../../../src/components/common/Global.vue'
+import global from '../../../src/components/common/Global.vue'
 import { TransferDom, Popup, Datetime, Scroller } from 'vux'
 import _ from 'lodash';
 import moment from 'moment';
@@ -195,13 +195,13 @@ export default {
           {id:6, name:'购物'},
         ]
       },
-      value9: '',
-      visibility: false,
       user: {},
 
       key4put: {
         'degree_of_education': 'degreeOfEducation',
         'income_range': 'incomeRange',
+        'wechat_account': 'wechatAccount',
+        'enable_public_wa': 'enablePublicWa'
       }
     }
   },
@@ -250,7 +250,7 @@ export default {
         this.popup = false;
         this.save(this.popupKey)
       }else{
-        // nonono
+        this.popup = false;
       }
     },
     openEdit(key, title){

@@ -1,28 +1,150 @@
 <template>
   <div>
-      <!--  <mt-header title="资料填写">
-          <router-link to="/" slot="left">
-            <mt-button icon="back">返回</mt-button>
-            <mt-button icon="close">关闭</mt-button>
-          </router-link>
-        </mt-header>-->
-     <m-registerData></m-registerData>
+    <div>
+      <div style="margin-top:10px;background:#fff;border-top:1px solid #e1e1e1;">
+        <div style="display:flex;border-bottom:1px solid #e1e1e1;">
+          <div style="width:70px;padding:10px;margin-left:10px;color:#00c9b2;">姓名</div>
+          <div style="flex:1;padding:10px;">
+            <input type="text" placeholder="请输入姓名" v-model="user.name" />
+          </div>
+        </div>
+
+        <div style="display:flex;border-bottom:1px solid #e1e1e1;">
+          <div style="width:70px;padding:10px;margin-left:10px;color:#00c9b2;">性别</div>
+          <div style="flex:1;padding:10px;">
+            <checker v-model="user.sex" default-item-class="demo5-item" selected-item-class="demo5-item-selected" :radio-required="true">
+              <checker-item v-for="o in popupList.sex" :value="o.id">
+                <span v-if="o.icon" class="iconfont" :class="o.icon" style="color:#797979;"></span>
+                {{o.name}}
+              </checker-item>
+            </checker>
+          </div>
+        </div>
+
+        <div @click="openDatetime('birthday', '请选择生日', 'YYYY-MM-DD', 'ms')" style="display:flex;border-bottom:1px solid #e1e1e1;">
+          <div style="width:70px;padding:10px;margin-left:10px;color:#00c9b2;">生日</div>
+          <div style="flex:1;padding:10px;color:#7f8081;">{{user.birthday | unix('YYYY-MM-DD', 'ms')}}</div>
+          <div style="padding:10px;padding-left:0;width:16px;">
+            <span class="iconfont icon-right" style="color:#797979;"></span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div @click="handleSubmit" style="background-color:#00c9b2;color:#fff;padding:10px;text-align:center;margin-top:20px;margin: 20px;border-radius:5px;">绑定</div>
+    <datetime :show="false"></datetime>
   </div>
 </template>
 
 <script>
-  import  registerData from '../../../src/components/common/data'
-  export default {
-    components:{
-      'm-registerData':registerData,
+import global from '../../../src/components/common/Global.vue'
+import { TransferDom, Popup, Checker, CheckerItem, Datetime } from 'vux'
+import moment from 'moment';
+
+const { apiHost, mallId } = global;
+
+export default {
+  directives: {
+    TransferDom
+  },
+  components:{
+    Popup,
+    Datetime, Checker, CheckerItem,
+  },
+  filters: {
+    unix: (value, format, unit) => {
+      return moment.unix((unit == 'ms') ? (value / 1000) : value).format(format)
     }
+  },
+  data(){
+    return {
+      popupList: {
+        sex:[
+          {id:0, name:'男', icon:'icon-male'},
+          {id:1, name:'女', icon:'icon-female'},
+        ]
+      },
+      user: {
+        birthday:moment().subtract(30, 'y').unix() * 1000,
+        name:'',
+        sex:0,
+        openId:'12345678'
+      },
+    }
+  },
+  methods: {
+    async handleSubmit() {
+      const { user } = this
+      const { mobile } = this.$route.query
+
+      const [errno, errmsg] = (!user.name && [1, '请输入姓名'])
+        || [];
+      if(errno){
+        this.$vux.toast.text(errmsg)
+        return
+      }
+
+      try{
+        const { member_id } = (await this.$http.post(`${apiHost}/member`, {
+          ...user,
+          mallId, mobile,
+        })).data;
+
+        if(member_id){
+          this.$store.commit('login', member_id)
+          this.$router.push('/registerSucc');
+          setTimeout(() => {
+            this.$router.push('/member');
+          },2000)
+        }
+      }catch(e){
+        if(e.response){
+          this.$vux.toast.text(e.response.data.content)
+        }else{
+          this.$vux.toast.text(e.message)
+        }
+      }
+    },
+
+    openDatetime(key, title, format, unit){
+      const scale = (unit == 'ms') ? 1000 : 1;
+      this.$vux.datetime.show({
+        startDate: '1900-01-01',
+        endDate: moment().format(format),
+        cancelText: '取消',
+        confirmText: '确定',
+        format,
+        value: moment.unix(this.user[key] / scale).format(format),
+        onConfirm: val => {
+          this.user[key] = moment(val).unix() * scale;
+        }
+      })
+    },
   }
+}
 
 </script>
 
 <style lang="less" scoped>
+input {
+  background-color:transparent;
+  border-style:none;
+  outline:none;
+  width: 100%;
+}
 
-
-
-
+.demo5-item {
+  width: 80px;
+  height: 26px;
+  line-height: 26px;
+  text-align: center;
+  border-radius: 3px;
+  border: 1px solid #ccc;
+  background-color: #fff;
+  margin-right: 6px;
+  color:#7f8081;
+}
+.demo5-item-selected {
+  border-color: #00c9b2;
+}
 </style>
