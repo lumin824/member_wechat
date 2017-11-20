@@ -8,7 +8,7 @@
       </div>
 
       <div style="display:flex;">
-        <img src="static/img/hgds.jpg" style="width:96px;height:96px;">
+        <img :src="item.picture" style="width:96px;height:96px;">
         <div style="display:flex;color:#777879;font-size:0.7em;flex:1;">
           <div style="display:flex;flex-direction:column;">
             <div style="flex:1;border-bottom:1px solid #ddd;display:flex;align-items:center;">活动时间</div>
@@ -16,7 +16,7 @@
             <div style="flex:1;display:flex;align-items:center;">领取条件</div>
           </div>
           <div style="flex:1;display:flex;flex-direction:column;">
-            <div style="flex:1;border-bottom:1px solid #ddd;display:flex;align-items:center;padding-left:0.5em;">2018-01-01 ~ 2018-09-11</div>
+            <div style="flex:1;border-bottom:1px solid #ddd;display:flex;align-items:center;padding-left:0.5em;">{{item.expiry_date_start | unix('YYYY-MM-DD', 'ms')}} ~ {{item.expiry_date_end | unix('YYYY-MM-DD', 'ms')}}</div>
             <div style="flex:1;border-bottom:1px solid #ddd;display:flex;align-items:center;padding-left:0.5em;color:#ff8b00;">{{item.receivedTotal}}</div>
             <div style="flex:1;display:flex;align-items:center;padding-left:0.5em;color:#ff8b00;"> {{item.required_points}} 积分</div>
           </div>
@@ -40,7 +40,7 @@
 <script>
 import global from '../../../src/components/common/Global.vue'
 const { apiHost, mallId } = global;
-
+import moment from 'moment'
 import {
   mapState,
 } from 'vuex';
@@ -60,6 +60,11 @@ export default {
         '5': '已领取',
         '6': '领取'
       }
+    }
+  },
+  filters: {
+    unix: (value, format, unit) => {
+      return moment.unix((unit == 'ms') ? (value / 1000) : value).format(format)
     }
   },
   computed: {
@@ -86,7 +91,7 @@ export default {
         }
         this.$vux.toast.text(resultMap[data] || data)
         if(data == 8){
-          
+
         }
       }
 
