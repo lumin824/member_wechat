@@ -28,10 +28,10 @@ AMap.initAMapApiLoader({
 Vue.use(Vuex)
 Vue.config.productionTip = false
 
-let member_id = localStorage.getItem('member_id')
+//let member_id = localStorage.getItem('member_id')
 const store = new Vuex.Store({
   state: {
-    member_id: member_id,
+    member_id: null,
   },
   mutations: {
     login (state, { member_id }) {
