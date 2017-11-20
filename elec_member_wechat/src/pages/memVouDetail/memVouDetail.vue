@@ -46,7 +46,7 @@ import {
 
 export default {
   components:{
-    VueQr
+    // VueQr
   },
   computed: {
     qr(){

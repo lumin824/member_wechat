@@ -85,6 +85,9 @@ export default {
           '8': '领取成功'
         }
         this.$vux.toast.text(resultMap[data] || data)
+        if(data == 8){
+          
+        }
       }
 
       let needConfirm = true
