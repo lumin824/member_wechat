@@ -5,14 +5,14 @@
         <mt-tab-item id="3">已使用</mt-tab-item>
     </mt-navbar>
 
-    <!-- tab-container -->  
+    <!-- tab-container -->
     <mt-tab-container v-model="selected" style="margin-top:49px;">
       <mt-tab-container-item id="1">
         <!--<mt-cell v-for="n in 10" :title="'内容 ' + n" />-->
         <!-- <mt-loadmore :top-method="loadTop" :bottom-method="loadBottom" :bottom-all-loaded="allLoaded" :auto-fill="false" ref="loadmore">-->
         <scroller lock-x ref="scrollerEvent"  >
              <ul>
-                      <router-link to="/memVouDetail" tag="li" >   
+                      <router-link to="/memVouDetail" tag="li" >
                            <img src="static/img/hgds.jpg" alt="">
                             <div style="width:68%">
                                   <h1>乐町满百减五</h1>
@@ -20,7 +20,7 @@
                             </div>
                       </router-link>
                          <!--未激活样式-->
-                     <router-link to="/memVouDetail" tag="li" >   
+                     <router-link to="/memVouDetail" tag="li" >
                            <img src="static/img/hgds.jpg" alt="">
                            <div  style="width:68%">
                              <h1>德芙满百减十</h1>
@@ -49,8 +49,12 @@
 <script>
   import  Header from '../../../src/components/header/header.vue'
   import  {getCookie} from '../../../src/util/util'
-  import  global from '../../../src/components/common/Global'
   import { Scroller } from 'vux'
+  import global from '../../../src/components/common/Global.vue'
+  const { apiHost, mallId } = global;
+  import {
+    mapState,
+  } from 'vuex';
   export default {
     components:{
       Scroller,
@@ -71,10 +75,16 @@
         return y+"/"+m.substring(m.length-2,m.length)+"/"+d.substring(d.length-2,d.length)+' '+H+':'+minu;
       }
     },
+    computed: {
+      ...mapState({
+        member_id: state => state.user,
+      }),
+    },
     data(){
       /* this.$http.get('http://192.168.1.160/test').then(resp=>{
            console.log(resp);}*/
       return{
+        list: [],
         isShow:false,
         selected:'1',
         searchCondition:{  //分页属性
@@ -87,7 +97,18 @@
         scrollMode:"auto" //移动端弹性滚动效果，touch为弹性滚动，auto是非弹性滚动
       }
     },
-    mounted(){
+    async mounted(){
+
+      try{
+        this.list = (await this.$http.post(`${apiHost}/coupon/list`, {
+          mallId, page:1, size:200, member_id: this.member_id
+        })).data
+      }catch(e){
+        this.list = [];
+      }
+      // console.log(this.member_id)
+      // const resp = await this.$http.get(`${apiHost}/member/${this.member_id}/tickets?mallId=${mallId}`)
+      // console.log(resp)
 /*      this.memberId=getCookie('member_id');
       //this.loadPageList();  //初次访问查询列表
       this.$http({
@@ -172,13 +193,13 @@
     margin-top:0.12rem;
   }
    ul li{
-     
+
      display: flex;
      height: 1rem;
      border-bottom: .01rem solid #e6e6e6;
    }
    ul li div{
-     
+
    }
   ul li div h1{
     color: #333;
@@ -198,7 +219,7 @@
    .noActive{
       color: #fff;
       height: 0.28rem;
-      margin-top:0.4rem; 
+      margin-top:0.4rem;
       background-color: #FF9900;
       border: 0;
       outline: none;
