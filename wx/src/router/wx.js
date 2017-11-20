@@ -1,4 +1,4 @@
-import config from '../config';
+import CommonConfig from '../../../common/config'
 
 import express from 'express'
 
@@ -10,7 +10,10 @@ const router = express.Router()
 
 const map = {
   'code2openid.get': async (req, res, next) => {
-    return res.send('错误的用户名或密码')
+    let { code } = req.query;
+    let { AppID, AppSecret } = CommonConfig.WX
+
+    return res.send(`${code}, ${AppID},${AppSecret}`)
   },
 }
 
