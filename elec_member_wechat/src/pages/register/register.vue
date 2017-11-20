@@ -103,6 +103,8 @@ export default {
 
     if (ua.browser.name === 'WeChat') {
       if(!wx_openid){
+        const { redirect } = this.$route.query
+        localStorage.setItem('redirect', redirect)
         const redirectUri = 'http://jiayuanmember.dorm9tech.com/wx/code2openid'
         location.href = `https://open.weixin.qq.com/connect/oauth2/authorize?appid=${AppID}&redirect_uri=${redirectUri}&response_type=code&scope=snsapi_userinfo&state=STATE#wechat_redirect`
         return;
@@ -113,7 +115,9 @@ export default {
       try{
         let { member_id } = (await this.$http.get(`${apiHost}/member?appId=${AppID}&openId=${wx_openid}`)).data
         this.$store.commit('login', {member_id})
-        this.$router.push('/member');
+        const redirect = localStorage.getItem('redirect')
+        localStorage.removeItem('redirect');
+        this.$router.push(redirect || '/member');
       }catch(e){
       }
     }
