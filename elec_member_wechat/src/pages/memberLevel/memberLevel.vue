@@ -36,7 +36,7 @@
               <td colspan="4" style="padding-left:10px;">
                 <table style="color:#7f8081;font-size:0.8em;">
                   <tr>
-                    <td>抵扣时间</td><td>{{o.shopping_date | unix('YYYY-MM-DD hh:mm', 'ms')}}</td>
+                    <td>抵扣时间</td><td>{{o.shopping_date | unix('YYYY-MM-DD HH:mm', 'ms')}}</td>
                   </tr>
                   <tr>
                     <td>抵扣商户</td><td>{{o.shop_name}}</td>

@@ -27,7 +27,7 @@
               <div>处理回复：{{v.responses}}</div>
             </div>
           </div>
-          <p style="border-top: 1px dashed #ccc;font-size: 0.9em;margin:10px;padding:5px;color:#959697;margin-top:0;">上传时间：{{v.upload_date |time}}</p>
+          <p style="border-top: 1px dashed #ccc;font-size: 0.9em;margin:10px;padding:5px;color:#959697;margin-top:0;">上传时间：{{v.upload_date | unix('YYYY-MM-DD HH:mm', 'ms')}}</p>
         </div>
         <div v-else-if="v.handle_status==1">
           <div style="display:flex;padding:10px 10px;">
@@ -37,7 +37,7 @@
               <div>处理回复：{{v.responses}}</div>
             </div>
           </div>
-          <p style="border-top: 1px dashed #ccc;font-size: 0.9em;margin:10px;padding:5px;color:#959697;margin-top:0;">上传时间：{{v.upload_date |time}}</p>
+          <p style="border-top: 1px dashed #ccc;font-size: 0.9em;margin:10px;padding:5px;color:#959697;margin-top:0;">上传时间：{{v.upload_date | unix('YYYY-MM-DD HH:mm', 'ms')}}</p>
         </div>
         <div v-else-if="v.handle_status==2" style="background-color:#f9fafb;">
           <div style="display:flex;padding:10px 10px;">
@@ -48,7 +48,7 @@
               <mt-button size="small" @click="delTicket(v.ticket_id)" style="float:right;">删除</mt-button>
             </div>
           </div>
-          <p style="border-top: 1px dashed #ccc;font-size: 0.9em;margin:10px;padding:5px;color:#959697;margin-top:0;">上传时间：{{v.upload_date |time}}</p>
+          <p style="border-top: 1px dashed #ccc;font-size: 0.9em;margin:10px;padding:5px;color:#959697;margin-top:0;">上传时间：{{v.upload_date | unix('YYYY-MM-DD HH:mm', 'ms')}}</p>
         </div>
       </li>
     </ul>
@@ -99,10 +99,10 @@
         member_id: state => state.member_id,
       }),
     },
-    filters:{
-       time(value){
-         return moment.unix(value / 1000).format('YYYY/MM/DD hh:mm')
-       }
+    filters: {
+      unix: (value, format, unit) => {
+        return moment.unix((unit == 'ms') ? (value / 1000) : value).format(format)
+      }
     },
     mounted(){
       this.reload();
