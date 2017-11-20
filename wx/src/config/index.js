@@ -20,5 +20,10 @@ export default {
     SECRET_KEY: 'TiZaHqULZ51rhNeD-uDv8ltjnUs5IsBl8v_6RB1w',
     bucket: 'oss-ngsyun',
     host: 'oss.ngsyun.com'
+  },
+
+  WX: {
+    AppID: 'wx3041b222eaad5c8a',
+    AppSecret: 'fda2fbf4fdec7a43b178f12d4bf36414'
   }
 }
