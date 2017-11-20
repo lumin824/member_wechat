@@ -71,9 +71,10 @@ export default {
     async handleSubmit() {
       const { member_id, mobile, vcode } = this
       const { wx_openid } = this.$route.query
+      const { redirect } = this.$route.query
       if(member_id){
         this.$store.commit('login', {member_id})
-        this.$router.push('/member');
+        this.$router.push(redirect || '/member');
         return
       }
 
