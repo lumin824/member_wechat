@@ -5,8 +5,19 @@ import express from 'express'
 import _ from 'lodash';
 import moment from 'moment';
 moment.locale('zh-cn');
+import request from 'request';
 
 const router = express.Router()
+
+const httpGet = (...args) => new Promise((resolve, reject) => {
+  request.get(...args, (err, response, body) => {
+    if(err){
+      reject(err)
+    } else {
+      resolve({response, body})
+    };
+  })
+})
 
 const map = {
   'code2openid.get': async (req, res, next) => {
