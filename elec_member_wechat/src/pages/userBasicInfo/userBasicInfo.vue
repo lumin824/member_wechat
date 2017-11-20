@@ -93,7 +93,9 @@ export default {
           this.$store.commit('login', {member_id})
           this.$router.push('/registerSucc');
           setTimeout(() => {
-            this.$router.push('/member');
+            const redirect = localStorage.getItem('redirect')
+            localStorage.removeItem('redirect');
+            this.$router.push(redirect || '/member');
           },2000)
         }
       }catch(e){
