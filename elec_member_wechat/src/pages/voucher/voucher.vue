@@ -43,7 +43,7 @@
     <div :style="{backgroundColor:scrollTop>140?'#00bf8d':'transparent'}" style="position:fixed;top:0;left:0;right:0;display:flex;height:30px;padding-top:15px;padding-right:15px;padding-bottom:15px;">
       <div style="font-size:0.9em;width:90px;padding:5px 10px;text-align:center;line-height:15px;color:#fff;" @click="popup=true">{{typeName}} <span class="iconfont icon-unfold"></span></div>
       <div style="display:flex;flex:1;background-color:#fff;border-radius:15px;align-items:center;">
-        <input style="font-size:0.9em;background-color:transparent;border-style:none;outline:none;margin-left:15px;flex:1;" type="text" placeholder="请输入搜索关键字">
+        <input v-model="keywords" style="font-size:0.9em;background-color:transparent;border-style:none;outline:none;margin-left:15px;flex:1;" type="text" placeholder="请输入搜索关键字">
         <div style="width:20px;height:20px;margin-right:15px;line-height:20px;">
           <span class="iconfont icon-search" style="color:#797979;"></span>
         </div>
@@ -71,6 +71,7 @@ export  default {
   },
   data(){
     return{
+      keywords: '',
       scrollTop: 0,
       popup: false,
       list: [],
@@ -97,13 +98,19 @@ export  default {
     },
     async reload(){
       const receiveMethod = this.type;
+      const keywords = this.keywords
       try{
         this.list = (await this.$http.post(`${apiHost}/coupon/list`, {
-          mallId, page:1, receiveMethod, size:200
+          mallId, page:1, receiveMethod, size:200, keywords
         })).data
       }catch(e){
         this.list = [];
       }
+    }
+  },
+  watch: {
+    keywords(curVal, oldVal){
+      this.reload()
     }
   },
   async mounted(){
