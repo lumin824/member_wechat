@@ -114,10 +114,9 @@ export default {
         let { member_id } = (await this.$http.get(`${apiHost}/member?appId=${AppID}&openId=${wx_openid}`)).data
         this.$store.commit('login', {member_id})
         this.$router.push('/member');
-      }catch(e){  
+      }catch(e){
       }
     }
-
   }
 }
 

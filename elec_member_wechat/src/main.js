@@ -35,7 +35,7 @@ const store = new Vuex.Store({
   },
   mutations: {
     login (state, { member_id }) {
-      localStorage.setItem('user', JSON.stringify(user));
+      localStorage.setItem('member_id', member_id);
       state.member_id = member_id
     },
     logout (state) {
