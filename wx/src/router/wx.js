@@ -13,7 +13,18 @@ const map = {
     let { code } = req.query;
     let { AppID, AppSecret } = CommonConfig.WX
 
-    return res.send(`${code}, ${AppID},${AppSecret}`)
+    if(!code){
+      return res.sendStatus(404);
+    }
+
+    let { body } = await httpGet(`https://api.weixin.qq.com/sns/oauth2/access_token?appid=${AppID}&secret=${AppSecret}&code=${code}&grant_type=authorization_code`)
+
+    let wx_nickname;
+    let { errcode: wx_errno, openid: wx_openid, access_token } = JSON.parse(body);
+    if(wx_errno){
+      return res.sendStatus(404);
+    }
+    return res.redirect(`/register?wx_openid=${wx_openid}`)
   },
 }
 
