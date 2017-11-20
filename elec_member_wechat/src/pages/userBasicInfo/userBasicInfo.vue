@@ -68,14 +68,13 @@ export default {
         birthday:moment().subtract(30, 'y').unix() * 1000,
         name:'',
         sex:0,
-        openId:'12345678'
       },
     }
   },
   methods: {
     async handleSubmit() {
       const { user } = this
-      const { mobile } = this.$route.query
+      const { mobile, openId } = this.$route.query
 
       const [errno, errmsg] = (!user.name && [1, '请输入姓名'])
         || [];
@@ -87,7 +86,7 @@ export default {
       try{
         const { member_id } = (await this.$http.post(`${apiHost}/member`, {
           ...user,
-          mallId, mobile,
+          mallId, mobile, openId
         })).data;
 
         if(member_id){

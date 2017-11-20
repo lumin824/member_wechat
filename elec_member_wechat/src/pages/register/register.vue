@@ -5,14 +5,14 @@
         <div style="display:flex;border-bottom:1px solid #e1e1e1;">
           <div style="width:70px;padding:10px;margin-left:10px;color:#00c9b2;">手机号</div>
           <div style="flex:1;padding:10px;">
-            <input type="text" placeholder="请输入手机号" v-model="mobile" />
+            <input type="tel" placeholder="请输入手机号" v-model="mobile" />
           </div>
         </div>
 
         <div style="display:flex;border-bottom:1px solid #e1e1e1;">
           <div style="width:70px;padding:10px;margin-left:10px;color:#00c9b2;">验证码</div>
           <div style="flex:1;padding:10px;">
-            <input type="tel" placeholder="请输入验证码" v-model="vcode" />
+            <input type="number" placeholder="请输入验证码" v-model="vcode" />
           </div>
           <button :disabled="cd > 0" ref="code" @click="getCode" class="btn-code" style="padding:5px 10px;margin:5px;min-width:80px;">
             <div style="text-align:center;width:100%;">{{cd > 0 ? `${cd} 秒` : '获取验证码'}}</div>
@@ -69,6 +69,7 @@ export default {
 
     async handleSubmit() {
       const { member_id, mobile, vcode } = this
+      const { wx_openid } = this.$route.query
       if(member_id){
         this.$store.commit('login', {member_id})
         this.$router.push('/member');
@@ -85,7 +86,7 @@ export default {
       }
       try{
         await this.$http.post(`${apiHost}/member/vcodeCheck`,{mobile,vcode})
-        this.$router.push(`/registerInfo?mobile=${mobile}`)
+        this.$router.push(`/registerInfo?mobile=${mobile}&openId=${wx_openid}`)
       }catch(e){
         if(e.response){
           this.$vux.toast.text(e.response.data.content)
@@ -97,14 +98,26 @@ export default {
   },
   async mounted(){
     let ua = new UAParser().getResult()
+    const { wx_openid } = this.$route.query
+    const { AppID } = CommonConfig.WX
+
     if (ua.browser.name === 'WeChat') {
-      const { wx_openid } = this.$route.query
-      alert(wx_openid)
       if(!wx_openid){
         const redirectUri = 'http://jiayuanmember.dorm9tech.com/wx/code2openid'
-        location.href = `https://open.weixin.qq.com/connect/oauth2/authorize?appid=${CommonConfig.WX.AppID}&redirect_uri=${redirectUri}&response_type=code&scope=snsapi_userinfo&state=STATE#wechat_redirect`
+        location.href = `https://open.weixin.qq.com/connect/oauth2/authorize?appid=${AppID}&redirect_uri=${redirectUri}&response_type=code&scope=snsapi_userinfo&state=STATE#wechat_redirect`
+        return;
       }
     }
+
+    if(wx_openid){
+      try{
+        let { member_id } = (await this.$http.get(`${apiHost}/member?appId=${AppID}&openId=${wx_openid}`)).data
+        this.$store.commit('login', {member_id})
+        this.$router.push('/member');
+      }catch(e){  
+      }
+    }
+
   }
 }
 
