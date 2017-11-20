@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div v-show="showLoginForm">
     <div>
       <div style="margin-top:10px;background:#fff;border-top:1px solid #e1e1e1;">
         <div style="display:flex;border-bottom:1px solid #e1e1e1;">
@@ -38,6 +38,7 @@ export default {
   },
   data(){
     return {
+      showLoginForm: false,
       mobile: '',
       member_id: '',
       vcode: '',
@@ -109,6 +110,8 @@ export default {
         location.href = `https://open.weixin.qq.com/connect/oauth2/authorize?appid=${AppID}&redirect_uri=${redirectUri}&response_type=code&scope=snsapi_userinfo&state=STATE#wechat_redirect`
         return;
       }
+    }else{
+      this.showLoginForm = true
     }
 
     if(wx_openid){
@@ -119,6 +122,7 @@ export default {
         localStorage.removeItem('redirect');
         this.$router.push(redirect || '/member');
       }catch(e){
+        this.showLoginForm = true
       }
     }
   }
