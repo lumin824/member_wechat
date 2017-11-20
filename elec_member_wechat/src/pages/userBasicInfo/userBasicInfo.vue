@@ -91,7 +91,7 @@ export default {
         })).data;
 
         if(member_id){
-          this.$store.commit('login', member_id)
+          this.$store.commit('login', {member_id})
           this.$router.push('/registerSucc');
           setTimeout(() => {
             this.$router.push('/member');

@@ -25,7 +25,7 @@
           <img src="static/img/rightLogo.png" alt="" style="padding-bottom: 17px;padding-left: 0px;padding-right: 4px;">
         </div> -->
        </mt-cell>
-     
+
 
       <mt-cell title="职业" is-link style="right:2%;margin-left:0.03rem">
         <select style="position:relative;right:-1%;height:0.2rem;width:2.4rem;padding-left:1.8rem;height:0.4rem" v-model="user.occupation"  @change="save">
@@ -108,7 +108,7 @@ import {
     },
     computed: {
       ...mapState({
-        member_id: state => state.user,
+        member_id: state => state.member_id,
       }),
     },
     data () {
@@ -187,7 +187,7 @@ import {
           'memberId':this.user.member_id,
           'occupation':this.user.occupation,
           'sex':this.user.sex,
-          
+
         }).then(data =>{
                 //保存cookie(设置1年有效期);
                  setCookie('member_id',this.user.memberId,365);

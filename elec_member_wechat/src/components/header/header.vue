@@ -9,7 +9,7 @@
             <li><span> {{this.user.name}}</span><h3>{{this.user.level}}</h3></li>
             <li>累计积分:{{this.user.cumulate_points}}</li>
             <li>可用积分:{{this.user.usable_points}}</li>
-          </ul>  
+          </ul>
          </div>
       </div>
     </div>
@@ -29,7 +29,7 @@ import {
       },
       computed: {
         ...mapState({
-          member_id: state => state.user,
+          member_id: state => state.member_id,
         }),
       },
       async mounted () {

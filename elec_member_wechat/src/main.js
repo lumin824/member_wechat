@@ -28,19 +28,18 @@ AMap.initAMapApiLoader({
 Vue.use(Vuex)
 Vue.config.productionTip = false
 
-let user = localStorage.getItem('user')
-user = user ? JSON.parse(user) : null
+let member_id = localStorage.getItem('member_id')
 const store = new Vuex.Store({
   state: {
-    user: user
+    member_id: member_id,
   },
   mutations: {
-    login (state, user) {
+    login (state, { member_id }) {
       localStorage.setItem('user', JSON.stringify(user));
-      state.user = user
+      state.member_id = member_id
     },
     logout (state) {
-      state.user = null
+      state.member_id = null
     }
   }
 })
@@ -59,9 +58,9 @@ router.beforeEach(async (to, from, next) => {
     next()
   }
 
-  console.log(store.state.user)
+  console.log(store.state.member_id)
   console.log(to)
-  if (store.state.user || ~['/getPosition','/registerInfo','/register','/squareInfo','/voucherDetail','/activeDetail','/sellers','/ticketsUpload','/voucher','/sell','/getPosition','/car','/carDetail','/activities'].indexOf(to.path)) {
+  if (store.state.member_id || ~['/getPosition','/registerInfo','/register','/squareInfo','/voucherDetail','/activeDetail','/sellers','/ticketsUpload','/voucher','/sell','/getPosition','/car','/carDetail','/activities'].indexOf(to.path)) {
     next()
   } else {
     goLogin()

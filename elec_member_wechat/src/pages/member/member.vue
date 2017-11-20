@@ -111,7 +111,7 @@ export  default {
   },
   computed: {
     ...mapState({
-      member_id: state => state.user,
+      member_id: state => state.member_id,
     }),
   },
   async mounted(){

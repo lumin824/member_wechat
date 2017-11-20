@@ -83,7 +83,7 @@ export  default {
       return (_.find(this.typeList, {id: this.type}) || {}).name;
     },
     ...mapState({
-      member_id: state => state.user,
+      member_id: state => state.member_id,
     }),
   },
   methods:{

@@ -30,6 +30,8 @@
 import { Countdown } from 'vux'
 import global from '../../../src/components/common/Global.vue'
 const { apiHost, mallId } = global;
+import CommonConfig from '@/../../common/config'
+import UAParser from 'ua-parser-js'
 export default {
   components:{
     Countdown,
@@ -42,7 +44,6 @@ export default {
       cd: 0,
     }
   },
-
   methods: {
     async getCode(){
       const { mobile } = this;
@@ -69,7 +70,7 @@ export default {
     async handleSubmit() {
       const { member_id, mobile, vcode } = this
       if(member_id){
-        this.$store.commit('login', member_id)
+        this.$store.commit('login', {member_id})
         this.$router.push('/member');
         return
       }
@@ -93,6 +94,17 @@ export default {
         }
       }
     },
+  },
+  async mounted(){
+    let ua = new UAParser().getResult()
+    if (ua.browser.name === 'WeChat') {
+      const { wx_openid } = this.$route.query
+      alert(wx_openid)
+      if(!wx_openid){
+        const redirectUri = 'http://jiayuanmember.dorm9tech.com/wx/code2openid'
+        location.href = `https://open.weixin.qq.com/connect/oauth2/authorize?appid=${CommonConfig.WX.AppID}&redirect_uri=${redirectUri}&response_type=code&scope=snsapi_userinfo&state=STATE#wechat_redirect`
+      }
+    }
   }
 }
 
