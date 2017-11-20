@@ -91,14 +91,14 @@ export default {
         }
         this.$vux.toast.text(resultMap[data] || data)
         if(data == 8){
-
+          this.$router.back()
         }
       }
 
-      let needConfirm = true
+      let needConfirm = this.item.required_points > 0;
       if(needConfirm){
         this.$vux.confirm.show({
-          content: '确认使用积分领取吗？',
+          content: `确认使用${this.item.required_points}积分领取吗？`,
           confirmText: '确定领取',
           cancelText: '暂不领取',
           onConfirm: doReceive
