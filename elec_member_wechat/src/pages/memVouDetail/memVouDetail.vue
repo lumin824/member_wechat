@@ -8,8 +8,8 @@
       </div>
 
       <div style="display:flex;background-color:#fff;margin-top:1px;border-bottom:1px solid #e1e1e1">
-        <div style="width:96px;height:96px;display:flex;align-items:center;justify-content:center;">
-          <img :src="item.picture" style="width:90px;height:90px;">
+        <div>
+          <img :src="item.picture" style="width:96px;height:96px;margin:5px;">
         </div>
         <div style="flex:1;display:flex;flex-direction:column;">
           <div style="font-size:1em;margin-left:5px;margin-top:10px;">{{item.coupon_name}}</div>
@@ -28,11 +28,7 @@
     </div>
 
 
-    <div style="margin:15px;font-size:0.8em;color:#707172;">
-      每张优惠券具有一定的使用条件和期限,优惠券使用一般性规则如下:<br/>
-      优惠券有使用期限限制,过了有效期不能使用。<br/>
-      订单中包含特价商品时不能使用优惠券,优惠券不能和其他优惠(如促销活动)同时使用。
-    </div>
+    <div v-html="item.intro" style="margin:15px;font-size:0.8em;color:#707172;"></div>
   </div>
 </template>
 
