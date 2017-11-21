@@ -4,36 +4,44 @@
       <div style="display:flex;border-bottom:1px solid #e1e1e1;">
         <div style="width:70px;padding:10px;margin-left:10px;color:#00c9b2;">姓名</div>
         <div style="flex:1;padding:10px;">
-          <input type="text" placeholder="请输入姓名" />
+          <input type="text" placeholder="请输入姓名" v-model="form.name" />
         </div>
       </div>
 
       <div style="display:flex;border-bottom:1px solid #e1e1e1;">
         <div style="width:70px;padding:10px;margin-left:10px;color:#00c9b2;">联系电话</div>
         <div style="flex:1;padding:10px;">
-          <input type="number" placeholder="请输入联系电话" />
+          <input type="number" placeholder="请输入联系电话" v-model="form.phone" />
         </div>
       </div>
 
       <div style="display:flex;border-bottom:1px solid #e1e1e1;">
         <div style="width:70px;padding:10px;margin-left:10px;color:#00c9b2;">类别</div>
         <div style="flex:1;padding:10px;">
-          <checker v-model="user.leibie" default-item-class="demo5-item" selected-item-class="demo5-item-selected" :radio-required="true">
+          <checker v-model="form.leibie" default-item-class="demo5-item" selected-item-class="demo5-item-selected" :radio-required="true">
             <checker-item v-for="o in popupList.leibie" :value="o.id">{{o.name}}</checker-item>
           </checker>
         </div>
       </div>
 
-      <div @click="openPopup('bumen', '请选择部门')" style="display:flex;border-bottom:1px solid #e1e1e1;">
+      <div v-if="form.leibie==0" @click="openPopup('department', '请选择部门')" style="display:flex;border-bottom:1px solid #e1e1e1;">
         <div style="width:70px;padding:10px;margin-left:10px;color:#00c9b2;">部门</div>
-        <div style="flex:1;padding:10px;">{{popupName('bumen')}}</div>
+        <div style="flex:1;padding:10px;">{{popupName('department')}}</div>
+        <div style="padding:10px;padding-left:0;width:16px;">
+          <span class="iconfont icon-right" style="color:#797979;"></span>
+        </div>
+      </div>
+
+      <div v-if="form.leibie==1" @click="shopSelect()" style="display:flex;border-bottom:1px solid #e1e1e1;">
+        <div style="width:70px;padding:10px;margin-left:10px;color:#00c9b2;">商户</div>
+        <div style="flex:1;padding:10px;">{{form.shopName}}</div>
         <div style="padding:10px;padding-left:0;width:16px;">
           <span class="iconfont icon-right" style="color:#797979;"></span>
         </div>
       </div>
     </div>
 
-    <div style="background-color:#00c9b2;color:#fff;padding:10px;text-align:center;margin-top:20px;margin: 20px;border-radius:5px;">注册</div>
+    <div @click="handleSubmit" style="background-color:#00c9b2;color:#fff;padding:10px;text-align:center;margin-top:20px;margin: 20px;border-radius:5px;">注册</div>
 
     <div v-transfer-dom>
       <popup v-model="popup" position="bottom" style="background-color:#fff;">
@@ -57,30 +65,38 @@
 </template>
 
 <script>
-import { XButton, Checker, CheckerItem, TransferDom, Popup, Datetime, Scroller } from 'vux'
+import global from '../../../src/components/common/Global.vue'
+const { apiHost, mallId } = global;
+import { Checker, CheckerItem, TransferDom, Popup, Scroller } from 'vux'
 import _ from 'lodash'
+import {
+  mapState,
+} from 'vuex';
+
 export default {
   directives: {
     TransferDom
   },
   components: {
-    Popup, XButton,
-    Datetime, Scroller,Checker, CheckerItem,
+    Popup, Scroller,Checker, CheckerItem,
+  },
+  computed: {
+    ...mapState({
+      member_id: state => state.member_id,
+    }),
   },
   data() {
     return {
-      demo1: '',
       popup: false,
       popupTitle: '',
       popupKey: null,
       popupSelected: null,
       popupList: {
-        'sex': [{id:0,name:'男'},{id:1,name:'女'}],
         'leibie': [
-          {id:0,name:'工作人员'},
-          {id:1,name:'商户'},
+          {id:0, name:'工作人员'},
+          {id:1, name:'商户'},
         ],
-        'bumen': [
+        'department': [
           {id:0, name:'财务部'},
           {id:1, name:'招商部'},
           {id:2, name:'运营部'},
@@ -88,15 +104,19 @@ export default {
         ],
       },
 
-      user: {},
+      form: {
+        name:'',
+        phone: '',
+        leibie:0,
+        department:0,
+        shopId:null,
+        shopName:null,
+      },
     }
   },
   methods: {
-    openEdit(key, title){
-    },
-
     popupName(key){
-      const id = this.user[key];
+      const id = this.form[key];
       if(id instanceof Array){
         const list = _.map(_.filter(this.popupList[key], o=>~id.indexOf(o.id)), 'name')
         return list.join(',')
@@ -105,7 +125,7 @@ export default {
       }
     },
     openPopup(key, title) {
-      this.popupSelected = this.user[key];
+      this.popupSelected = this.form[key];
       if(this.popupSelected instanceof Array){
         this.popupSelected = _.intersection(this.popupSelected, _.map(this.popupList[key], 'id'));
       }
@@ -121,20 +141,46 @@ export default {
           this.popupSelected = _.concat(this.popupSelected, id)
         }
       }else{
-        if(this.user[this.popupKey] != id){
-          this.user[this.popupKey] = id
+        if(this.form[this.popupKey] != id){
+          this.form[this.popupKey] = id
         }
         this.popup = false;
       }
     },
     closePopup(){
       if(this.popupSelected instanceof Array){
-        this.user[this.popupKey] = this.popupSelected;
+        this.form[this.popupKey] = this.popupSelected;
         this.popup = false;
       }else{
-        // nonono
+        this.popup = false;
       }
     },
+    shopSelect(){
+      this.$store.commit('staffshop', this.form)
+      this.$router.push('/shopSelect')
+    },
+    handleSubmit(){
+      const { name, phone, department, shopId, leibie } = this.form;
+      const { member_id: memberId } = this
+
+      if(leibie == 0){
+
+        this.$http.post(`${apiHost}/member/registServices`, {
+          mallId, memberId, name, phone, department
+        })
+      }else{
+        this.$http.post(`${apiHost}/member/registClerk`, {
+          mallId, memberId, name, phone, shopId
+        })
+      }
+    }
+  },
+  async mounted(){
+    const { staffreg } = this.$store.state
+    this.form = {
+      ...this.form,
+      ...staffreg,
+    }
   }
 }
 </script>

@@ -32,6 +32,7 @@ let member_id = localStorage.getItem('member_id')
 const store = new Vuex.Store({
   state: {
     member_id: member_id,
+    staffreg: {},
   },
   mutations: {
     login (state, { member_id }) {
@@ -40,6 +41,13 @@ const store = new Vuex.Store({
     },
     logout (state) {
       state.member_id = null
+    },
+    staffshop(state, o){
+      const { staffreg } = state
+      state.staffreg = {
+        ...staffreg,
+        ...o
+      }
     }
   }
 })

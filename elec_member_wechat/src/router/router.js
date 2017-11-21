@@ -63,6 +63,8 @@ export default new Router({
     { path:'/login', component:login }, //登陆接口
     { path:'/test', component:test, }, //测试
     { path:'/car', component:car }, //停车缴费
-    { path:'/carDetail', component:carDetail } //停车缴费
+    { path:'/carDetail', component:carDetail }, //停车缴费
+
+    { path: '/shopSelect', component: ()=>import('@/pages/shopSelect')},
   ]
 })

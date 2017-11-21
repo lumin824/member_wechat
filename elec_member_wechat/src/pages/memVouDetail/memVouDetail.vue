@@ -22,7 +22,7 @@
         </div>
       </div>
       <div style="display:flex;justify-content:center;">
-        <!-- <vue-qr :dotScale="1" :text="qr" height="200" width="200"></vue-qr> -->
+        <vue-qr :dotScale="1" :text="qr" height="200" width="200"></vue-qr>
       </div>
 
     </div>
@@ -37,7 +37,7 @@
 </template>
 
 <script>
-// import VueQr from 'vue-qr'
+import VueQr from 'vue-qr'
 import global from '../../../src/components/common/Global.vue'
 const { apiHost, mallId } = global;
 import {
@@ -46,7 +46,7 @@ import {
 
 export default {
   components:{
-    // VueQr
+    VueQr
   },
   computed: {
     qr(){
