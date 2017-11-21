@@ -38,7 +38,7 @@
           <div style="display:flex;align-items:center;">
             <img src="static/img/voucher.png" style="width:25px;height:25px;margin:0 20px;">
           </div>
-          <div style="flex:1;display:flex;border-bottom:1px solid #e1e1e1;align-items:center;padding-right:10px;">
+          <div style="flex:1;display:flex;align-items:center;padding-right:10px;">
             <div style="flex:1;margin:10px;">优惠券</div>
             <span class="iconfont icon-right" style="color:#797979;"></span>
           </div>
@@ -48,7 +48,7 @@
           <div style="display:flex;align-items:center;">
             <img src="static/img/latestactive.png" style="width:25px;height:25px;margin:0 20px;">
           </div>
-          <div style="flex:1;display:flex;border-bottom:1px solid #e1e1e1;align-items:center;padding-right:10px;">
+          <div style="flex:1;display:flex;border-top:1px solid #e1e1e1;align-items:center;padding-right:10px;">
             <div style="flex:1;margin:10px;">最新活动</div>
             <span class="iconfont icon-right" style="color:#797979;"></span>
           </div>
@@ -58,7 +58,7 @@
           <div style="display:flex;align-items:center;">
             <img src="static/img/stopcar.png" style="width:25px;height:25px;margin:0 20px;">
           </div>
-          <div style="flex:1;display:flex;border-bottom:1px solid #e1e1e1;align-items:center;padding-right:10px;">
+          <div style="flex:1;display:flex;border-top:1px solid #e1e1e1;align-items:center;padding-right:10px;">
             <div style="flex:1;margin:10px;">停车缴费</div>
             <span class="iconfont icon-right" style="color:#797979;"></span>
           </div>
@@ -68,7 +68,7 @@
           <div style="display:flex;align-items:center;">
             <img src="static/img/cash.png" style="width:25px;height:25px;margin:0 20px;">
           </div>
-          <div style="flex:1;display:flex;border-bottom:1px solid #e1e1e1;align-items:center;padding-right:10px;">
+          <div style="flex:1;display:flex;border-top:1px solid #e1e1e1;align-items:center;padding-right:10px;">
             <div style="flex:1;margin:10px;">积分抵现</div>
             <span class="iconfont icon-right" style="color:#797979;"></span>
           </div>
@@ -78,17 +78,17 @@
           <div style="display:flex;align-items:center;">
             <img src="static/img/upload.png" style="width:25px;height:25px;margin:0 20px;">
           </div>
-          <div style="flex:1;display:flex;border-bottom:1px solid #e1e1e1;align-items:center;padding-right:10px;">
+          <div style="flex:1;display:flex;border-top:1px solid #e1e1e1;align-items:center;padding-right:10px;">
             <div style="flex:1;margin:10px;">小票上传</div>
             <span class="iconfont icon-right" style="color:#797979;"></span>
           </div>
         </router-link>
 
-        <router-link to="" style="display:flex;">
+        <router-link to="" style="display:flex;" v-if="false" >
           <div style="display:flex;align-items:center;">
             <img src="static/img/record.png" style="width:25px;height:25px;margin:0 20px;">
           </div>
-          <div style="flex:1;display:flex;align-items:center;padding-right:10px;">
+          <div style="flex:1;display:flex;border-top:1px solid #e1e1e1;align-items:center;padding-right:10px;">
             <div style="flex:1;margin:10px;">商户记录</div>
             <span class="iconfont icon-right" style="color:#797979;"></span>
           </div>
