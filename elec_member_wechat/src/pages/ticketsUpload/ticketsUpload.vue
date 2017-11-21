@@ -4,7 +4,7 @@
     <figure>
       <img @click="clickCamera" src="static/img/camera.png" alt="">
       <figcaption> 点击上传
-        <div style="display: none;"><input id="uploadFile" type="file"  @change="onFileChange"></div>
+        <div style="display: none;"><input id="uploadFile" type="file" accept="image/*" capture="camera" @change="onFileChange"></div>
       </figcaption>
     </figure>
 
