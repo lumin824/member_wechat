@@ -62,6 +62,7 @@ export default {
       mobile: '',
       vcode: '',
       user: {},
+      cd: 0,
     }
   },
   computed: {
@@ -102,7 +103,14 @@ export default {
       }
       try{
         await this.$http.post(`${apiHost}/member/vcodeCheck`,{mobile,vcode})
-        
+
+        await this.$http.put(`${global.apiHost}/member`, {
+          memberId: member_id, mobile
+        })
+
+        this.$vux.toast.text('手机号修改成功')
+        this.$router.back();
+
       }catch(e){
         if(e.response){
           this.$vux.toast.text(e.response.data.content)
