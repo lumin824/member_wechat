@@ -106,7 +106,9 @@ export default {
     if (ua.browser.name === 'WeChat') {
       if(!wx_openid){
         const { redirect } = this.$route.query
-        localStorage.setItem('redirect', redirect)
+        if(redirect){
+          localStorage.setItem('redirect', redirect)
+        }
         const redirectUri = 'http://jiayuanmember.dorm9tech.com/wx/code2openid'
         location.href = `https://open.weixin.qq.com/connect/oauth2/authorize?appid=${AppID}&redirect_uri=${redirectUri}&response_type=code&scope=snsapi_userinfo&state=STATE#wechat_redirect`
         return;

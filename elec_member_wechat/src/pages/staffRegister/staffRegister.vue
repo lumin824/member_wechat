@@ -82,7 +82,7 @@ export default {
   },
   computed: {
     ...mapState({
-      member_id: state => state.member_id,
+      member_id: state => parseInt(state.member_id),
     }),
   },
   data() {
@@ -159,20 +159,31 @@ export default {
       this.$store.commit('staffshop', this.form)
       this.$router.push('/shopSelect')
     },
-    handleSubmit(){
+    async handleSubmit(){
       const { name, phone, department, shopId, leibie } = this.form;
       const { member_id: memberId } = this
 
-      if(leibie == 0){
+      try{
+        if(leibie == 0){
+          await this.$http.post(`${apiHost}/member/registServices`, {
+            mallId, memberId, name, phone, department
+          })
+        }else{
+          await this.$http.post(`${apiHost}/member/registClerk`, {
+            mallId, memberId, name, phone, shopId
+          })
+        }
+        this.$vux.toast.text('注册申请已提交')
+        this.$router.push('/member')
+      }catch(e){
+        if(e.response){
+          this.$vux.toast.text(e.response.data)
+        }else{
+          this.$vux.toast.text(e.message)
+        }
 
-        this.$http.post(`${apiHost}/member/registServices`, {
-          mallId, memberId, name, phone, department
-        })
-      }else{
-        this.$http.post(`${apiHost}/member/registClerk`, {
-          mallId, memberId, name, phone, shopId
-        })
       }
+
     }
   },
   async mounted(){
