@@ -66,5 +66,6 @@ export default new Router({
     { path:'/carDetail', component:carDetail }, //停车缴费
 
     { path: '/shopSelect', component: ()=>import('@/pages/shopSelect')},
+    { path: '/verify', component: ()=>import('@/pages/verify')},
   ]
 })
