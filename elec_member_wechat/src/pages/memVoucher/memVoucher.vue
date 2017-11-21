@@ -30,23 +30,15 @@
       <mt-tab-container-item id="3">
         <scroller lock-x>
           <div>
-            <router-link :to="{path:'/memVouDetail', query:{id:o.coupon_id}}" style="display:flex;background-color:#fff;margin-top:1px;" v-for="o in list2">
-              <div style="width:96px;height:96px;display:flex;align-items:center;justify-content:center;">
-                <img :src="o.picture" style="width:90px;height:90px;">
+            <router-link :to="{path:'/memVouDetail', query:{id:o.crl_id}}" style="display:flex;background-color:#fff;margin-top:1px;" v-for="o in list2">
+              <div style="width:70px;height:70px;display:flex;align-items:center;justify-content:center;">
+                <img :src="o.picture" style="width:64px;height:64px;">
               </div>
               <div style="flex:1;">
                 <div style="font-size:1em;margin-left:5px;margin-top:10px;">{{o.coupon_name}}</div>
                 <div style="display:flex;font-size:0.9em;margin-left:5px;">
-                  <div style="flex:1;" v-if="o.receive_method==0">
-                    <div style="color:#78797a;">市场价：{{o.price}}</div>
-                    <div style="color:#00cfaf;">兑换积分：{{o.required_points}}</div>
-                  </div>
-                  <div style="display:flex;align-items:center;margin-right:10px;">
-                    <div style="border:1px solid #ff9100;color:#ff9100;border-radius:3px;padding:2px 5px;">
-                      <template v-if="o.receive_method==0">
-                        积分兑换
-                      </template>
-                    </div>
+                  <div style="flex:1;">
+                    <div style="color:#78797a;">有效期：{{o.expiry_date_start | unix('YYYY-MM-DD', 'ms')}} ~ {{o.expiry_date_end | unix('YYYY-MM-DD', 'ms')}}</div>
                   </div>
                 </div>
               </div>
