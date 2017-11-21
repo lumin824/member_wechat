@@ -11,7 +11,7 @@
   },
   "dependencies": {
     "animate.css": "^3.5.2",
-    "awesome-qr": "^1.0.8",
+    "awesome-qr": "1.0.8",
     "axios": "^0.16.2",
     "lodash": "^4.17.4",
     "mint-ui": "^2.2.9",
