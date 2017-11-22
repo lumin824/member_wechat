@@ -1,6 +1,6 @@
 <template>
   <div class="act" >
-    <ul style="background-color:#fff;padding:8px;">
+    <ul style="background-color:#fff;">
       <router-link v-for="o in list" to="/activeDetail" tag="li" style="padding-bottom:10px;border-bottom:1px solid #ddd;">
         <figure style="background:url('static/img/activeTest.jpg');height:2rem">
           <figcaption>
@@ -13,7 +13,7 @@
           <div style="font-size:0.6em;color:#059CFF;">未签到</div>
         </div>
       </router-link>
-    </ul> 
+    </ul>
     <div style="text-align:center;width:100%">更多活动敬请期待...</div>
   </div>
 </template>
@@ -23,7 +23,7 @@
   export  default {
     data() {
       return {
-        list: [1,2,3,4,5,6]
+        list: []
       }
     },
     async mounted(){

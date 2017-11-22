@@ -54,7 +54,7 @@
           </div>
         </router-link>
 
-        <router-link to="/car" style="display:flex;">
+        <router-link v-if="false" to="/car" style="display:flex;">
           <div style="display:flex;align-items:center;">
             <img src="static/img/stopcar.png" style="width:25px;height:25px;margin:0 20px;">
           </div>
@@ -64,7 +64,7 @@
           </div>
         </router-link>
 
-        <router-link to="" style="display:flex;">
+        <router-link v-if="false" to="" style="display:flex;">
           <div style="display:flex;align-items:center;">
             <img src="static/img/cash.png" style="width:25px;height:25px;margin:0 20px;">
           </div>
