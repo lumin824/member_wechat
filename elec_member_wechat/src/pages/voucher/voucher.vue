@@ -10,7 +10,7 @@
         <div style="margin-top:20px;">
           <router-link :to="{path:'/voucherDetail', query:{id:o.coupon_id}}" style="display:flex;background-color:#fff;margin-top:1px;" v-for="o in list">
             <div style="width:96px;height:96px;display:flex;align-items:center;justify-content:center;">
-              <img :src="o.picture" style="width:90px;height:90px;">
+              <img :src="o.picture" style="width:80px;height:80px;">
             </div>
             <div style="flex:1;">
               <div style="font-size:1em;margin-left:5px;margin-top:10px;">{{o.coupon_name}}</div>
@@ -19,10 +19,10 @@
                   <div style="color:#78797a;">市场价：{{o.price}}</div>
                   <div style="color:#00cfaf;">兑换积分：{{o.required_points}}</div>
                 </div>
-                <div style="display:flex;align-items:center;margin-right:10px;">
+                <div style="display:flex;align-items:center;margin-right:15px;">
                   <div style="border:1px solid #ff9100;color:#ff9100;border-radius:3px;padding:2px 5px;">
                     <template v-if="o.receive_method==0">
-                      积分兑换
+                      {{ o.required_points ? '积分兑换' : '免费兑换'}}
                     </template>
                   </div>
                 </div>

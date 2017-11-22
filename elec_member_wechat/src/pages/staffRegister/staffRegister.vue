@@ -63,8 +63,8 @@
         </popup>
       </div>
     </div>
-    <div v-else>
-      {{statusName}}
+    <div v-else style="background-color:#fff;padding-bottom:15px;">
+      <msg :title="statusName" :icon="statusIcon"></msg>
     </div>
   </div>
 </template>
@@ -72,7 +72,7 @@
 <script>
 import global from '../../../src/components/common/Global.vue'
 const { apiHost, mallId } = global;
-import { Checker, CheckerItem, TransferDom, Popup, Scroller } from 'vux'
+import { Checker, CheckerItem, TransferDom, Popup, Scroller, Msg } from 'vux'
 import _ from 'lodash'
 import {
   mapState,
@@ -83,12 +83,19 @@ export default {
     TransferDom
   },
   components: {
-    Popup, Scroller,Checker, CheckerItem,
+    Popup, Scroller,Checker, CheckerItem, Msg
   },
   computed: {
     statusName(){
       const m = {
         '0':'审核通过', '1':'未审核', '2':'审核未通过'
+      }
+
+      return m[this.status] || this.status;
+    },
+    statusIcon(){
+      const m = {
+        '0':'success', '1':'waiting', '2':'warn'
       }
 
       return m[this.status] || this.status;
