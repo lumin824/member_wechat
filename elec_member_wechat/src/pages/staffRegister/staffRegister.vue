@@ -16,24 +16,24 @@
           </div>
         </div>
 
-        <div style="display:flex;border-bottom:1px solid #e1e1e1;">
+        <!-- <div style="display:flex;border-bottom:1px solid #e1e1e1;">
           <div style="width:70px;padding:10px;margin-left:10px;color:#00c9b2;">类别</div>
           <div style="flex:1;padding:10px;">
             <checker v-model="form.leibie" default-item-class="demo5-item" selected-item-class="demo5-item-selected" :radio-required="true">
               <checker-item v-for="o in popupList.leibie" :value="o.id">{{o.name}}</checker-item>
             </checker>
           </div>
-        </div>
+        </div> -->
 
-        <div v-if="form.leibie==0" @click="openPopup('department', '请选择部门')" style="display:flex;border-bottom:1px solid #e1e1e1;">
+        <!-- <div v-if="form.leibie==0" @click="openPopup('department', '请选择部门')" style="display:flex;border-bottom:1px solid #e1e1e1;">
           <div style="width:70px;padding:10px;margin-left:10px;color:#00c9b2;">部门</div>
           <div style="flex:1;padding:10px;">{{popupName('department')}}</div>
           <div style="padding:10px;padding-left:0;width:16px;">
             <span class="iconfont icon-right" style="color:#797979;"></span>
           </div>
-        </div>
+        </div> -->
 
-        <div v-if="form.leibie==1" @click="shopSelect()" style="display:flex;border-bottom:1px solid #e1e1e1;">
+        <div @click="shopSelect()" style="display:flex;border-bottom:1px solid #e1e1e1;">
           <div style="width:70px;padding:10px;margin-left:10px;color:#00c9b2;">商户</div>
           <div style="flex:1;padding:10px;">{{form.shopName}}</div>
           <div style="padding:10px;padding-left:0;width:16px;">
@@ -178,15 +178,15 @@ export default {
       const { member_id: memberId } = this
 
       try{
-        if(leibie == 0){
-          await this.$http.post(`${apiHost}/member/registServices`, {
-            mallId, memberId, name, phone, department
-          })
-        }else{
+        // if(leibie == 0){
+        //   await this.$http.post(`${apiHost}/member/registServices`, {
+        //     mallId, memberId, name, phone, department
+        //   })
+        // }else{
           await this.$http.post(`${apiHost}/member/registClerk`, {
             mallId, memberId, name, phone, shopId
           })
-        }
+        // }
         this.$vux.toast.text('注册申请已提交')
         this.$router.push('/member')
       }catch(e){
