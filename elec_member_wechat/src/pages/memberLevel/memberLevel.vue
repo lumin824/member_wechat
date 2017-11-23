@@ -21,7 +21,6 @@
         <tr style="height:40px;">
           <td style="border-bottom:1px solid #e1e1e1;padding-left:10px;min-width:100px;">时间</td>
           <td style="border-bottom:1px solid #e1e1e1;min-width:50px;">积分</td>
-          <td style="border-bottom:1px solid #e1e1e1;min-width:50px;">金额</td>
           <td style="border-bottom:1px solid #e1e1e1;">商户</td>
         </tr>
         <tbody>
@@ -29,7 +28,6 @@
             <tr @click="detailId=((detailId==o.mplog_id) ? null : o.mplog_id)" :class="{active:detailId==o.mplog_id}" style="height:40px;" >
               <td style="padding-left:10px;">{{o.shopping_date | unix('YYYY-MM-DD', 'ms')}}</td>
               <td style="color:#00c9b2;">{{o.points}}</td>
-              <td style="color:#00c9b2;">{{o.amount}}</td>
               <td style="overflow:hidden;text-overflow:ellipsis;white-space:nowrap;">{{o.shop_name}}</td>
             </tr>
             <tr v-if="detailId==o.mplog_id" :class="{active:detailId==o.mplog_id}" >
