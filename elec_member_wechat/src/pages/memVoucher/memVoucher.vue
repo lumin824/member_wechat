@@ -59,6 +59,7 @@ import moment from 'moment';
 import {
   mapState,
 } from 'vuex';
+import _ from 'lodash'
 export default {
   components:{
     Scroller,
