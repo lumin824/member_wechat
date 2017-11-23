@@ -1,5 +1,3 @@
-import CommonConfig from '../../../common/config'
-
 import express from 'express'
 
 import _ from 'lodash';
@@ -20,16 +18,21 @@ const httpGet = (...args) => new Promise((resolve, reject) => {
 })
 
 const map = {
+  'appid.get': async(req, res, next) => {
+    const { wx_app_id, wx_app_secret } = req.headers
+    return res.json({
+      wx_app_id
+    })
+  },
   'code2openid.get': async (req, res, next) => {
     let { code } = req.query;
-    let { AppID, AppSecret } = CommonConfig.WX
 
-    console.log(req.headers);
+    const { wx_app_id, wx_app_secret } = req.headers
     if(!code){
       return res.sendStatus(404);
     }
 
-    let { body } = await httpGet(`https://api.weixin.qq.com/sns/oauth2/access_token?appid=${AppID}&secret=${AppSecret}&code=${code}&grant_type=authorization_code`)
+    let { body } = await httpGet(`https://api.weixin.qq.com/sns/oauth2/access_token?appid=${wx_app_id}&secret=${wx_app_secret}&code=${code}&grant_type=authorization_code`)
 
     let wx_nickname;
     let { errcode: wx_errno, openid: wx_openid, access_token } = JSON.parse(body);
