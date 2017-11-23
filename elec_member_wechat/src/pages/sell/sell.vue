@@ -25,7 +25,7 @@
         </div>
         <div class="sellAdv" style="background-color:#FFFFFF;height:1.1rem;border-top:1px solid #D9D9D9;">
               <div style="padding-top:10px">
-               <img  v-if="logo!=''" style="float: left;padding-right:0.2rem;margin-botton:0.2rem;width:1.2rem;height:0.85rem" :src="this.sell.logo" alt="">
+               <img  v-if="logo!=''" style="float: left;padding-right:0.2rem;margin-botton:0.2rem;width:1.2rem;height:0.85rem" :src="logo" alt="">
                <img  v-else style="float: left;"  src="" alt="">
                 <ul>
                     <li><h3>{{sell.shop_name}}</h3></li>
@@ -61,6 +61,7 @@
 </template>
 <script>
 import { Scroller } from 'vux'
+import _ from 'lodash'
   export default {
      components: {
     Scroller
@@ -91,17 +92,21 @@ import { Scroller } from 'vux'
           this.sell = data.data;
           this.content=this.sell.intro;
           this.tel=this.sell.phone;
-          this.lcmap = this.sell.map_picture ? this.sell.map_picture.replace('121.196.208.176:9354', 'jiayuanMember.dorm9tech.com') : '';
+          //this.lcmap = this.sell.map_picture ? this.sell.map_picture.replace('121.196.208.176:9354', 'jiayuanMember.dorm9tech.com') : '';
+          this.lcmap = this.sell.map_picture ? this.sell.map_picture.replace(/^http:\/\/.+?\//,'/') : '';
 
 
           if(this.sell.logo.length>0){
-            this.logo = this.sell.logo;
+            this.logo = this.sell.logo ? this.sell.logo.replace(/^http:\/\/.+?\//,'/') : '';
           }
           if(this.sell.pictures.length>0){
             var jsonStr =this.sell.pictures;
              var jsonObj =  JSON.parse(jsonStr)
-            var jsonStr1 = JSON.stringify(jsonObj)
-           this.pictures = JSON.parse(jsonStr1);
+             jsonObj = _.map(jsonObj, o=>({
+               ...o,
+               mapUrl: o.mapUrl ? o.mapUrl.replace(/^http:\/\/.+?\//,'/') : ''
+             }))
+           this.pictures = jsonObj;
           }
       });
     }

@@ -116,7 +116,7 @@ export  default {
   },
   async mounted(){
     let member_id = this.member_id;
-    let { data } = await this.$http.get(`${global.apiHost}/member/${this.member_id}?mallId=${global.mallId}`)
+    let { data } = await this.$http.get(`/api/member/${this.member_id}?mallId=${global.mallId}`)
     this.user=data;
   }
 }

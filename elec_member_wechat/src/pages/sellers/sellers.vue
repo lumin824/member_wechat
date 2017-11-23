@@ -149,12 +149,17 @@ export default {
       this.loading = true;
       this.list = []
       try{
-        this.list = (await this.$http.post(`${global.apiHost}/shop`, {
+        let list = (await this.$http.post(`${global.apiHost}/shop`, {
           mall_id: global.mallId,
           page:1,
           size:200,
           ...this.searchParams,
         })).data
+        list = _.map(list, o=>({
+          ...o,
+          logo: o.logo ? o.logo.replace(/^http:\/\/.+?\//,'/') : ''
+        }))
+        this.list = list;
       }catch(e){
       }
       this.loading = false;

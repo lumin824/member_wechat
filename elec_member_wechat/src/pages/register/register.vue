@@ -30,7 +30,6 @@
 import { Countdown } from 'vux'
 import global from '../../../src/components/common/Global.vue'
 const { apiHost, mallId } = global;
-import CommonConfig from '@/../../common/config'
 import UAParser from 'ua-parser-js'
 export default {
   components:{
@@ -101,32 +100,32 @@ export default {
   async mounted(){
     let ua = new UAParser().getResult()
     const { wx_openid } = this.$route.query
-    const { AppID } = CommonConfig.WX
 
     if (ua.browser.name === 'WeChat') {
+
+      let { wx_app_id } = (await this.$http.get('/wx/appid')).data
+
       if(!wx_openid){
         const { redirect } = this.$route.query
         if(redirect){
           localStorage.setItem('redirect', redirect)
         }
-        const redirectUri = 'http://jiayuanmember.dorm9tech.com/wx/code2openid'
-        location.href = `https://open.weixin.qq.com/connect/oauth2/authorize?appid=${AppID}&redirect_uri=${redirectUri}&response_type=code&scope=snsapi_userinfo&state=STATE#wechat_redirect`
+        const redirectUri = `http://${location.hostname}/wx/code2openid`
+        location.href = `https://open.weixin.qq.com/connect/oauth2/authorize?appid=${wx_app_id}&redirect_uri=${redirectUri}&response_type=code&scope=snsapi_userinfo&state=STATE#wechat_redirect`
         return;
+      }else{
+        try{
+          let { member_id } = (await this.$http.get(`${apiHost}/member?appId=${wx_app_id}&openId=${wx_openid}`)).data
+          this.$store.commit('login', {member_id})
+          const redirect = localStorage.getItem('redirect')
+          localStorage.removeItem('redirect');
+          this.$router.push(redirect || '/member');
+        }catch(e){
+          this.showLoginForm = true
+        }
       }
     }else{
       this.showLoginForm = true
-    }
-
-    if(wx_openid){
-      try{
-        let { member_id } = (await this.$http.get(`${apiHost}/member?appId=${AppID}&openId=${wx_openid}`)).data
-        this.$store.commit('login', {member_id})
-        const redirect = localStorage.getItem('redirect')
-        localStorage.removeItem('redirect');
-        this.$router.push(redirect || '/member');
-      }catch(e){
-        this.showLoginForm = true
-      }
     }
   }
 }

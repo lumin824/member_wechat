@@ -7,6 +7,7 @@ import axios from 'axios'
 import Mint from 'mint-ui'
 import AMap from 'vue-amap'
 import Vuex from 'vuex'
+import UAParser from 'ua-parser-js'
 import 'mint-ui/lib/style.css'
 
 import { ConfirmPlugin, DatetimePlugin, ToastPlugin } from 'vux'
@@ -28,7 +29,12 @@ AMap.initAMapApiLoader({
 Vue.use(Vuex)
 Vue.config.productionTip = false
 
-let member_id = localStorage.getItem('member_id')
+let member_id = null;
+let ua = new UAParser().getResult()
+if (ua.browser.name !== 'WeChat') {
+  member_id = localStorage.getItem('member_id')
+}
+
 const store = new Vuex.Store({
   state: {
     member_id: member_id,
