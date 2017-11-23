@@ -29,7 +29,7 @@
 
       <mt-tab-container-item id="3">
         <scroller lock-x>
-          <div>
+          <div style="-webkit-filter:grayscale() opacity(0.5);">
             <router-link :to="{path:'/memVouDetail', query:{id:o.crl_id}}" style="display:flex;background-color:#fff;margin-top:1px;" v-for="o in list2">
               <div style="width:70px;height:70px;display:flex;align-items:center;justify-content:center;">
                 <img :src="o.picture" style="width:64px;height:64px;">
