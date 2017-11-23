@@ -30,10 +30,12 @@ Vue.use(Vuex)
 Vue.config.productionTip = false
 
 let member_id = null;
-let ua = new UAParser().getResult()
-if (ua.browser.name !== 'WeChat') {
-  member_id = localStorage.getItem('member_id')
-}
+// let ua = new UAParser().getResult()
+// if (ua.browser.name !== 'WeChat') {
+//   member_id = localStorage.getItem('member_id')
+// }
+
+member_id = localStorage.getItem('member_id')
 
 const store = new Vuex.Store({
   state: {
