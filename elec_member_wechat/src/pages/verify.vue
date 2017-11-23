@@ -1,13 +1,13 @@
 <template>
-  <div>
-    {{msg}}
+  <div style="background-color:#fff;padding-bottom:15px;">
+    <msg :title="statusName" :icon="statusIcon"></msg>
   </div>
 </template>
 
 <script>
 import global from '../../src/components/common/Global.vue'
 const { mallId } = global;
-import { TransferDom, Scroller } from 'vux'
+import { TransferDom, Scroller, Msg } from 'vux'
 import _ from 'lodash'
 import {
   mapState,
@@ -17,7 +17,7 @@ export default {
     TransferDom
   },
   components: {
-    Scroller,
+    Scroller, Msg
   },
   computed: {
     ...mapState({
@@ -26,7 +26,8 @@ export default {
   },
   data() {
     return {
-      msg: '核销中',
+      statusName: '核销中',
+      statusIcon: 'waiting',
       popup: false,
     }
   },
@@ -36,12 +37,16 @@ export default {
     const { id } = this.$route.query;
     try{
       await this.$http.get(`/api/member/verify?memberId=${this.member_id}&crlId=${id}`)
-      this.msg = '核销成功'
+      this.statusName = '核销成功'
+      this.statusIcon = 'success'
+
     }catch(e){
-      console.log({e})
       if(e.response){
-        this.msg = e.response.data.content
+        this.statusName = e.response.data.content
+      }else{
+        this.statusName = e.message
       }
+      this.statusIcon = 'warn'
     }
   }
 }
