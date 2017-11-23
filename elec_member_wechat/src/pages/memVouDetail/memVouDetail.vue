@@ -7,13 +7,13 @@
         <div style="flex:1;margin:5px 10px;">券详情</div>
       </div>
 
-      <div style="display:flex;background-color:#fff;margin-top:1px;border-bottom:1px solid #e1e1e1">
-        <div>
-          <img :src="item.picture" style="width:96px;height:96px;margin:5px;">
+      <div style="display:flex;">
+        <div style="width:90px;">
+          <img :src="item.picture" style="width:80px;height:80px;margin:5px;">
         </div>
         <div style="flex:1;display:flex;flex-direction:column;">
-          <div style="font-size:1em;margin-left:5px;margin-top:10px;">{{item.coupon_name}}</div>
-          <div style="flex:1;display:flex;font-size:0.9em;margin-left:5px;">
+          <div style="margin-left:5px;margin-top:10px;">{{item.coupon_name}}</div>
+          <div style="flex:1;display:flex;font-size:0.9em;margin-left:5px;min-height:55px;">
             <div style="flex:1;display:flex;flex-direction:column;font-size:0.9em;">
               <div style="flex:1;color:#78797a;border-bottom:1px solid #e1e1e1;display:flex;align-items:center;"><span style="width:45px;display:inline-block;">有效期</span>{{item.expiry_date_start | unix('YYYY-MM-DD', 'ms')}} ~ {{item.expiry_date_end | unix('YYYY-MM-DD', 'ms')}}</div>
               <div style="flex:1;color:#78797a;display:flex;align-items:center;"><span style="width:45px;display:inline-block;">状态</span>{{coupon_status}}</div>
@@ -21,6 +21,7 @@
           </div>
         </div>
       </div>
+
       <div style="display:flex;justify-content:center;">
         <vue-qr :dotScale="1" :text="qr" height="200" width="200"></vue-qr>
       </div>
