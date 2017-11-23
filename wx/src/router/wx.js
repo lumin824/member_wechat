@@ -24,6 +24,7 @@ const map = {
     let { code } = req.query;
     let { AppID, AppSecret } = CommonConfig.WX
 
+    console.log(req.headers);
     if(!code){
       return res.sendStatus(404);
     }
