@@ -57,11 +57,11 @@ export default {
       }
 
       try{
-        await this.$http.post(`${apiHost}/member/vcode`,{mallId, mobile})
+        await this.$http.post(`/api/member/vcode`,{mallId, mobile})
         this.cd = 30;
       }catch(e){
         this.cd = 30;
-        this.member_id = (await this.$http.get(`${apiHost}/member/m?mobile=${mobile}`)).data.member_id
+        this.member_id = (await this.$http.get(`/api/member/m?mobile=${mobile}`)).data.member_id
         this.vcode = '888888'
         //this.$store.commit('login', member_id)
       }
@@ -86,7 +86,7 @@ export default {
         return
       }
       try{
-        await this.$http.post(`${apiHost}/member/vcodeCheck`,{mobile,vcode})
+        await this.$http.post(`/api/member/vcodeCheck`,{mobile,vcode})
         this.$router.push(`/registerInfo?mobile=${mobile}&openId=${wx_openid}`)
       }catch(e){
         if(e.response){
@@ -115,7 +115,7 @@ export default {
         return;
       }else{
         try{
-          let { member_id } = (await this.$http.get(`${apiHost}/member?appId=${wx_app_id}&openId=${wx_openid}`)).data
+          let { member_id } = (await this.$http.get(`/api/member?appId=${wx_app_id}&openId=${wx_openid}`)).data
           this.$store.commit('login', {member_id})
           const redirect = localStorage.getItem('redirect')
           localStorage.removeItem('redirect');

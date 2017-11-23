@@ -138,7 +138,7 @@ import {
       }
     },
      async mounted () {
-       let { data } = await this.$http.get(`http://121.196.208.176:9001/member/${this.member_id}?mallId=${global.mallId}`)
+       let { data } = await this.$http.get(`/api/member/${this.member_id}?mallId=${global.mallId}`)
         this.user = data;
 
       var unixTimestamp = new Date(this.user.birthday)
@@ -176,7 +176,7 @@ import {
        save(value){
         let is_public_wx = this.user.is_public_wx ? true: false
         var time=new Date(value);
-        this.$http.put(`http://121.196.208.176:9001/member`,{
+        this.$http.put(`/api/member`,{
           'address':document.getElementById("address").value,
           'birthday':time.getTime(),
           'name':document.getElementById("name").value,

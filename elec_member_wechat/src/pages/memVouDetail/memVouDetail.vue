@@ -72,7 +72,7 @@ export default {
   },
   async mounted(){
     const { id } = this.$route.query;
-    this.item = (await this.$http.get(`${apiHost}/member/coupon/${id}`)).data
+    this.item = (await this.$http.get(`/api/member/coupon/${id}`)).data
   },
   methods:{
 

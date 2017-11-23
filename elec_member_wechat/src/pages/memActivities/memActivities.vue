@@ -28,7 +28,7 @@
     },
     async mounted(){
 
-      // const list = await this.$http.post('http://121.196.208.176:9001/activity')
+      // const list = await this.$http.post('/api/activity')
       // console.log(list)
     }
   }

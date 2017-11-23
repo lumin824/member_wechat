@@ -47,7 +47,7 @@
     },
     //发送请求
     valid(){
-      if(this.checkMobile(this.formData.phone)){ 
+      if(this.checkMobile(this.formData.phone)){
             if(this.formData.code==''){
                   this.formData.v_code= '请先获取验证码';
                   this.c_state = 'error';
@@ -56,7 +56,7 @@
                   this.c_state = 'error';
             }else{
                 //  手机号验证码都验证通过,验证验证码是否正确
-                this.$http.post('http://121.196.208.176:9001/member/vcodeCheck',{'mobile':this.formData.phone,'vcode':this.formData.code }).then(data =>{
+                this.$http.post('/api/member/vcodeCheck',{'mobile':this.formData.phone,'vcode':this.formData.code }).then(data =>{
                     //  this.$store.commit('login', this.formData.phone)
                      //验证成功
                     let defautlHref = '/registerInfo?phone='+this.formData.phone;
@@ -68,7 +68,7 @@
                   this.c_state = 'error';
                   window.location.href='/register';
                 });
-            } 
+            }
       }else{
           this.show = true;
           clearInterval(this.timer);
@@ -98,7 +98,7 @@
          if(this.checkMobile(this.formData.phone)){
              this.state='success';
              try {
-               var data=await this.$http.get(`http://121.196.208.176:9001/member/m?mobile=${formData.phone}`);
+               var data=await this.$http.get(`/api/member/m?mobile=${formData.phone}`);
                 alert('该手机已注册');
                 location.reload()
                 return
@@ -121,7 +121,7 @@
              this.placeholder='请输入正确的手机号';
              return;
          }
-        this.$http.post('http://121.196.208.176:9001/member/vcode',{'mallId':10,'mobile': formData.phone}).then(data =>{
+        this.$http.post('/api/member/vcode',{'mallId':10,'mobile': formData.phone}).then(data =>{
              console.log(data);
         });
       }

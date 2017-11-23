@@ -63,10 +63,10 @@
           }else{
             //手机号验证码都验证通过,验证验证码是否正确
             alert(123)
-            this.$http.post('http://121.196.208.176:9001/member/vcodeCheck',{'mobile':this.formData.phone,'vcode':this.formData.code }).then(data =>{
+            this.$http.post('/api/member/vcodeCheck',{'mobile':this.formData.phone,'vcode':this.formData.code }).then(data =>{
                   alert(4)
                   //验证成功(查询用户信息) //window.location.href='/registerInfo?phone='+this.formData.phone;
-                  this.$http.get(`http://121.196.208.176:9001/member/m?mobile=${this.formData.phone}`).then(resp=>{
+                  this.$http.get(`/api/member/m?mobile=${this.formData.phone}`).then(resp=>{
                       //设置cookie
                       alert(1234)
                       let data = resp.data;
@@ -105,7 +105,7 @@
           this.show = false;
           if(this.checkMobile(this.formData.phone)){
             this.state='success';
-            this.$http.post('http://121.196.208.176:9001/member/vcode',{'mallId':1,'mobile': formData.phone}).then(data =>{
+            this.$http.post('/api/member/vcode',{'mallId':1,'mobile': formData.phone}).then(data =>{
               console.log(data);
             });
             this.timer = setInterval(() => {
@@ -124,7 +124,7 @@
             this.state='error';
             this.placeholder='请输入正确的手机号';
           }
-          /*   this.$http.post('http://121.196.208.176:9001/member/vcode',{'mallId':10,'mobile': formData.phone}).then(data =>{
+          /*   this.$http.post('/api/member/vcode',{'mallId':10,'mobile': formData.phone}).then(data =>{
                   console.log(data);
              });*/
         }

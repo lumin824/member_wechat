@@ -288,13 +288,13 @@ export default {
         memberId: this.member_id,
         [this.key4put[key] || key]: value
       }
-      let res = await this.$http.put(`${global.apiHost}/member`, data)
+      let res = await this.$http.put(`/api/member`, data)
       console.log(res);
     }
   },
   async mounted(){
     let member_id = this.member_id;
-    let { data } = await this.$http.get(`${global.apiHost}/member/${this.member_id}?mallId=${global.mallId}`)
+    let { data } = await this.$http.get(`/api/member/${this.member_id}?mallId=${global.mallId}`)
     data.interest = data.interest ? _.map(data.interest.split(','), _.parseInt) : [];
     this.user=data;
   }

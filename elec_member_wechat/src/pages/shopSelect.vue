@@ -46,7 +46,7 @@ export default {
     },
   },
   async mounted(){
-    this.list = (await this.$http.post(`${global.apiHost}/shop`, {
+    this.list = (await this.$http.post(`/api/shop`, {
       mall_id: mallId, page:1, size:200})).data
   }
 }

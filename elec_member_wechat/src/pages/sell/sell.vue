@@ -88,7 +88,7 @@ import _ from 'lodash'
     },
     mounted(){
      this.sell_id = this.$route.query.sell_id;
-     this.$http.get('http://121.196.208.176:9001/shop/'+this.sell_id).then((data) =>{
+     this.$http.get('/api/shop/'+this.sell_id).then((data) =>{
           this.sell = data.data;
           this.content=this.sell.intro;
           this.tel=this.sell.phone;

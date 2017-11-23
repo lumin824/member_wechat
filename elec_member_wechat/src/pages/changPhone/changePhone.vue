@@ -83,7 +83,7 @@ export default {
       }
 
       try{
-        await this.$http.post(`${apiHost}/member/vcode`,{mallId, mobile})
+        await this.$http.post(`/api/member/vcode`,{mallId, mobile})
         this.cd = 30;
       }catch(e){
         this.$vux.toast.text(`该手机号已注册会员`)
@@ -102,9 +102,9 @@ export default {
         return
       }
       try{
-        await this.$http.post(`${apiHost}/member/vcodeCheck`,{mobile,vcode})
+        await this.$http.post(`/api/member/vcodeCheck`,{mobile,vcode})
 
-        await this.$http.put(`${global.apiHost}/member`, {
+        await this.$http.put(`/api/member`, {
           memberId: member_id, mobile
         })
 
@@ -122,7 +122,7 @@ export default {
   },
   async mounted(){
     let member_id = this.member_id;
-    let { data } = await this.$http.get(`${global.apiHost}/member/${this.member_id}?mallId=${global.mallId}`)
+    let { data } = await this.$http.get(`/api/member/${this.member_id}?mallId=${global.mallId}`)
     this.user=data;
   }
 }

@@ -51,7 +51,7 @@ export default {
     }
   },
   async mounted(){
-    let { data } = await this.$http.get(`${apiHost}/mall/${appId}`)
+    let { data } = await this.$http.get(`/api/mall/${appId}`)
     data.pictures = data.pictures ? JSON.parse(data.pictures) : []
     this.item = data;
   },

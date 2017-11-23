@@ -100,7 +100,7 @@ export  default {
       const receiveMethod = this.type;
       const keywords = this.keywords
       try{
-        this.list = (await this.$http.post(`${apiHost}/coupon/list`, {
+        this.list = (await this.$http.post(`/api/coupon/list`, {
           mallId, page:1, receiveMethod, size:200, keywords
         })).data
       }catch(e){

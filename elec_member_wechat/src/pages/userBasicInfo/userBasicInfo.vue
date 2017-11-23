@@ -84,7 +84,7 @@ export default {
       }
 
       try{
-        const { member_id } = (await this.$http.post(`${apiHost}/member`, {
+        const { member_id } = (await this.$http.post(`/api/member`, {
           ...user,
           mallId, mobile, openId
         })).data;

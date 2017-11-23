@@ -35,7 +35,7 @@ export default {
   async mounted(){
     const { id } = this.$route.query;
     try{
-      await this.$http.get(`${apiHost}/member/verify?memberId=${this.member_id}&crlId=${id}`)
+      await this.$http.get(`/api/member/verify?memberId=${this.member_id}&crlId=${id}`)
       this.msg = '核销成功'
     }catch(e){
       console.log({e})

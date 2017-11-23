@@ -186,11 +186,11 @@ export default {
 
       try{
         // if(leibie == 0){
-        //   await this.$http.post(`${apiHost}/member/registServices`, {
+        //   await this.$http.post(`/api/member/registServices`, {
         //     mallId, memberId, name, phone, department
         //   })
         // }else{
-          await this.$http.post(`${apiHost}/member/registClerk`, {
+          await this.$http.post(`/api/member/registClerk`, {
             mallId, memberId, name, phone, shopId
           })
         // }
@@ -212,7 +212,7 @@ export default {
 
 
     try{
-      const { data } = await this.$http.get(`${apiHost}/member/verification/${this.member_id}`)
+      const { data } = await this.$http.get(`/api/member/verification/${this.member_id}`)
       const { status } = data;
       this.status = data.status
     }catch(e){

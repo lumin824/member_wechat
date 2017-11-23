@@ -103,7 +103,7 @@ export default {
 
     this.popupList.map_id = [
       {id:undefined, name:'全部', selectedName:'楼层'},
-      ..._.map((await this.$http.get(`${global.apiHost}/mall/${global.mallId}/planeMaps`)).data, o=>({
+      ..._.map((await this.$http.get(`/api/mall/${global.mallId}/planeMaps`)).data, o=>({
         id: o.map_id,
         name: o.map_name
       }))
@@ -111,7 +111,7 @@ export default {
 
     this.popupList.industry_id = [
       {id:undefined, name:'全部', selectedName:'分类'},
-      ..._.map((await this.$http.get(`${global.apiHost}/mall/${global.mallId}/industries`)).data, o=>({
+      ..._.map((await this.$http.get(`/api/mall/${global.mallId}/industries`)).data, o=>({
         id: o.industry_id,
         name: o.industry_name
       }))
@@ -149,7 +149,7 @@ export default {
       this.loading = true;
       this.list = []
       try{
-        let list = (await this.$http.post(`${global.apiHost}/shop`, {
+        let list = (await this.$http.post(`/api/shop`, {
           mall_id: global.mallId,
           page:1,
           size:200,

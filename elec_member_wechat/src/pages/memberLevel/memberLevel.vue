@@ -96,9 +96,9 @@ export default {
   async mounted(){
 
     let member_id = this.member_id;
-    this.user = (await this.$http.get(`${global.apiHost}/member/${this.member_id}?mallId=${global.mallId}`)).data
+    this.user = (await this.$http.get(`/api/member/${this.member_id}?mallId=${global.mallId}`)).data
 
-    this.list = (await this.$http.post(`${global.apiHost}/member/${this.member_id}/pointsList`, {
+    this.list = (await this.$http.post(`/api/member/${this.member_id}/pointsList`, {
       mallId: global.mallId, page: 1, size: 200
     })).data
   },

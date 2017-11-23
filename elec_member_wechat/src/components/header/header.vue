@@ -34,7 +34,7 @@ import {
       },
       async mounted () {
 
-        let { data } = await this.$http.get(`http://121.196.208.176:9001/member/${this.member_id}?mallId=${global.mallId}`)
+        let { data } = await this.$http.get(`/api/member/${this.member_id}?mallId=${global.mallId}`)
         this.user=data;
         console.log(this.user)
       },

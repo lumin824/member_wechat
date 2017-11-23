@@ -159,7 +159,7 @@ border-color: #FFFFFF;color:#888888'>
             }
             var a = new Date(this.calendar3.display);
 
-            this.$http.post('http://121.196.208.176:9001/member',{'birthday':a.getTime(),'mallId':this.mall_id,'mobile':this.formData.phone,'name':this.formData.name,'sex':this.formData.sex,'openId':this.formData.openId}).then(data =>{
+            this.$http.post('/api/member',{'birthday':a.getTime(),'mallId':this.mall_id,'mobile':this.formData.phone,'name':this.formData.name,'sex':this.formData.sex,'openId':this.formData.openId}).then(data =>{
               const { member_id } = data.data;
               if(member_id){
                 //保存cookie(设置1年有效期)

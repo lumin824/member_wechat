@@ -80,7 +80,7 @@ export default {
       const { coupon_type: couponType, receive_method: receivedMethod, required_points: requiredPoints} = this.item;
 
       const doReceive = async () => {
-        const { data } = await this.$http.post(`${apiHost}/member/${this.member_id}/receiveCoupon/${id}`, {
+        const { data } = await this.$http.post(`/api/member/${this.member_id}/receiveCoupon/${id}`, {
           couponType, mallId, receivedMethod, requiredPoints
         })
 
@@ -113,7 +113,7 @@ export default {
   async mounted() {
     const { id } = this.$route.query;
 
-    this.item = (await this.$http.get(`${apiHost}/coupon/${id}?memberId=${this.member_id}`)).data
+    this.item = (await this.$http.get(`/api/coupon/${id}?memberId=${this.member_id}`)).data
   }
 }
 </script>

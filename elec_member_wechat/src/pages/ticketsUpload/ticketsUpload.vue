@@ -110,7 +110,7 @@
     methods:{
       async reload(){
         try{
-          let { data } = await this.$http.get(`http://121.196.208.176:9001/member/${this.member_id}/tickets`,{
+          let { data } = await this.$http.get(`/api/member/${this.member_id}/tickets`,{
             params: {mallId: global.mallId}
           });
           this.pageList = data;
@@ -124,7 +124,7 @@
           title:'删除确认',
           content: '确认删除小票？',
           onConfirm: async ()=>{
-            await this.$http.delete(`${apiHost}/member/ticket/${ticketId}`)
+            await this.$http.delete(`/api/member/ticket/${ticketId}`)
             await this.reload()
           }
         })
@@ -142,7 +142,7 @@
         };
         formData.append('file',files[0]);
         formData.append('mallId', 1);
-        await this.$http.post(`${apiHost}/member/uploadTicket/${this.member_id}`,formData,config)
+        await this.$http.post(`/api/member/uploadTicket/${this.member_id}`,formData,config)
         await this.reload();
       },
       onFileChange (e) {
@@ -158,7 +158,7 @@
         },
       loadPageList() {
         let member_id = this.member_id;
-/*        this.$http.get(`http://121.196.208.176:9001/member/${member_id}/tickets`,{page:this.searchCondition.pageNo,size:this.searchCondition.pageSize}).then(data =>{
+/*        this.$http.get(`/api/member/${member_id}/tickets`,{page:this.searchCondition.pageNo,size:this.searchCondition.pageSize}).then(data =>{
           this.pageList = data.data;
         },err=>{
         });  */

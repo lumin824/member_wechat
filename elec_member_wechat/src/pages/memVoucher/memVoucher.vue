@@ -82,7 +82,7 @@ export default {
   },
   async mounted(){
     try{
-      this.list= (await this.$http.post(`${apiHost}/member/${this.member_id}/couponList`, {
+      this.list= (await this.$http.post(`/api/member/${this.member_id}/couponList`, {
         couponStatus: 1, mallId, page:1, size:200
       })).data
     }catch(e){
@@ -90,7 +90,7 @@ export default {
     }
 
     try{
-      this.list2 = (await this.$http.post(`${apiHost}/member/${this.member_id}/couponList`, {
+      this.list2 = (await this.$http.post(`/api/member/${this.member_id}/couponList`, {
         couponStatus: 2, mallId, page:1, size:200
       })).data
 
