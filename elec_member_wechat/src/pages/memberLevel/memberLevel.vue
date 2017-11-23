@@ -17,10 +17,10 @@
     </div>
 
     <div style="background-color:#fff;margin-top:20px;padding:0 15px;">
-      <table style="width:100%;" border="0" cellspacing="0" cellpadding="0">
+      <table style="width:100%;table-layout:fixed;" border="0" cellspacing="0" cellpadding="0">
         <tr style="height:40px;">
-          <td style="border-bottom:1px solid #e1e1e1;padding-left:10px;min-width:100px;">时间</td>
-          <td style="border-bottom:1px solid #e1e1e1;min-width:50px;">积分</td>
+          <td style="border-bottom:1px solid #e1e1e1;padding-left:10px;width:100px;">时间</td>
+          <td style="border-bottom:1px solid #e1e1e1;width:50px;">积分</td>
           <td style="border-bottom:1px solid #e1e1e1;">商户</td>
         </tr>
         <tbody>
@@ -28,24 +28,14 @@
             <tr @click="detailId=((detailId==o.mplog_id) ? null : o.mplog_id)" :class="{active:detailId==o.mplog_id}" style="height:40px;" >
               <td style="padding-left:10px;">{{o.shopping_date | unix('YYYY-MM-DD', 'ms')}}</td>
               <td style="color:#00c9b2;">{{o.points}}</td>
-              <td style="overflow:hidden;text-overflow:ellipsis;white-space:nowrap;">{{o.shop_name}}</td>
+              <td style="white-space:nowrap;overflow:hidden;word-break:keep-all;text-overflow:ellipsis;">{{o.shop_name}}</td>
             </tr>
             <tr v-if="detailId==o.mplog_id" :class="{active:detailId==o.mplog_id}" >
-              <td colspan="4" style="padding-left:10px;">
-                <table style="color:#7f8081;font-size:0.8em;">
-                  <tr>
-                    <td>抵扣时间</td><td>{{o.shopping_date | unix('YYYY-MM-DD HH:mm', 'ms')}}</td>
-                  </tr>
-                  <tr>
-                    <td>抵扣商户</td><td>{{o.shop_name}}</td>
-                  </tr>
-                  <tr>
-                    <td>抵扣金额</td><td>{{o.amount}}</td>
-                  </tr>
-                  <tr>
-                    <td>扣减积分</td><td>{{o.points}}</td>
-                  </tr>
-                </table>
+              <td colspan="3" style="padding-left:10px;color:#7f8081;font-size:0.8em;">
+                <p>抵扣时间: {{o.shopping_date | unix('YYYY-MM-DD HH:mm', 'ms')}}</p>
+                <p>抵扣商户: {{o.shop_name}}</p>
+                <p>抵扣金额: {{o.amount}}</p>
+                <p>扣减积分: {{o.points}}</p>
               </td>
             </tr>
           </template>
