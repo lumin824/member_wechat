@@ -14,16 +14,25 @@
             </div>
             <div style="flex:1;">
               <div style="font-size:1em;margin-left:5px;margin-top:10px;">{{o.coupon_name}}</div>
-              <div style="display:flex;font-size:0.9em;margin-left:5px;">
-                <div style="flex:1;" v-if="o.receive_method==0">
+              <div style="display:flex;font-size:0.9em;margin-left:5px;" v-if="o.receive_method==0">
+                <div style="flex:1;">
                   <div style="color:#78797a;">市场价：{{o.price}}</div>
                   <div style="color:#00cfaf;">兑换积分：{{o.required_points}}</div>
                 </div>
                 <div style="display:flex;align-items:center;margin-right:15px;">
                   <div style="border:1px solid #ff9100;color:#ff9100;border-radius:3px;padding:2px 5px;">
-                    <template v-if="o.receive_method==0">
-                      {{ o.required_points ? '积分兑换' : '免费兑换'}}
-                    </template>
+                    积分兑换
+                  </div>
+                </div>
+              </div>
+              <div style="display:flex;font-size:0.9em;margin-left:5px;" v-else-if="o.receive_method==2">
+                <div style="flex:1;">
+                  <div style="color:#78797a;">市场价：{{o.price}}</div>
+                  <div style="color:#00cfaf;height:23px;"></div>
+                </div>
+                <div style="display:flex;align-items:center;margin-right:15px;">
+                  <div style="border:1px solid #ff9100;color:#ff9100;border-radius:3px;padding:2px 5px;">
+                    免费领取
                   </div>
                 </div>
               </div>

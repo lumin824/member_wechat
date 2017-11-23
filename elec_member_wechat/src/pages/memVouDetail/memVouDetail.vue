@@ -53,6 +53,12 @@ export default {
   },
   computed: {
     coupon_status(){
+
+      const { past, coupon_status } = this.item;
+
+      if(coupon_status == 2) return '已核销'
+      if(past == 1) return '已过期'
+
       const m = {
         '0': '未激活', '1':'已激活', '2':'已核销'
       }

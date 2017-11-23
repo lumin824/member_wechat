@@ -10,7 +10,7 @@
       <mt-tab-container-item id="1">
         <scroller lock-x>
           <div>
-            <router-link :to="{path:'/memVouDetail', query:{id:o.crl_id}}" style="display:flex;background-color:#fff;margin-top:1px;" v-for="o in list">
+            <router-link :class="{gray:o.past}" :to="{path:'/memVouDetail', query:{id:o.crl_id}}" style="display:flex;background-color:#fff;margin-top:1px;" v-for="o in list">
               <div style="width:70px;height:70px;display:flex;align-items:center;justify-content:center;">
                 <img :src="o.picture" style="width:64px;height:64px;">
               </div>
@@ -29,7 +29,7 @@
 
       <mt-tab-container-item id="3">
         <scroller lock-x>
-          <div style="-webkit-filter:grayscale() opacity(0.5);">
+          <div class="gray">
             <router-link :to="{path:'/memVouDetail', query:{id:o.crl_id}}" style="display:flex;background-color:#fff;margin-top:1px;" v-for="o in list2">
               <div style="width:70px;height:70px;display:flex;align-items:center;justify-content:center;">
                 <img :src="o.picture" style="width:64px;height:64px;">
@@ -82,9 +82,12 @@ export default {
   },
   async mounted(){
     try{
-      this.list= (await this.$http.post(`/api/member/${this.member_id}/couponList`, {
+      let list = (await this.$http.post(`/api/member/${this.member_id}/couponList`, {
         couponStatus: 1, mallId, page:1, size:200
       })).data
+
+      list = _.sortBy(list, 'past')
+      this.list = list;
     }catch(e){
       this.list = [];
     }
@@ -108,5 +111,9 @@ export default {
   color: #07C0AE;
   margin-bottom: 0;
   border-bottom: 3px solid #07C0AE;
+}
+
+.gray {
+  -webkit-filter:grayscale() opacity(0.5);
 }
 </style>
