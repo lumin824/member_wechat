@@ -29,7 +29,7 @@
 <script>
 import { Countdown } from 'vux'
 import global from '../../../src/components/common/Global.vue'
-const { apiHost, mallId } = global;
+const { mallId } = global;
 import UAParser from 'ua-parser-js'
 export default {
   components:{

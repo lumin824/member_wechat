@@ -41,7 +41,7 @@ import global from '../../../src/components/common/Global.vue'
 import { TransferDom, Popup, Checker, CheckerItem, Datetime } from 'vux'
 import moment from 'moment';
 
-const { apiHost, mallId } = global;
+const { mallId } = global;
 
 export default {
   directives: {

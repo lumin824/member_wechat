@@ -56,7 +56,7 @@
 import { TransferDom, Popup, Scroller } from 'vux'
 import _ from 'lodash'
 import global from '../../../src/components/common/Global.vue'
-const { apiHost, mallId } = global;
+const { mallId } = global;
 
 import {
   mapState,

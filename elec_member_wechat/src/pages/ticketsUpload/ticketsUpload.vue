@@ -76,8 +76,6 @@
     mapState,
   } from 'vuex';
 
-  const { apiHost } = global;
-
   export default {
     components: {Scroller},
     data(){
@@ -165,7 +163,7 @@
         this.searchCondition.pageNo = parseInt(this.searchCondition.pageNo) + 1;
         this.$http({
           method: 'get',
-          url: `${apiHost}/member/${this.member_id}/tickets?page=${this.searchCondition.pageNo}&&size=${this.searchCondition.pageSize}`,
+          url: `/api/member/${this.member_id}/tickets?page=${this.searchCondition.pageNo}&&size=${this.searchCondition.pageSize}`,
         }).then(resp => {
           this.pageList = this.pageList.concat(resp.data);
           this.$nextTick(function () {

@@ -6,7 +6,7 @@
 
 <script>
 import global from '../../src/components/common/Global.vue'
-const { apiHost, mallId } = global;
+const { mallId } = global;
 import { TransferDom, Scroller } from 'vux'
 import _ from 'lodash'
 import {

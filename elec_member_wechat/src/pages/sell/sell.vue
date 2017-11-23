@@ -92,7 +92,6 @@ import _ from 'lodash'
           this.sell = data.data;
           this.content=this.sell.intro;
           this.tel=this.sell.phone;
-          //this.lcmap = this.sell.map_picture ? this.sell.map_picture.replace('121.196.208.176:9354', 'jiayuanMember.dorm9tech.com') : '';
           this.lcmap = this.sell.map_picture ? this.sell.map_picture.replace(/^http:\/\/.+?\//,'/') : '';
 
 

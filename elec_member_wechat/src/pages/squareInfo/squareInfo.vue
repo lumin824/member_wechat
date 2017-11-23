@@ -38,7 +38,7 @@
 </template>
 <script>
 import global from '../../../src/components/common/Global.vue'
-const { apiHost, mallId, appId } = global;
+const { mallId, appId } = global;
 
 import { Scroller } from 'vux'
 export default {
