@@ -1,13 +1,15 @@
 <template>
     <div>
 
-      <div style="display:flex;flex:1;background-color:#fff;margin-top:20px;border-top:1px solid #e1e1e1;height:160px;">
-        <div style="width:74px;height:100%;background-image:url(/static/img/member_card_left.png);background-size:auto 100%;background-repeat:no-repeat;">
-        </div>
-        <div style="flex:1;height:100%;background-image:url(/static/img/member_card_right.png);background-size:auto 100%;background-repeat:no-repeat;background-position:center right;padding-left:20px;">
-          <div style="margin-top:40px;font-size:1.1em;">{{user.name}} <span v-if="user.level" style="background-color:#56ded3;color:#fff;padding:2px 5px;font-size:0.9em;border-radius:3px;">{{user.level}}</span></div>
-          <div style="font-size:0.9em;color:#7f8081;">累计积分<span style="margin-left:10px;">{{user.cumulate_points}}</span></div>
-          <div style="font-size:0.9em;color:#7f8081;">可用积分<span style="margin-left:10px;">{{user.usable_points}}</span></div>
+      <div style="background-color:#fff;margin-top:20px;padding:10px;border-top:1px solid #e1e1e1;">
+        <div style="display:flex;flex:1;height:160px;border:1px solid #804c19;border-radius:10px;box-shadow: 5px 5px 5px #888888;">
+          <div style="width:74px;height:100%;background-image:url(/static/img/member_card_left.png);background-size:auto 100%;background-repeat:no-repeat;">
+          </div>
+          <div style="flex:1;height:100%;background-image:url(/static/img/member_card_right.png);background-size:auto 100%;background-repeat:no-repeat;background-position:center right;padding-left:20px;">
+            <div style="margin-top:40px;font-size:1.1em;">{{user.name}} <span v-if="user.level" style="background-color:#56ded3;color:#fff;padding:2px 5px;font-size:0.9em;border-radius:3px;">{{user.level}}</span></div>
+            <div style="font-size:0.9em;color:#7f8081;">累计积分<span style="margin-left:10px;">{{user.cumulate_points}}</span></div>
+            <div style="font-size:0.9em;color:#7f8081;">可用积分<span style="margin-left:10px;">{{user.usable_points}}</span></div>
+          </div>
         </div>
       </div>
 
