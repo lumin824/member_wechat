@@ -25,7 +25,7 @@
         </div>
         <div class="sellAdv" style="background-color:#FFFFFF;height:1.1rem;border-top:1px solid #D9D9D9;">
               <div style="padding-top:10px">
-               <img  v-if="logo!=''" style="float: left;padding-right:0.2rem;margin-botton:0.2rem;width:1.2rem;height:0.85rem" :src="logo" alt="">
+               <img  v-if="logo!=''" style="float: left;padding-right:0.2rem;margin-botton:0.2rem;max-width:100px;max-height:80px;" :src="logo" alt="">
                <img  v-else style="float: left;"  src="" alt="">
                 <ul>
                     <li><h3>{{sell.shop_name}}</h3></li>

@@ -13,7 +13,7 @@
           <div style="width:70px;padding:10px;margin-left:10px;color:#00c9b2;">性别</div>
           <div style="flex:1;padding:10px;">
             <checker v-model="user.sex" default-item-class="demo5-item" selected-item-class="demo5-item-selected" :radio-required="true">
-              <checker-item v-for="o in popupList.sex" :value="o.id">
+              <checker-item key="id" v-for="o in popupList.sex" :value="o.id">
                 <span v-if="o.icon" class="iconfont" :class="o.icon" style="color:#797979;"></span>
                 {{o.name}}
               </checker-item>

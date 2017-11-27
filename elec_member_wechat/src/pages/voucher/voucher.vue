@@ -8,7 +8,7 @@
           </router-link>
         </div>
         <div style="margin-top:20px;">
-          <router-link :to="{path:'/voucherDetail', query:{id:o.coupon_id}}" style="display:flex;background-color:#fff;margin-top:1px;" v-for="o in list">
+          <router-link :to="{path:'/voucherDetail', query:{id:o.coupon_id}}" style="display:flex;background-color:#fff;margin-top:1px;" key="coupon_id" v-for="o in list">
             <div style="width:96px;height:96px;display:flex;align-items:center;justify-content:center;">
               <img :src="o.picture" style="width:80px;height:80px;">
             </div>

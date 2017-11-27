@@ -1,7 +1,7 @@
 <template>
   <div class="act" >
     <ul style="background-color:#fff;">
-      <router-link v-for="o in list" to="/activeDetail" tag="li" style="padding-bottom:10px;border-bottom:1px solid #ddd;">
+      <router-link v-for="o in list" to="/activeDetail" key="id" tag="li" style="padding-bottom:10px;border-bottom:1px solid #ddd;">
         <figure style="background:url('static/img/activeTest.jpg');height:2rem">
           <figcaption>
             <div style="flex:1;"></div>

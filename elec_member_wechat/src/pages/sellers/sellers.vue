@@ -2,9 +2,9 @@
    <div>
      <scroller lock-x ref="scroller">
        <div style="margin-top:100px;">
-         <router-link :to="{path:'/sell',query:{sell_id:o.shop_id}}" style="display:flex;background-color:#fff;margin-top:1px;" v-for="o in list">
+         <router-link :to="{path:'/sell',query:{sell_id:o.shop_id}}" style="display:flex;background-color:#fff;margin-top:1px;" key="shop_id" v-for="o in list">
            <div style="width:116px;height:96px;display:flex;align-items:center;justify-content:center;">
-             <img :src="o.logo" style="width:100px;height:80px;">
+             <img :src="o.logo" style="max-width:100px;max-height:80px;">
            </div>
            <div style="flex:1;margin-right:10px;">
              <div style="display:flex;font-size:1em;margin-left:5px;margin-top:10px;">
