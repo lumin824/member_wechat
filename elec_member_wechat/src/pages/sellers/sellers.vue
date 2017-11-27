@@ -9,7 +9,7 @@
            <div style="flex:1;margin-right:10px;">
              <div style="display:flex;font-size:1em;margin-left:5px;margin-top:10px;">
                <div style="flex:1">{{o.shop_name}}</div>
-               <div style="color:#78797a;"><span class="iconfont icon-favorfill" style="color:#ffd656;margin-right:5px;"></span>{{o.points}}</div>
+               <!-- <div style="color:#78797a;"><span class="iconfont icon-favorfill" style="color:#ffd656;margin-right:5px;"></span>{{o.points}}</div> -->
              </div>
              <div style="display:flex;font-size:0.8em;margin-left:5px;">
                <div style="flex:1;">
