@@ -118,12 +118,11 @@ export  default {
   },
   async mounted(){
     let member_id = this.member_id;
-    alert(member_id)
     try{
       let { data } = await this.$http.get(`/api/member/${this.member_id}?mallId=${global.mallId}`)
       this.user=data;
     }catch(e){
-      this.$store.commit('logout')
+      await this.$store.commit('logout')
       location.reload();
     }
 
