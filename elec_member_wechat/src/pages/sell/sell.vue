@@ -29,7 +29,7 @@
                <img  v-else style="float: left;"  src="" alt="">
                 <ul>
                     <li><h3>{{sell.shop_name}}</h3></li>
-                    <li style="font-size: 0.13rem;color: #666;margin-top: 0.09rem;">积分热度&nbsp;&nbsp;{{sell.points}}</li>
+                    <!-- <li style="font-size: 0.13rem;color: #666;margin-top: 0.09rem;">积分热度&nbsp;&nbsp;{{sell.points}}</li> -->
                     <li style="font-size: 0.13rem;color: #666;margin-top: 0.1rem;">{{sell.industry_name}}</li>
                 </ul>
               </div>
@@ -115,12 +115,6 @@ import _ from 'lodash'
    .test img{
        width: 100%;
        height: 2rem;
-   }
-   .sellAdv img{
-     height: 0.7rem;
-     width: 0.7rem;
-     margin-right: 0.1rem;
-     margin-left: 0.2rem;
    }
    .sellAdv li{
      margin-left: 0.1rem;
