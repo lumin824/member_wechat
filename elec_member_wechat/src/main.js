@@ -49,6 +49,7 @@ const store = new Vuex.Store({
     },
     logout (state) {
       state.member_id = null
+      localStorage.removeItem('member_id');
     },
     staffshop(state, o){
       const { staffreg } = state
