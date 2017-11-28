@@ -8,8 +8,8 @@
       </div>
 
       <div style="display:flex;">
-        <div>
-          <img :src="item.picture" style="width:80px;height:80px;margin:5px;">
+        <div style="width:116px;height:96px;display:flex;align-items:center;justify-content:center;">
+          <img :src="item.picture" style="max-width:100px;max-height:80px;">
         </div>
         <div style="display:flex;color:#777879;font-size:0.7em;flex:1;">
           <div style="display:flex;flex-direction:column;">
