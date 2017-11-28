@@ -17,10 +17,10 @@
     </div>
 
     <div style="background-color:#fff;margin-top:20px;padding:0 15px;">
-      <table style="width:100%;table-layout:fixed;" border="0" cellspacing="0" cellpadding="0">
+      <table style="width:100%;table-layout:fixed;font-size:0.9em;" border="0" cellspacing="0" cellpadding="0">
         <tr style="height:40px;">
-          <td style="border-bottom:1px solid #e1e1e1;padding-left:10px;width:100px;">时间</td>
-          <td style="border-bottom:1px solid #e1e1e1;width:50px;">积分</td>
+          <td style="border-bottom:1px solid #e1e1e1;padding-left:10px;width:35%;">时间</td>
+          <td style="border-bottom:1px solid #e1e1e1;width:20%;">积分</td>
           <td style="border-bottom:1px solid #e1e1e1;">商户</td>
         </tr>
         <tbody>
