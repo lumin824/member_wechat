@@ -33,13 +33,13 @@
             <tr v-if="detailId==o.mplog_id" :class="{active:detailId==o.mplog_id}" >
               <td colspan="3" style="padding-left:10px;color:#7f8081;font-size:0.8em;">
                 <template v-if="o.points>0">
-                  <p>消费时间: {{o.shopping_date | unix('YYYY-MM-DD HH:mm', 'ms')}}</p>
+                  <p>消费时间: {{o.shopping_date | unix('YYYY-MM-DD', 'ms')}}</p>
                   <p>消费商户: {{o.shop_name}}</p>
                   <p>消费金额: {{o.amount}}</p>
                   <p>获得积分: {{o.points}}</p>
                 </template>
                 <template v-else>
-                  <p>抵扣时间: {{o.shopping_date | unix('YYYY-MM-DD HH:mm', 'ms')}}</p>
+                  <p>抵扣时间: {{o.shopping_date | unix('YYYY-MM-DD', 'ms')}}</p>
                   <p>抵扣商户: {{o.shop_name}}</p>
                   <p>抵扣金额: {{o.amount}}</p>
                   <p>扣减积分: {{o.points}}</p>
