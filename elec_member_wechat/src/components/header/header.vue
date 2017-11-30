@@ -2,7 +2,7 @@
     <div >
       <div style="width:100%; border-bottom:1px solid #D6D6D6">
         <div style="width:30%;margin-left:0.3rem ;border-bottom:1px solid #D6D6D6">
-          <img src="static/img/cat.jpg" alt="">
+          <img src="static/img/member.png" alt="">
          </div>
          <div style="width:70% ;border-bottom:1px solid #D6D6D6">
           <ul>

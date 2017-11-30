@@ -3,7 +3,7 @@
     <div>
       <div style="display:flex;background-color:#fff;margin-top:20px;border-top:1px solid #e1e1e1;border-bottom:1px solid #e1e1e1;">
         <div>
-          <img src="static/img/cat.jpg" style="border-radius:50%;width:80px;height:80px;margin:20px;">
+          <img src="static/img/member.png" style="border-radius:50%;width:80px;height:80px;margin:20px;">
         </div>
         <div>
           <div style="margin-top:20px;font-size:1.1em;">{{user.name}} <span v-if="user.level" style="background-color:#56ded3;color:#fff;padding:2px 5px;font-size:0.9em;border-radius:3px;">{{user.level}}</span></div>
