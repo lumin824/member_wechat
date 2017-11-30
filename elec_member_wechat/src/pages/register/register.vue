@@ -1,6 +1,10 @@
 <template>
   <div v-show="showLoginForm">
-    <div>
+
+    <div v-if="closeUse">
+      <div style="font-size:1.2em;text-align:center;color:red;margin-top:20px;">12月2日不见不散!</div>
+    </div>
+    <div v-else>
       <div style="margin-top:10px;background:#fff;border-top:1px solid #e1e1e1;">
         <div style="display:flex;border-bottom:1px solid #e1e1e1;">
           <div style="width:70px;padding:10px;margin-left:10px;color:#00c9b2;">手机号</div>
@@ -19,10 +23,11 @@
           </button>
         </div>
       </div>
+      <countdown v-model="cd" :start="cd>0" v-show="false"></countdown>
+      <div @click="handleSubmit" style="background-color:#00c9b2;color:#fff;padding:10px;text-align:center;margin-top:20px;margin: 20px;border-radius:5px;">下一步</div>
+
     </div>
 
-    <countdown v-model="cd" :start="cd>0" v-show="false"></countdown>
-    <div @click="handleSubmit" style="background-color:#00c9b2;color:#fff;padding:10px;text-align:center;margin-top:20px;margin: 20px;border-radius:5px;">下一步</div>
   </div>
 </template>
 
@@ -42,6 +47,7 @@ export default {
       member_id: '',
       vcode: '',
       cd: 0,
+      closeUse: true
     }
   },
   methods: {
