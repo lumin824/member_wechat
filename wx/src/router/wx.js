@@ -36,6 +36,7 @@ const map = {
 
     let wx_nickname;
     let { errcode: wx_errno, openid: wx_openid, access_token } = JSON.parse(body);
+    console.log(wx_openid)
     if(wx_errno){
       return res.sendStatus(404);
     }
