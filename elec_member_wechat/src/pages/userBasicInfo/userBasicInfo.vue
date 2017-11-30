@@ -32,7 +32,7 @@
     </div>
 
     <div @click="handleSubmit" style="background-color:#00c9b2;color:#fff;padding:10px;text-align:center;margin-top:20px;margin: 20px;border-radius:5px;">绑定</div>
-    <datetime :show="false"></datetime>
+    <datetime :show="valueFalse"></datetime>
   </div>
 </template>
 
@@ -58,6 +58,7 @@ export default {
   },
   data(){
     return {
+      valueFalse: false,
       popupList: {
         sex:[
           {id:0, name:'男', icon:'icon-male'},
