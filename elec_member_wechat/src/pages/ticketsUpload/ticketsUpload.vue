@@ -1,6 +1,9 @@
 <template>
   <scroller lock-x>
-  <div style="display:flex;flex-direction:column;min-height:100%;background-color:#fff;align-items:center;">
+  <div v-if="closeUse">
+    <div style="font-size:1.2em;text-align:center;color:red;margin-top:20px;">12月2日不见不散!</div>
+  </div>
+  <div v-else style="display:flex;flex-direction:column;min-height:100%;background-color:#fff;align-items:center;">
     <figure>
       <img @click="clickCamera" src="static/img/camera.png" alt="">
       <figcaption> 点击上传
@@ -80,6 +83,7 @@
     components: {Scroller},
     data(){
         return {
+          closeUse: true,
              defaultResult:'',
              searchCondition:{  //
               pageNo:"1",
