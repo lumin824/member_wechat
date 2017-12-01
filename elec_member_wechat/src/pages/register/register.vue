@@ -47,7 +47,7 @@ export default {
       member_id: '',
       vcode: '',
       cd: 0,
-      closeUse: false
+      closeUse: true
     }
   },
   methods: {
