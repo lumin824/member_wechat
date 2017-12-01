@@ -83,7 +83,7 @@
     components: {Scroller},
     data(){
         return {
-          closeUse: true,
+          closeUse: false,
              defaultResult:'',
              searchCondition:{  //
               pageNo:"1",
