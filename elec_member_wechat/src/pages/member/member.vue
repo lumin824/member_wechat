@@ -117,6 +117,7 @@ export  default {
     }),
   },
   async mounted(){
+    document.title = '会员中心'
     let member_id = this.member_id;
     try{
       let { data } = await this.$http.get(`/api/member/${this.member_id}?mallId=${global.mallId}`)

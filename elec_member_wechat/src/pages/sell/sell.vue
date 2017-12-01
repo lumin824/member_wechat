@@ -87,6 +87,7 @@ import _ from 'lodash'
       },
     },
     mounted(){
+      document.title = '商户'
      this.sell_id = this.$route.query.sell_id;
      this.$http.get('/api/shop/'+this.sell_id).then((data) =>{
           this.sell = data.data;

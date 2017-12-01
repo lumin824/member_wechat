@@ -121,6 +121,7 @@ export default {
     },
   },
   async mounted(){
+    document.title = '修改手机号'
     let member_id = this.member_id;
     let { data } = await this.$http.get(`/api/member/${this.member_id}?mallId=${global.mallId}`)
     this.user=data;

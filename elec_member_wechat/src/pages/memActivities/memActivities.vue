@@ -27,7 +27,7 @@
       }
     },
     async mounted(){
-
+      document.title = '我的活动'
       // const list = await this.$http.post('/api/activity')
       // console.log(list)
     }

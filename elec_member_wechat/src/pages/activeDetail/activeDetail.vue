@@ -9,7 +9,7 @@
       </mt-header>-->
       <img src="static/img/activeTest.jpg" alt="">
       <h1 style="font-size:0.2rem">大师书法展</h1>
-      
+
       <div style="background-color:#FFFFFF;margin-left:0.1rem;margin-right:0.1rem;padding: 5px 15px;">
           <div class="bbody" style="width:100%">
           <div style="width: 6px; height: 17px; position: relative; margin-left: -4%; top: 0.09rem;">
@@ -62,6 +62,9 @@
           alert('报名成功');
         }
      },
+     async mounted(){
+       document.title = '活动详情'
+     }
   }
 </script>
 
@@ -78,7 +81,7 @@
     margin: 0.2rem 0;
   }
   .detail{
-    
+
     background-color: #fff;
     margin: 0 0.2rem;
     display: flex;
@@ -117,7 +120,7 @@
     margin-left: 0.05rem;
   }
   .detail figure img{
-    
+
     height: 0.7rem;
     width: 0.7rem;
   }

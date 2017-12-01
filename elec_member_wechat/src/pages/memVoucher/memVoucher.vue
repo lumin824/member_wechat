@@ -84,6 +84,7 @@ export default {
     }
   },
   async mounted(){
+    document.title = '我的优惠券'
     try{
       let list = (await this.$http.post(`/api/member/${this.member_id}/couponList`, {
         couponStatus: 1, mallId, page:1, size:200

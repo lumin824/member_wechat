@@ -208,6 +208,7 @@ export default {
     }
   },
   async mounted(){
+    document.title = '核销注册'
     const { staffreg } = this.$store.state
 
 

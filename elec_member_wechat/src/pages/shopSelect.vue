@@ -46,6 +46,7 @@ export default {
     },
   },
   async mounted(){
+    document.title = '选择商户'
     this.list = (await this.$http.post(`/api/shop`, {
       mall_id: mallId, page:1, size:200})).data
   }

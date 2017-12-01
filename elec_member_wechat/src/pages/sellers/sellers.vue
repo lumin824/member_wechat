@@ -99,6 +99,7 @@ export default {
     }
   },
   async mounted(){
+    document.title = '商户详情'
     await this.reload();
 
     this.popupList.map_id = [

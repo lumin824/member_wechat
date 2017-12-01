@@ -107,6 +107,7 @@
       }
     },
     mounted(){
+      document.title = '小票上传'
       this.reload();
     },
     methods:{

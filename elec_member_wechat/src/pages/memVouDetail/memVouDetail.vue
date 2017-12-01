@@ -78,6 +78,7 @@ export default {
     }
   },
   async mounted(){
+    document.title = '优惠券详情'
     const { id } = this.$route.query;
     this.item = (await this.$http.get(`/api/member/coupon/${id}`)).data
   },

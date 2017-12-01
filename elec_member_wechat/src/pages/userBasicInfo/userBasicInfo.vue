@@ -122,7 +122,10 @@ export default {
         }
       })
     },
-  }
+  },
+  mounted(){
+    document.title = '会员信息'
+  },
 }
 
 </script>

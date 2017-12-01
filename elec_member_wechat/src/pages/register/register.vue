@@ -105,6 +105,7 @@ export default {
     },
   },
   async mounted(){
+    document.title = '会员注册'
     let ua = new UAParser().getResult()
     const { wx_openid } = this.$route.query
 

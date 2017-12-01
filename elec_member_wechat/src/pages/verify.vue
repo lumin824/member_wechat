@@ -34,6 +34,7 @@ export default {
   methods: {
   },
   async mounted(){
+    document.title = '小票核销'
     const { id } = this.$route.query;
     try{
       await this.$http.get(`/api/member/verify?memberId=${this.member_id}&crlId=${id}`)

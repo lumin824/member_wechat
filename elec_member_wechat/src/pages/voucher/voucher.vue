@@ -123,6 +123,7 @@ export  default {
     }
   },
   async mounted(){
+    document.title = '优惠券'
     this.reload()
   }
 }

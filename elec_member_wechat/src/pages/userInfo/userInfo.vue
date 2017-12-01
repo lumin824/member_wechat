@@ -293,6 +293,7 @@ export default {
     }
   },
   async mounted(){
+    document.title = '个人信息'
     let member_id = this.member_id;
     let { data } = await this.$http.get(`/api/member/${this.member_id}?mallId=${global.mallId}`)
     data.interest = data.interest ? _.map(data.interest.split(','), _.parseInt) : [];

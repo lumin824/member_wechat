@@ -90,7 +90,7 @@ export default {
     }
   },
   async mounted(){
-
+    document.title = '我的等级'
     let member_id = this.member_id;
     this.user = (await this.$http.get(`/api/member/${this.member_id}?mallId=${global.mallId}`)).data
 
