@@ -137,15 +137,27 @@
         document.getElementById('uploadFile').click();
       },
       async createImage(files){
+        var $loading = this.$vux.loading;
         let formData = new FormData();
         let config = {
           headers: {
             'Content-Type': 'multipart/form-data'
+          },
+          onUploadProgress: e => {
+            console.log(e)
+            $loading.show({
+              text: `上传中 ${(e.loaded / e.total * 100).toFixed(0)} %`
+            })
           }
         };
         formData.append('file',files[0]);
         formData.append('mallId', 1);
+        $loading.show({
+          text: '开始上传小票'
+        })
         await this.$http.post(`/api/member/uploadTicket/${this.member_id}`,formData,config)
+        $loading.hide()
+        this.$vux.toast.text('小票上传成功')
         await this.reload();
       },
       onFileChange (e) {

@@ -10,10 +10,11 @@ import Vuex from 'vuex'
 import UAParser from 'ua-parser-js'
 import 'mint-ui/lib/style.css'
 
-import { ConfirmPlugin, DatetimePlugin, ToastPlugin } from 'vux'
+import { ConfirmPlugin, DatetimePlugin, ToastPlugin, LoadingPlugin } from 'vux'
 Vue.use(ConfirmPlugin)
 Vue.use(DatetimePlugin)
 Vue.use(ToastPlugin)
+Vue.use(LoadingPlugin)
 
 Vue.prototype.$http = axios
 Vue.use(Mint);
