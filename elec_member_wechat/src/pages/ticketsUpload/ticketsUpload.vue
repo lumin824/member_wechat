@@ -60,7 +60,7 @@
       <div style="white-space:nowrap;width:80px;">温馨提示：</div>
        <ul style="text-align:left;text-indent:-0.9em;margin-left:0.9em;">
          <li>
-           1 小票有效期有三个月，请及时上传
+           1 小票当天有效，请及时上传
          </li>
          <li>
            2 后台人员尽快为您录入，如有问题可电话 <a style="color:#06c1ae;" href="tel:021-65708888">021-65708888</a>
