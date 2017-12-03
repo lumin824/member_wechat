@@ -2,7 +2,7 @@
   <div v-show="showLoginForm">
 
     <div v-if="closeUse">
-      <div style="font-size:1.2em;text-align:center;color:red;margin-top:20px;">12月2日不见不散!</div>
+      <div style="font-size:1.2em;text-align:center;color:red;margin-top:20px;">请使用微信扫一扫</div>
     </div>
     <div v-else>
       <div style="margin-top:10px;background:#fff;border-top:1px solid #e1e1e1;">
@@ -137,7 +137,7 @@ export default {
         }
       }
     }else{
-      this.showBrowserError = true
+      this.closeUse = true
     }
   }
 }
