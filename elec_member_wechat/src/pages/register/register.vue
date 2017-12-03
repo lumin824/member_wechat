@@ -133,6 +133,7 @@ export default {
         }
       }
     }else{
+      this.showLoginForm = true
       this.closeUse = true
     }
   }
