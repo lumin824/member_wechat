@@ -29,6 +29,9 @@
     </div>
 
   </div>
+  <div v-else-if="showBrowserError">
+    <div style="font-size:1.2em;text-align:center;color:red;margin-top:20px;">请使用微信扫一扫</div>
+  </div>
 </template>
 
 <script>
@@ -42,6 +45,7 @@ export default {
   },
   data(){
     return {
+      showBrowserError: false,
       showLoginForm: false,
       mobile: '',
       member_id: '',
@@ -67,10 +71,10 @@ export default {
         this.cd = 30;
       }catch(e){
         this.$vux.toast.text('该手机号已注册')
-        //this.cd = 30;
-        // this.member_id = (await this.$http.get(`/api/member/m?mobile=${mobile}`)).data.member_id
-        // this.vcode = '888888'
-        //this.$store.commit('login', member_id)
+        this.cd = 30;
+        this.member_id = (await this.$http.get(`/api/member/m?mobile=${mobile}`)).data.member_id
+        this.vcode = '888888'
+        this.$store.commit('login', member_id)
       }
     },
 
@@ -133,7 +137,7 @@ export default {
         }
       }
     }else{
-      this.showLoginForm = true
+      this.showBrowserError = true
     }
   }
 }
