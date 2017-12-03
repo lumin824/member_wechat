@@ -29,7 +29,7 @@
     </div>
 
   </div>
-  <div v-else-if="showBrowserError">
+  <div v-show="showBrowserError">
     <div style="font-size:1.2em;text-align:center;color:red;margin-top:20px;">请使用微信扫一扫</div>
   </div>
 </template>
