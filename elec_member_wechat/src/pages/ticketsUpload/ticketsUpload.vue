@@ -75,6 +75,7 @@
   import global from '../../../src/components/common/Global'
   import moment from 'moment';
   import { Scroller } from 'vux'
+  import lrz from 'lrz';
   import {
     mapState,
   } from 'vuex';
@@ -138,7 +139,7 @@
       },
       async createImage(files){
         var $loading = this.$vux.loading;
-        let formData = new FormData();
+
         let config = {
           headers: {
             'Content-Type': 'multipart/form-data'
@@ -150,7 +151,8 @@
             })
           }
         };
-        formData.append('file',files[0]);
+
+        let {formData} = await lrz(files[0]);
         formData.append('mallId', 1);
         $loading.show({
           text: '开始上传小票'
@@ -159,6 +161,8 @@
         $loading.hide()
         this.$vux.toast.text('小票上传成功')
         await this.reload();
+
+
       },
       onFileChange (e) {
         let files = e.target.files || e.dataTransfer.files
