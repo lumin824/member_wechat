@@ -18,7 +18,7 @@ const map = {
   'github.post': async (req, res, next) => {
     const { ref, repository = {} } = req.body
 
-    if(ref == 'refs/heads/zhao_branch' && repository.name= 'member_wechat'){
+    if(ref == 'refs/heads/zhao_branch' && repository.name == 'member_wechat'){
       const { spawn } = require('child_process');
       spawn('../update.sh');
     }
