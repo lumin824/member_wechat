@@ -16,10 +16,13 @@ const map = {
   },
 
   'github.post': async (req, res, next) => {
-    console.log('github.post')
-    console.log(req.query)
-    console.log(req.body)
-    res.send('eee')
+    const { ref, repository = {} } = req.body
+
+    if(ref == 'refs/heads/zhao_branch' && repository.name= 'member_wechat'){
+      const { spawn } = require('child_process');
+      spawn('../update.sh');
+    }
+    res.send('ok')
   },
   'coding.post': async (req, res, next) => {
     const codingEvent = req.headers['x-coding-event'];
