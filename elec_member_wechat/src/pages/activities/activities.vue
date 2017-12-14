@@ -22,7 +22,9 @@
 import global from '../../../src/components/common/Global.vue'
 const { mallId } = global;
 import moment from 'moment';
-
+import {
+  mapState,
+} from 'vuex';
 const signTitle = {
   '0': '未签到',
   '1': '已签到'
@@ -40,6 +42,14 @@ export  default {
     unix: (value, format, unit) => {
       return moment.unix((unit == 'ms') ? (value / 1000) : value).format(format)
     }
+  },
+  computed: {
+    limitPromptCode(){
+      return this.limitPromptCodeMap[this.item.limitPromptCode] || this.item.limitPromptCode
+    },
+    ...mapState({
+      member_id: state => state.member_id,
+    }),
   },
   async mounted(){
     document.title = '我的活动'

@@ -2,7 +2,7 @@
 
     <div>
       <img :src="item.picture" style="height:250px;width:100%;">
-      <h1 style="font-size:0.2rem">{{item.title}}</h1>
+      <h1 style="font-size:0.2rem;text-align:center;margin: 10px 0;">{{item.title}}</h1>
 
       <div style="background-color:#FFFFFF;margin-left:0.1rem;margin-right:0.1rem;padding: 5px 15px;">
           <div class="bbody" style="width:100%">
