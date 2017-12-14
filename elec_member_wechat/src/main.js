@@ -37,6 +37,7 @@ let member_id = null;
 // }
 
 member_id = localStorage.getItem('member_id')
+
 const store = new Vuex.Store({
   state: {
     member_id: member_id,
