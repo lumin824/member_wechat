@@ -17,10 +17,8 @@ const map = {
 
   'github.post': async (req, res, next) => {
     console.log('github.post')
-    res.send('eee')
-  },
-  'github.get': async (req, res, next) => {
-    console.log('github.get')
+    console.log(req.query)
+    console.log(req.body)
     res.send('eee')
   },
   'coding.post': async (req, res, next) => {
