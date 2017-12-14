@@ -1,14 +1,8 @@
 <template>
-  <scroller lock-x ref="scrollerEvent">
+
     <div>
-  <!--    <mt-header>
-        <router-link to="/" slot="left">
-          <mt-button icon="back">返回</mt-button>
-          <mt-button  icon="close">关闭</mt-button>
-        </router-link>
-      </mt-header>-->
-      <img src="static/img/activeTest.jpg" alt="">
-      <h1 style="font-size:0.2rem">大师书法展</h1>
+      <img :src="item.picture" style="height:250px;width:100%;">
+      <h1 style="font-size:0.2rem">{{item.title}}</h1>
 
       <div style="background-color:#FFFFFF;margin-left:0.1rem;margin-right:0.1rem;padding: 5px 15px;">
           <div class="bbody" style="width:100%">
@@ -18,120 +12,106 @@
               <div style="font-size: 0.2rem;color: black;margin-top: -0.17rem;">活动详情</div>
           </div>
           <div class="bbody" style="border-bottom:1px solid #E3E3E3;color:#767676;padding: 5px;">
-              活动时间<label style="padding-left:15px;">2017-07-28~2017-08-03</label>
+              活动时间<label style="padding-left:15px;">{{item.activity_time_start | unix('YYYY-MM-DD', 'ms')}} ~ {{item.activity_time_end | unix('YYYY-MM-DD', 'ms')}}</label>
           </div>
           <div class="bbody" style="border-bottom:1px solid #E3E3E3;color:#767676;padding: 5px;">
-              活动地点<label style="padding-left:15px;">上海世博中国馆</label>
+              活动地点<label style="padding-left:15px;">{{item.address}}</label>
           </div>
           <div class="bbody" style="border-bottom:1px solid #E3E3E3;color:#767676;padding: 5px;">
-              剩余人数<label style="padding-left: 16px;color: rgb(255, 136, 23);">14</label>
+              剩余人数<label style="padding-left: 16px;color: rgb(255, 136, 23);">{{item.sign_up_residue}}</label>
           </div>
           <div class="bbody" style="border-bottom:1px solid #E3E3E3;color:#767676;padding: 5px;">
-              报名条件<label style="padding-left: 16px;color: rgb(255, 136, 23);">10积分</label>
+              报名条件<label style="padding-left: 16px;color: rgb(255, 136, 23);">{{item.sign_up_points}}积分</label>
           </div>
           <div class="bbody" style="border-bottom: 1px ; color: rgb(118, 118, 118); padding: 5px;">
-              活动奖励<label style="padding-left: 16px;">签到获得10积分</label>
+              活动奖励<label style="padding-left: 16px;">签到获得{{item.incentive_points}} 积分</label>
           </div>
       </div>
-        <div class="bbody" style="color:#767676;padding: 15px;text-align:justify; padding-bottom:1rem">
-            &nbsp; &nbsp; &nbsp; &nbsp;书法作为中华文化中一种独特的审美现象，它不仅是方寸间的文明，更是中国传统文化的重要组成部分，是深受广大书法爱好者喜好的中华瑰宝。作为全国收藏家传统美德
-            书法作为中华文化中一种独特的审美现象，它不仅是方寸间的文明，更是中国传统文化的重要组成部分，是深受广大书法爱好者喜好的中华瑰宝。作为全国收藏家传统美德
-            书法作为中华文化中一种独特的审美现象，它不仅是方寸间的文明，更是中国传统文化的重要组成部分，是深受广大书法爱好者喜好的中华瑰宝。作为全国收藏家传统美德
-            书法作为中华文化中一种独特的审美现象，它不仅是方寸间的文明，更是中国传统文化的重要组成部分，是深受广大书法爱好者喜好的中华瑰宝。作为全国收藏家传统美德
-            书法作为中华文化中一种独特的审美现象，它不仅是方寸间的文明，更是中国传统文化的重要组成部分，是深受广大书法爱好者喜好的中华瑰宝。作为全国收藏家传统美德
-        </div>
-      <!--<m-button>已报名</m-button>-->
-      <div style="background-color: #25AFA2;height: 0.6rem;color:#FFFFFF;text-align:center;position:fixed;right:0;left:0;bottom:0;" >
-        <div style="padding-top:0.1rem;font-size:0.2rem;">我要报名</div>
+
+      <div v-html="item.intro" style="color:#777879;font-size:0.8em;padding:15px;line-height:2em;">
       </div>
 
+      <div :class="{active:item.limitPromptCode==5}" @click="item.limitPromptCode==5 && signup()" style="position:fixed;bottom:0;left:0;right:0;background-color:#939393;color:#fff;text-align:center;padding:15px 0;">
+        {{limitPromptCode}}
+      </div>
     </div>
-  </scroller>
 </template>
 
 <script>
-  import  Button from '../../../src/components/common/button.vue'
-  import { Scroller } from 'vux'
-  export default {
-      components:{
-          'm-button':Button,
-          Scroller
-      },
-     methods:{
-        abc(){
-          alert('报名成功');
-        }
-     },
-     async mounted(){
-       document.title = '活动详情'
-     }
+import { Scroller } from 'vux'
+import moment from 'moment'
+import {
+  mapState,
+} from 'vuex';
+
+export default {
+  components:{
+    Scroller
+  },
+  data(){
+    return{
+      item: {},
+      limitPromptCodeMap: {
+        '0': '活动结束',
+        '1': '已报名',
+        '2': '报名已截止',
+        '3': '名额已满',
+        '4': '积分不足',
+        '5': '可报名',
+        '6': '不用报名'
+      }
+    }
+  },
+  filters: {
+    unix: (value, format, unit) => {
+      return moment.unix((unit == 'ms') ? (value / 1000) : value).format(format)
+    }
+  },
+  computed: {
+    limitPromptCode(){
+      return this.limitPromptCodeMap[this.item.limitPromptCode] || this.item.limitPromptCode
+    },
+    ...mapState({
+      member_id: state => state.member_id,
+    }),
+  },
+  methods:{
+    async signup() {
+      const { id } = this.$route.query;
+      const { coupon_type: couponType, receive_method: receivedMethod, required_points: requiredPoints} = this.item;
+
+      const doReceive = async () => {
+        const { data } = await this.$http.put(`/api/member/${this.member_id}/activitySignUp/${id}`)
+
+        this.$vux.toast.text(data.content)
+        // if(data == 8){
+        //   this.$router.back()
+        // }
+      }
+
+      let needConfirm = this.item.required_points > 0;
+      if(needConfirm){
+        this.$vux.confirm.show({
+          content: `确认使用${this.item.required_points}积分领取吗？`,
+          confirmText: '确定领取',
+          cancelText: '暂不领取',
+          onConfirm: doReceive
+        })
+      }else{
+        doReceive()
+      }
+    }
+  },
+  async mounted(){
+    document.title = '活动详情'
+    const { id } = this.$route.query;
+    this.item = (await this.$http.get(`/api/activity/${id}?memberId=${this.member_id}`)).data
   }
+}
 </script>
 
 <style lang="less" scoped>
-  img{
-    width: 100%;
-    height: 2rem;
-
-
-  }
-  h1{
-    text-align: center;
-    color: #333;
-    margin: 0.2rem 0;
-  }
-  .detail{
-
-    background-color: #fff;
-    margin: 0 0.2rem;
-    display: flex;
-    align-items: flex-end;
-    border: 1px solid #E6E6E6;
-  }
-  .detail ul{
-    font-size: 0.13rem;
-    margin-bottom: 0.05rem;
-    margin-left: 0.2rem;
-    color: #666;
-  }
-  .detail ul li{
-    height: 0.26rem;
-    border-bottom: 1px solid #E6E6E6;
-    line-height: 0.25rem;
-    padding:0.05rem 0;
-  }
-  .detail ul li:nth-child(1){
-    border:none;
-  }
-  .detail ul li:nth-child(1) h1{
-    text-align: left;
-    position: relative;
-    top:-0.18rem;
-    color:#666;
-  }
-  .detail ul li:nth-child(4) span{
-    color: #F4AA5F;
-  }
-  .detail figure{
-    padding: 0.1rem;
-  }
-  .detail figure figcaption{
-    font-size: 0.16rem;
-    margin-left: 0.05rem;
-  }
-  .detail figure img{
-
-    height: 0.7rem;
-    width: 0.7rem;
-  }
-  p{
-    margin: 0.2rem 0.2rem;
-    font-size: 0.13rem;
-    color: #333;
-    height: 0.2rem;
-    line-height: 0.2rem;
-  }
-  .bbody{
-    font-family: "Helvetica Neue", Helvetica, Arial, "Microsoft Yahei UI", "Microsoft YaHei", SimHei, "\5B8B\4F53", simsun, sans-serif
-  }
+.active {
+  background-color: #00d6c6 !important;
+}
 </style>

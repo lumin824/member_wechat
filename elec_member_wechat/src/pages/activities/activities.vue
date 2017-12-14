@@ -1,16 +1,16 @@
 <template>
-  <div class="act" >
+  <div>
     <ul style="background-color:#fff;">
-      <router-link v-for="o in list" to="/activeDetail" key="id" tag="li" style="padding-bottom:10px;border-bottom:1px solid #ddd;">
-        <figure style="background:url('static/img/activeTest.jpg');height:2rem">
+      <router-link v-for="o in list" key="id" :to="{path:'/activeDetail', query:{id:o.activity_id}}" tag="li" style="padding-bottom:10px;border-bottom:1px solid #ddd;">
+        <figure :style="{backgroundImage:`url(${o.picture})`}" style="height:2rem;background-size:cover;background-repeat:no-repeat;background-position:center;">
           <figcaption>
             <div style="flex:1;"></div>
-            <div style="font-size:0.6em;background-color: rgba(0,0,0,0.6);color:#FFF; padding: 5px;">缤纷天地万圣市集距离开始时间已不足24小事。。。</div>
+            <div style="font-size:0.6em;background-color: rgba(0,0,0,0.6);color:#FFF; padding: 5px;">{{o.title}}</div>
           </figcaption>
         </figure>
         <div class="time" style="border:1px solied;background;">
-          <div style="font-size:0.6em;color:#999;">2017.09.14~2017.09.15</div>
-          <div style="font-size:0.6em;color:#059CFF;">未签到</div>
+          <div style="font-size:0.6em;color:#999;">{{o.activity_time_start | unix('YYYY-MM-DD', 'ms')}} ~ {{o.activity_time_end | unix('YYYY-MM-DD', 'ms')}}</div>
+          <div style="font-size:0.6em;color:#059CFF;">{{signTitle[o.sign_type]}}</div>
         </div>
       </router-link>
     </ul>
@@ -19,19 +19,39 @@
 </template>
 
 <script>
-  import  global from '../../../src/components/common/Global.vue'
-  export  default {
-    data() {
-      return {
-        list: []
-      }
-    },
-    async mounted(){
-      document.title = '活动'
-      // const list = await this.$http.post('/api/activity')
-      // console.log(list)
+import global from '../../../src/components/common/Global.vue'
+const { mallId } = global;
+import moment from 'moment';
+
+const signTitle = {
+  '0': '未签到',
+  '1': '已签到'
+}
+export  default {
+  data() {
+    return {
+      signTitle: {
+        '0': '未签到', '1': '已签到'
+      },
+      list: []
     }
+  },
+  filters: {
+    unix: (value, format, unit) => {
+      return moment.unix((unit == 'ms') ? (value / 1000) : value).format(format)
+    }
+  },
+  async mounted(){
+    document.title = '我的活动'
+
+    this.list = (await this.$http.post('/api/activity', {
+      mallId,
+    })).data
+
+    // const list = await this.$http.post('/api/activity')
+    // console.log(list)
   }
+}
 </script>
 <style lang="less" scoped>
   .act{
