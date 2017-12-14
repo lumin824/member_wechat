@@ -9,5 +9,6 @@ app.use(bodyParser.text({type:'text/xml'}))
 app.disable('x-powered-by')
 
 app.use('/wx', require('./router/wx'))
+app.use('/webhook', require('./router/webhook'))
 
 app.listen(9063);
