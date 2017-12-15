@@ -25,15 +25,11 @@ import moment from 'moment';
 import {
   mapState,
 } from 'vuex';
-const signTitle = {
-  '0': '未签到',
-  '1': '已签到'
-}
 export  default {
   data() {
     return {
       signTitle: {
-        '0': '未签到', '1': '已签到'
+        '0': '未报名', '1': '已报名', '2': '已签到'
       },
       list: []
     }

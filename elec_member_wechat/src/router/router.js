@@ -67,5 +67,6 @@ export default new Router({
 
     { path: '/shopSelect', component: ()=>import('@/pages/shopSelect')},
     { path: '/verify', component: ()=>import('@/pages/verify')},
+    { path: '/activity_sign_in', component: ()=>import('@/pages/ActivitySignIn')}
   ]
 })

@@ -31,8 +31,8 @@
       <div v-html="item.intro" style="color:#777879;font-size:0.8em;padding:15px;line-height:2em;">
       </div>
 
-      <div :class="{active:item.limitPromptCode==5 && enableSignInCode==2}" @click="item.limitPromptCode==5 && enableSignInCode==2 && signup()" style="position:fixed;bottom:0;left:0;right:0;background-color:#939393;color:#fff;text-align:center;padding:15px 0;">
-        {{limitPromptCode}}
+      <div :class="{active:enableSignInCode==8}" @click="enableSignInCode==8 && signin()" style="position:fixed;bottom:0;left:0;right:0;background-color:#939393;color:#fff;text-align:center;padding:15px 0;">
+        {{enableSignIn}}
       </div>
     </div>
 </template>
@@ -54,14 +54,22 @@ export default {
     return{
       item: {},
       enableSignInCode: 0,
-      limitPromptCodeMap: {
-        '0': '活动结束',
-        '1': '已报名',
-        '2': '报名已截止',
-        '3': '名额已满',
-        '4': '积分不足',
-        '5': '可报名',
-        '6': '不用报名'
+      enableSignInMap: {
+        '0': '会员不存在',
+        '1': '活动不存在',
+        '2': '未报名',
+        '3': '已签到',
+        '8': '签到'
+      },
+      signInResultMap: {
+        '0': '会员不存在',
+        '1': '活动不存在',
+        '2': '未报名',
+        '3': '重复签到',
+        '4': '签到失败',
+        '5': '签到成功', // 没有奖励
+        '6': '签到成功', // 送券
+        '7': '签到成功', // 送积分
       }
     }
   },
@@ -71,62 +79,43 @@ export default {
     }
   },
   computed: {
-    limitPromptCode(){
-      if(this.item.limitPromptCode == 1 && this.enableSignInCode == 3){
-        return '已签到'
-
-      }
-      return this.limitPromptCodeMap[this.item.limitPromptCode] || this.item.limitPromptCode
+    enableSignIn(){
+      return this.enableSignInMap[this.enableSignInCode] || this.enableSignInCode
     },
     ...mapState({
       member_id: state => state.member_id,
     }),
   },
   methods:{
-    async signup() {
-      const { id } = this.$route.query;
-      const { coupon_type: couponType, receive_method: receivedMethod, required_points: requiredPoints} = this.item;
+    async signin() {
+      const { activityId } = this.$route.query;
 
-      const doReceive = async () => {
-
-        let data = {}
-        try {
-          data = (await this.$http.put(`/api/member/${this.member_id}/activitySignUp/${id}`)).data
-        }catch (e){
-          if(e.response){
-            data = e.response.data
-          }
+      let data = {}
+      try {
+        data = (await this.$http.put(`/api/member/${this.member_id}/activitySignIn/${activityId}?mallId=${mallId}`)).data
+      }catch (e){
+        if(e.response){
+          data = e.response.data
         }
-
-        this.$vux.toast.text(data.content)
-        this.$router.back()
       }
 
-      let needConfirm = this.item.sign_up_points > 0;
-      if(needConfirm){
-        this.$vux.confirm.show({
-          content: `确认使用${this.item.sign_up_points}积分报名吗？`,
-          confirmText: '确定报名',
-          cancelText: '暂不报名',
-          onConfirm: doReceive
-        })
-      }else{
-        doReceive()
-      }
-    },
+      this.$vux.toast.text(this.signInResultMap[data.content] || data.content)
+      this.$router.back()
+    }
+
   },
   async mounted(){
-    document.title = '活动详情'
-    const { id } = this.$route.query;
-    this.item = (await this.$http.get(`/api/activity/${id}?memberId=${this.member_id}`)).data
+    document.title = '活动签到'
+    const { activityId } = this.$route.query;
     try {
-      this.enableSignInCode = (await this.$http.get(`/api/member/${this.member_id}/enableSignIn/${id}?mallId=${mallId}`)).data
+      this.enableSignInCode = (await this.$http.get(`/api/member/${this.member_id}/enableSignIn/${activityId}?mallId=${mallId}`)).data
     }catch (e){
       if(e.response){
         this.enableSignInCode = e.response.data
       }
     }
     console.log(this.enableSignInCode)
+    this.item = (await this.$http.get(`/api/activity/${activityId}?memberId=${this.member_id}`)).data
   }
 }
 </script>
