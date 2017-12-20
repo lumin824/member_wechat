@@ -7,7 +7,7 @@
   <!-- <r-index @title="getTitle"></r-index>-->
  <!--  <r-success></r-success>-->
   <!-- <r-data @title="getTitle"></r-data>-->
-    <transition name="router-fade" enter-active-class="animated fadeIn"  leave-active-class="animated fadeOut" mode="out-in">
+    <transition name="router-fade">
         <router-view></router-view>
     </transition>
   </div>
@@ -58,4 +58,3 @@ html, body {
   overflow-x: hidden;
 }
 </style>
-
