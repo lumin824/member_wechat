@@ -5,12 +5,12 @@
         <figure :style="{backgroundImage:`url(${o.picture})`}" style="height:2rem;background-size:cover;background-repeat:no-repeat;background-position:center;">
           <figcaption>
             <div style="flex:1;"></div>
-            <div style="font-size:0.6em;background-color: rgba(0,0,0,0.6);color:#FFF; padding: 5px;">{{o.title}}</div>
+            <div style="font-size:0.8em;background-color: rgba(0,0,0,0.6);color:#FFF; padding: 5px;">{{o.title}}</div>
           </figcaption>
         </figure>
         <div class="time" style="border:1px solied;background;">
-          <div style="font-size:0.6em;color:#999;">{{o.activity_time_start | unix('YYYY-MM-DD', 'ms')}} ~ {{o.activity_time_end | unix('YYYY-MM-DD', 'ms')}}</div>
-          <div style="font-size:0.6em;color:#059CFF;">{{signTitle[o.sign_type]}}</div>
+          <div style="font-size:0.8em;color:#999;">{{o.activity_time_start | unix('YYYY-MM-DD', 'ms')}} ~ {{o.activity_time_end | unix('YYYY-MM-DD', 'ms')}}</div>
+          <div style="font-size:0.8em;color:#059CFF;">{{signTitle[o.sign_type]}}</div>
         </div>
       </router-link>
     </ul>

@@ -2,33 +2,32 @@
 
     <div>
       <img :src="item.picture" style="height:250px;width:100%;">
-      <h1 style="font-size:0.2rem;text-align:center;margin: 10px 0;">{{item.title}}</h1>
 
-      <div style="background-color:#FFFFFF;margin-left:0.1rem;margin-right:0.1rem;padding: 5px 15px;">
-          <div class="bbody" style="width:100%">
-          <div style="width: 6px; height: 17px; position: relative; margin-left: -4%; top: 0.09rem;">
-            <img src="static/img/logo002.png" alt="" style="width:4.5px;height:15px;">
+      <div style="text-align: center; margin: 20px 0px;">{{item.title}}</div>
+
+      <div style="background-color:#FFFFFF;margin:0 10px;">
+          <div style="display:flex;align-items:center;">
+            <div style="border-left:2px solid #000;height:8px;"> </div>
+            <div style="flex:1;margin:5px 10px;">活动详情</div>
           </div>
-              <div style="font-size: 0.2rem;color: black;margin-top: -0.17rem;">活动详情</div>
-          </div>
-          <div class="bbody" style="border-bottom:1px solid #E3E3E3;color:#767676;padding: 5px;">
+          <div class="bbody" style="border-bottom:1px solid #E3E3E3;color:#767676;padding: 5px;font-size:0.7em;">
               活动时间<label style="padding-left:15px;">{{item.activity_time_start | unix('YYYY-MM-DD', 'ms')}} ~ {{item.activity_time_end | unix('YYYY-MM-DD', 'ms')}}</label>
           </div>
-          <div class="bbody" style="border-bottom:1px solid #E3E3E3;color:#767676;padding: 5px;">
+          <div class="bbody" style="border-bottom:1px solid #E3E3E3;color:#767676;padding: 5px;font-size:0.7em;">
               活动地点<label style="padding-left:15px;">{{item.address}}</label>
           </div>
-          <div class="bbody" style="border-bottom:1px solid #E3E3E3;color:#767676;padding: 5px;">
+          <div class="bbody" style="border-bottom:1px solid #E3E3E3;color:#767676;padding: 5px;font-size:0.7em;">
               剩余人数<label style="padding-left: 16px;color: rgb(255, 136, 23);">{{item.sign_up_residue}}</label>
           </div>
-          <div class="bbody" style="border-bottom:1px solid #E3E3E3;color:#767676;padding: 5px;">
+          <div class="bbody" style="border-bottom:1px solid #E3E3E3;color:#767676;padding: 5px;font-size:0.7em;">
               报名条件<label style="padding-left: 16px;color: rgb(255, 136, 23);">{{item.sign_up_points}}积分</label>
           </div>
-          <div class="bbody" style="border-bottom: 1px ; color: rgb(118, 118, 118); padding: 5px;">
+          <div class="bbody" style="border-bottom: 1px ; color: rgb(118, 118, 118); padding: 5px;font-size:0.7em;">
               活动奖励<label style="padding-left: 16px;">签到获得{{item.incentive_points}} 积分</label>
           </div>
       </div>
 
-      <div v-html="item.intro" style="color:#777879;font-size:0.8em;padding:15px;line-height:2em;">
+      <div v-html="item.intro" style="color:#777879;font-size:0.8em;padding:15px;line-height:2em;margin-bottom:50px;">
       </div>
 
       <div :class="{active:item.limitPromptCode==5}" @click="item.limitPromptCode==5 && signup()" style="position:fixed;bottom:0;left:0;right:0;background-color:#939393;color:#fff;text-align:center;padding:15px 0;">
