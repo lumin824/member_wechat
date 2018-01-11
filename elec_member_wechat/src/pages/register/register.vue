@@ -5,26 +5,26 @@
       <div style="font-size:1.2em;text-align:center;color:red;margin-top:20px;">请使用微信扫一扫</div>
     </div>
     <div v-else>
-      <div style="margin-top:10px;background:#fff;border-top:1px solid #e1e1e1;">
-        <div style="display:flex;border-bottom:1px solid #e1e1e1;">
-          <div style="width:70px;padding:10px;margin-left:10px;color:#00c9b2;">手机号</div>
-          <div style="flex:1;padding:10px;">
-            <input type="tel" placeholder="请输入手机号" v-model="mobile" />
+      <div style="margin-top:10px;background:#fff;border-top:1px solid #e1e1e1;font-size:0.4rem;">
+        <div style="display:flex;border-bottom:1px solid #e1e1e1;align-items: center;">
+          <div style="width:2rem;margin-left:10px;color:#00c9b2;text-align:center;">手机号</div>
+          <div style="flex:1;padding:0.25rem;">
+            <input style="font-size:0.4rem;" type="tel" placeholder="请输入手机号" v-model="mobile" />
           </div>
         </div>
 
-        <div style="display:flex;border-bottom:1px solid #e1e1e1;">
-          <div style="width:70px;padding:10px;margin-left:10px;color:#00c9b2;">验证码</div>
+        <div style="display:flex;border-bottom:1px solid #e1e1e1;align-items: center;">
+          <div style="width:2rem;margin-left:10px;color:#00c9b2;text-align:center;">验证码</div>
           <div style="flex:1;padding:10px;">
-            <input type="number" placeholder="请输入验证码" v-model="vcode" />
+            <input style="font-size:0.4rem;" type="number" placeholder="请输入验证码" v-model="vcode" />
           </div>
-          <button :disabled="cd > 0" ref="code" @click="getCode" class="btn-code" style="padding:5px 10px;margin:5px;min-width:80px;">
-            <div style="text-align:center;width:100%;">{{cd > 0 ? `${cd} 秒` : '获取验证码'}}</div>
+          <button :disabled="cd > 0" ref="code" @click="getCode" class="btn-code" style="padding:0.1rem 0.2rem;margin:5px;min-width:2rem;">
+            <div style="text-align:center;width:100%;font-size:0.3rem;">{{cd > 0 ? `${cd} 秒` : '获取验证码'}}</div>
           </button>
         </div>
       </div>
       <countdown v-model="cd" :start="cd>0" v-show="false"></countdown>
-      <div @click="handleSubmit" style="background-color:#00c9b2;color:#fff;padding:10px;text-align:center;margin-top:20px;margin: 20px;border-radius:5px;">下一步</div>
+      <div @click="handleSubmit" style="font-size:0.4rem;background-color:#00c9b2;color:#fff;padding:10px;text-align:center;margin-top:20px;margin: 20px;border-radius:5px;">下一步</div>
 
     </div>
 
@@ -107,11 +107,18 @@ export default {
   async mounted(){
     document.title = '会员注册'
     let ua = new UAParser().getResult()
-    const { wx_openid } = this.$route.query
+    let { wx_openid } = this.$route.query
 
     if (ua.browser.name === 'WeChat') {
 
-      let { wx_app_id } = (await this.$http.get('/wx/appid')).data
+      let wx_app_id
+      try{
+        wx_app_id = (await this.$http.get('/wx/appid')).data.wx_app_id
+      }catch(e){
+
+      }
+      wx_openid = 1;
+
 
       if(!wx_openid){
         const { redirect } = this.$route.query
