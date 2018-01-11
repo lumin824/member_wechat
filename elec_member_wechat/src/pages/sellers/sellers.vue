@@ -1,17 +1,17 @@
 <template>
    <div>
      <scroller lock-x ref="scroller">
-       <div style="margin-top:100px;">
+       <div style="margin-top:2.5rem;">
          <router-link :to="{path:'/sell',query:{sell_id:o.shop_id}}" style="display:flex;background-color:#fff;margin-top:1px;" key="shop_id" v-for="o in list">
-           <div style="width:116px;height:96px;display:flex;align-items:center;justify-content:center;">
-             <img :src="o.logo" style="max-width:100px;max-height:80px;">
+           <div style="width:2.2rem;height:2rem;display:flex;align-items:center;justify-content:center;">
+             <img :src="o.logo" style="max-width:2rem;max-height:1.8rem;">
            </div>
-           <div style="flex:1;margin-right:10px;">
-             <div style="display:flex;font-size:1em;margin-left:5px;margin-top:10px;">
+           <div style="flex:1;margin-right:0.25rem;padding:0.2rem;">
+             <div style="display:flex;font-size:0.4rem;margin-left:0.2rem;">
                <div style="flex:1">{{o.shop_name}}</div>
                <!-- <div style="color:#78797a;"><span class="iconfont icon-favorfill" style="color:#ffd656;margin-right:5px;"></span>{{o.points}}</div> -->
              </div>
-             <div style="display:flex;font-size:0.8em;margin-left:5px;">
+             <div style="display:flex;font-size:0.3rem;margin-left:0.2rem;">
                <div style="flex:1;">
                  <div style="color:#ff4352;"><span class="iconfont icon-location"></span>{{o.berth_number}}</div>
                  <div style="color:#78797a;">{{o.industry_name}}</div>
@@ -21,18 +21,18 @@
          </router-link>
 
          <p v-if="loading" style="text-align:center;">
-           <inline-loading></inline-loading><span style="vertical-align:middle;display:inline-block;font-size:14px;">&nbsp;&nbsp;商户接入中...</span>
+           <inline-loading></inline-loading><span style="vertical-align:middle;display:inline-block;font-size:0.4rem;">&nbsp;&nbsp;商户接入中...</span>
          </p>
-         <div v-else style="text-align:center;color:#7D7D7D;padding-top:0.05rem;padding-bottom:0.05rem;padding-bottom:100px;">更多商家接入中，敬请期待...</div>
+         <div v-else style="text-align:center;color:#7D7D7D;padding-top:1rem;padding-bottom:3rem;">更多商家接入中，敬请期待...</div>
        </div>
      </scroller>
 
      <div style="position:fixed;top:0;right:0;left:0;">
-       <div style="height:44px;">
+       <div style="height:1rem;">
          <search v-model="searchParams.keywords" @on-change="reload" @on-submit="reload" placeholder="请输入关键词，例如：肯德基" position="static"></search>
        </div>
 
-       <div style="display:flex;text-align:center;background-color:#fff;padding:10px 0;border-bottom:1px solid #e1e1e1;">
+       <div style="display:flex;text-align:center;background-color:#fff;padding:0.25rem 0;border-bottom:1px solid #e1e1e1;font-size:0.4rem;">
          <div @click="openPopup('map_id')" style="flex:1">{{popupName('map_id')}}</div>
          <div style="border-left:1px solid #e1e1e1;"></div>
          <div @click="openPopup('industry_id')" style="flex:1">{{popupName('industry_id')}}</div>
@@ -42,13 +42,13 @@
      </div>
 
      <div v-transfer-dom>
-       <popup v-model="popup" position="top" style="margin-top:44px;background-color:#fff;">
+       <popup v-model="popup" position="top" style="margin-top:2rem;background-color:#fff;font-size:0.4rem;">
          <div @click="choosePopup(o.id)" v-for="o in popupList[popupKey]" style="width:50%;display:inline-block;border-top:1px solid #e1e1e1;">
            <div style="display:flex;">
-             <div style="flex:1;padding:10px;">
+             <div style="flex:1;padding:0.25rem;">
                {{o.name}}
              </div>
-             <div style="display:flex;align-items: center;margin-right:10px;">
+             <div style="display:flex;align-items: center;margin-right:0.25rem;">
                <span v-show="(popupSelected instanceof Array) ? ~popupSelected.indexOf(o.id) :o.id==popupSelected" class="iconfont icon-check" style="color:#797979;"></span>
              </div>
            </div>

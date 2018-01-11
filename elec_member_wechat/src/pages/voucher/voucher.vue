@@ -2,36 +2,36 @@
   <div>
     <scroller lock-x @on-scroll="handleScroll">
       <div>
-        <div style="height:200px;background-image:url(static/img/quan.jpg);background-repeat:no-repeat;background-size: auto 100%;background-position:center;background-color:#64d9a6;position:relative;">
-          <router-link :to="{ path: member_id ? '/memVoucher':'/register' }" style="position:absolute;bottom:0;right:0;padding:10px;color:#ffed00;">
+        <div style="height:5rem;background-image:url(static/img/quan.jpg);background-repeat:no-repeat;background-size: auto 100%;background-position:center;background-color:#64d9a6;position:relative;font-size:0.4rem;">
+          <router-link :to="{ path: member_id ? '/memVoucher':'/register' }" style="position:absolute;bottom:0;right:0;padding:0.25rem;color:#ffed00;">
             {{member_id?'查看我的券':'立即注册 》'}}
           </router-link>
         </div>
-        <div style="margin-top:20px;">
+        <div style="margin-top:0.5rem;">
           <router-link :to="{path:'/voucherDetail', query:{id:o.coupon_id}}" style="display:flex;background-color:#fff;margin-top:1px;" key="coupon_id" v-for="o in list">
-            <div style="width:116px;height:96px;display:flex;align-items:center;justify-content:center;">
-              <img :src="o.picture" style="max-width:100px;max-height:80px;">
+            <div style="width:2.5rem;height:2.5rem;display:flex;align-items:center;justify-content:center;">
+              <img :src="o.picture" style="max-width:2rem;max-height:2rem;">
             </div>
             <div style="flex:1;">
-              <div style="font-size:1em;margin-left:5px;margin-top:10px;">{{o.coupon_name}}</div>
-              <div style="display:flex;font-size:0.9em;margin-left:5px;" v-if="o.receive_method==0">
+              <div style="font-size:0.4rem;margin-left:0.125rem;margin-top:0.25rem;">{{o.coupon_name}}</div>
+              <div style="display:flex;font-size:0.3rem;margin-left:0.125rem;" v-if="o.receive_method==0">
                 <div style="flex:1;">
                   <div style="color:#78797a;">市场价：{{o.price}} 元</div>
                   <div style="color:#00cfaf;">兑换积分：{{o.required_points}}</div>
                 </div>
-                <div style="display:flex;align-items:center;margin-right:15px;">
-                  <div style="border:1px solid #ff9100;color:#ff9100;border-radius:3px;padding:2px 5px;">
+                <div style="display:flex;align-items:center;margin-right:0.375rem;">
+                  <div style="border:1px solid #ff9100;color:#ff9100;border-radius:3px;padding:0.06rem 0.125rem;">
                     积分兑换
                   </div>
                 </div>
               </div>
-              <div style="display:flex;font-size:0.9em;margin-left:5px;" v-else-if="o.receive_method==2">
+              <div style="display:flex;font-size:0.3rem;margin-left:0.125rem;" v-else-if="o.receive_method==2">
                 <div style="flex:1;">
                   <div style="color:#78797a;">市场价：{{o.price}} 元</div>
-                  <div style="color:#00cfaf;height:23px;"></div>
+                  <div style="color:#00cfaf;"></div>
                 </div>
-                <div style="display:flex;align-items:center;margin-right:15px;">
-                  <div style="border:1px solid #ff9100;color:#ff9100;border-radius:3px;padding:2px 5px;">
+                <div style="display:flex;align-items:center;margin-right:0.375rem;">
+                  <div style="border:1px solid #ff9100;color:#ff9100;border-radius:3px;padding:2px 0.125rem;">
                     免费领取
                   </div>
                 </div>
@@ -43,17 +43,17 @@
         <div v-transfer-dom>
           <popup v-model="popup" position="top" :popup-style="{backgroundColor:'#fff', marginTop:'60px'}" :is-transparent="true">
             <div class="type-list">
-              <div v-for="o in typeList" @click="changeType(o.id)" :class="{'active': o.id==type }" style="display:flex;align-items:center;height:40px;border-bottom:1px solid #ddd;padding-left:20px;">{{o.name}}</div>
+              <div v-for="o in typeList" @click="changeType(o.id)" :class="{'active': o.id==type }" style="display:flex;align-items:center;height:40px;border-bottom:1px solid #ddd;padding-left:0.5rem;">{{o.name}}</div>
             </div>
           </popup>
         </div>
       </div>
     </scroller>
-    <div :style="{backgroundColor:scrollTop>140?'#00bf8d':'transparent'}" style="position:fixed;top:0;left:0;right:0;display:flex;height:30px;padding-top:15px;padding-right:15px;padding-bottom:15px;">
-      <div style="font-size:0.9em;width:100px;padding:5px 0;text-align:center;line-height:15px;color:#fff;" @click="popup=true">{{typeName}} <span class="iconfont icon-unfold"></span></div>
-      <div style="display:flex;flex:1;background-color:#fff;border-radius:15px;align-items:center;">
-        <input v-model="keywords" style="font-size:0.9em;background-color:transparent;border-style:none;outline:none;margin-left:15px;flex:1;" type="text" placeholder="请输入搜索关键字">
-        <div style="width:20px;height:20px;margin-right:15px;line-height:20px;">
+    <div :style="{backgroundColor:scrollTop>140?'#00bf8d':'transparent'}" style="position:fixed;top:0;left:0;right:0;display:flex;height:30px;padding-top:0.375rem;padding-right:0.375rem;padding-bottom:0.375rem;">
+      <div style="font-size:0.4rem;width:100px;padding:0.125rem 0;text-align:center;line-height:0.375rem;color:#fff;" @click="popup=true">{{typeName}} <span class="iconfont icon-unfold"></span></div>
+      <div style="display:flex;flex:1;background-color:#fff;border-radius:0.375rem;align-items:center;">
+        <input v-model="keywords" style="font-size:0.4rem;background-color:transparent;border-style:none;outline:none;margin-left:0.375rem;flex:1;" type="text" placeholder="请输入搜索关键字">
+        <div style="width:0.5rem;height:0.5rem;margin-right:0.375rem;line-height:0.5rem;">
           <span class="iconfont icon-search" style="color:#797979;"></span>
         </div>
       </div>

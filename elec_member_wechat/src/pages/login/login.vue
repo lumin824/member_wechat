@@ -134,11 +134,11 @@
 </script>
 <style lang="less" scoped>
     div{
-      margin-top:0.13rem;
+      margin-top:0.5rem;
     }
     .code{
-      height: 0.35rem;
-      width:0.9rem ;
+      height: 0.8rem;
+      width:3rem ;
       background-color: #7DD8CF;
       border-radius:0.04rem;
       border:0;
@@ -147,7 +147,6 @@
       text-align: center;
       color: #fff;
       opacity:.8;
-      margin-right: 0.07rem;
     }
     .mint-cell{
       color: #06c1ae;

@@ -9,8 +9,8 @@
           </figcaption>
         </figure>
         <div class="time" style="border:1px solied;background;">
-          <div style="font-size:0.8em;color:#999;">{{o.activity_time_start | unix('YYYY-MM-DD', 'ms')}} ~ {{o.activity_time_end | unix('YYYY-MM-DD', 'ms')}}</div>
-          <div style="font-size:0.8em;color:#059CFF;">{{signTitle[o.sign_type]}}</div>
+          <div style="font-size:0.4rem;color:#999;">{{o.activity_time_start | unix('YYYY-MM-DD', 'ms')}} ~ {{o.activity_time_end | unix('YYYY-MM-DD', 'ms')}}</div>
+          <div style="font-size:0.4rem;color:#059CFF;">{{signTitle[o.sign_type]}}</div>
         </div>
       </router-link>
     </ul>

@@ -54,7 +54,9 @@ body {
 }
 html, body {
   height: 100%;
-  width: 100%;
+  min-width: 320px;
+  max-width: 640px;
+  margin: 0 auto;
   overflow-x: hidden;
 }
 </style>

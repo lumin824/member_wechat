@@ -1,32 +1,32 @@
 <template>
   <scroller lock-x>
     <div>
-      <div style="display:flex;background-color:#fff;margin-top:20px;border-top:1px solid #e1e1e1;border-bottom:1px solid #e1e1e1;">
+      <div style="display:flex;background-color:#fff;margin-top:0.5rem;border-top:1px solid #e1e1e1;border-bottom:1px solid #e1e1e1;">
         <div>
-          <img src="static/img/member.png" style="border-radius:50%;width:80px;height:80px;margin:20px;">
+          <img src="static/img/member.png" style="border-radius:50%;width:2rem;height:2rem;margin:0.5rem;">
         </div>
         <div>
-          <div style="margin-top:20px;font-size:1.1em;">{{user.name}} <span v-if="user.level" style="background-color:#56ded3;color:#fff;padding:2px 5px;font-size:0.9em;border-radius:3px;">{{user.level}}</span></div>
-          <div style="font-size:0.9em;color:#7f8081;">累计积分<span style="margin-left:10px;">{{user.cumulate_points}}</span></div>
-          <div style="font-size:0.9em;color:#7f8081;">可用积分<span style="margin-left:10px;">{{user.usable_points}}</span></div>
+          <div style="margin-top:0.5rem;font-size:0.5rem;">{{user.name}} <span v-if="user.level" style="background-color:#56ded3;color:#fff;padding:2px 5px;font-size:0.5rem;border-radius:3px;">{{user.level}}</span></div>
+          <div style="font-size:0.4rem;color:#7f8081;">累计积分<span style="margin-left:0.25rem;">{{user.cumulate_points}}</span></div>
+          <div style="font-size:0.4rem;color:#7f8081;">可用积分<span style="margin-left:0.25rem;">{{user.usable_points}}</span></div>
         </div>
       </div>
 
       <div>
-        <div style="margin-top:10px;background:#fff;border-top:1px solid #e1e1e1;">
+        <div style="margin-top:0.25rem;background:#fff;border-top:1px solid #e1e1e1;font-size:0.4rem;">
           <div style="display:flex;border-bottom:1px solid #e1e1e1;">
-            <div style="width:70px;padding:10px;margin-left:10px;color:#00c9b2;">新手机号</div>
-            <div style="flex:1;padding:10px;">
-              <input type="tel" placeholder="请输入新手机号" v-model="mobile" />
+            <div style="width:2rem;padding:0.25rem;margin-left:0.25rem;color:#00c9b2;">新手机号</div>
+            <div style="flex:1;padding:0.25rem;">
+              <input style="font-size:0.4rem;" type="tel" placeholder="请输入新手机号" v-model="mobile" />
             </div>
           </div>
 
           <div style="display:flex;border-bottom:1px solid #e1e1e1;">
-            <div style="width:70px;padding:10px;margin-left:10px;color:#00c9b2;">验证码</div>
-            <div style="flex:1;padding:10px;">
-              <input type="number" placeholder="请输入验证码" v-model="vcode" />
+            <div style="width:2rem;padding:0.25rem;margin-left:0.25rem;color:#00c9b2;">验证码</div>
+            <div style="flex:1;padding:0.25rem;">
+              <input style="font-size:0.4rem;" type="number" placeholder="请输入验证码" v-model="vcode" />
             </div>
-            <button :disabled="cd > 0" ref="code" @click="getCode" class="btn-code" style="padding:5px 10px;margin:5px;min-width:80px;">
+            <button :disabled="cd > 0" ref="code" @click="getCode" class="btn-code" style="padding:0.125rem 0.25rem;margin:0.125rem;min-width:2rem;">
               <div style="text-align:center;width:100%;">{{cd > 0 ? `${cd} 秒` : '获取验证码'}}</div>
             </button>
           </div>
@@ -34,7 +34,7 @@
       </div>
 
       <countdown v-model="cd" :start="cd>0" v-show="false"></countdown>
-      <div @click="handleSubmit" style="background-color:#00c9b2;color:#fff;padding:10px;text-align:center;margin-top:20px;margin: 20px;border-radius:5px;">提交修改</div>
+      <div @click="handleSubmit" style="font-size:0.4rem;background-color:#00c9b2;color:#fff;padding:0.25rem;text-align:center;margin-top:0.5rem;margin: 0.5rem;border-radius:5px;">提交修改</div>
     </div>
   </scroller>
 </template>
@@ -139,7 +139,7 @@ button.btn-code {
   border: 0;
   background-color:#00c9b2;
   color:#fff;
-  font-size:0.8em;
+  font-size:0.4rem;;
   display:flex;
   align-items:center;
   border-radius:5px;

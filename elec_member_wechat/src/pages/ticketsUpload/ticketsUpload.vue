@@ -1,7 +1,7 @@
 <template>
   <scroller lock-x>
   <div v-if="closeUse">
-    <div style="font-size:1.2em;text-align:center;color:red;margin-top:20px;">12月2日不见不散!</div>
+    <div style="font-size:0.5rem;text-align:center;color:red;margin-top:0.5rem;">12月2日不见不散!</div>
   </div>
   <div v-else style="display:flex;flex-direction:column;min-height:100%;background-color:#fff;align-items:center;">
     <figure>
@@ -13,51 +13,51 @@
 
     <div style="display:flex;align-items:center;width:100%;">
       <div style="flex:1;border-top:1px solid #ccc;"></div>
-      <div style="margin:0 20px;font-size:0.9em;color:#686868;">我的上传记录</div>
+      <div style="margin:0 0.5rem;font-size:0.4rem;color:#686868;">我的上传记录</div>
       <div style="flex:1;border-top:1px solid #ccc;"></div>
     </div>
 
-    <ul style="margin-top:10px;width:100%;">
-      <li v-if="!pageList.length" style="text-align:center;margin-bottom:20px;font-size:0.9em;">
+    <ul style="margin-top:0.25rem;width:100%;">
+      <li v-if="!pageList.length" style="text-align:center;margin-bottom:0.5rem;font-size:0.4rem;">
         暂无上传记录
       </li>
       <li v-for="v in pageList" v-else style="margin:0 8px;">
         <div v-if="v.handle_status==0">
-          <div style="display:flex;padding:10px 10px;">
-            <img :src="v.file_url" alt="" style="width:96px;height:96px;">
-            <div style="margin:5px;font-size:0.9em;flex:1;">
+          <div style="display:flex;padding:0.25rem;">
+            <img :src="v.file_url" alt="" style="width:2rem;height:2rem;">
+            <div style="margin:0.125rem;font-size:0.4rem;flex:1;">
               <div>处理状态：<span style="color:#ff8100;">已处理</span></div>
               <div>处理回复：{{v.responses}}</div>
             </div>
           </div>
-          <p style="border-top: 1px dashed #ccc;font-size: 0.9em;margin:10px;padding:5px;color:#959697;margin-top:0;">上传时间：{{v.upload_date | unix('YYYY-MM-DD HH:mm', 'ms')}}</p>
+          <p style="border-top: 1px dashed #ccc;font-size: 0.4rem;margin:0.25rem;padding:0.125rem;color:#959697;margin-top:0;">上传时间：{{v.upload_date | unix('YYYY-MM-DD HH:mm', 'ms')}}</p>
         </div>
         <div v-else-if="v.handle_status==1">
-          <div style="display:flex;padding:10px 10px;">
-            <img :src="v.file_url" alt="" style="width:96px;height:96px;">
-            <div style="margin:5px;font-size:0.9em;flex:1;">
+          <div style="display:flex;padding:0.25rem;">
+            <img :src="v.file_url" alt="" style="width:2rem;height:2rem;">
+            <div style="margin:0.125rem;font-size:0.4rem;flex:1;">
               <div>处理状态：<span style="color:#ff8100;">未通过</span></div>
               <div>处理回复：{{v.responses}}</div>
             </div>
           </div>
-          <p style="border-top: 1px dashed #ccc;font-size: 0.9em;margin:10px;padding:5px;color:#959697;margin-top:0;">上传时间：{{v.upload_date | unix('YYYY-MM-DD HH:mm', 'ms')}}</p>
+          <p style="border-top: 1px dashed #ccc;font-size: 0.4rem;margin:0.25rem;padding:0.125rem;color:#959697;margin-top:0;">上传时间：{{v.upload_date | unix('YYYY-MM-DD HH:mm', 'ms')}}</p>
         </div>
         <div v-else-if="v.handle_status==2" style="background-color:#f9fafb;">
-          <div style="display:flex;padding:10px 10px;">
-            <img :src="v.file_url" alt="" style="width:96px;height:96px;">
-            <div style="margin:5px;font-size:0.9em;flex:1;">
+          <div style="display:flex;padding:0.25rem;">
+            <img :src="v.file_url" alt="" style="width:2rem;height:2rem;">
+            <div style="margin:0.125rem;font-size:0.4rem;flex:1;">
               <div>处理状态：<span style="color:#ff8100;">未处理</span></div>
               <div>处理回复：</div>
               <mt-button size="small" @click="delTicket(v.ticket_id)" style="float:right;">删除</mt-button>
             </div>
           </div>
-          <p style="border-top: 1px dashed #ccc;font-size: 0.9em;margin:10px;padding:5px;color:#959697;margin-top:0;">上传时间：{{v.upload_date | unix('YYYY-MM-DD HH:mm', 'ms')}}</p>
+          <p style="border-top: 1px dashed #ccc;font-size: 0.4rem;margin:0.25rem;padding:0.125rem;color:#959697;margin-top:0;">上传时间：{{v.upload_date | unix('YYYY-MM-DD HH:mm', 'ms')}}</p>
         </div>
       </li>
     </ul>
 
-    <div style="display:flex;font-size:12px;color:#666;margin: 0 10px;flex:1;">
-      <div style="white-space:nowrap;width:80px;">温馨提示：</div>
+    <div style="display:flex;font-size:0.3rem;color:#666;margin: 0 0.25rem;flex:1;">
+      <div style="white-space:nowrap;width:2rem;">温馨提示：</div>
        <ul style="text-align:left;text-indent:-0.9em;margin-left:0.9em;">
          <li>
            1 小票当天有效，请及时上传
@@ -67,7 +67,7 @@
          </li>
        </ul>
     </div>
-    <p style="font-size: 0.13rem;color: #333;margin: 0.7rem 0 0.1rem 0;position: relative;bottom:10px;">最终解释权归本公司所有</p>
+    <p style="font-size: 0.3rem;color: #333;margin: 0.7rem 0 0.1rem 0;position: relative;bottom:0.25rem;">最终解释权归本公司所有</p>
   </div>
   </scroller>
 </template>
@@ -215,13 +215,13 @@
   figure img{
     width: 0.8rem;
     height: 0.8rem;
-    margin-top: 20px;
+    margin-top: 0.5rem;
     display: inline-block;;
   }
   figure figcaption{
     color: #30C3B6;
     font-weight: bold;
-    font-size: 0.2rem;
+    font-size: 0.4rem;
     margin-top: 0.06rem;
     margin-bottom: 0.1rem;
   }

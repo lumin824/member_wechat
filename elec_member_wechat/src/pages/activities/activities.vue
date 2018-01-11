@@ -1,16 +1,16 @@
 <template>
   <div>
-    <ul style="background-color:#fff;">
-      <router-link v-for="o in list" key="id" :to="{path:'/activeDetail', query:{id:o.activity_id}}" tag="li" style="padding-bottom:10px;border-bottom:1px solid #ddd;">
-        <figure :style="{backgroundImage:`url(${o.picture})`}" style="height:2rem;background-size:cover;background-repeat:no-repeat;background-position:center;">
+    <ul style="background-color:#fff;font-size:0.4rem;">
+      <router-link v-for="o in list" key="id" :to="{path:'/activeDetail', query:{id:o.activity_id}}" tag="li" style="padding-bottom:0.25rem;border-bottom:1px solid #ddd;">
+        <figure :style="{backgroundImage:`url(${o.picture})`}" style="height:4rem;background-size:cover;background-repeat:no-repeat;background-position:center;">
           <figcaption>
             <div style="flex:1;"></div>
-            <div style="font-size:0.8em;background-color: rgba(0,0,0,0.6);color:#FFF; padding: 5px;">{{o.title}}</div>
+            <div style="background-color: rgba(0,0,0,0.6);color:#FFF; padding: 0.125rem;">{{o.title}}</div>
           </figcaption>
         </figure>
         <div class="time" style="border:1px solied;background;">
-          <div style="font-size:0.8em;color:#999;">{{o.activity_time_start | unix('YYYY-MM-DD', 'ms')}} ~ {{o.activity_time_end | unix('YYYY-MM-DD', 'ms')}}</div>
-          <div style="font-size:0.8em;color:#059CFF;">{{signTitle[o.sign_type]}}</div>
+          <div style="color:#999;">{{o.activity_time_start | unix('YYYY-MM-DD', 'ms')}} ~ {{o.activity_time_end | unix('YYYY-MM-DD', 'ms')}}</div>
+          <div style="color:#059CFF;">{{signTitle[o.sign_type]}}</div>
         </div>
       </router-link>
     </ul>
@@ -78,17 +78,9 @@ export  default {
 
 
   }
-  li div h1{
-    font-weight: normal;
-    color:#999;
-    font-size: 0.14rem;
-
-
-
-  }
   figure img{
     width: 100%;
-    height: 2rem;
+    height: 4rem;
   }
   figure figcaption{
     display: flex;

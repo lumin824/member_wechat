@@ -10,6 +10,8 @@ import Vuex from 'vuex'
 import UAParser from 'ua-parser-js'
 import 'mint-ui/lib/style.css'
 
+import 'lib-flexible/flexible';
+
 import { ConfirmPlugin, DatetimePlugin, ToastPlugin, LoadingPlugin } from 'vux'
 Vue.use(ConfirmPlugin)
 Vue.use(DatetimePlugin)
