@@ -28,7 +28,7 @@
      </scroller>
 
      <div style="position:fixed;top:0;right:0;left:0;">
-       <div style="height:1rem;">
+       <div>
          <search v-model="searchParams.keywords" @on-change="reload" @on-submit="reload" placeholder="请输入关键词，例如：肯德基" position="static"></search>
        </div>
 
