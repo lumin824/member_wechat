@@ -105,6 +105,9 @@ export default {
       }else{
         doReceive()
       }
+
+
+
     }
   },
   async mounted() {

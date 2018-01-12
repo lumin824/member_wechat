@@ -1,177 +1,152 @@
 <template>
     <div>
       <div style="background-color:white">
-        <div style="height:0.31rem;border-bottom:0.02rem solid #E2E2E2;padding-top:0.2rem">
-            <label style="margin-top:0.3rem;margin-left:0.3rem;color:#777777"><strong>剩余车位</strong></label>
+        <div style="height:1rem;border-bottom:0.02rem solid #E2E2E2;padding-top:0.2rem">
+            <label style="margin-top:0.3rem;margin-left:0.3rem;color:#777777;font-size:0.5rem;">剩余车位</label>
           <p style="float:right;padding-right:0.2rem;color:#FB9D0A"><strong>102</strong></p>
         </div>
-        <div style="padding-top:0.3rem;margin-right:0.2rem;margin-left:0.1rem;height:0.7rem;">
+        <div style="display:flex;padding:0.2rem;margin:0.2rem;">
 
-            <div style="border:1px solid #E2E2E2;width:10%;height:0.31rem;float:left;" id="div1">
-              <input @keyup="press1($event)" ref="input1" style="width:100%;height:100%;border: medium;text-align:center;" maxlength="1" autofocus="autofocus">
+            <div style="border:1px solid #E2E2E2;width:1rem;height:1rem;" id="div1">
+              <input @focus="popup=true" :value="car_number[0]" ref="input0" style="width:100%;height:100%;border: medium;text-align:center;" maxlength="1" autofocus="autofocus">
             </div>
-            <div style="border:1px solid #E2E2E2;width:10%;height:0.31rem;float:left;border-left:0.02rem dashed #E2E2E2;" id="div2">
-              <input @keyup="press2($event)" ref="input2" style="width:100%;height:100%;border: medium;text-align:center" maxlength="1">
+            <div style="border:1px solid #E2E2E2;width:1rem;height:1rem;border-left:0.02rem dashed #E2E2E2;" id="div2">
+              <input @keyup="inputKey($event, 1)" v-model="car_number[1]" ref="input1" style="width:100%;height:100%;border: medium;text-align:center" maxlength="1">
             </div>
 
-            <div style="border:1px solid #03C4A7;width:10%;height:0.31rem;float:right; margin-left:0.05rem;">
-              <input @keyup="press8($event)" ref="input8" style="width:100%;height:100%;border: medium;text-align:center;font-size:0.01px;" placeholder="新能源" maxlength="1">
+            <div style="border:1px solid #E2E2E2;width:1rem;height:1rem;margin-left:0.05rem;">
+              <input @keyup="inputKey($event, 2)" v-model="car_number[2]" ref="input2" style="width:100%;height:100%;border: medium;text-align:center" maxlength="1">
             </div>
-            <div style="border:1px solid #E2E2E2;width:10%;height:0.31rem;float:right;margin-left:0.05rem;">
-              <input @keyup="press7($event)" ref="input7"  style="width:100%;height:100%;border: medium;text-align:center" maxlength="1">
+            <div style="border:1px solid #E2E2E2;width:1rem;height:1rem;margin-left:0.05rem;">
+              <input @keyup="inputKey($event, 3)" v-model="car_number[3]" ref="input3" style="width:100%;height:100%;border: medium;text-align:center" maxlength="1">
             </div>
-            <div style="border:1px solid #E2E2E2;width:10%;height:0.31rem;float:right;margin-left:0.05rem;">
-              <input @keyup="press6($event)" ref="input6" style="width:100%;height:100%;border: medium;text-align:center" maxlength="1">
+            <div style="border:1px solid #E2E2E2;width:1rem;height:1rem;margin-left:0.05rem;">
+              <input @keyup="inputKey($event, 4)" v-model="car_number[4]" ref="input4" style="width:100%;height:100%;border: medium;text-align:center" maxlength="1">
             </div>
-            <div style="border:1px solid #E2E2E2;width:10%;height:0.31rem;float:right;margin-left:0.05rem;">
-              <input @keyup="press5($event)" ref="input5" style="width:100%;height:100%;border: medium;text-align:center" maxlength="1">
+            <div style="border:1px solid #E2E2E2;width:1rem;height:1rem;margin-left:0.05rem;">
+              <input @keyup="inputKey($event, 5)" v-model="car_number[5]" ref="input5" style="width:100%;height:100%;border: medium;text-align:center" maxlength="1">
             </div>
-            <div style="border:1px solid #E2E2E2;width:10%;height:0.31rem;float:right;margin-left:0.05rem;">
-              <input @keyup="press4($event)" ref="input4" style="width:100%;height:100%;border: medium;text-align:center" maxlength="1">
+            <div style="border:1px solid #E2E2E2;width:1rem;height:1rem;margin-left:0.05rem;">
+              <input @keyup="inputKey($event, 6)" v-model="car_number[6]" ref="input6"  style="width:100%;height:100%;border: medium;text-align:center" maxlength="1">
             </div>
-            <div style="border:1px solid #E2E2E2;width:10%;height:0.31rem;float:right;margin-left:0.05rem;">
-              <input @keyup="press3($event)" ref="input3" style="width:100%;height:100%;border: medium;text-align:center" maxlength="1">
+            <div style="border:1px solid #03C4A7;width:1rem;height:1rem;margin-left:0.05rem;">
+              <input @keyup="inputKey($event, 7)" v-model="car_number[7]" ref="input7" style="width:100%;height:100%;border: medium;text-align:center;font-size:0.01px;" placeholder="新能源" maxlength="1">
             </div>
         </div>
-        <div style="display:flex;align-items:center">
-          <div style="border-bottom:0.02rem solid #E2E2E2;width:40%;"></div>
-          <div style="flex:1;text-align:center">注意事项</div>
-          <div style="border-bottom:0.02rem solid #E2E2E2;width:40%;"></div>
+
+        <div style="display:flex;align-items:center;margin-top:0.5rem;">
+          <div style="flex:1;border-bottom:1px solid #E2E2E2;"></div>
+          <div style="margin:0 1rem;font-size:0.4rem;color:#777777;">注意事项</div>
+          <div style="flex:1;border-bottom:1px solid #E2E2E2;"></div>
         </div>
-        <div style="color:#767676;margin-left:0.2rem;margin-top:0.05rem;margin-bottom:0.2rem;margin-right:0.2rem;font-size:0.15rem">
+
+        <div style="color:#767676;width:9rem;margin:0 auto;font-size:0.4rem">
           <label >1.缴费成功后，请于30分钟内离场，超时需补交停车费<br /></label>
           <div style="padding-top:0.1rem;padding-bottom:0.1rem;">
             <label >2.若车牌识别有误，请到中央收费处缴纳</label>
           </div>
         </div>
       </div>
-      <div style="background-color:#FFFFFF;margin-top:0.2rem;">
-        <div>
-          <div style="padding-top:0.2rem">
-            <label style="margin-left:43%;color:#777777"><strong>收费标准</strong></label>
-        </div>
-            <table style="border:1px solid #E2E2E2;margin-left:10%;margin-top:0.1rem;width:80%;height:2rem;color:#767676;font-size:0.15rem">
-                <tr >
-                    <td style="border-bottom:1px solid #E2E2E2; text-align:center;">时间</td>
-                    <td style="border-left:1px solid #E2E2E2; border-bottom:1px solid #E2E2E2;text-align:center;">收费</td>
-                </tr>
-                <tr style="line-height:0.3rem;">
-                    <td style="padding-left:0.3rem">
-                      
-                      停车不足15分钟<br />
-                      15分钟至1小时<br />
-                      超1小时后每30分钟<br />
-                      24小时
-                    </td>
-                    <td style="border-left:1px solid #E2E2E2; padding-left:0.3rem">
-                      免费<br />
-                      5元/台<br />
-                      2元/台<br />
-                      最高50元/台  
-                    </td>
-                </tr>
-            </table>
-            <div style="margin-top:0.1rem;padding-bottom:0.5rem;margin-left:0.1rem;margin-right:0.1rem">
-              <label style="color:#767676;">注：超过一小时后，不足30分钟按30分钟收费。</label>
-            </div>
+      <div style="background-color:#FFFFFF;margin-top:20px;text-align">
+        <div style="padding-bottom:1px;">
+          <div style="display:flex;align-items:center;padding-top:10px;text-align:center;">
+            <div style="flex:1;"></div>
+            <div style="margin:0 1rem;font-size:0.4rem;color:#777777;">收费标准</div>
+            <div style="flex:1;"></div>
+          </div>
+
+
+          <table style="margin-top:10px;border:1px solid #E2E2E2;width:9rem;height:2rem;color:#767676;font-size:0.4rem;margin:0 auto;text-align:center;" cellpadding="0" cellspacing="0">
+            <tr>
+              <td style="border-bottom:1px solid #E2E2E2;padding:0.2rem;">时间</td>
+              <td style="border-left:1px solid #E2E2E2; border-bottom:1px solid #E2E2E2;">收费</td>
+            </tr>
+            <tr>
+              <td>停车不足15分钟</td>
+              <td style="border-left:1px solid #E2E2E2;padding:0.1rem;">免费</td>
+            </tr>
+            <tr>
+              <td>15分钟至1小时</td>
+              <td style="border-left:1px solid #E2E2E2;padding:0.1rem;">5元/台</td>
+            </tr>
+            <tr>
+              <td>超1小时后每30分钟</td>
+              <td style="border-left:1px solid #E2E2E2;padding:0.1rem;">2元/台</td>
+            </tr>
+            <tr>
+              <td>24小时</td>
+              <td style="border-left:1px solid #E2E2E2;padding:0.1rem;">最高50元/台</td>
+            </tr>
+          </table>
+          <div style="width:9rem;margin:10px auto;">
+            <label style="color:#767676;">注：超过一小时后，不足30分钟按30分钟收费。</label>
+          </div>
         </div>
       </div>
       <router-link to="/carDetail">
-      <div style="background-color:#46D0C3;text-align:center;padding-top:0.1rem;position:fixed;right:0;left:0;bottom:0;">
-         <label style="color:white;font-size:0.2rem">缴  费</label>
+      <div style="background-color:#46D0C3;text-align:center;position:fixed;right:0;left:0;bottom:0;">
+         <div style="color:#fff;padding:0.3rem;font-size:0.5rem">缴  费</div>
       </div>
       </router-link>
+
+      <div v-transfer-dom>
+        <popup v-model="popup" position="top" :popup-style="{backgroundColor:'#fff', marginTop:'60px'}" :is-transparent="true">
+          <div class="char-line" v-for="o in charList">
+            <div v-for="p in o" @click="inputChar">{{p}}</div>
+          </div>
+        </popup>
+      </div>
     </div>
 </template>
 <script>
-// $(function(){
-//   var a = docuemnt.getElementById("div1").getElementsByTagName("input");
-//   if(a.length==1){
-//     docuemnt.getElementById("div2").getElementsByTagName("input").focus();
-//   }
-// })
+import _ from 'lodash';
+import { TransferDom, Popup, Scroller } from 'vux';
+
 export default {
-  components: {
+  directives: {
+    TransferDom
+  },
+  components:{
+    Popup, Scroller,
   },
   data () {
     return {
-      options1: ['A', 'B', 'C'],
+      popup: false,
+      car_number: [],
+      charList: [
+        ['冀', '豫', '云', '辽', '黑', '湘', '皖', '鲁'],
+        ['新', '苏', '浙', '赣', '鄂', '桂', '甘', '晋'],
+        ['蒙', '陕', '吉', '闽', '贵', '粤', '川', '青'],
+        ['藏', '琼', '宁', '渝', '京', '津', '沪'],
+      ]
     }
   },
   methods: {
-    press1({key, keyCode}) {
+    inputChar({target}) {
+      this.car_number[0] = _.trim(target.innerText)
+      this.popup = false;
+      this.$refs['input1'].focus();
+    },
+    inputKey({keyCode}, index) {
       if(keyCode == 8){
-        this.$refs.input1.value='';
-      } else if(key == 'a'){
-        this.$refs.input1.value='';
-      }else{
-        this.$refs.input2.focus()
+        this.car_number[index] = '';
+        this.$refs[`input${index-1}`].focus()
+      } else if(index < 7) {
+        this.$refs[`input${index+1}`].focus()
       }
     },
-    press2({key, keyCode}) {
-      if(keyCode == 8){
-        this.$refs.input1.focus()
-      } else if(key == 'a'){
-        this.$refs.input2.value='';
-      }else{
-        this.$refs.input3.focus()
-      }
-    },
-    press3({key, keyCode}) {
-      if(keyCode == 8){
-        this.$refs.input2.focus()
-      } else if(key == 'a'){
-        this.$refs.input3.value='';
-      }else{
-        this.$refs.input4.focus()
-      }
-    },
-    press4({key, keyCode}) {
-       if(keyCode == 8){
-        this.$refs.input3.focus()
-      } else if(key == 'a'){
-        this.$refs.input4.value='';
-      }else{
-        this.$refs.input5.focus()
-      }
-    },
-    press5({key, keyCode}) {
-       if(keyCode == 8){
-        this.$refs.input4.focus()
-      } else if(key == 'a'){
-        this.$refs.input5.value='';
-      }else{
-        this.$refs.input6.focus()
-      }
-    },
-    press6({key, keyCode}) {
-       if(keyCode == 8){
-        this.$refs.input5.focus()
-      } else if(key == 'a'){
-        this.$refs.input6.value='';
-      }else{
-        this.$refs.input7.focus()
-      }
-    },
-    press7({key, keyCode}) {
-       if(keyCode == 8){
-        this.$refs.input6.focus()
-      } else if(key == 'a'){
-        this.$refs.input7.value='';
-      }else{
-        this.$refs.input8.focus()
-      }
-    },
-    press8({key, keyCode}) {
-       if(keyCode == 8){
-        this.$refs.input7.focus()
-      } else if(key == 'a'){
-        this.$refs.input3.value='';
-      }
-    }
   }
 }
 </script>
 
-
-
+<style lang="less" scoped>
+.char-line {
+  display: flex;
+  justify-content: space-around;
+}
+.char-line > div {
+  width: 1rem;
+  font-size: 0.5rem;
+  text-align: center;
+}
+</style>
