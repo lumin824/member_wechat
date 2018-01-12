@@ -90,7 +90,7 @@
       </router-link>
 
       <div v-transfer-dom>
-        <popup v-model="popup" position="top" :popup-style="{backgroundColor:'#fff', marginTop:'10rem'}" :is-transparent="true">
+        <popup v-model="popup" position="top" :popup-style="{backgroundColor:'#fff', marginTop:'0px'}" :is-transparent="true">
           <div class="char-line" v-for="o in charList">
             <div v-for="p in o" @click="inputChar">{{p}}</div>
           </div>
@@ -114,10 +114,10 @@ export default {
       popup: false,
       car_number: [],
       charList: [
-        ['冀', '豫', '云', '辽', '黑', '湘', '皖', '鲁'],
-        ['新', '苏', '浙', '赣', '鄂', '桂', '甘', '晋'],
-        ['蒙', '陕', '吉', '闽', '贵', '粤', '川', '青'],
-        ['藏', '琼', '宁', '渝', '京', '津', '沪'],
+        ['冀', '豫', '云', '辽'], ['黑', '湘', '皖', '鲁'],
+        ['新', '苏', '浙', '赣'], [ '鄂', '桂', '甘', '晋'],
+        ['蒙', '陕', '吉', '闽'], [ '贵', '粤', '川', '青'],
+        ['藏', '琼', '宁', '渝'], [ '京', '津', '沪'],
       ]
     }
   },
@@ -147,6 +147,7 @@ export default {
 .char-line > div {
   width: 1rem;
   font-size: 0.5rem;
+  padding:0.3rem;
   text-align: center;
 }
 </style>
