@@ -7,30 +7,29 @@
         </div>
         <div style="display:flex;padding:0.2rem;margin:0.2rem;">
 
-            <div @click="popup=true" style="border:1px solid #E2E2E2;width:1rem;height:1rem;font-size:0.4rem;display:flex;align-items:center;justify-content:center;">
+            <div @click="showKeyboard(0)" :style="{borderColor:inputIndex==0 ? 'red':'#E2E2E2'}" style="border:1px solid #E2E2E2;width:1rem;height:1rem;font-size:0.4rem;display:flex;align-items:center;justify-content:center;">
               {{car_number[0]}}
             </div>
-            <div style="border:1px solid #E2E2E2;width:1rem;height:1rem;border-left:0.02rem dashed #E2E2E2;" id="div2">
-              <input @keyup="inputKey($event, 1)" type="number" v-model="car_number[1]" ref="input1" style="width:100%;height:100%;border: medium;text-align:center;font-size:0.4rem;" maxlength="1">
+            <div @click="showKeyboard(1)" :style="{borderColor:inputIndex==1 ? 'red':'#E2E2E2'}" style="border:1px solid #E2E2E2;width:1rem;height:1rem;font-size:0.4rem;display:flex;align-items:center;justify-content:center;">
+              {{car_number[1]}}
             </div>
-
-            <div style="border:1px solid #E2E2E2;width:1rem;height:1rem;margin-left:0.05rem;">
-              <input @keyup="inputKey($event, 2)" type="number" v-model="car_number[2]" ref="input2" style="width:100%;height:100%;border: medium;text-align:center;font-size:0.4rem;" maxlength="1">
+            <div @click="showKeyboard(2)" :style="{borderColor:inputIndex==2 ? 'red':'#E2E2E2'}" style="border:1px solid #E2E2E2;width:1rem;height:1rem;font-size:0.4rem;display:flex;align-items:center;justify-content:center;">
+              {{car_number[2]}}
             </div>
-            <div style="border:1px solid #E2E2E2;width:1rem;height:1rem;margin-left:0.05rem;">
-              <input @keyup="inputKey($event, 3)" type="number" v-model="car_number[3]" ref="input3" style="width:100%;height:100%;border: medium;text-align:center;font-size:0.4rem;" maxlength="1">
+            <div @click="showKeyboard(3)" :style="{borderColor:inputIndex==3 ? 'red':'#E2E2E2'}" style="border:1px solid #E2E2E2;width:1rem;height:1rem;font-size:0.4rem;display:flex;align-items:center;justify-content:center;">
+              {{car_number[3]}}
             </div>
-            <div style="border:1px solid #E2E2E2;width:1rem;height:1rem;margin-left:0.05rem;">
-              <input @keyup="inputKey($event, 4)" type="number" v-model="car_number[4]" ref="input4" style="width:100%;height:100%;border: medium;text-align:center;font-size:0.4rem;" maxlength="1">
+            <div @click="showKeyboard(4)" :style="{borderColor:inputIndex==4 ? 'red':'#E2E2E2'}" style="border:1px solid #E2E2E2;width:1rem;height:1rem;font-size:0.4rem;display:flex;align-items:center;justify-content:center;">
+              {{car_number[4]}}
             </div>
-            <div style="border:1px solid #E2E2E2;width:1rem;height:1rem;margin-left:0.05rem;">
-              <input @keyup="inputKey($event, 5)" type="number" v-model="car_number[5]" ref="input5" style="width:100%;height:100%;border: medium;text-align:center;font-size:0.4rem;" maxlength="1">
+            <div @click="showKeyboard(5)" :style="{borderColor:inputIndex==5 ? 'red':'#E2E2E2'}" style="border:1px solid #E2E2E2;width:1rem;height:1rem;font-size:0.4rem;display:flex;align-items:center;justify-content:center;">
+              {{car_number[5]}}
             </div>
-            <div style="border:1px solid #E2E2E2;width:1rem;height:1rem;margin-left:0.05rem;">
-              <input @keyup="inputKey($event, 6)" type="number" v-model="car_number[6]" ref="input6" style="width:100%;height:100%;border: medium;text-align:center;font-size:0.4rem;" maxlength="1">
+            <div @click="showKeyboard(6)" :style="{borderColor:inputIndex==6 ? 'red':'#E2E2E2'}" style="border:1px solid #E2E2E2;width:1rem;height:1rem;font-size:0.4rem;display:flex;align-items:center;justify-content:center;">
+              {{car_number[6]}}
             </div>
-            <div style="border:1px solid #03C4A7;width:1rem;height:1rem;margin-left:0.05rem;">
-              <input @keyup="inputKey($event, 7)" type="number" v-model="car_number[7]" ref="input7" style="width:100%;height:100%;border: medium;text-align:center;font-size:0.4rem;" placeholder="新能源" maxlength="1">
+            <div @click="showKeyboard(7)" :style="{borderColor:inputIndex==7 ? 'red':'green'}" style="border:1px solid #E2E2E2;width:1rem;height:1rem;font-size:0.4rem;display:flex;align-items:center;justify-content:center;">
+              {{car_number[7]}}
             </div>
         </div>
 
@@ -90,9 +89,9 @@
       </router-link>
 
       <div v-transfer-dom>
-        <popup v-model="popup" position="top" :popup-style="{backgroundColor:'#fff', marginTop:'0px'}" :is-transparent="true">
-          <div class="char-line" v-for="o in charList">
-            <div v-for="p in o" @click="inputChar">{{p}}</div>
+        <popup v-model="popupKeyboard" position="top" :popup-style="{backgroundColor:'#fff', marginTop:'3rem'}" :is-transparent="true">
+          <div class="char-line" v-for="o in keyboard[car_number_type[inputIndex]]">
+            <div v-for="p in o" @click="touchKeyboard">{{p}}</div>
           </div>
         </popup>
       </div>
@@ -111,34 +110,55 @@ export default {
   },
   data () {
     return {
-      popup: false,
       car_number: [],
-      charList: [
-        ['冀', '豫', '云', '辽'], ['黑', '湘', '皖', '鲁'],
-        ['新', '苏', '浙', '赣'], [ '鄂', '桂', '甘', '晋'],
-        ['蒙', '陕', '吉', '闽'], [ '贵', '粤', '川', '青'],
-        ['藏', '琼', '宁', '渝'], [ '京', '津', '沪'],
-      ]
+      car_number_type: ['1','2','3','3','3','3','3','3'],
+      keyboard: {
+        '1': [
+          ['冀', '豫', '云', '辽'], ['黑', '湘', '皖', '鲁'],
+          ['新', '苏', '浙', '赣'], [ '鄂', '桂', '甘', '晋'],
+          ['蒙', '陕', '吉', '闽'], [ '贵', '粤', '川', '青'],
+          ['藏', '琼', '宁', '渝'], [ '京', '津', '沪'],
+        ],
+        '2': [
+          ['A', 'B', 'C', 'D', 'E'], ['F', 'G', 'H', 'I', 'J'],
+          ['K', 'L', 'M', 'N', 'O'], ['P', 'Q', 'R', 'S', 'T'],
+          ['U', 'V', 'W', 'X', 'Y'], ['Z'],
+        ],
+        '3': [
+          ['1', '2', '3', '4', '5'], ['6', '7', '8', '9', '0'],
+          ['A', 'B', 'C', 'D', 'E'], ['F', 'G', 'H', 'I', 'J'],
+          ['K', 'L', 'M', 'N', 'O'], ['P', 'Q', 'R', 'S', 'T'],
+          ['U', 'V', 'W', 'X', 'Y'], ['Z', '删除', '关闭'],
+        ]
+      },
+      popupKeyboard: false,
+      keyboardType:'',
+      inputIndex: '',
     }
   },
   methods: {
-    inputChar({target}) {
-      this.car_number[0] = _.trim(target.innerText)
-      this.popup = false;
-      this.$refs['input1'].focus();
+    showKeyboard(index){
+      this.inputIndex = index;
+      this.popupKeyboard = true;
     },
-    inputKey({keyCode}, index) {
-      if(keyCode == 8){
-        this.car_number[index] = '';
-
-        if(index == 1) {
-          this.popup = true;
-        }else{
-          this.$refs[`input${index-1}`].focus()
+    touchKeyboard({target}) {
+      const value = _.trim(target.innerText);
+      let car_number = [
+        ...this.car_number
+      ];
+      if(value == '删除'){
+        car_number[this.inputIndex] = '';
+        this.popupKeyboard = false;
+      }else if(value == '关闭'){
+        this.popupKeyboard = false;
+      }else{
+        car_number[this.inputIndex] = value;
+        this.inputIndex ++;
+        if(this.inputIndex > 7){
+          this.popupKeyboard = false;
         }
-      } else if(index < 7) {
-        this.$refs[`input${index+1}`].focus()
       }
+      this.car_number = car_number;
     },
   }
 }
