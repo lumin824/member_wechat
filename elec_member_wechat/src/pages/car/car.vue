@@ -7,30 +7,30 @@
         </div>
         <div style="display:flex;padding:0.2rem;margin:0.2rem;">
 
-            <div style="border:1px solid #E2E2E2;width:1rem;height:1rem;" id="div1">
-              <input @focus="popup=true" readonly :value="car_number[0]" ref="input0" style="width:100%;height:100%;border: medium;text-align:center;" maxlength="1" autofocus="autofocus">
+            <div @click="popup=true" style="border:1px solid #E2E2E2;width:1rem;height:1rem;font-size:0.4rem;display:flex;align-items:center;justify-content:center;">
+              {{car_number[0]}}
             </div>
             <div style="border:1px solid #E2E2E2;width:1rem;height:1rem;border-left:0.02rem dashed #E2E2E2;" id="div2">
-              <input @keyup="inputKey($event, 1)" type="number" v-model="car_number[1]" ref="input1" style="width:100%;height:100%;border: medium;text-align:center;font-size:0.3rem;" maxlength="1">
+              <input @keyup="inputKey($event, 1)" type="number" v-model="car_number[1]" ref="input1" style="width:100%;height:100%;border: medium;text-align:center;font-size:0.4rem;" maxlength="1">
             </div>
 
             <div style="border:1px solid #E2E2E2;width:1rem;height:1rem;margin-left:0.05rem;">
-              <input @keyup="inputKey($event, 2)" type="number" v-model="car_number[2]" ref="input2" style="width:100%;height:100%;border: medium;text-align:center;font-size:0.3rem;" maxlength="1">
+              <input @keyup="inputKey($event, 2)" type="number" v-model="car_number[2]" ref="input2" style="width:100%;height:100%;border: medium;text-align:center;font-size:0.4rem;" maxlength="1">
             </div>
             <div style="border:1px solid #E2E2E2;width:1rem;height:1rem;margin-left:0.05rem;">
-              <input @keyup="inputKey($event, 3)" type="number" v-model="car_number[3]" ref="input3" style="width:100%;height:100%;border: medium;text-align:center;font-size:0.3rem;" maxlength="1">
+              <input @keyup="inputKey($event, 3)" type="number" v-model="car_number[3]" ref="input3" style="width:100%;height:100%;border: medium;text-align:center;font-size:0.4rem;" maxlength="1">
             </div>
             <div style="border:1px solid #E2E2E2;width:1rem;height:1rem;margin-left:0.05rem;">
-              <input @keyup="inputKey($event, 4)" type="number" v-model="car_number[4]" ref="input4" style="width:100%;height:100%;border: medium;text-align:center;font-size:0.3rem;" maxlength="1">
+              <input @keyup="inputKey($event, 4)" type="number" v-model="car_number[4]" ref="input4" style="width:100%;height:100%;border: medium;text-align:center;font-size:0.4rem;" maxlength="1">
             </div>
             <div style="border:1px solid #E2E2E2;width:1rem;height:1rem;margin-left:0.05rem;">
-              <input @keyup="inputKey($event, 5)" type="number" v-model="car_number[5]" ref="input5" style="width:100%;height:100%;border: medium;text-align:center;font-size:0.3rem;" maxlength="1">
+              <input @keyup="inputKey($event, 5)" type="number" v-model="car_number[5]" ref="input5" style="width:100%;height:100%;border: medium;text-align:center;font-size:0.4rem;" maxlength="1">
             </div>
             <div style="border:1px solid #E2E2E2;width:1rem;height:1rem;margin-left:0.05rem;">
-              <input @keyup="inputKey($event, 6)" type="number" v-model="car_number[6]" ref="input6"  style="width:100%;height:100%;border: medium;text-align:center;font-size:0.3rem;" maxlength="1">
+              <input @keyup="inputKey($event, 6)" type="number" v-model="car_number[6]" ref="input6" style="width:100%;height:100%;border: medium;text-align:center;font-size:0.4rem;" maxlength="1">
             </div>
             <div style="border:1px solid #03C4A7;width:1rem;height:1rem;margin-left:0.05rem;">
-              <input @keyup="inputKey($event, 7)" type="number" v-model="car_number[7]" ref="input7" style="width:100%;height:100%;border: medium;text-align:center;font-size:0.3rem;" placeholder="新能源" maxlength="1">
+              <input @keyup="inputKey($event, 7)" type="number" v-model="car_number[7]" ref="input7" style="width:100%;height:100%;border: medium;text-align:center;font-size:0.4rem;" placeholder="新能源" maxlength="1">
             </div>
         </div>
 
@@ -130,7 +130,12 @@ export default {
     inputKey({keyCode}, index) {
       if(keyCode == 8){
         this.car_number[index] = '';
-        this.$refs[`input${index-1}`].focus()
+
+        if(index == 1) {
+          this.popup = true;
+        }else{
+          this.$refs[`input${index-1}`].focus()
+        }
       } else if(index < 7) {
         this.$refs[`input${index+1}`].focus()
       }
