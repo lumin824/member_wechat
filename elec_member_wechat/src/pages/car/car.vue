@@ -111,7 +111,7 @@ export default {
   data () {
     return {
       car_number: [],
-      car_number_type: ['1','2','3','3','3','3','3','3'],
+      car_number_type: ['1','2','3','3','3','3','3','4'],
       keyboard: {
         '1': [
           ['冀', '豫', '云', '辽'], ['黑', '湘', '皖', '鲁'],
@@ -122,17 +122,23 @@ export default {
         '2': [
           ['A', 'B', 'C', 'D', 'E'], ['F', 'G', 'H', 'I', 'J'],
           ['K', 'L', 'M', 'N', 'O'], ['P', 'Q', 'R', 'S', 'T'],
-          ['U', 'V', 'W', 'X', 'Y'], ['Z'],
+          ['U', 'V', 'W', 'X', 'Y'], ['Z', '后退'],
         ],
         '3': [
           ['1', '2', '3', '4', '5'], ['6', '7', '8', '9', '0'],
           ['A', 'B', 'C', 'D', 'E'], ['F', 'G', 'H', 'I', 'J'],
           ['K', 'L', 'M', 'N', 'O'], ['P', 'Q', 'R', 'S', 'T'],
-          ['U', 'V', 'W', 'X', 'Y'], ['Z', '删除', '关闭'],
+          ['U', 'V', 'W', 'X', 'Y'], ['Z', '后退', '关闭'],
+        ],
+        '4': [
+          ['1', '2', '3', '4', '5'], ['6', '7', '8', '9', '0'],
+          ['A', 'B', 'C', 'D', 'E'], ['F', 'G', 'H', 'I', 'J'],
+          ['K', 'L', 'M', 'N', 'O'], ['P', 'Q', 'R', 'S', 'T'],
+          ['U', 'V', 'W', 'X', 'Y'], ['Z', '后退', '删除', '关闭'],
         ]
       },
       popupKeyboard: true,
-      inputIndex: 1,
+      inputIndex: 0,
     }
   },
   methods: {
@@ -148,6 +154,9 @@ export default {
       if(value == '删除'){
         car_number[this.inputIndex] = '';
         this.popupKeyboard = false;
+      }else if(value == '后退'){
+        car_number[this.inputIndex] = '';
+        this.inputIndex --;
       }else if(value == '关闭'){
         this.popupKeyboard = false;
       }else{
