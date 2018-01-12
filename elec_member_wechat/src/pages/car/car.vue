@@ -7,28 +7,28 @@
         </div>
         <div style="display:flex;padding:0.2rem;margin:0.2rem;">
 
-            <div @click="showKeyboard(0)" :style="{borderColor:inputIndex==0 ? 'red':'#E2E2E2'}" style="border:1px solid #E2E2E2;width:1rem;height:1rem;font-size:0.4rem;display:flex;align-items:center;justify-content:center;">
+            <div @click="showKeyboard(0)" :style="{borderColor:inputIndex==0 && popupKeyboard ? 'red':'#E2E2E2'}" style="border:1px solid #E2E2E2;width:1rem;height:1rem;font-size:0.4rem;display:flex;align-items:center;justify-content:center;">
               {{car_number[0]}}
             </div>
-            <div @click="showKeyboard(1)" :style="{borderColor:inputIndex==1 ? 'red':'#E2E2E2'}" style="border:1px solid #E2E2E2;width:1rem;height:1rem;font-size:0.4rem;display:flex;align-items:center;justify-content:center;">
+            <div @click="showKeyboard(1)" :style="{borderColor:inputIndex==1 && popupKeyboard ? 'red':'#E2E2E2'}" style="border:1px solid #E2E2E2;width:1rem;height:1rem;font-size:0.4rem;display:flex;align-items:center;justify-content:center;">
               {{car_number[1]}}
             </div>
-            <div @click="showKeyboard(2)" :style="{borderColor:inputIndex==2 ? 'red':'#E2E2E2'}" style="border:1px solid #E2E2E2;width:1rem;height:1rem;font-size:0.4rem;display:flex;align-items:center;justify-content:center;">
+            <div @click="showKeyboard(2)" :style="{borderColor:inputIndex==2 && popupKeyboard ? 'red':'#E2E2E2'}" style="border:1px solid #E2E2E2;width:1rem;height:1rem;font-size:0.4rem;display:flex;align-items:center;justify-content:center;">
               {{car_number[2]}}
             </div>
-            <div @click="showKeyboard(3)" :style="{borderColor:inputIndex==3 ? 'red':'#E2E2E2'}" style="border:1px solid #E2E2E2;width:1rem;height:1rem;font-size:0.4rem;display:flex;align-items:center;justify-content:center;">
+            <div @click="showKeyboard(3)" :style="{borderColor:inputIndex==3 && popupKeyboard ? 'red':'#E2E2E2'}" style="border:1px solid #E2E2E2;width:1rem;height:1rem;font-size:0.4rem;display:flex;align-items:center;justify-content:center;">
               {{car_number[3]}}
             </div>
-            <div @click="showKeyboard(4)" :style="{borderColor:inputIndex==4 ? 'red':'#E2E2E2'}" style="border:1px solid #E2E2E2;width:1rem;height:1rem;font-size:0.4rem;display:flex;align-items:center;justify-content:center;">
+            <div @click="showKeyboard(4)" :style="{borderColor:inputIndex==4 && popupKeyboard ? 'red':'#E2E2E2'}" style="border:1px solid #E2E2E2;width:1rem;height:1rem;font-size:0.4rem;display:flex;align-items:center;justify-content:center;">
               {{car_number[4]}}
             </div>
-            <div @click="showKeyboard(5)" :style="{borderColor:inputIndex==5 ? 'red':'#E2E2E2'}" style="border:1px solid #E2E2E2;width:1rem;height:1rem;font-size:0.4rem;display:flex;align-items:center;justify-content:center;">
+            <div @click="showKeyboard(5)" :style="{borderColor:inputIndex==5 && popupKeyboard ? 'red':'#E2E2E2'}" style="border:1px solid #E2E2E2;width:1rem;height:1rem;font-size:0.4rem;display:flex;align-items:center;justify-content:center;">
               {{car_number[5]}}
             </div>
-            <div @click="showKeyboard(6)" :style="{borderColor:inputIndex==6 ? 'red':'#E2E2E2'}" style="border:1px solid #E2E2E2;width:1rem;height:1rem;font-size:0.4rem;display:flex;align-items:center;justify-content:center;">
+            <div @click="showKeyboard(6)" :style="{borderColor:inputIndex==6 && popupKeyboard ? 'red':'#E2E2E2'}" style="border:1px solid #E2E2E2;width:1rem;height:1rem;font-size:0.4rem;display:flex;align-items:center;justify-content:center;">
               {{car_number[6]}}
             </div>
-            <div @click="showKeyboard(7)" :style="{borderColor:inputIndex==7 ? 'red':'green'}" style="border:1px solid #E2E2E2;width:1rem;height:1rem;font-size:0.4rem;display:flex;align-items:center;justify-content:center;">
+            <div @click="showKeyboard(7)" :style="{borderColor:inputIndex==7 && popupKeyboard ? 'red':'green'}" style="border:1px solid #E2E2E2;width:1rem;height:1rem;font-size:0.4rem;display:flex;align-items:center;justify-content:center;">
               {{car_number[7]}}
             </div>
         </div>
@@ -131,9 +131,8 @@ export default {
           ['U', 'V', 'W', 'X', 'Y'], ['Z', '删除', '关闭'],
         ]
       },
-      popupKeyboard: false,
-      keyboardType:'',
-      inputIndex: '',
+      popupKeyboard: true,
+      inputIndex: 1,
     }
   },
   methods: {
