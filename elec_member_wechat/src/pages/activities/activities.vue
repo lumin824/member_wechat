@@ -51,7 +51,7 @@ export  default {
     document.title = '我的活动'
 
     this.list = (await this.$http.post('/api/activity', {
-      mallId, memberId: this.member_id
+      mallId, memberId: this.member_id, page:1, size:200
     })).data
 
     // const list = await this.$http.post('/api/activity')
