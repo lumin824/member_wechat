@@ -35,20 +35,38 @@ export default {
   },
   async mounted(){
     document.title = '小票核销'
-    const { id } = this.$route.query;
-    try{
-      await this.$http.get(`/api/member/verify?memberId=${this.member_id}&crlId=${id}`)
-      this.statusName = '核销成功'
-      this.statusIcon = 'success'
+    const { id, type='verify' } = this.$route.query;
 
-    }catch(e){
-      if(e.response){
-        this.statusName = e.response.data.content
-      }else{
-        this.statusName = e.message
+    if(type == 'verify'){
+      try{
+        await this.$http.get(`/api/member/verify?memberId=${this.member_id}&crlId=${id}`)
+        this.statusName = '核销成功'
+        this.statusIcon = 'success'
+
+      }catch(e){
+        if(e.response){
+          this.statusName = e.response.data.content
+        }else{
+          this.statusName = e.message
+        }
+        this.statusIcon = 'warn'
       }
-      this.statusIcon = 'warn'
+    } else if(type == 'activate') {
+      try{
+        await this.$http.get(`/api/member/activate?memberId=${this.member_id}&crlId=${id}&mallId=${mallId}`)
+        this.statusName = '激活成功'
+        this.statusIcon = 'success'
+
+      }catch(e){
+        if(e.response){
+          this.statusName = e.response.data.content
+        }else{
+          this.statusName = e.message
+        }
+        this.statusIcon = 'warn'
+      }
     }
+
   }
 }
 </script>

@@ -80,9 +80,7 @@ export default {
       const { coupon_type: couponType, receive_method: receivedMethod, required_points: requiredPoints} = this.item;
 
       const doReceive = async () => {
-        const { data } = await this.$http.post(`/api/member/${this.member_id}/receiveCoupon/${id}`, {
-          couponType, mallId, receivedMethod, requiredPoints
-        })
+        const { data } = await this.$http.get(`/api/member/${this.member_id}/receiveCoupon/${id}`)
 
         const resultMap = {
           '7': '领取失败',

@@ -25,7 +25,7 @@
       <div style="display:flex;justify-content:center;">
         <vue-qr :dotScale="1" :text="qr" height="200" width="200"></vue-qr>
       </div>
-
+      {{qr}}
     </div>
 
 
@@ -62,11 +62,15 @@ export default {
       const m = {
         '0': '未激活', '1':'已激活', '2':'已核销'
       }
-      return m[this.item.coupon_status] || this.item.coupon_status;
+      return m[coupon_status] || coupon_status;
     },
     qr(){
       const { id } = this.$route.query;
-      return `${location.origin}/verify?id=${id}`
+      const { past, coupon_status } = this.item;
+      if(coupon_status != 0 || past == 1 )
+        return `${location.origin}/verify?id=${id}`
+
+      return `${location.origin}/verify?id=${id}&type=activate`;
     },
     ...mapState({
       member_id: state => state.member_id,
