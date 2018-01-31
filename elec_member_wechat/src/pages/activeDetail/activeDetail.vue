@@ -120,6 +120,8 @@ export default {
     const { id } = this.$route.query;
 
     try{
+      alert(this.member_id);
+      alert(`/api/activity/${id}?memberId=${this.member_id}`)
       this.item = (await this.$http.get(`/api/activity/${id}?memberId=${this.member_id}`)).data
     }catch(e){
       alert(typeof(e))
