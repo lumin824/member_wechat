@@ -118,7 +118,14 @@ export default {
     document.title = '活动详情';
     alert(2)
     const { id } = this.$route.query;
-    this.item = (await this.$http.get(`/api/activity/${id}?memberId=${this.member_id}`)).data
+
+    try{
+      this.item = (await this.$http.get(`/api/activity/${id}?memberId=${this.member_id}`)).data
+    }catch(e){
+      alert(typeof(e))
+      alert(e.message)
+    }
+
     alert(1)
     try {
       this.enableSignInCode = (await this.$http.get(`/api/member/${this.member_id}/enableSignIn/${id}?mallId=${mallId}`)).data
