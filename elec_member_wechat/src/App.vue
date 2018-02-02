@@ -14,32 +14,30 @@
 </template>
 
 <script>
-import  animate from 'animate.css'
-import  member from './pages/member/member.vue'
-import  {getCookie} from './util/util'
+import animate from 'animate.css';
+import global from '@/components/common/Global.vue'
+const { mallId } = global;
+import {
+  mapState,
+} from 'vuex';
+
 export default {
-    data(){
-       return {
-         title:'',
-         closeButton:false,
-       }
-    },
-    components:{
-    /*   'm-header':Header,
-       'm-info':MyInfo,
-       'm-nav':MemberNav,
-       'm-user':UserIndex,
-       'r-index':RegisterIndex,
-       'r-success':RegisterSuccess,
-       'r-data':RegisterData,*/
-        member
-    },
- methods:{
-   /*  getTitle(title,closeButton){
-       this.title=title;
-       this.closeButton=closeButton
-     }*/
- },
+  data(){
+     return {
+       title:'',
+       closeButton:false,
+     }
+  },
+  computed: {
+    ...mapState({
+      member_id: state => state.member_id,
+    }),
+  },
+  async mounted() {
+    if(this.member_id){
+      this.$http.post('/api/member/visit', { mallId, memberId: this.member_id})
+    }
+  }
 }
 </script>
 <style lang="less">
