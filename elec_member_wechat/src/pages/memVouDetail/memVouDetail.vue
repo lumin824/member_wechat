@@ -25,7 +25,6 @@
       <div style="display:flex;justify-content:center;">
         <vue-qr :dotScale="1" :text="qr" height="200" width="200"></vue-qr>
       </div>
-      {{qr}}
     </div>
 
 
