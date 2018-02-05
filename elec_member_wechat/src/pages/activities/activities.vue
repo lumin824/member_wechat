@@ -1,8 +1,8 @@
 <template>
   <div>
     <ul style="background-color:#fff;font-size:0.4rem;">
-      <router-link v-for="o in list" key="id" :to="{path:'/activeDetail', query:{id:o.activity_id}}" tag="li" style="padding-bottom:0.25rem;border-bottom:1px solid #ddd;">
-        <figure :style="{backgroundImage:`url(${o.picture})`}" style="height:4rem;background-size:cover;background-repeat:no-repeat;background-position:center;">
+      <router-link v-for="o in list" key="id" :to="{path:'/activeDetail', query:{id:o.activity_id}}" tag="li" style="padding:0.25rem;border-bottom:1px solid #ddd;">
+        <figure :style="{backgroundImage:`url(${o.picture})`}" style="height:5rem;background-size:cover;background-repeat:no-repeat;background-position:center;">
           <figcaption>
             <div style="flex:1;"></div>
             <div style="background-color: rgba(0,0,0,0.6);color:#FFF; padding: 0.125rem;">{{o.title}}</div>
@@ -71,12 +71,8 @@ export  default {
   }
   .time{
     display: flex;
-    width: 90%;
-    margin-left: 5%;
     justify-content: space-between;
     margin-top: 0.1rem;
-
-
   }
   figure img{
     width: 100%;
