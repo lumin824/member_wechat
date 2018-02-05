@@ -11,7 +11,7 @@
         <div style="width:116px;height:96px;display:flex;align-items:center;justify-content:center;">
           <img :src="item.picture" style="max-width:100px;max-height:80px;">
         </div>
-        <div style="display:flex;color:#777879;font-size:0.7em;flex:1;">
+        <div style="display:flex;color:#777879;font-size:0.3rem;flex:1;">
           <div style="display:flex;flex-direction:column;">
             <div style="flex:1;border-bottom:1px solid #ddd;display:flex;align-items:center;">活动时间</div>
             <div style="flex:1;border-bottom:1px solid #ddd;display:flex;align-items:center;">已领取</div>
@@ -27,7 +27,7 @@
       </div>
     </div>
 
-    <div v-html="item.intro" style="color:#777879;font-size:0.8em;padding:15px;line-height:2em;">
+    <div v-html="item.intro" style="color:#777879;font-size:0.4rem;padding:15px;line-height:2em;">
     </div>
 
     <div :class="{active:item.limitPromptCode==6}" @click="item.limitPromptCode==6 && receiveCoupon()" style="position:fixed;bottom:0;left:0;right:0;background-color:#939393;color:#fff;text-align:center;padding:15px 0;">
