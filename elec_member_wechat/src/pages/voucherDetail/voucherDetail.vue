@@ -1,17 +1,17 @@
 <template>
   <div>
-    <div style="text-align:center;margin:20px 0;">{{item.coupon_name}}</div>
+    <div style="text-align:center;margin:20px 0;font-size:0.4rem;">{{item.coupon_name}}</div>
     <div style="border:1px solid #ddd;background-color:#fff;margin:0 10px;">
       <div style="display:flex;align-items:center;">
-        <div style="border-left:2px solid #000;height:8px;"> </div>
-        <div style="flex:1;margin:5px 10px;">券详情</div>
+        <div style="border-left:2px solid #000;height:0.5rem;"> </div>
+        <div style="flex:1;margin:5px 10px;font-size:0.4rem;">券详情</div>
       </div>
 
       <div style="display:flex;">
         <div style="width:116px;height:96px;display:flex;align-items:center;justify-content:center;">
           <img :src="item.picture" style="max-width:100px;max-height:80px;">
         </div>
-        <div style="display:flex;color:#777879;font-size:0.3rem;flex:1;">
+        <div style="display:flex;color:#777879;font-size:0.35rem;flex:1;">
           <div style="display:flex;flex-direction:column;">
             <div style="flex:1;border-bottom:1px solid #ddd;display:flex;align-items:center;">活动时间</div>
             <div style="flex:1;border-bottom:1px solid #ddd;display:flex;align-items:center;">已领取</div>
@@ -30,7 +30,7 @@
     <div v-html="item.intro" style="color:#777879;font-size:0.4rem;padding:15px;line-height:2em;">
     </div>
 
-    <div :class="{active:item.limitPromptCode==6}" @click="item.limitPromptCode==6 && receiveCoupon()" style="position:fixed;bottom:0;left:0;right:0;background-color:#939393;color:#fff;text-align:center;padding:15px 0;">
+    <div :class="{active:item.limitPromptCode==6}" @click="item.limitPromptCode==6 && receiveCoupon()" style="font-size:0.4rem;position:fixed;bottom:0;left:0;right:0;background-color:#939393;color:#fff;text-align:center;padding:0.2rem 0;">
       {{limitPromptCode}}
     </div>
   </div>

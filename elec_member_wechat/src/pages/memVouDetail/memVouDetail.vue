@@ -3,8 +3,8 @@
 
     <div style="background-color:#fff;margin:10px;">
       <div style="display:flex;align-items:center;">
-        <div style="border-left:2px solid #000;height:8px;"> </div>
-        <div style="flex:1;margin:5px 10px;">券详情</div>
+        <div style="border-left:2px solid #000;height:0.5rem;"> </div>
+        <div style="flex:1;margin:5px 10px;font-size:0.4rem;">券详情</div>
       </div>
 
       <div style="display:flex;">
@@ -12,7 +12,7 @@
           <img :src="item.picture" style="width:80px;height:80px;margin:5px;">
         </div>
         <div style="flex:1;display:flex;flex-direction:column;">
-          <div style="margin-left:5px;margin-top:10px;">{{item.coupon_name}}</div>
+          <div style="margin-left:5px;margin-top:10px;font-size:0.4rem;">{{item.coupon_name}}</div>
           <div style="flex:1;display:flex;font-size:0.3rem;margin-left:5px;min-height:55px;">
             <div style="flex:1;display:flex;flex-direction:column;font-size:0.3rem;">
               <div style="flex:1;color:#78797a;border-bottom:1px solid #e1e1e1;display:flex;align-items:center;"><span style="width:45px;display:inline-block;">有效期</span>{{item.expiry_date_start | unix('YYYY-MM-DD', 'ms')}} ~ {{item.expiry_date_end | unix('YYYY-MM-DD', 'ms')}}</div>
