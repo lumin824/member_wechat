@@ -2,14 +2,14 @@
   <div>
     <div>
       <div style="margin-top:10px;background:#fff;border-top:1px solid #e1e1e1;">
-        <div style="display:flex;border-bottom:1px solid #e1e1e1;">
+        <!-- <div style="display:flex;border-bottom:1px solid #e1e1e1;">
           <div style="width:70px;padding:10px;margin-left:10px;color:#00c9b2;">对象</div>
           <div style="flex:1;padding:10px;">
             <checker v-model="form.leibie" default-item-class="demo5-item" selected-item-class="demo5-item-selected" :radio-required="true">
               <checker-item v-for="o in popupList.leibie" :value="o.id">{{o.name}}</checker-item>
             </checker>
           </div>
-        </div>
+        </div> -->
 
         <div v-if="form.leibie==1" @click="shopSelect()" style="display:flex;border-bottom:1px solid #e1e1e1;">
           <div style="width:70px;padding:10px;margin-left:10px;color:#00c9b2;">商户</div>
@@ -23,7 +23,7 @@
       <group>
         <x-textarea v-model="form.comments" :max="1000" placeholder="请输入您的反馈意见（字数1000字以内）"></x-textarea>
       </group>
-      <div @click="handleSubmit" style="background-color:#00c9b2;color:#fff;padding:10px;text-align:center;margin-top:20px;margin: 20px;border-radius:5px;">注册</div>
+      <div @click="handleSubmit" style="background-color:#00c9b2;color:#fff;padding:10px;text-align:center;margin-top:20px;margin: 20px;border-radius:5px;">提交</div>
 
       <div v-transfer-dom>
         <popup v-model="popup" position="bottom" style="background-color:#fff;">
@@ -104,7 +104,7 @@ export default {
       form: {
         name:'',
         phone: '',
-        leibie:0,
+        leibie:1,
         department:0,
         shopId:null,
         shopName:null,
