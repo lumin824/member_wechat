@@ -12,11 +12,12 @@ import 'mint-ui/lib/style.css'
 
 import 'lib-flexible/flexible';
 
-import { ConfirmPlugin, DatetimePlugin, ToastPlugin, LoadingPlugin } from 'vux'
+import { ConfirmPlugin, DatetimePlugin, ToastPlugin, LoadingPlugin, AlertPlugin } from 'vux'
 Vue.use(ConfirmPlugin)
 Vue.use(DatetimePlugin)
 Vue.use(ToastPlugin)
 Vue.use(LoadingPlugin)
+Vue.use(AlertPlugin)
 
 Vue.prototype.$http = axios
 Vue.use(Mint);

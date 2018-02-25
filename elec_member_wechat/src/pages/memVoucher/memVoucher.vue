@@ -96,6 +96,15 @@ export default {
       this.list = [];
     }
 
+    const list_alert = _.filter(this.list, o => !o.past && moment.unix(o.expiry_date_end / 1000).diff(moment(), 'd') <= 3)
+
+    if(list_alert.length){
+      this.$vux.alert.show({
+        title: '到期提醒',
+        content: `您有${list_alert.length}张优惠券即将到期`,
+      })
+    }
+
     try{
       this.list2 = (await this.$http.post(`/api/member/${this.member_id}/couponList`, {
         couponStatus: 2, mallId, page:1, size:200

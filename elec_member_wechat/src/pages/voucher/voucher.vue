@@ -85,7 +85,7 @@ export  default {
       popup: false,
       list: [],
       type: undefined,
-      typeList: [{id: undefined, name:'全部'}, {id:0, name:'积分兑换'}, {id:2, name:'免费领取'}],
+      typeList: [{id: undefined, name:'全部'}, {id:'0', name:'积分兑换'}, {id:'2', name:'免费领取'}],
     }
   },
   computed: {
@@ -123,6 +123,8 @@ export  default {
     }
   },
   async mounted(){
+    const { type } = this.$route.query;
+    this.type = type;
     document.title = '优惠券'
     this.reload()
   }
