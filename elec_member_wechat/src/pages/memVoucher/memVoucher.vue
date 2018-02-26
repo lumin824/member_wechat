@@ -86,8 +86,7 @@ export default {
   async mounted(){
     const { type = 'couponList' } = this.$route.query;
 
-    console.log(type)
-    document.title = '我的优惠券'
+    document.title = type == 'prizes' ? '我的奖品' : '我的优惠券'
 
     try{
       let list = (await this.$http.post(`/api/member/${this.member_id}/${type}`, {
