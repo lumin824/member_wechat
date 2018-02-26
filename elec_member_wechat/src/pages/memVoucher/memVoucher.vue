@@ -84,9 +84,13 @@ export default {
     }
   },
   async mounted(){
+    const { type = 'couponList' } = this.$route.query;
+
+    console.log(type)
     document.title = '我的优惠券'
+
     try{
-      let list = (await this.$http.post(`/api/member/${this.member_id}/couponList`, {
+      let list = (await this.$http.post(`/api/member/${this.member_id}/${type}`, {
         couponStatus: 1, mallId, page:1, size:200
       })).data
 
@@ -106,7 +110,7 @@ export default {
     }
 
     try{
-      this.list2 = (await this.$http.post(`/api/member/${this.member_id}/couponList`, {
+      this.list2 = (await this.$http.post(`/api/member/${this.member_id}/${type}`, {
         couponStatus: 2, mallId, page:1, size:200
       })).data
 
