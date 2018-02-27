@@ -31,7 +31,7 @@
       <div v-html="item.intro" style="color:#777879;font-size:0.3rem;padding:0.4rem;line-height:0.6rem;margin-bottom:1rem;">
       </div>
 
-      <div :class="{active:item.limitPromptCode==5}" @click="item.limitPromptCode==5 && signup()" style="position:fixed;bottom:0;left:0;right:0;background-color:#939393;color:#fff;text-align:center;padding:0.3rem 0;font-size:0.45rem;">
+      <div :class="{active:item.limitPromptCode==5}" @click="item.limitPromptCode==5 && signup()" style="font-size:0.4rem;position:fixed;bottom:0;left:0;right:0;background-color:#939393;color:#fff;text-align:center;padding:0.2rem 0;">
         {{limitPromptCode}}
       </div>
     </div>

@@ -11,8 +11,8 @@
         <scroller lock-x>
           <div>
             <router-link :class="{gray:o.past}" :to="{path:'/memVouDetail', query:{id:o.crl_id}}" style="display:flex;background-color:#fff;margin-top:1px;" key="crl_id" v-for="o in list">
-              <div style="width:70px;height:70px;display:flex;align-items:center;justify-content:center;">
-                <img :src="o.picture" style="width:64px;height:64px;">
+              <div style="width:2.5rem;height:2.5rem;display:flex;align-items:center;justify-content:center;">
+                <img :src="o.picture" style="max-width:2rem;max-height:2rem;">
               </div>
               <div style="flex:1;">
                 <div style="font-size:1em;margin-left:5px;margin-top:10px;">{{o.coupon_name}}</div>
@@ -32,8 +32,8 @@
         <scroller lock-x>
           <div class="gray">
             <router-link :to="{path:'/memVouDetail', query:{id:o.crl_id}}" style="display:flex;background-color:#fff;margin-top:1px;" key="crl_id" v-for="o in list2">
-              <div style="width:70px;height:70px;display:flex;align-items:center;justify-content:center;">
-                <img :src="o.picture" style="width:64px;height:64px;">
+              <div style="width:2.5rem;height:2.5rem;display:flex;align-items:center;justify-content:center;">
+                <img :src="o.picture" style="max-width:2rem;max-height:2rem;">
               </div>
               <div style="flex:1;">
                 <div style="font-size:1em;margin-left:5px;margin-top:10px;">{{o.coupon_name}}</div>
