@@ -10,7 +10,7 @@
         <div style="margin-top:0.5rem;">
           <router-link :to="{path:'/voucherDetail', query:{id:o.coupon_id}}" style="display:flex;background-color:#fff;margin-top:1px;" key="coupon_id" v-for="o in list">
             <div style="width:2.5rem;height:2.5rem;display:flex;align-items:center;justify-content:center;">
-              <img :src="o.picture" style="max-width:2rem;max-height:2rem;">
+              <img :src="o.picture || '/static/img/default-icon.jpg'" style="max-width:2rem;max-height:2rem;">
             </div>
             <div style="flex:1;">
               <div style="font-size:0.4rem;margin-left:0.125rem;margin-top:0.25rem;">{{o.coupon_name}}</div>

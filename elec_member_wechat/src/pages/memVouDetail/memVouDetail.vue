@@ -9,7 +9,7 @@
 
       <div style="display:flex;">
         <div style="width:2.5rem;height:2.5rem;display:flex;align-items:center;justify-content:center;">
-          <img :src="item.picture" style="max-width:2rem;max-height:2rem;">
+          <img :src="item.picture  || '/static/img/default-icon.jpg'" style="max-width:2rem;max-height:2rem;">
         </div>
         <div style="flex:1;display:flex;flex-direction:column;">
           <div style="margin-left:5px;margin-top:10px;font-size:0.4rem;">{{item.coupon_name}}</div>

@@ -30,7 +30,7 @@ import {
 } from 'vuex';
 export  default {
   components: {
-    Scroller, 
+    Scroller,
   },
   data() {
     return {
