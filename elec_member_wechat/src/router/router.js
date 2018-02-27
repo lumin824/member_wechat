@@ -70,5 +70,6 @@ export default new Router({
     { path: '/activity_sign_in', component: ()=>import('@/pages/ActivitySignIn')},
     { path: '/zhuanpan', component: ()=>import('@/pages/zhuanpan')},
     { path: '/suggest', component: ()=>import('@/pages/suggest')},
+    { path: '/suggest_list', component: () => import('@/pages/suggestList')},
   ]
 })

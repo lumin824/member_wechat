@@ -5,7 +5,7 @@
       <div>
         <div @click="choose(o)" style="display:flex;background-color:#fff;margin-top:1px;" v-for="o in list">
           <div style="width:70px;height:70px;display:flex;align-items:center;justify-content:center;">
-            <img :src="o.logo" style="width:64px;height:64px;">
+            <img :src="o.logo || '/static/img/default-icon.jpg'" style="width:64px;height:64px;">
           </div>
           <div style="flex:1;">
             <div style="font-size:1em;margin-left:5px;margin-top:10px;">{{o.shop_name}}</div>

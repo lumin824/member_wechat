@@ -11,7 +11,7 @@
           </figure>
           <div class="time" style="border:1px solied;background;">
             <div style="color:#999;">{{o.activity_time_start | unix('YYYY-MM-DD', 'ms')}} ~ {{o.activity_time_end | unix('YYYY-MM-DD', 'ms')}}</div>
-            <div style="color:#059CFF;">{{signTitle[o.sign_type]}}</div>
+            <div :style="{color:o.sign_type == '0' ? '#ff9100' : '#059cff'}">{{signTitle[o.sign_type]}}</div>
           </div>
         </router-link>
       </ul>

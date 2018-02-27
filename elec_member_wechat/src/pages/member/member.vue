@@ -86,12 +86,12 @@
           </div>
         </router-link>
 
-        <router-link to="" style="display:flex;" v-if="false" >
+        <router-link to="/suggest_list" style="display:flex;" >
           <div style="display:flex;align-items:center;">
-            <img src="static/img/record.png" style="width:0.7rem;height:0.7rem;margin:0 5rem;">
+            <img src="static/img/record.png" style="width:0.7rem;height:0.7rem;margin:0 0.5rem;">
           </div>
           <div style="flex:1;display:flex;border-top:1px solid #e1e1e1;align-items:center;padding-right:10px;">
-            <div style="flex:1;margin:0.25rem;">商户记录</div>
+            <div style="flex:1;margin:0.25rem;">投诉建议</div>
             <span class="iconfont icon-right" style="color:#797979;"></span>
           </div>
         </router-link>

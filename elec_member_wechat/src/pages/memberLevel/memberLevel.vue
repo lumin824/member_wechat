@@ -21,7 +21,7 @@
         <tr style="height:1rem;">
           <td style="border-bottom:1px solid #e1e1e1;padding-left:0.25rem;width:35%;">时间</td>
           <td style="border-bottom:1px solid #e1e1e1;width:20%;">积分</td>
-          <td style="border-bottom:1px solid #e1e1e1;">商户</td>
+          <td style="border-bottom:1px solid #e1e1e1;text-align:center;">商户</td>
         </tr>
         <tbody>
           <template v-for="o in list">

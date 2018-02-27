@@ -213,8 +213,8 @@
 </script>
 <style lang="less" scoped>
   figure img{
-    width: 0.8rem;
-    height: 0.8rem;
+    width: 2rem;
+    height: 2rem;
     margin-top: 0.5rem;
     display: inline-block;;
   }
@@ -222,6 +222,7 @@
     color: #30C3B6;
     font-weight: bold;
     font-size: 0.4rem;
+    text-align: center;
     margin-top: 0.06rem;
     margin-bottom: 0.1rem;
   }

@@ -11,7 +11,7 @@
           </div>
         </div> -->
 
-        <div v-if="form.leibie==1" @click="shopSelect()" style="display:flex;border-bottom:1px solid #e1e1e1;">
+        <div v-if="form.leibie==1" @click="shopSelect()" style="display:flex;border-bottom:1px solid #e1e1e1;font-size:0.4rem;">
           <div style="width:70px;padding:10px;margin-left:10px;color:#00c9b2;">商户</div>
           <div style="flex:1;padding:10px;">{{form.shopName}}</div>
           <div style="padding:10px;padding-left:0;width:16px;">

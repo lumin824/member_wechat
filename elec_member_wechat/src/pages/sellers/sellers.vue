@@ -4,7 +4,7 @@
        <div style="margin-top:2.5rem;">
          <router-link :to="{path:'/sell',query:{sell_id:o.shop_id}}" style="display:flex;background-color:#fff;margin-top:1px;" key="shop_id" v-for="o in list">
            <div style="width:2.2rem;height:2rem;display:flex;align-items:center;justify-content:center;">
-             <img :src="o.logo" style="max-width:2rem;max-height:1.8rem;">
+             <img :src="o.logo || '/static/img/default-icon.jpg'" style="max-width:2rem;max-height:1.8rem;">
            </div>
            <div style="flex:1;margin-right:0.25rem;padding:0.2rem;">
              <div style="display:flex;font-size:0.4rem;margin-left:0.2rem;">
