@@ -1,7 +1,8 @@
 <template>
 
     <div>
-      <img :src="item.picture" style="height:7rem;width:100%;">
+      <div :style="{backgroundImage:`url(${item.picture})`}" style="height:7rem;background-size:cover;background-repeat:no-repeat;background-position:center;">
+      </div>
 
       <div style="text-align: center; margin: 0.5rem 0px;font-size:0.6rem;">{{item.title}}</div>
 
