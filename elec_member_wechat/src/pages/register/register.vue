@@ -67,6 +67,10 @@ export default {
         this.cd = 30;
       }catch(e){
         this.$vux.toast.text('该手机号已注册')
+        this.cd = 30;
+        this.member_id = (await this.$http.get(`/api/member/m?mobile=${mobile}`)).data.member_id
+        this.vcode = '888888'
+        this.$store.commit('login', member_id)
       }
     },
 
