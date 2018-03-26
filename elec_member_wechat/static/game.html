@@ -367,11 +367,7 @@
                       percent > 100 && (percent = 100);
                       setPercent(percent - 1)
                   } if (percent >= 100 && typeof $ != 'undefined') {
-                      if (!g_config.test && g_config.isForbidShareactivity) {
-                          wx.ready(loadEnd)
-                      } else {
-                          loadEnd()
-                      }
+                      loadEnd()
                       return
                   }
                   setTimeout(arguments.callee, 10)
@@ -520,7 +516,6 @@
       "drawLimitDef":0,"scoreSet":0,"style":57,"aid":7020498,"gameId":344,"openId":"tryPlay_15801086","playerId":623160,
       "userName":"tp_15801086","headImg":"/static/zp/manImg.jpg","authVer":2,
       "scoreUnit":"分","testCMD":"","ajaxUrl":"","startTime":"2017-10-24 17:18","$startTime":1508836680000,"$endTime":1509441480000,
-      "setGameTimeInterval":10,"isDoubleGame":false,
       "awardList":[
         {"amount":0,"awardtype":2,"cashtype":2,"attention":1,"cashsite":"请填写您的兑奖地址或者门店地址","pot":0,
           "style":"一等奖","t_type":"DATE_TYPE_FIX_TIME_RANGE","cbt":1508774400000,"cet":1509465599000,
@@ -577,14 +572,11 @@
         "comcontinfo":3,"comservicephone":"","comcet":1509465599000,"conlinect":1,"ctlmt":"[8]","comattentionimg":"","comOpqrc":true,"comcashsite":"请填写您的兑奖地址或者门店地址","comAwardtype":2,"comcashtype":2,
         "comopti":"凭券联系现场工作人员兑奖","comtxn":"兑奖须知","comft":30,"comoci":false,"comoct":false,"comstl":"","comOplink":false,"comStoreType":1
       },
-      "bestRankInfo":{},"awardInfoB":"","openAwardLinkNoDraw":false,
-      "userInfo":{
-        "headImg":"/static/zp/manImg.jpg","ip":"112.11.7.72","ipProvince":"浙江省","ipCity":"嘉兴市"
-      },
-      "awardUsername":"","awardPhone":"","awardAddress":"","addressNum":"","status":0,"afterWxCard":true,
-      "haveAward":true,"showHelpGuide":false,"ipInfo":{},
-      "contactNoDraw":"[{\"name\":\"姓名\",\"key\":\"ausername\",\"isOpen\":true},{\"name\":\"联系电话\",\"key\":\"aphone\",\"isOpen\":true},{\"name\":\"联系地址\",\"key\":\"aadress\",\"isOpen\":false}]","isAOpenId":1,"linkInfoType":1,
-      "afterLinkModify":true,"shareDeep":0,"isFromZhuliShare":false,"qrCodeUrl":"https://4471202.h40.faiusr.com/2/ACgIABACGAAg_7H50AUo6smFsgEwkAM4kAM.jpg","isAngular":true,"_preview":false,
+      "awardInfoB":"",
+
+      "awardUsername":"","awardPhone":"","awardAddress":"","addressNum":"","status":0,
+      "haveAward":true,
+      "shareDeep":0,"isFromZhuliShare":false,
       "$$awardTypeInfo":{
         "def":{
           "collect":"收藏兑奖券","showcashtype":false,"showsitebox":true,"qrcode":false,"showcopy":true,"opti":"凭券联系现场工作人员兑奖","codename":"兑奖码","details":"兑奖券详情","deadline":"兑奖期限","showwxcard":true,"notice":"兑奖须知",
@@ -609,11 +601,9 @@
           "notice":"使用须知","sitetype":"none","btn":""
         }
       },
-      "areaLimitList":[],"linkInfoAll":true,"isForbidShareactivity":false,"drawType":0,"isOldZhuliGame":false,"createTime":1508836733000,"isYKY":false,
-      "awardNum":5,"openComfort":true,"theDefaultGiftImgSrc":"/static/zp/gift.png","storeId":0,"areaId":0,"ykyWXOpenId":"","ykyRelationId":"",
-      "redPacketUrl":"https://hd.faisco.cn/7020498/344/jumptoRedPacket.html?gameAppid=wx25367438c8ce0799","ishasAttentiosThisAPP":false,
+      "drawType":0,
+      "awardNum":5,"openComfort":true,"theDefaultGiftImgSrc":"/static/zp/gift.png",
       "clickTips":{"clickSrc":"/static/zp/clickView.png","pointW":"2rem","pointH":"2rem","clickW":"3.3rem","clickH":"3.65rem"},
-      "acctOpenId":"","achieveToken":"","isOldFaiImgGame":true,"urlToken":"XW6aET6TwaiHqdHecOUkgA"
     };
     // function isArray(arr){
     //     return Object.prototype.toString.call(arr) === "[object Array]";
@@ -629,20 +619,6 @@
 <script type="text/javascript">
 
 var initHG = function(){
-
-  hg.on('beforeDraw',function(_arguments){
-  	var thisInfoType = 2;
-  	if(g_config.afterLinkModify && HdGame.shouldRegInfo(thisInfoType,_arguments,this)){
-
-  		return false;
-  	}
-  	thisInfoType = 3;
-  	if(g_config.afterLinkModify && HdGame.shouldRegInfo(thisInfoType,_arguments,this)){
-
-  		return false;
-  	}
-  });
-
 
 
   hg.assets.add([
@@ -692,7 +668,7 @@ $(function(){
 HdGame.gameDomain = 'hd.faisco.cn';
 HdGame.gameDomainIgnoreStyle = 'hd.faisco.cn';
 HdGame.isReg = false;
-HdGame.initCallBack(hg,['startGame','beforeStartGame','startGamehead','home','again','jsFootEnd','showResult','changeBottomBar','showPoup','hidePoup','timeChange','beforeDraw','updateRankList','afterDraw','editBackground']); //hdgame
+HdGame.initCallBack(hg,['startGame','beforeStartGame','startGamehead','home','again','jsFootEnd','showResult','changeBottomBar','showPoup','hidePoup','timeChange','updateRankList','afterDraw','editBackground']); //hdgame
 hg.register(['setGameType','hpInit','hgLoadEnd','save','changeShow','showTabByStyle']); //hdportal
 HdGame.initEdit(hg.edit);
 hg.sound = HdGame.initSound([{"path":"/static/zp/bgmusic29H.mp3","fileName":"背景音乐.mp3","optFlag":0},{"path":"/static/zp/startDraw.mp3","fileName":"滚动音效.mp3","optFlag":2}],[{"path":"*_resRoot*/image/hlcbt/bgmusic29H.mp3","fileName":"背景音乐.mp3","optFlag":0},{"path":"*_resRoot*/image/hlcbt/startDraw.mp3","fileName":"滚动音效.mp3","optFlag":2}],null);
@@ -776,10 +752,8 @@ function parsePxToRem(px){
 </script>
 <script type="text/javascript">
 var GameArg = {
-    running : false,
     awardNum : 5,
-    openComfort : true,
-    isNew : false,
+    openComfort : true
 };
 var startStatus = true;
 (function(g){
@@ -844,13 +818,7 @@ var startStatus = true;
     var steps = [];
     steps.now = 0;
     var zhuanpanArg = null;//结果弹出层参数
-    g.setzpByAwardnum = function(awardNum,openComfort){
-        awardNum >= 0 && (g.awardNum = awardNum);
-        typeof openComfort != 'undefined' && (g.openComfort = openComfort);
-        setPriceAndStart();
-        $('.giftBox').html('');
-        updateImg();
-    };
+
     // 画一个圆角矩形
     function drawThePrice(theObject,flag){
         if(typeof theObject === "undefined" || (typeof theObject.left === "undefined" && !flag)){
@@ -893,16 +861,7 @@ var startStatus = true;
         }
         g.ctx.restore();
     }
-    function updateImg(){
-        setPriceAndStart();
-        var imgArgList = hg.edit.cache['edit-all'];
-        if(imgArgList){
-            imgArgList[14].hide = !g.openComfort;
-            for (var i = 0; i < 8; i++) {
-                imgArgList[i+6].hide = i + 1 > g.awardNum;
-            }
-        }
-    }
+
     // 设置奖项以及开始按钮的大小
     function setPriceAndStart(){
         $(".theShowerGiftBoxer .priceBox").html('');
@@ -1205,42 +1164,17 @@ var startStatus = true;
 </script>
 
 <script type="text/javascript">
-var count = 9999;
-var drawTimesLimit = 9999;
-var drawTotalLimit = 6;
-var playTimesLimit = 5;
-var playTotalLimit = 10;
-var otherPlayerInfo = {};
-var showAwardList = false;
-var informNum = 2;
-var playerAwardList = [];
-var skillSupportType = 2;
 var gameType = 0;
-var rankShowNum = 100;
-var helpType = 1;
-var addDrawTime = 1;
-var remainHelpNum = 10;
 
-PlayInfo.initData(0,0,5,5,10,false);
-
-
-HdGame._awardLinkMsg = '获奖者需填写联系电话方可查看兑奖码兑奖';
 
 HdGame.initChangePoup({
-  rankUrl        : 'hdgame_h?cmd=getRankList&aid=7020498&gameId=344&style=57&openId=tryPlay_15801086',
   awardUrl       : 'hdgame_h?cmd=getGiftList&aid=7020498&style=57',
-  getRegAwardUrl : 'hdgame_h?cmd=getRegAwardList&aid=7020498&gameId=344&style=57&openId=tryPlay_15801086',
   openId         : 'tryPlay_15801086',
-  gameId         : 344,
-  mhaveScore     : (false && gameType != 3),
-  informUrl      : 'hdgame_h?cmd=setInformNum&aid=7020498&gameId=344&openId=tryPlay_15801086',
-  hasReport      : false,
-  afterWxCard    : true
+  gameId         : 344
 });
 
 HdGame.resulePoup.init({
   drawType  : 0,
-  checkRegUrl:'hdgame_h?cmd=checkRegNum&aid=7020498&gameId=344&openId=tryPlay_15801086',
   regUrl    : 'hdgame_h?cmd=setPlayerReg&aid=7020498&gameId=344&openId=tryPlay_15801086&flag1=true',
   home      : typeof home !== 'undefined' ? home : null,
   again     : typeof gameRestart !== 'undefined' ? gameRestart : null,
@@ -1248,8 +1182,9 @@ HdGame.resulePoup.init({
 });
 
 HdGame.initJsFoot({
-  "rulesortstr":"abcde","drawType":0,"hostName":"","hostLink":"http://","menuLink":"","fromFav":"","openAwardExp":true,"isHideFxts":true,
-  "supportUrl":"http://mp.weixin.qq.com/s?__biz=MjM5MTk5MjI3OA==&mid=209854000&idx=1&sn=82241d924839270d3ea820ad2d56c01b#rd","isAdverQRCode":false,
+  "rulesortstr":"abcde","drawType":0,"hostName":"",
+  "hostLink":"http://","menuLink":"",
+  "fromFav":"","openAwardExp":true,"isHideFxts":true,
   "skillSupport":"凡科互动","showJoinNum":true,"showRedDot":false,"showMDRedDot":false,"showAwardBtn":true,"isSelAwardLine":false,"showSkillSup":true,"menuStyle":3,
   "soundIcon_l":"0.75rem","soundIcon_t":"1rem","awardImage":"/static/zp/gift.png",
   "titleImg_path_def":"/static/zp/title.png",
@@ -1259,7 +1194,6 @@ HdGame.initJsFoot({
   "awardImg_w_def":"6rem","awardImg_h_def":"6rem",
   "homeBgPath_def":"/static/zp/homeBg.jpg","gameBg2Path_def":"",
   "gameBgPath_def":"","headImg2":"","headImg3":"","headImg4":"","dangerType":0,"isZhuLi":false,
-  "getRegAwardUrl":"ajax/hdgame_h?cmd=getRegAwardList&aid=7020498&gameId=344&style=57&openId=tryPlay_15801086"
 })
 
 function startBtnDelay() {
@@ -1281,28 +1215,6 @@ function startBtnDelay() {
 function showAwardDetail4Draw(fromFav) {
   HdGame.changePoup(3, '', true);
   home('showAward', fromFav);
-  if (g_config.isYKY) {
-    $('#poupInfoBox').show();
-  }
-}
-
-function setAwardImgHeight(){
-  $('#resule-gift-foot').css("margin-top",($('#resule-gift-sucImg').height()+35)/g_rem + 'rem');
-}
-
-function showRank() {
-  HdGame.changePoup(1, '', true);
-  $('#awardDetailBox').hide();
-}
-
-function showRule(isAnimation) {
-  $('#activityKit').hide();
-  if (g_config.withAwardFinish) {
-    HdGame.changePoup(2, '', true);
-  } else {
-    HdGame.changePoup(2, '', isAnimation);
-  }
-  $('#awardDetailBox').hide();
 }
 
 
@@ -1320,7 +1232,7 @@ function activateSound() { //兼容ios下 WebAudio类型的对象无法自动播
       hg.sound._activate = true;
     }
   } catch(e) {
-    HdGame.logStd("activateSoundErr", e);
+
   }
 }
 
@@ -1329,84 +1241,9 @@ function startBtnAjax(event, data, callBack, pass) {
   var that = this;
   if (!pass) {
     activateSound();
-    if (g_config.isOpenAreaLimit) {
-      return HdGame.getAreaByWx(g_config.ipInfo,
-      function() {
-        if (checkAreaLimit(g_config.ipInfo, g_config.areaLimitList) != 'ok') { //不在限制的地区内，直接返回
-          return rt(false);
-        }
-        return startBtnAjax.call(that, event, data, callBack, true);
-      });
-    }
-  }
-
-  if (!hg.fireWith('startGamehead', that, [event, data])) {
-    return rt(false);
-  }
-  if (HdGame.getIsOutofJoinNumFlowFlag) {
-    return rt(false);
-  }
-
-  if (!HdGame.isGetIsOutofJoinNumFlag && !HdGame.getIsOutofJoinNumFlowFlag) {
-    // HdGame.getIsOutofJoinNumFlowFlag = true;
-    HdGame.getIsOutofJoinNumFlowFlag = false;
-    HdGame.isGetIsOutofJoinNumFlag = true;
-    HdGame.isOutofJoinNum = false;
-    return startBtnAjax.call(that, event, data, callBack, true);
-
-    // return HdGame.getIsOutofJoinNumFlag(function(flag){
-    //     HdGame.getIsOutofJoinNumFlowFlag = false;
-    //     if (flag == 'error') {
-    //         HdGame.statusMsg("网络错误，请稍后再试！");
-    //         return rt(false);
-    //     }
-    //     HdGame.isGetIsOutofJoinNumFlag = true;
-    //     HdGame.isOutofJoinNum = (flag == 'true' ? true :false);
-    //     return startBtnAjax.call(that,event,data,callBack,true);
-    // })
-  }
-
-  if (HdGame.isOutofJoinNum) {
-    if (false || false) { //报名型游戏
-      HdGame.statusMsg("本活动报名人数已达到最大限制。如有疑问，请与主办方联系。");
-    } else {
-      if (false) {
-        HdGame.statusMsg("本活动团长人数已达到最大限制。如有疑问，请与主办方联系。");
-      } else {
-        HdGame.statusMsg("本活动参与人数已达到最大限制。如有疑问，请与主办方联系。");
-      }
-    }
-    return rt(false);
-  }
-
-  if (false) {
-    HdGame.statusMsg('你有疑似作弊行为，已被列入黑名单', '');
-    return rt(false);
-  }
-
-  if (g_config.afterLinkModify && HdGame.shouldRegInfo(2, arguments, this)) {
-    return rt(false);
-  }
-
-  if (gameType == 3 && g_config.isCheckPlayTimes && PlayInfo.getTotalRemainTimes() <= 0) {
-    HdGame.statusMsg(8);
-    return rt(false);
-  }
-  if (gameType == 3 && g_config.isCheckPlayTimes && PlayInfo.getTodayRemainTimes() <= 0) {
-    HdGame.statusMsg(7);
-    return rt(false);
-  }
-
-  if (!hg.fireWith('beforeStartGame', that, [false, event, data])) {
-    return rt(false);
   }
 
 
-  //HdGame.addJoinGameBehavior();
-  var cookOpt = {};
-  cookOpt.domain = HdGame.gameDomain;
-  cookOpt.expires = 1;
-  cookOpt.path = "/";
   hg.fireWith('startGame', that, [false, event, data, showGame]);
   return rt(true);
   function rt(r) {
@@ -1414,7 +1251,6 @@ function startBtnAjax(event, data, callBack, pass) {
     return r;
   }
   function showGame() {
-    if (false) return;
     $('.homeBtnBox,.bottomSkill').hide();
     $('.footerBox').hide();
     $('.home,#ruleImg').hide();
@@ -1423,40 +1259,6 @@ function startBtnAjax(event, data, callBack, pass) {
       hg.sound.readyPlay(0, 0, 'loop');
     }
   }
-}
-
-
-function checkAreaLimit(ipInfo, areaLimitList, isShowMsg) {
-  isShowMsg = isShowMsg !== false;
-  var now_province = ipInfo.provice;
-  var now_city = ipInfo.city;
-  if (areaLimitList.length > 0) {
-    if (now_province && now_city) { //有当前地理位置信息
-      var isLimit = true;
-      for (var i = 0; i < areaLimitList.length; i++) {
-        var info = site_cityUtil.getInfo(areaLimitList[i]);
-        if (info.parentId == 1) {
-          if (info.name.indexOf(now_province) > -1 || now_province.indexOf(info.name) > -1) {
-            isLimit = false;
-            break;
-          }
-        } else {
-          if (info.name.indexOf(now_city) > -1 || now_city.indexOf(info.name) > -1) {
-            isLimit = false;
-            break;
-          }
-        }
-      }
-      if (isLimit) {
-        isShowMsg && HdGame.statusMsg('您当前所在的地区（' + now_city + '）不在可参与区域范围', '');
-        return 'limit';
-      }
-    } else { //没有查到当前ip信息，显示服务繁忙
-      isShowMsg && HdGame.statusMsg("服务繁忙，请稍候重试", '');
-      return 'busyness';
-    }
-  }
-  return 'ok';
 }
 
 
