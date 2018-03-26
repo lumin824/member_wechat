@@ -15,88 +15,62 @@
 <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
 <title>大转盘</title>
 
-<meta id="_TOKEN" value="e659dc4f552229f8279144b54bfa6f2e" type="hidden" />
-
-
 <script type='text/javascript'>
 
-var member_id = localStorage.getItem('member_id');
-if(!member_id) location.href="/register";
+  var member_id = localStorage.getItem('member_id');
+  if(!member_id) location.href="/register";
 
-var fromCanal = '-1';
-if(true){
-    parent = top = window;
-}
 
-    var g_serverTime = 1514413124184;
-    var g_timeDeviation = g_serverTime - new Date().getTime(); //服务器时间与系统时间偏差
-    var g_rem = 20;
-    (function(win){
-        var orientationX = false; //是否横屏进来
-        if(win.orientation==90||win.orientation==-90){
-            orientationX = true;
-        }
-        var docEl = win.document.documentElement,tid;
-        function refreshRem1(){
-            g_rem = docEl.getBoundingClientRect().width/16;
-            !g_rem && (g_rem = 20);
-            docEl.style.fontSize = g_rem + 'px';
-        }
-        function refreshRem2(){
-            g_rem = docEl.getBoundingClientRect().width/16;
-            if(!g_rem){
-                return refreshRem1();
-            }
-            var width = docEl.getBoundingClientRect().width;
-            var d = win.document.createElement('div');
-            d.style.width = '1rem';
-            d.style.display = "none";
-            docEl.firstElementChild.appendChild(d);
-            var defaultFontSize = parseFloat(window.getComputedStyle(d, null).getPropertyValue('width'));
-            docEl.firstElementChild.removeChild(d);
-            docEl.style.fontSize = (g_rem/defaultFontSize)*100 + '%';
-        }
-        var refreshRem = /HUAWEI TIT-TL00/i.test(navigator.userAgent) ? refreshRem2 : refreshRem1;
-        try{
-            win.addEventListener("orientationchange", function() {//触发手机横屏竖屏事件
-                if(orientationX){
-                    location.reload();
-                }
-            }, false);
-        }catch(e){}
-        win.addEventListener('pageshow', function(e) {
-            if (e.persisted) {
-                clearTimeout(tid);
-                tid = setTimeout(refreshRem, 100);
-            }
-        }, false);
-        refreshRem();
-    })(window);
+  var g_rem = 20;
+  (function(win){
+      var orientationX = false; //是否横屏进来
+      if(win.orientation==90||win.orientation==-90){
+          orientationX = true;
+      }
+      var docEl = win.document.documentElement,tid;
+      function refreshRem1(){
+          g_rem = docEl.getBoundingClientRect().width/16;
+          !g_rem && (g_rem = 20);
+          docEl.style.fontSize = g_rem + 'px';
+      }
+      function refreshRem2(){
+          g_rem = docEl.getBoundingClientRect().width/16;
+          if(!g_rem){
+              return refreshRem1();
+          }
+          var width = docEl.getBoundingClientRect().width;
+          var d = win.document.createElement('div');
+          d.style.width = '1rem';
+          d.style.display = "none";
+          docEl.firstElementChild.appendChild(d);
+          var defaultFontSize = parseFloat(window.getComputedStyle(d, null).getPropertyValue('width'));
+          docEl.firstElementChild.removeChild(d);
+          docEl.style.fontSize = (g_rem/defaultFontSize)*100 + '%';
+      }
+      var refreshRem = /HUAWEI TIT-TL00/i.test(navigator.userAgent) ? refreshRem2 : refreshRem1;
+      try{
+          win.addEventListener("orientationchange", function() {//触发手机横屏竖屏事件
+              if(orientationX){
+                  location.reload();
+              }
+          }, false);
+      }catch(e){}
+      win.addEventListener('pageshow', function(e) {
+          if (e.persisted) {
+              clearTimeout(tid);
+              tid = setTimeout(refreshRem, 100);
+          }
+      }, false);
+      refreshRem();
+  })(window);
 
-    function loadGamePreAssets(){}
+  function loadGamePreAssets(){}
 </script>
 
 <link href="/static/zp/base.min.css" rel="stylesheet" type="text/css" />
 <link href="/static/zp/hlcbt.min.css" rel="stylesheet" type="text/css" />
 <link href="/static/zp/weui.min.css" rel="stylesheet" type="text/css" />
 <script type="text/javascript" src="//res.wx.qq.com/open/js/jweixin-1.2.0.js"></script>
-
-
-
-<!-- <script type="text/javascript">
-(function() {
-var fs = document.createElement("script");
-fs.src = "/js/zp/hawkEye.min.js";
-window.FAI_HAWK_EYE = {};
-window.FAI_HAWK_EYE.jssdk_report_url = "//report.faisco.cn/js/report";
-window.FAI_HAWK_EYE.jssdk_appid = 5002;
-window.FAI_HAWK_EYE.fai_aid = 0;
-window.FAI_HAWK_EYE.fai_bs_aid = 7020498;
-window.FAI_HAWK_EYE.fai_bs_id = 344;
-window.FAI_HAWK_EYE.fai_bs_wid = 0;
-var s = document.getElementsByTagName("script")[0];
-s.parentNode.insertBefore(fs, s);
-})();</script> -->
 
 </head>
 <body class="body">
@@ -127,10 +101,6 @@ s.parentNode.insertBefore(fs, s);
     <div id="userPreload" data-src="http://7020498.h40.faiusr.com/4/2Tdi124zdGcmeWfla2ckbDNkFDOkljM.png"></div>
   </div>
 
-  <!-- 广告页 -->
-  <div id="advertising" class="bgfix editTarget-advertising hideImp">
-    <div class="skipTips"><span class="seconds">3</span>秒跳过</div>
-  </div>
   <div class="ajaxLoadBg">
     <div class="ajaxLoadBar "></div>
   </div>
@@ -179,422 +149,7 @@ s.parentNode.insertBefore(fs, s);
       </div>
     </div>
   </div>
-  <div id="spxdPage"></div>
-  <div id='_hdOpenIdDiv' class='hide'>tryPlay_15801086</div><!-- 存放openId的节点 -->
   <div id="pageMusic" style="position:absolute;top:0;height:0;"></div>
-
-  <div id="poupInfoBox">
-    <div class="poupHead">
-      <div class="poupTitleBox">
-        <div id="actionExpBtn" class="poupTitleMune checked" _flag="2">
-          <div class="item">活动说明</div>
-        </div>
-
-        <div id="prizeBtn" class="poupTitleMune" _flag="3">
-          <div class="item">我的奖品<span id='Award_Round_Dot' class='redDot hide'></span></div>
-        </div>
-        <div id="winnerBtn" class="poupTitleMune hide" _flag="4">
-          <div class="item">获奖名单</div>
-        </div>
-        <div class="poupSlideBar">
-          <div class="slideBarTip transitionPanel"></div>
-        </div>
-      </div>
-      <div class="poupClose"></div>
-      <div style="clear:both; height:0"></div>
-    </div>
-    <div id="popTabBox" class="popTabBox transitionPanel" style="left:0">
-      <div id="ruleBox" class="poupMain" _flag="2" style="-webkit-overflow-scrolling:touch;">
-        <div class="poupMainInfo">
-          <div id="awardLine" class="poupLine" data-sortKey="a" >
-            <div class="mainTitle">活动奖品</div>
-            <div id="awardLineBox">
-              <div class='unComfortLine awardItem '>
-                <span class='awardStyle'>一等奖</span> : <span class='award'>{{app.name_1}}</span>
-              </div>
-              <div class='unComfortLine awardItem '>
-                <span class='awardStyle'>二等奖</span> : <span class='award'>{{app.name_2}}</span>
-              </div>
-              <div class='unComfortLine awardItem '>
-                <span class='awardStyle'>三等奖</span> : <span class='award'>{{app.name_3}}</span>
-              </div>
-              <div class='unComfortLine awardItem '>
-                <span class='awardStyle'>四等奖</span> : <span class='award'>{{app.name_4}}</span>
-              </div>
-              <div class='unComfortLine awardItem '>
-                <span class='awardStyle'>五等奖</span> : <span class='award'>{{app.name_5}}</span>
-              </div>
-            </div>
-            <div id="selfAwardLine" class="hide" style="word-wrap: break-word;"></div>
-          </div>
-          <div id="gameDateTime" class="poupLine" data-sortKey="b">
-            <div class="mainTitle">活动时间</div>
-            <p><span id="startDate">{{app.begin_time}}</span>&nbsp;-&nbsp;<span id="endDate">{{app.end_time}}</span></p>
-          </div>
-          <div class="hostLine poupLine" data-sortKey="c">
-            <div class="mainTitle">主办单位</div>
-            <p>本次活动主办单位为 {{app.sponsor}}</p>
-          </div>
-
-          <div id="explainBox" class="poupLine" data-sortKey="e">
-            <div class="mainTitle">活动及兑奖说明</div>
-            <p id="explaiDrawInfoBox" class="">
-              <span id="haveScore">达到 <span id="scoreLimit" class="scoreLimit">0</span><span class="gameScoreUnit">分</span><span id="exlainDrawFont">即可获得抽奖机会，</span></span>
-              <span id="directDrawInfoBox" class="">
-                <span class="drawTotalFont">活动期间总抽奖机会共 <span id="totalDrawTimeLimit">6</span> 次，1天只能抽</span>
-                <span class="everyOneFont hide">每人<span class="dayFont">每日</span>有</span><span id="drawTimesLimit"> {{app.draw_times_limit}}</span> 次<span class="chanceFont hide">抽奖机会</span>。<br>
-              </span>
-            </p>
-
-            <p id="explainPlayInfoBox" class="hide">
-              <span id="rankPlayInfoBox">
-                <span class="playTotalFont">活动期间总参与机会共 <span class="playTotalLimit">10</span> 次，1天只能参与</span>
-                <span class="everyOneFont hide">每人<span class="dayFont">每日</span>有</span><span class="playTimesLimitShow">5</span> 次<span class="chanceFont hide">参与机会</span>。<br>
-              </span>
-            </p>
-            <div id="exlainInfo">获奖后凭兑奖码联系活动主办单位现场兑奖。</div>
-            <div>活动主办方可对抽奖活动进行解释</div>
-          </div>
-        </div>
-      </div>
-      <div id="rankBox" class="poupMain" _flag="1" style="-webkit-overflow-scrolling:touch;" >
-        <div class="poupMainInfo">
-          <div id="noRank" class=''>暂无排名</div>
-          <div id="rankMain" class="getRankHeight hide">
-            <div style="margin-top:0.7rem;margin-left: 0.25rem;">当前排名：<span id="rank"></span> （只显示前<span id="showRankNum">100</span>名）</div>
-            <div style="padding:0rem 0.5rem">
-              <table class="rankTable" cellspacing="0" cellpadding="0">
-                <thead>
-                  <tr style="line-height: 1rem;">
-                    <th>排行</th>
-                    <th>头像</th>
-                    <th>昵称</th>
-                    <th>成绩</th>
-                  </tr>
-                </thead>
-              </table>
-            </div>
-          </div>
-          <div id="rankHeight">
-            <table id="rankInfoBox" class="rankTable" cellspacing="0" cellpadding="0" style="margin-top: 0;"></table>
-          </div>
-        </div>
-        <div class='attentionBox'>
-          <!-- <div class='hdskillInfo skillInfo'><a class="theSpecialTarget" href='http://mp.weixin.qq.com/s?__biz=MjM5MTk5MjI3OA==&#x26;mid=209854000&#x26;idx=1&#x26;sn=82241d924839270d3ea820ad2d56c01b#rd'>我也要创建元旦活动</a><span class='gotoFlag'></span></div> -->
-          <div class='holdBox'></div>
-        </div>
-      </div>
-      <div id="awardBox" class="poupMain" _flag="3" >
-        <div id="awardInfoBox">
-          <div id="awardInfo"><div style="line-height: 2.6rem">暂无中奖纪录</div></div>
-          <div id="awardContactInfo" class="hide">
-            <div class="titleLine"><span class="title">联系信息</span></div>
-            <div class="contactGroup">
-              <div class="contactItem contactName hide">姓名： <span>monica</span></div>
-              <div class="contactItem contactPhone hide">电话： <span>13200000000</span></div>
-              <div class="contactItem contactAddress hide">地址： <span>广东省广州市海...</span></div>
-            </div>
-            <div class="updateBtn abs">修改</div>
-          </div>
-        </div>
-        <div class='attentionBox'>
-          <div class='menuBtnBox' >
-            <a class='menuName'>关注我们</a>
-          </div>
-          <div class='holdBox'></div>
-        </div>
-      </div>
-      <div id="regAwardBox" class="poupMain" _flag="4" style="-webkit-overflow-scrolling:touch;">
-        <div class="poupMainInfo">
-          <div id="noRegAward" class="hide" style="margin-left:3px;">尚未公布获奖名单，详情请查看活动说明</div>
-          <div id="regAwardMain" style="display:none;">
-            <div class="regAwardList">
-              <div class="mainTitle">一等奖</div>
-              <div class="playerName" style="margin-bottom:12px;"></div>
-            </div>
-            <div class="regAwardList">
-              <div class="mainTitle">二等奖</div>
-              <div class="playerName" style="margin-bottom:12px;"></div>
-            </div>
-            <div class="regAwardList">
-              <div class="mainTitle">三等奖</div>
-              <div class="playerName" style="margin-bottom:12px;"></div>
-            </div>
-
-            <div class="regAwardList">
-              <div class="mainTitle">四等奖</div>
-              <div class="playerName" style="margin-bottom:12px;"></div>
-            </div>
-
-            <div class="regAwardList">
-              <div class="mainTitle">五等奖</div>
-              <div class="playerName" style="margin-bottom:12px;"></div>
-            </div>
-
-            <div class="regAwardList">
-              <div class="mainTitle">安慰奖</div>
-              <div class="playerName" style="margin-bottom:12px;"></div>
-            </div>
-          </div>
-        </div>
-        <div class='attentionBox'>
-          <!-- <div class='hdskillInfo skillInfo'><a class="theSpecialTarget" href='http://mp.weixin.qq.com/s?__biz=MjM5MTk5MjI3OA==&#x26;mid=209854000&#x26;idx=1&#x26;sn=82241d924839270d3ea820ad2d56c01b#rd'>我也要创建元旦活动</a><span class='gotoFlag'></span></div> -->
-          <div class='holdBox'></div>
-        </div>
-      </div>
-    </div>
-  </div>
-
-  <div id="activityKit" class="poupMain bg hide">
-    <div class="arrow" id="arrow"></div>
-    <div id="tip_txt">
-      <p>提示</p>
-      <p style="margin-top: 0.25rem">点击锦囊即可查看活动规则、排行榜、奖品等信息。</p>
-    </div>
-  </div>
-
-  <div id="awardUserInfoBg" class="hide" style="position:fixed; top:0; left: 0; bottom: 0; right: 0;overflow:hidden;"></div>
-  <div id="validteBoxerBg" class="hide" style="position:fixed; top:0; left: 0; bottom: 0; right: 0;overflow: hidden;"></div>
-  <div id="awardDetailBox" class="poupMain bg hide isAngular">
-    <div id="awardDetailScrollBox">
-      <div id="awardDeailBg" class="bgfix hide"></div>
-      <div class="awardCloseIcon"></div>
-      <div class="awardDetail">
-        <div class="hostName" style="padding: 0.7rem 2.2rem 1rem 0.7rem;text-align: left;color:#fff;word-break: break-word"></div>
-        <div class="awardName"></div>
-        <div class="awardSubTitle"></div>
-        <div class="awardCodeTime codeTimeFixedRange"><em>使用期限</em>：<span class="codeBgTime"></span> - <span class="codeEndTime"></span></div>
-        <div class="codeTimeFixedTerm hide">中奖后<span class="codeBgTime"></span>天生效，有效天数<span class="codeEndTime"></span>天</div>
-        <!-- <div id="awardCollectionBtn" ontouchend = "HdGame.favorite();">收藏优惠券</div> -->
-        <div class="awardDetailWarp"></div>
-      </div>
-      <div class="codeImgBox">
-        <div id="codeStatusBox" class="hide" style="padding-top:1.25rem;color:#777">
-          <div id="codeStatusBtn"></div>
-          <div id="codeStatusInfo">商家已将该兑奖码设置为作废<br>详情请联系商家</div>
-          <div id="codeStatusTips" class="hide"><em style="font-style: normal;">请先<span class="giftNameA">兑奖券</span>，<span class="targetDateMin">1</span>天后可用</em></div>
-        </div>
-        <div id="codeDetailInfoBox">
-          <img class="codeImg"/>
-          <div class='codeLine'><span id="codeName">优惠码</span>：<span style=" max-width: 8.7rem;word-wrap: break-word;display: inline-block; vertical-align: middle;"class="code selectText"></span><span class="copy">复制券码</span></div>
-          <div class="codeOptInfo"></div>
-        </div>
-      </div>
-        <div class="awardBtnList">
-          <div style="height:0.4rem;"></div>
-          <!--兑奖券详情弹出层 -->
-          <div id="ticketDetailBox">
-            <p class="ticketitle"><span class="text">兑奖券详情</span></p>
-            <div class="ticketInfo">
-              <div class="itemList dateLine codeTimeFixedRange">
-                <div class="title">有效日期</div>
-                <div class="box">
-                  <span class="beginTime">2016.03.03</span>至<span class="endTime">2017.03.03</span>
-                </div>
-              </div>
-              <div class="itemList dateLine codeTimeFixedTerm hide">
-                <div class="title">有效日期</div>
-                <div class="box">
-                  中奖后<span class="codeBgTime"></span>天生效，有效天数<span class="codeEndTime"></span>天
-                </div>
-              </div>
-              <div class="itemList timelimitLine">
-                <div class="title">可用时段</div>
-                <div class="box">
-                  <div class="timelimit">周一至周日</div>
-                </div>
-              </div>
-              <div class="itemList addressLine">
-                <div class="title titleAdress">兑奖地址</div>
-                <div class="box">
-                  <div class="address">地址</div>
-                </div>
-              </div>
-              <div class="itemList noticeLine">
-                <div class="title titleNotice">兑奖须知</div>
-                <div class="box">
-                  <div class="notice"><pre style="word-wrap: break-word;"></pre></div>
-                </div>
-              </div>
-            </div>
-          </div>
-
-          <form action=""></form>
-          <div id="useStoreBox" class="initHide">
-            <div class="storeTitle">
-              <span class="text">适用门店</span><span class="storeNumText">（<span id="storeNum">5</span>个）</span>
-              <span class="moreBtn">更多</span>
-            </div>
-            <div class="storeInfoBox">
-              <div class="locationBtn" onclick="HdGame.openStoreLocation(this)"></div>
-              <div class="info">
-                <div class="storeNameBox"><span id="storeName"></span><span id="distance"></span></div>
-                <div class="storeAdress"></div>
-              </div>
-            </div>
-          </div>
-          <div style="height:0.4rem;"></div>
-          <a style="text-decoration:none;">
-            <div class="servicePhone awardDetailBtn">
-              <span class="text">客服电话</span>
-              <span class="phoneIcon"></span>
-              <span class="phoneText"></span>
-            </div>
-          </a>
-          <!-- <a id="awardCusBtnInfo" href="###" style="text-decoration:none;">
-            <div class="awardCusBtn awardDetailBtn weui-cell__bd" style="border-top:none;">
-              <span class="text">自定义按钮（未开启）</span>
-              <span class="textDef hide">自定义按钮（未开启）</span>
-              <div class="cell__ft"></div>
-            </div>
-          </a> -->
-          <div style="height:3.15rem;"></div>
-        </div>
-      </div>
-      <div class="hide homePoupMask codeCopyDetailMask">
-        <div class="codeCopyDetailPoup">
-          长按以下文字复制券码<br>
-          <div class="copyCode selectText"></div>
-        </div>
-      </div>
-      <div class="hide bgfix codeDetailImgBox">
-        <div class="absCenter imgBox">
-          <img class="codeImg" style="width:9rem;height:9rem;"/>
-        </div>
-      </div>
-
-      <div id="bottomCusBtnBox">
-        <a id="bottomCusBtnInfo" href="###" style="text-decoration:none;">
-          <div class="bottomCusBtn cusBtn" style="border-top:none;">
-            <span class="text">立即兑奖</span>
-            <span class="textDef hide">立即兑奖</span>
-          </div>
-        </a>
-        <a id="WxCusBtnInfo" href="###" style="text-decoration:none;" class="hide">
-          <div class="awardCusBtn cusBtn" style="border-top:none;">
-            <span class="text">自定义按钮（未开启）</span>
-            <span class="textDef hide">自定义按钮（未开启）</span>
-            <div class="cell__ft">
-            </div>
-          </div>
-        </a>
-      </div>
-    </div>
-    <div id="storeListBox" class="bg hide">
-      <div class="list"></div>
-      <div class="refreshBtn hide">更新当前位置</div>
-      <div class="closeBtn"></div>
-    </div>
-
-    <div id="informBox" class="bg hide">
-      <div id="inform-reason-page">
-        <div class="weui-cells__title">请选择投诉原因</div>
-        <div class="weui-cells weui-cells_radio"  id="inform-reason-box">
-          <label class="weui-cell weui-check__label reasonItem" for="temptShare" _index="0">
-            <div class="weui-cell__bd">
-              <p>诱导分享</p>
-            </div>
-            <div class="weui-cell__ft">
-              <input type="radio" class="weui-check" name="radio1" id="temptShare">
-              <span class="weui-icon-checked"></span>
-            </div>
-          </label>
-          <label class="weui-cell weui-check__label reasonItem" for="shamActive" _index="1">
-            <div class="weui-cell__bd">
-              <p>虚假活动</p>
-            </div>
-            <div class="weui-cell__ft">
-              <input type="radio" name="radio1" class="weui-check" id="shamActive">
-              <span class="weui-icon-checked"></span>
-            </div>
-          </label>
-          <label class="weui-cell weui-check__label reasonItem" for="political" _index="2">
-            <div class="weui-cell__bd">
-              <p>政治敏感</p>
-            </div>
-            <div class="weui-cell__ft">
-              <input type="radio" class="weui-check" name="radio1" id="political">
-              <span class="weui-icon-checked"></span>
-            </div>
-          </label>
-          <label class="weui-cell weui-check__label reasonItem" for="eroticism" _index="3">
-            <div class="weui-cell__bd">
-              <p>色情低俗</p>
-            </div>
-            <div class="weui-cell__ft">
-              <input type="radio" name="radio1" class="weui-check" id="eroticism">
-              <span class="weui-icon-checked"></span>
-            </div>
-          </label>
-          <label class="weui-cell weui-check__label reasonItem" for="rumor" _index="4">
-            <div class="weui-cell__bd">
-              <p>谣言</p>
-            </div>
-            <div class="weui-cell__ft">
-              <input type="radio" class="weui-check" name="radio1" id="rumor">
-              <span class="weui-icon-checked"></span>
-            </div>
-          </label>
-          <label class="weui-cell weui-check__label reasonItem" for="otherReason" _index="5">
-            <div class="weui-cell__bd">
-              <p>其他（收集隐私信息等）</p>
-            </div>
-            <div class="weui-cell__ft">
-              <input type="radio" name="radio1" class="weui-check" id="otherReason">
-              <span class="weui-icon-checked"></span>
-            </div>
-          </label>
-        </div>
-        <div id="cancel-inform-btn">取消</div>
-        <div id="next-inform-btn" class="weui-btn weui-btn_primary hide">下一步</div>
-        <div id="inform-poup-tip" class="hide">投诉成功</div>
-      </div>
-      <div id="inform-desc-page" style="display: none;">
-        <div class="weui-cells__title">投诉描述</div>
-        <div class="weui-cells weui-cells_form">
-          <div class="weui-cell" id="inform-desc-box">
-            <div class="weui-cell__bd">
-              <textarea class="weui-textarea" id="informDesc" placeholder="请输入文本" rows="4"></textarea>
-              <div class="weui-textarea-counter" id="informDesc-counter"><span>0</span>/50</div>
-            </div>
-          </div>
-        </div>
-        <div id="submit-inform-btn" class="weui-btn weui-btn_primary">提交</div>
-      </div>
-    </div>
-    <div id="informResultBox" class="bg hide weui">
-      <div class="weui-msg">
-        <div class="weui-msg__icon-area"><i class="weui-icon-success weui-icon_msg"></i></div>
-        <div class="weui-msg__text-area">
-          <h2 class="weui-msg__title">投诉成功</h2>
-          <p class="weui-msg__desc">感谢你的参与，我们坚决反对色情、暴力、欺诈等违规信息，我们会认真处理你的投诉，维护绿色、健康的网络环境</p>
-        </div>
-        <div class="weui-msg__opr-area">
-          <p class="weui-btn-area">
-            <a class="confirm-btn weui-btn weui-btn_primary">确定</a>
-          </p>
-        </div>
-        <div class="weui-msg__extra-area">
-          <div class="weui-footer">
-          </div>
-        </div>
-      </div>
-    </div>
-    <div class="homeBtnBox specialBottom">
-    </div>
-    <div id="logoImgBox" class="logoImgBox imgContainer absCenter hide" style="">
-      <img id="logoImg" class="slaveImg abs" src="/static/zp/logo.jpg" style="width:2rem;height:2rem;top:3.5rem;left:0.75rem;"/>
-    </div>
-    <div id="lots-wait-Box" style="display:none">
-      <div id="lots-wait-img" class="editRelate-lotsPot"></div>
-      <div id="lots-wait-hint">当前抽奖人数过多<br/>请稍等 <span id="lots-wait-hint-num">0</span> 秒</div>
-    </div>
-    <div id="helpGuideBox" style="display:none">
-      <p>你今天已经没有抽奖机会了</br>分享给好友或群聊</p>
-      <p style="margin-top:1.1rem;">
-          今天将额外获得1次抽奖机会！<br/>（仅限当天首次分享）
-      </p>
-    </div>
 
     <div class="resuleBox hide">
       <div id="resule-status-box" style="display:none">
@@ -615,7 +170,7 @@ s.parentNode.insertBefore(fs, s);
             <p id="resule-gift-luck" style="text-align:center;" >恭喜你获得了</p>
             <div class="imgContentLimit hide" style="width: 14rem; height: 30rem; position: absolute;"></div>
             <div class="imgContainer" style="position:relative;">
-              <img id="resule-gift-sucImg" class="slaveImg" src="/static/zp/gift.png?v=201601141500" style="width:6rem;height:6rem">
+              <img id="resule-gift-sucImg" class="slaveImg">
             </div>
             <div id="resule-gift-foot">
               <p id="resule-gift-rank"> <span class="gifArg awardStyle"></span> </p>
@@ -642,51 +197,13 @@ s.parentNode.insertBefore(fs, s);
 
         <div class='attentionBox'>
         	<div class='menuBtnBox'>
-            <a class='menuName'>关注我们</a>
+            <a class='menuName'></a>
           </div>
           <div class="holdBox"></div>
         </div>
       </div>
     </div>
 
-
-    <div id="attentionMask" class="homePoupMask">
-      <div id="attentionPoup" class="homePoupInner attentionPoup">
-        <canvas id="QRImg_canvas1" class="QRImg_canvas"></canvas>
-        <img class="QRImg_exportImg" class="hide" src="" style="position: absolute; top: 0.5rem; z-index: 10; height: 16.5rem"/>
-      </div>
-    </div>
-
-    <div id="awardCodeLayer" class="homePoupMask hide">
-      <div id="awardCodeDetail" style="border-radius: 0.2rem;">
-        <div class='codeLine' style="margin-top:0.4rem;">请联系核销员扫码核销</div>
-        <img class="codeImg"/>
-        <div class='codeLine' style="padding-top: 0.8rem;"><span class="code selectText"></span></div>
-        <div class="codeOptInfo"></div>
-      </div>
-    </div>
-    <div id="newAttentionMask" class="homePoupMask hide">
-      <div id="newAttentionPoup" class="homePoupInner attentionPoup">
-        <canvas id="QRImg_canvas2" class="QRImg_canvas"></canvas>
-        <img class="QRImg_exportImg" class="hide" src="" style="position: absolute; top: 0.5rem; z-index: 10; height: 16.5rem"/>
-      </div>
-    </div>
-    <div id="plAttentionMask" class="homePoupMask hide">
-      <div id="plAttentionPoup" class="homePoupInner attentionPoup">
-        <canvas id="QRImg_canvas3" class="QRImg_canvas"></canvas>
-        <img class="QRImg_exportImg" class="hide" src="" style="position: absolute; top: 0.5rem; z-index: 10; height: 16.5rem"/>
-      </div>
-    </div>
-    <div id="skillSupMask" class="homePoupMask">
-      <img src="/static/zp/caewmB_1.png?v=201711211453" style="position:absolute;top:2rem;z-index:10;margin:auto;left:0;right:0;width:11.65rem"/>
-    </div>
-    <div id="loadingToast" class="hide">
-      <div class="weui-mask_transparent"></div>
-      <div class="weui-toast">
-        <i class="weui-loading weui-icon_toast"></i>
-        <p class="weui-toast__content"></p>
-      </div>
-    </div>
     <script type="text/javascript">
       function loadGamePreAssets(){
 
@@ -694,17 +211,235 @@ s.parentNode.insertBefore(fs, s);
     </script>
 
 <script type="text/javascript">
-    var _manage = false,
-        tryPlay = true,
-        isJoinThemeGame = false,
-        m_debug = false,
+    var tryPlay = true,
         _resRoot = '/static/zp',
         _ruleInfo = {};
         hg = {};
-	var _preview = false;
 
-(function(hg){var imgPaths=[],readyCallBack=[],loadCallBack=[];hg.assets={complete:false,loadComplete:false,increment:0,loadingStyle:1,loadTimeout:120000,getPath:function(){return imgPaths},setPath:function(path){imgPaths=path},add:function(src){var self=this;if(self.complete||_manage){return}if(isArray(src)){for(var i=src.length-1;i>=0;i--){self.add(src[i])}}else if(typeof src==='string'){imgPaths.push(src)}return this},onReady:function(callBack){var self=this;if(self.complete){callBack()}else{readyCallBack.push(callBack)}return self},onload:function(callBack){var self=this;if(self.loadComplete){callBack()}else{loadCallBack.push(callBack)}return self},loadPage:function(){if(_manage)return;var self=this,percent=1,numLoaded=0,$loadPercent=document.getElementById("loadPercent"),loadPallet;window.scrollTo(0,0);if(self.loadingStyle===1){loadimg(imgPaths)}else if(self.loadingStyle===3){var logoImg=document.getElementById("preloadImg");var initLogoImg=function(img){var img=logoImg;var h=img.height;var w=img.width;var bottomPageInfoDeg=-Math.atan(w/h)-Math.PI/2;var canvas=document.getElementById("preloadCanvas");var ctx=canvas.getContext("2d");var ratio=(window.devicePixelRatio||1)/(ctx.backingStorePixelRatio||ctx.webkitBackingStorePixelRatio||ctx.mozBackingStorePixelRatio||ctx.msBackingStorePixelRatio||ctx.oBackingStorePixelRatio||ctx.backingStorePixelRatio||1);var drawImg=function(){ctx.fillStyle="#fff";ctx.fillRect(0.2*g_rem*ratio,0.2*g_rem*ratio,w*ratio,h*ratio);ctx.drawImage(img,0.2*g_rem*ratio,0.2*g_rem*ratio,w*ratio,h*ratio)};if(h===w){if(h>3.5*g_rem){h=w=3.5*g_rem}drawImg=function(){ctx.save();ctx.beginPath();ctx.arc(canvas.width/2,canvas.height/2,w/2*ratio,0,2*Math.PI);ctx.clip();ctx.fillStyle="#fff";ctx.fill();ctx.drawImage(img,0.2*g_rem*ratio,0.2*g_rem*ratio,w*ratio,h*ratio);ctx.restore()}}else{if(w>h&&w>8*g_rem){h=8*g_rem*h/w;w=8*g_rem}else{if(h>w&&h>8*g_rem){w=8*g_rem*w/h;h=8*g_rem}}}canvas.width=(w+0.4*g_rem)*ratio;canvas.height=(h+0.4*g_rem)*ratio;canvas.style.width=w+0.4*g_rem+"px";canvas.style.height=h+0.4*g_rem+"px";if(h===w){ctx.beginPath();ctx.arc(canvas.width/2,canvas.height/2,canvas.width/2,0,2*Math.PI);ctx.clip()}ctx.strokeStyle="#69c5ff";ctx.lineWidth=8*g_rem*ratio;loadPallet=function(tmp){ctx.beginPath();ctx.arc(canvas.width/2,canvas.height/2,4*g_rem*ratio,bottomPageInfoDeg,bottomPageInfoDeg+tmp*(2*Math.PI/100));ctx.stroke();drawImg()};loadimg(imgPaths)};if(logoImg.complete){initLogoImg()}else{logoImg.onload=initLogoImg}}function setPercent(percent){$loadPercent.innerHTML=percent;if(percent===100){var index=0;setTimeout(function(){index++;if(index<10){loadPallet&&loadPallet(120);setTimeout(arguments.callee,17)}else{loadPallet=null}},17)}loadPallet&&loadPallet(percent)}function loading(){if(numLoaded<imgPaths.length){if(percent<100-imgPaths.length+numLoaded){percent++;setPercent(percent-1)}}else{percent+=10;percent>100&&(percent=100);setPercent(percent-1)}if(percent>=100&&typeof $!='undefined'){if(!g_config.test&&g_config.isForbidShareactivity){wx.ready(loadEnd)}else{loadEnd()}return}setTimeout(arguments.callee,10)}function loadEnd(){setPercent(100);var flag=$(window).height()/$(window).width()<1.575;var bgHeight=flag?$(window).width()*1.575:$(window).height();setTimeout(function(){!HdGame.nootNeedFixHeight&&$("#homeBgBox,.gameBgBox").css("height",bgHeight/g_rem+"rem");var theObject=g_config.style==55?$(".gameBox .bottomSkill,#bottomSkill"):$(".home .bottomSkill,#bottomSkill");flag&&theObject.css("top",(bgHeight-$(".bottomSkill").outerHeight())/g_rem+"rem");setTimeout(function(){$loadPercent=null;$("#preloadPage").hide()},500);complete();self.loadComplete=true;for(var n=loadCallBack.length,i=0;i<n;i++){loadCallBack[i]()}loadCallBack=null;logoImg=null;$loadPercent=null;$("#preloadPage").addClass("leftClose")},300)}function loadimg(arr){loading();for(var i=arr.length-1;i>=0;i--){var img=new Image();img.onload=loadCheckComplete;img.onerror=loadCheckComplete;img.src=arr[i];self[arr[i]]=img}if(self.loadTimeout){self._loadTimer=setTimeout(loadTimeout,self.loadTimeout)}}function loadTimeout(){}function loadCheckComplete(){numLoaded++;this.assets_complete=true;if(numLoaded===imgPaths.length){complete()}}function complete(){if(self.complete)return;clearTimeout(self._loadTimer);numLoaded=imgPaths.length;self.complete=true;for(var n=readyCallBack.length,i=0;i<n;i++){readyCallBack[i]()}readyCallBack=null}}}})(hg);
-    /*----------------------------可编辑元素包装------------------------------------*/
+  (function(hg) {
+      var imgPaths = [],
+          readyCallBack = [],
+          loadCallBack = [];
+      hg.assets = {
+          complete: false,
+          loadComplete: false,
+          increment: 0,
+          loadingStyle: 1,
+          loadTimeout: 120000,
+          getPath: function() {
+              return imgPaths
+          },
+          setPath: function(path) {
+              imgPaths = path
+          },
+          add: function(src) {
+              var self = this;
+              if (self.complete) {
+                  return
+              }
+              if (_.isArray(src)) {
+                  for (var i = src.length - 1; i >= 0; i--) {
+                      self.add(src[i])
+                  }
+              } else if (typeof src === 'string') {
+                  imgPaths.push(src)
+              }
+              return this
+          },
+          onReady: function(callBack) {
+              var self = this;
+              if (self.complete) {
+                  callBack()
+              } else {
+                  readyCallBack.push(callBack)
+              }
+              return self
+          },
+          onload: function(callBack) {
+              var self = this;
+              if (self.loadComplete) {
+                  callBack()
+              } else {
+                  loadCallBack.push(callBack)
+              }
+              return self
+          },
+          loadPage: function() {
+              var self = this,
+                  percent = 1,
+                  numLoaded = 0,
+                  $loadPercent = document.getElementById("loadPercent"),
+                  loadPallet;
+              window.scrollTo(0, 0);
+              if (self.loadingStyle === 1) {
+                  loadimg(imgPaths)
+              } else if (self.loadingStyle === 3) {
+                  var logoImg = document.getElementById("preloadImg");
+                  var initLogoImg = function(img) {
+                      var img = logoImg;
+                      var h = img.height;
+                      var w = img.width;
+                      var bottomPageInfoDeg = -Math.atan(w / h) - Math.PI / 2;
+                      var canvas = document.getElementById("preloadCanvas");
+                      var ctx = canvas.getContext("2d");
+                      var ratio = (window.devicePixelRatio || 1) / (ctx.backingStorePixelRatio || ctx.webkitBackingStorePixelRatio || ctx.mozBackingStorePixelRatio || ctx.msBackingStorePixelRatio || ctx.oBackingStorePixelRatio || ctx.backingStorePixelRatio || 1);
+                      var drawImg = function() {
+                          ctx.fillStyle = "#fff";
+                          ctx.fillRect(0.2 * g_rem * ratio, 0.2 * g_rem * ratio, w * ratio, h * ratio);
+                          ctx.drawImage(img, 0.2 * g_rem * ratio, 0.2 * g_rem * ratio, w * ratio, h * ratio)
+                      };
+                      if (h === w) {
+                          if (h > 3.5 * g_rem) {
+                              h = w = 3.5 * g_rem
+                          }
+                          drawImg = function() {
+                              ctx.save();
+                              ctx.beginPath();
+                              ctx.arc(canvas.width / 2, canvas.height / 2, w / 2 * ratio, 0, 2 * Math.PI);
+                              ctx.clip();
+                              ctx.fillStyle = "#fff";
+                              ctx.fill();
+                              ctx.drawImage(img, 0.2 * g_rem * ratio, 0.2 * g_rem * ratio, w * ratio, h * ratio);
+                              ctx.restore()
+                          }
+                      } else {
+                          if (w > h && w > 8 * g_rem) {
+                              h = 8 * g_rem * h / w;
+                              w = 8 * g_rem
+                          } else {
+                              if (h > w && h > 8 * g_rem) {
+                                  w = 8 * g_rem * w / h;
+                                  h = 8 * g_rem
+                              }
+                          }
+                      }
+                      canvas.width = (w + 0.4 * g_rem) * ratio;
+                      canvas.height = (h + 0.4 * g_rem) * ratio;
+                      canvas.style.width = w + 0.4 * g_rem + "px";
+                      canvas.style.height = h + 0.4 * g_rem + "px";
+                      if (h === w) {
+                          ctx.beginPath();
+                          ctx.arc(canvas.width / 2, canvas.height / 2, canvas.width / 2, 0, 2 * Math.PI);
+                          ctx.clip()
+                      }
+                      ctx.strokeStyle = "#69c5ff";
+                      ctx.lineWidth = 8 * g_rem * ratio;
+                      loadPallet = function(tmp) {
+                          ctx.beginPath();
+                          ctx.arc(canvas.width / 2, canvas.height / 2, 4 * g_rem * ratio, bottomPageInfoDeg, bottomPageInfoDeg + tmp * (2 * Math.PI / 100));
+                          ctx.stroke();
+                          drawImg()
+                      };
+                      loadimg(imgPaths)
+                  };
+                  if (logoImg.complete) {
+                      initLogoImg()
+                  } else {
+                      logoImg.onload = initLogoImg
+                  }
+              }
+
+              function setPercent(percent) {
+                  $loadPercent.innerHTML = percent;
+                  if (percent === 100) {
+                      var index = 0;
+                      setTimeout(function() {
+                          index++;
+                          if (index < 10) {
+                              loadPallet && loadPallet(120);
+                              setTimeout(arguments.callee, 17)
+                          } else {
+                              loadPallet = null
+                          }
+                      }, 17)
+                  }
+                  loadPallet && loadPallet(percent)
+              }
+
+              function loading() {
+                  if (numLoaded < imgPaths.length) {
+                      if (percent < 100 - imgPaths.length + numLoaded) {
+                          percent++;
+                          setPercent(percent - 1)
+                      }
+                  } else {
+                      percent += 10;
+                      percent > 100 && (percent = 100);
+                      setPercent(percent - 1)
+                  } if (percent >= 100 && typeof $ != 'undefined') {
+                      if (!g_config.test && g_config.isForbidShareactivity) {
+                          wx.ready(loadEnd)
+                      } else {
+                          loadEnd()
+                      }
+                      return
+                  }
+                  setTimeout(arguments.callee, 10)
+              }
+
+              function loadEnd() {
+                  setPercent(100);
+                  var flag = $(window).height() / $(window).width() < 1.575;
+                  var bgHeight = flag ? $(window).width() * 1.575 : $(window).height();
+                  setTimeout(function() {
+                      !HdGame.nootNeedFixHeight && $("#homeBgBox,.gameBgBox").css("height", bgHeight / g_rem + "rem");
+                      var theObject = g_config.style == 55 ? $(".gameBox .bottomSkill,#bottomSkill") : $(".home .bottomSkill,#bottomSkill");
+                      flag && theObject.css("top", (bgHeight - $(".bottomSkill").outerHeight()) / g_rem + "rem");
+                      setTimeout(function() {
+                          $loadPercent = null;
+                          $("#preloadPage").hide()
+                      }, 500);
+                      complete();
+                      self.loadComplete = true;
+                      for (var n = loadCallBack.length, i = 0; i < n; i++) {
+                          loadCallBack[i]()
+                      }
+                      loadCallBack = null;
+                      logoImg = null;
+                      $loadPercent = null;
+                      $("#preloadPage").addClass("leftClose")
+                  }, 300)
+              }
+
+              function loadimg(arr) {
+                  loading();
+                  for (var i = arr.length - 1; i >= 0; i--) {
+                      var img = new Image();
+                      img.onload = loadCheckComplete;
+                      img.onerror = loadCheckComplete;
+                      img.src = arr[i];
+                      self[arr[i]] = img
+                  }
+                  if (self.loadTimeout) {
+                      self._loadTimer = setTimeout(loadTimeout, self.loadTimeout)
+                  }
+              }
+
+              function loadTimeout() {}
+
+              function loadCheckComplete() {
+                  numLoaded++;
+                  this.assets_complete = true;
+                  if (numLoaded === imgPaths.length) {
+                      complete()
+                  }
+              }
+
+              function complete() {
+                  if (self.complete) return;
+                  clearTimeout(self._loadTimer);
+                  numLoaded = imgPaths.length;
+                  self.complete = true;
+                  for (var n = readyCallBack.length, i = 0; i < n; i++) {
+                      readyCallBack[i]()
+                  }
+                  readyCallBack = null
+              }
+          }
+      }
+  })(hg);
+      /*----------------------------可编辑元素包装------------------------------------*/
+
     hg.edit = null;
 
     hg.edit = {};
@@ -715,7 +450,7 @@ s.parentNode.insertBefore(fs, s);
           {"name":"flashLight","path":["/static/zp/ACgIABAEGAAg34u8zwUotNbH_QcwHDgc.png"]},
           {"name":"darkLight","path":["/static/zp/ACgIABAEGAAg4ou8zwUo2Kyn6AEwHDgc.png"]},
           {"name":"priceD","path":["/static/zp/ACgIABAEGAAg6Iu8zwUo8_fMgAcwhgE4hgE.png"]},
-          {"name":"thePrice1","path":["/static/zp/ACgIABAEGAAg7ou8zwUokLyJxgcwhgE4hgE.png"]},
+          {"name":"thePrice1","path":["/upload/images/raffle_reward_1521787218172.jpg"]},
           {"name":"thePrice2","path":["/static/zp/ACgIABAEGAAg8ou8zwUojPDHgQcwhgE4hgE.png"]},
           {"name":"thePrice3","path":["/static/zp/ACgIABAEGAAg9Yu8zwUovPSpjQcwhgE4hgE.png"]},
           {"name":"thePrice4","path":["/static/zp/ACgIABAEGAAg_Yu8zwUog--NtgMwhgE4hgE.png"]},
@@ -739,14 +474,14 @@ s.parentNode.insertBefore(fs, s);
           {"name":"flashLight","path":["*_resRoot*/image/hlcbt/brightFlash.png","灯泡图片一","5000k","28px*28px"],"rsize":{"width":"0.7rem","height":"0.7rem"}},
           {"name":"darkLight","path":["*_resRoot*/image/hlcbt/darkFlash.png","灯泡图片二","5000k","28px*28px"],"rsize":{"width":"0.7rem","height":"0.7rem"}},
           {"name":"priceD","path":["*_resRoot*/image/hlcbt/priceD.png","奖品背景","5000k"],"rsize":{"width":"3.35rem","height":"3.35rem"},"edit":"_none"},
-          {"name":"thePrice1","path":["*_resRoot*/image/hlcbt/price1.png","奖项一","5000k"],"rsize":{"width":"3.35rem","height":"3.35rem"},"edit":"_none"},
-          {"name":"thePrice2","path":["*_resRoot*/image/hlcbt/price2.png","奖项二","5000k"],"rsize":{"width":"3.35rem","height":"3.35rem"},"edit":"_none"},
-          {"name":"thePrice3","path":["*_resRoot*/image/hlcbt/price3.png","奖项三","5000k"],"rsize":{"width":"3.35rem","height":"3.35rem"},"edit":"_none"},
-          {"name":"thePrice4","path":["*_resRoot*/image/hlcbt/price4.png","奖项四","5000k"],"rsize":{"width":"3.35rem","height":"3.35rem"},"edit":"_none"},
-          {"name":"thePrice5","path":["*_resRoot*/image/hlcbt/price5.png","奖项五","5000k"],"rsize":{"width":"3.35rem","height":"3.35rem"},"edit":"_none"},
-          {"name":"thePrice6","path":["*_resRoot*/image/hlcbt/price6.png","奖项六","5000k"],"rsize":{"width":"3.35rem","height":"3.35rem"},"edit":"_none"},
-          {"name":"thePrice7","path":["*_resRoot*/image/hlcbt/price7.png","奖项七","5000k"],"rsize":{"width":"3.35rem","height":"3.35rem"},"edit":"_none"},
-          {"name":"thePrice8","path":["*_resRoot*/image/hlcbt/price8.png","奖项八","5000k"],"rsize":{"width":"3.35rem","height":"3.35rem"},"edit":"_none"},
+          {"name":"thePrice1","path":["","奖项一","5000k"],"rsize":{"width":"3.35rem","height":"3.35rem"},"edit":"_none"},
+          {"name":"thePrice2","path":["","奖项二","5000k"],"rsize":{"width":"3.35rem","height":"3.35rem"},"edit":"_none"},
+          {"name":"thePrice3","path":["","奖项三","5000k"],"rsize":{"width":"3.35rem","height":"3.35rem"},"edit":"_none"},
+          {"name":"thePrice4","path":["","奖项四","5000k"],"rsize":{"width":"3.35rem","height":"3.35rem"},"edit":"_none"},
+          {"name":"thePrice5","path":["","奖项五","5000k"],"rsize":{"width":"3.35rem","height":"3.35rem"},"edit":"_none"},
+          {"name":"thePrice6","path":["","奖项六","5000k"],"rsize":{"width":"3.35rem","height":"3.35rem"},"edit":"_none"},
+          {"name":"thePrice7","path":["","奖项七","5000k"],"rsize":{"width":"3.35rem","height":"3.35rem"},"edit":"_none"},
+          {"name":"thePrice8","path":["","奖项八","5000k"],"rsize":{"width":"3.35rem","height":"3.35rem"},"edit":"_none"},
           {"name":"thePrice900","path":["*_resRoot*/image/hlcbt/price900.png","安慰奖","5000k"],"rsize":{"width":"3.35rem","height":"3.35rem"},"edit":"_none"},
           {"name":"thePrice0","path":["*_resRoot*/image/hlcbt/price0.png","谢谢参与","5000k"],"rsize":{"width":"3.35rem","height":"3.35rem"},"edit":"_none"},
           {"name":"drawInfo","pos":{"left":"2.5rem","top":"22.3rem","forParent":"false"},"css":[
@@ -772,95 +507,13 @@ s.parentNode.insertBefore(fs, s);
                 {"type":"size","name":"font-size","val":14,"defVal":14,"opt":0},
                 {"type":"color","name":"color","val":"","defVal":"","tra":-1,"defTra":-1,"opt":0},
                 {"type":"color","name":"text-shadow","val":"","defVal":"","tra":-1,"defTra":-1,"opt":0}]}],"edit":3,"formDefaultStyle":true},
-          {"name":"advertising","rsize":{"width":"16rem","height":"40rem"},"path":["*_resRoot*/image/gg.jpg"],"edit":"_background","formDefaultStyle":true}];
-        var originMod = null;
-        if(originMod && false){
-            origin = JSON.parse(JSON.stringify(originMod));
-            hg.edit.isMod = true;
-        }
+          {"name":"advertising","rsize":{"width":"16rem","height":"40rem"},"path":["*_resRoot*/image/gg.jpg"],"edit":"_background","formDefaultStyle":true}
+        ];
 
-        var correct = function(list1,list2){
-            return list2.map(function(val2){
-                return list1.filter(function(val1){return val1.name === val2.name;})[0] || val2;
-            });
-        }
-        var correctPaths = function(pathDef,path){
-            if(!path || !pathDef || !isArray(pathDef[0])) return;
-            if(!isArray(path[0])){
-                path[0] = [path[0]];
-                path.length = 1;
-            }
-            if(pathDef.length > path.length){ //同步数据结构
-                pathDef.forEach(function(defv,i){
-                    if(i >= path.length){
-                        path.push(defv);
-                    }
-                });
-            }
-        }
-        originMod = originMod ? correct(originMod,originDef) : originMod;
-        origin = originMod ? correct(origin,originMod) : correct(origin,originDef);
-        for(var i=0;i < originDef.length;i++){
-            var path = origin[i].path;
-            var pathDef = originDef[i].path;
-            var pathMod = originMod ? originMod[i].path : null;
-            var notDeferPath = !originDef[i].deferPath;
-            correctPaths(pathDef,pathMod);
-            correctPaths(pathDef,path);
-            pathDef = pathMod || pathDef;
-            if(pathDef){
-                if(!path){
-                    origin[i].path = path = pathDef;
-                }
-                if(isArray(path[0])){
-                    for(var j=0;j < pathDef.length;j++){
-                        if(!path[j]) path[j] = pathDef[j];
-                        if(!path[j][0]) path[j][0] = pathDef[j][0];
-                        notDeferPath && hg.assets.add(path[j][0].replace('*_resRoot*',_resRoot));
-                    }
-                }else{
-                    if(!path[0]) path[0] = pathDef[0];
-                    notDeferPath && hg.assets.add(path[0].replace('*_resRoot*',_resRoot));
-                }
-            }
-            if(origin[i].name == 'advertising'){
-                document.getElementById('advertising').style.backgroundImage = "url("+path[0].replace('*_resRoot*',_resRoot)+")";
-            }
-        }
-        if(false){
-            hg.assets.add("");
-        }
-        if(false && origin[1].path[0] == _resRoot + "/image/tgcm/answer.png"){
-            origin[1].path[0] = [_resRoot + "/image/tgcm/drag.png"];
-        }
         hg.edit.origin = origin;
         hg.edit.originDef = originDef;
-        hg.edit.originMod = originMod;
     })(hg);
 
-    /*-----------------------资源loading-----------------------------*/
-    ;(function(){
-        hg.assets.add([
-            "/static/zp/ACgIABACGAAguZ28zwUoiM-W2AUwgAU4wAw.jpg",
-            "/static/zp/logo.jpg",
-            "/static/zp/ruleImg.png",
-            "/static/zp/success.png",
-            "/static/zp/light.png",
-            "/static/zp/bird.png",
-            "/static/zp/musicOff.png",
-            "/static/zp/musicOn.png",
-            "/static/zp/auBg.jpg",
-            "/static/zp/manImg.jpg",
-            '/static/zp/faiImg.png',
-        ]);
-        loadGamePreAssets();
-        if(false){
-            hg.assets.setPath([
-              "/static/zp/ACgIABACGAAguZ28zwUoiM-W2AUwgAU4wAw.jpg",
-              "/static/zp/ACgIABAEGAAg85vO0QUo8vfcigUw9gQ46AI.png"]);
-        }
-        hg.assets.loadPage();//开始loading页面
-    })();
     //全局变量
     var g_config = {
       "showSkillSup":true,"showSlide":false,"isOpenAreaLimit":false,"isCheckPlayTimes":true,"showMenu":true,"buy":false,"isNewGame":false,"isModel":false,"test":true,"isOem":false,"scoreType":false,"showLogo":false,"flag":10390,"flagB":2304,"countsTimeType":-1,"sortType":-1,
@@ -873,7 +526,7 @@ s.parentNode.insertBefore(fs, s);
           "style":"一等奖","t_type":"DATE_TYPE_FIX_TIME_RANGE","cbt":1508774400000,"cet":1509465599000,
           "cft":30,"cfbt":0,"tlmt":"[8]","ocimg":false,"opqrc":true,"optx":false,"oct":false,"oplink":false,"genewxcard":false,"iscuscode":false,"iscancelver":false,
           "stl":"","opti":"凭券联系现场工作人员兑奖","txn":"兑奖须知","txc":"联系商家出示兑奖码","btn":"了解更多","btl":"","servicepho":"","cashinfo":"",
-          "aimg":"/static/zp/gift.png","aimgw":"6rem","aimgh":"6rem","attentionimg":"","onlinect":1,"continfo":3,
+          "aimg":"/upload/images/raffle_reward_1521787218172.jpg","aimgw":"6rem","aimgh":"6rem","attentionimg":"","onlinect":1,"continfo":3,
           "excelName":"","hbtype":0,"hbAverage":1000,"floatBegin":500,"floatEnd":1500,"name":"价值100元礼品","level":1,"passwordrednum":100,"payment":1,"storeType":1},
         {"amount":0,"awardtype":2,"cashtype":2,"attention":1,"cashsite":"请填写您的兑奖地址或者门店地址","pot":0,
           "style":"二等奖","t_type":"DATE_TYPE_FIX_TIME_RANGE","cbt":1508774400000,"cet":1509465599000,
@@ -962,52 +615,89 @@ s.parentNode.insertBefore(fs, s);
       "clickTips":{"clickSrc":"/static/zp/clickView.png","pointW":"2rem","pointH":"2rem","clickW":"3.3rem","clickH":"3.65rem"},
       "acctOpenId":"","achieveToken":"","isOldFaiImgGame":true,"urlToken":"XW6aET6TwaiHqdHecOUkgA"
     };
-    var isPublish = true;
-    var HdVerDef = {
-        FREE : 0,  //免费版
-        BY : 1,  //白银版
-        BJ : 2,  //铂金版
-    };
-    function isArray(arr){
-        return Object.prototype.toString.call(arr) === "[object Array]";
-    }
-    var isOldAwardPage = false;
+    // function isArray(arr){
+    //     return Object.prototype.toString.call(arr) === "[object Array]";
+    // }
 </script>
+<script src="https://cdn.bootcss.com/lodash.js/4.17.5/lodash.min.js"></script>
 <script type="text/javascript" src="/static/zp/jquery-core.min.js"></script>
+<!-- <script src="https://cdn.bootcss.com/jquery/1.8.2/jquery.min.js"></script> -->
 <script type="text/javascript" src="/static/zp/hdUtil.min.js"></script>
 <script type="text/javascript" src="/static/zp/hdgame.min.js"></script>
 <script type="text/javascript" src="/static/zp/lufylegend.min.js"></script>
 <script type="text/javascript" src="/static/zp/city2.min.js"></script>
 <script type="text/javascript">
-function $$(selector){
-    if(!_manage||_preview){
-        return $('#__notfound__');
-    }
-    return parent.$(selector);
+
+var initHG = function(){
+
+  hg.on('beforeDraw',function(_arguments){
+  	var thisInfoType = 2;
+  	if(g_config.afterLinkModify && HdGame.shouldRegInfo(thisInfoType,_arguments,this)){
+
+  		return false;
+  	}
+  	thisInfoType = 3;
+  	if(g_config.afterLinkModify && HdGame.shouldRegInfo(thisInfoType,_arguments,this)){
+
+  		return false;
+  	}
+  });
+
+
+
+  hg.assets.add([
+      "/static/zp/ACgIABACGAAguZ28zwUoiM-W2AUwgAU4wAw.jpg",
+      "/static/zp/logo.jpg",
+      "/static/zp/ruleImg.png",
+      "/static/zp/success.png",
+      "/static/zp/light.png",
+      "/static/zp/bird.png",
+      "/static/zp/musicOff.png",
+      "/static/zp/musicOn.png",
+      "/static/zp/auBg.jpg",
+      "/static/zp/manImg.jpg",
+      '/static/zp/faiImg.png',
+  ]);
+
+  hg.assets.loadPage();//开始loading页面
 }
+
+$(function(){
+  var activityCode = 'asda';
+  $.ajax({
+    url: '/api/raffle/'+activityCode+'/verify',
+    type: 'head',
+    data: { activityCode: 'asda', memberId: member_id },
+    success: function(resp) {
+
+      $.ajax({
+        url: '/api/raffle/' + activityCode + '/info',
+        type: 'get',
+        data: {activityCode: activityCode, mallId: 1},
+        success: function(resp) {
+
+          initHG();
+          console.log(resp);
+        }
+      })
+
+
+    },error: function(err){
+      if(err.status == 403) { alert('积分不足'); location.href="/member"}
+    }
+  })
+
+})
+
 HdGame.gameDomain = 'hd.faisco.cn';
 HdGame.gameDomainIgnoreStyle = 'hd.faisco.cn';
-if(false){
-    HdGame.gameDomain = 'hd.webportal.cc';
-	HdGame.gameDomainIgnoreStyle = 'hd.webportal.cc';
-}
 HdGame.isReg = false;
-if(_manage&&!_preview){
-    if(parent != self){
-        $(function() {
-            parent.$$.fire("ready");
-        });
-        parent.$$.win = window;
-    }
-}
-/*---------------游戏函数回调--------------------*/
 HdGame.initCallBack(hg,['startGame','beforeStartGame','startGamehead','home','again','jsFootEnd','showResult','changeBottomBar','showPoup','hidePoup','timeChange','beforeDraw','updateRankList','afterDraw','editBackground']); //hdgame
 hg.register(['setGameType','hpInit','hgLoadEnd','save','changeShow','showTabByStyle']); //hdportal
-hg.showGameBox = true; //是否在开始游戏时默认显示游戏页
-/*----------------------------可编辑元素包装------------------------------------*/
-if(hg.edit){
-    HdGame.initEdit(hg.edit);
-}
+HdGame.initEdit(hg.edit);
+hg.sound = HdGame.initSound([{"path":"/static/zp/bgmusic29H.mp3","fileName":"背景音乐.mp3","optFlag":0},{"path":"/static/zp/startDraw.mp3","fileName":"滚动音效.mp3","optFlag":2}],[{"path":"*_resRoot*/image/hlcbt/bgmusic29H.mp3","fileName":"背景音乐.mp3","optFlag":0},{"path":"*_resRoot*/image/hlcbt/startDraw.mp3","fileName":"滚动音效.mp3","optFlag":2}],null);
+hg.sound.readyPlay(0,0,'loop');
+
 function parseRemToPx(rem){
     if(rem.indexOf('rem') === -1){
         return parseFloat(rem);
@@ -1020,17 +710,7 @@ function parsePxToRem(px){
     }
     return parseFloat(px)/g_rem + 'rem';
 }
-/*----------------------------------计时------------------------------------*/
-hg.time = null;
 
-/*----------------------------------计分------------------------------------*/
-
-hg.grade = HdGame.initGrade();
-
-/*----------------------------------声音-----------------------------------*/
-hg.sound = HdGame.initSound([{"path":"/static/zp/bgmusic29H.mp3","fileName":"背景音乐.mp3","optFlag":0},{"path":"/static/zp/startDraw.mp3","fileName":"滚动音效.mp3","optFlag":2}],[{"path":"*_resRoot*/image/hlcbt/bgmusic29H.mp3","fileName":"背景音乐.mp3","optFlag":0},{"path":"*_resRoot*/image/hlcbt/startDraw.mp3","fileName":"滚动音效.mp3","optFlag":2}],null);
-
-hg.sound.readyPlay(0,0,'loop');
 
 /*----------------------------------获取ip信息-----------------------------------*/
 (function(){
@@ -1045,15 +725,54 @@ hg.sound.readyPlay(0,0,'loop');
     function refreshRemForSpecial(rem,rate) {
         var newFontSize = rem / rate;
         $("html").css("font-size",newFontSize + "px");
-        HdGame.logStd("rem-special","width:" + $('html')[0].getBoundingClientRect().width + "|g_rem:" + rem + "|rate:" + rate + "|oldFontSize:" + curFontSize + "|newFontSize:" + newFontSize + "|userAgent:" + navigator.userAgent);
     }
-
 })();
 </script>
 
 <script type="text/javascript">
-HdGame.initWxConfig({"isHideShareBtn":false,"isHideMenuItems":false,"fullUrl":"https://hd.faisco.cn/7020498/XW6aET6TwaiHqdHecOUkgA/load.html?style=57","plInfo":{"id":623160,"aid":7020498,"name":"tp_15801086","awardLevel":900,"achievement":"","gameId":344,"codeStatus":2,"info":"{\"headImg\":\"/static/zp/manImg.jpg\",\"ip\":\"112.11.7.72\",\"ipProvince\":\"浙江省\",\"ipCity\":\"嘉兴市\"}","award":"价值5元小礼品","openId":"tryPlay_15801086","flag":2,"openIdB":"","drawTotal":1,"awardTime":1514413063265,"codeList":"[\"8658160344\"]","jointime":1514413063265,"prop":"","prop1":"","code1":"","playInfo":"","currentAchievement":"","faiOpenId":""},"nameList":["一等奖","二等奖","三等奖","四等奖","五等奖","六等奖","七等奖","八等奖","安慰奖"],"jsSdkAppid":"wx25367438c8ce0799","timestamp":"1514413124","nonce_str":"a79c393f-9b34-4bd4-80e5-149fe17d0ed3","signature":"0eff5add90b2007bba224877016cd307ef2bf127","cardTicket":"","dynamicShareUrlRootEmpty":false,"dynamicShareUrlRoot":"http://hd.faisco.cn/","fsl":"a","shareDeep":0,"checkControlLevel":0,"openStrongAttention":false,"shareImg":"http://7020498.h40.faiusr.com/2/344/ACgIABACGAAg-4y8zwUot8XuswMwyAE4yAE!160x160.jpg","activeName":"元旦跨年抽大奖","wxShareText_def":"轻轻松松就能抽到大奖，积攒多年的人品终于有用了，你也赶紧来抽奖吧！！","wxShareText_award":"我已经在活动中抽到了<span class=\"tag\" contenteditable=\"false\">奖品名称<\/span>，你也快来抽大奖吧！","wxShareText_rank":"","addDrawTime":1})
-
+// HdGame.initWxConfig({
+//   "plInfo": {
+//     "id": 623160,
+//     "aid": 7020498,
+//     "name": "tp_15801086",
+//     "awardLevel": 900,
+//     "achievement": "",
+//     "gameId": 344,
+//     "codeStatus": 2,
+//     "info": "{\"headImg\":\"/static/zp/manImg.jpg\",\"ip\":\"112.11.7.72\",\"ipProvince\":\"浙江省\",\"ipCity\":\"嘉兴市\"}",
+//     "award": "价值5元小礼品",
+//     "openId": "tryPlay_15801086",
+//     "flag": 2,
+//     "openIdB": "",
+//     "drawTotal": 1,
+//     "awardTime": 1514413063265,
+//     "codeList": "[\"8658160344\"]",
+//     "jointime": 1514413063265,
+//     "prop": "",
+//     "prop1": "",
+//     "code1": "",
+//     "playInfo": "",
+//     "currentAchievement": "",
+//     "faiOpenId": ""
+//   },
+//   "nameList": ["一等奖", "二等奖", "三等奖", "四等奖", "五等奖", "六等奖", "七等奖", "八等奖", "安慰奖"],
+//   "jsSdkAppid": "wx25367438c8ce0799",
+//   "timestamp": "1514413124",
+//   "nonce_str": "a79c393f-9b34-4bd4-80e5-149fe17d0ed3",
+//   "signature": "0eff5add90b2007bba224877016cd307ef2bf127",
+//   "cardTicket": "",
+//   "dynamicShareUrlRoot": "http://hd.faisco.cn/",
+//   "fsl": "a",
+//   "shareDeep": 0,
+//   "checkControlLevel": 0,
+//   "openStrongAttention": false,
+//   "shareImg": "http://7020498.h40.faiusr.com/2/344/ACgIABACGAAg-4y8zwUot8XuswMwyAE4yAE!160x160.jpg",
+//   "activeName": "元旦跨年抽大奖",
+//   "wxShareText_def": "轻轻松松就能抽到大奖，积攒多年的人品终于有用了，你也赶紧来抽奖吧！！",
+//   "wxShareText_award": "我已经在活动中抽到了<span class=\"tag\" contenteditable=\"false\">奖品名称<\/span>，你也快来抽大奖吧！",
+//   "wxShareText_rank": "",
+//   "addDrawTime": 1
+// })
 </script>
 <script type="text/javascript">
 var GameArg = {
@@ -1188,22 +907,7 @@ var startStatus = true;
     function setPriceAndStart(){
         $(".theShowerGiftBoxer .priceBox").html('');
         var maxSize;
-        // var imgPath = hg.edit.getImgInfo("startBtnImg").path[0];
-        // var theMaxSize = g.awardNum < 7 ? 3.35 * g_rem : 4.4*g_rem;
-        // if(_manage){
-        //     HdGame.imgReady(imgPath,function(){
-        //         var size = HdGame.Img.calcSize(this.width,this.height,theMaxSize,theMaxSize,HdGame.Img.MODE_SCALE_DEFLATE_FILL);
-        //         $(".startBtnImg").css({
-        //             "background-size":size.width + "px "+size.height+"px"
-        //         })
-        //     });
-        // }else{
-        //     var theSize = hg.assets[imgPath];
-        //     var nowSize = HdGame.Img.calcSize(theSize.width,theSize.height,theMaxSize,theMaxSize,HdGame.Img.MODE_SCALE_DEFLATE_FILL);
-        //     $(".startBtnImg").css({
-        //         "background-size":nowSize.width + "px "+nowSize.height+"px"
-        //     })
-        // }
+
         if(g.awardNum < 7){
             $(".startBtnImg").width("3.35rem").height("3.35rem").addClass("abs").css({
                 "top": 4.8 * g_rem,
@@ -1257,34 +961,11 @@ var startStatus = true;
                 }
             }
             (!g.openComfort && value == 900) && (value = 0);
-            var theIndex;
             var theBoxer = $('.theBoxerForEdit .editTarget-priceD').clone();
-            if(_manage){
-                theIndex = $(".theBoxerForEdit .editTarget-thePrice"+value).clone();
-                setFlashLight();
-            }else{
-                var theSrc = hg.edit.getImgInfo('thePrice'+value).path;
-                 theIndex = '<img class="editTarget-thePrice'+value+'" src="'+theSrc+'" onload="HdGame.Img.optimize(this, {width:'+maxSize+', height:'+maxSize+', mode:HdGame.Img.MODE_SCALE_DEFLATE_FILL});"/>'
-            }
+            var theSrc = hg.edit.getImgInfo('thePrice'+value).path;
+            var theIndex = '<img class="editTarget-thePrice'+value+'" src="'+theSrc+'" onload="HdGame.Img.optimize(this, {width:'+maxSize+', height:'+maxSize+', mode:HdGame.Img.MODE_SCALE_DEFLATE_FILL});"/>'
             theBoxer.addClass("theImgBox abs " + theClassName+theLei+theleft).appendTo('.theShowerGiftBoxer .priceBox');
             $(".theShowerGiftBoxer .priceBox .editTarget-priceD").eq(index).append(theIndex);
-            if(_manage){
-                theIndex.on('load',function(){
-                    var imgTmp = new Image();
-                    imgTmp.src = this.src;
-                    var imgWidth = imgTmp.naturalWidth;
-                    var imgHeight = imgTmp.naturalHeight;
-                    if (HdGame.Img.isNull(imgWidth) || imgWidth == 0 || HdGame.Img.isNull(imgHeight) || imgHeight == 0) {
-                        imgWidth = this.naturalWidth;
-                        imgHeight = this.naturalHeight;
-                    }
-                    var size = HdGame.Img.calcSize(imgWidth, imgHeight, maxSize, maxSize, HdGame.Img.MODE_SCALE_DEFLATE_FILL, true);
-                    $(this).css({
-                        width : size.width,
-                        height : size.height,
-                    })
-                });
-            }
         })
         var theAwardBg = hg.edit.getImgInfo("priceD").path;
         console.log(theAwardBg);
@@ -1327,679 +1008,506 @@ var startStatus = true;
         g.nnn = 0;
         startAnimation();
     }
-    function startAnimation(){
-        if(g.nowGoingStep > 0){
-            var theTime = easeInOut((g.turningZero - g.nowGoingStep),0,g.turningTime,g.turningZero);
-            g.nowGoingStep -= 1;
-            theTime -= g.nnn;
-            g.nnn += theTime;
-            var theObject = g.turnIngArray[0];
-            g.turnIngArray.shift();
-            if(g.turnIngArray.length != 0){
-                g.ctx.clearRect(0,0,g.w*g_rem,g.h*g_rem);
-                drawThePrice({},true);
-                drawThePrice(theObject);
-                hg.sound.play(1);
-            }else{
-               g.nowGoingStep = 0;
-            }
-            setTimeout(arguments.callee,theTime);
+
+  function startAnimation(){
+    if(g.nowGoingStep > 0){
+        var theTime = easeInOut((g.turningZero - g.nowGoingStep),0,g.turningTime,g.turningZero);
+        g.nowGoingStep -= 1;
+        theTime -= g.nnn;
+        g.nnn += theTime;
+        var theObject = g.turnIngArray[0];
+        g.turnIngArray.shift();
+        if(g.turnIngArray.length != 0){
+            g.ctx.clearRect(0,0,g.w*g_rem,g.h*g_rem);
+            drawThePrice({},true);
+            drawThePrice(theObject);
+            hg.sound.play(1);
         }else{
-            // hg.sound.play(1);
-            setTimeout(function(){
-                HdGame.resulePoup.show(zhuanpanArg);
-            },1000);
+           g.nowGoingStep = 0;
         }
-    }
-    // 缓动函数
-    /*
-        t : 初始记步数
-        b : 开始位置
-        c : x轴的变化量,固定的
-        d : x轴的长度
-    */
-    function easeInOut(t,b,c,d){
-        if ((t/=d/2) < 1) return c/2*t*t + b;
-        return -c/2 * ((--t)*(t-2) - 1) + b;
-    }
-    function getRandomFromArray(arr){
-        if(HdGame.getType(arr) !== "array"){
-            return -1;
-        }
-        var a = getRandom(0,(arr.length - 1));
-        return arr[a];
-    }
-    function getRandom(a,b){
-        if(typeof a === "undefined" ) a = 0;
-        if(typeof b === "undefined" ) b = 10;
-        if(a == b) return a;
-        return a+Math.floor(Math.random()*(b-a+1));
-    }
-    function draw(){
-        // 拿到数据之后，先显示动画再显示结果
-        if(!startStatus) return;
-        startStatus = false;
-        // $(".startBtnImg").attr("src",hg.edit.getImgInfo("startBtnImg").path[1]);
-        decideImg(".startBtnImg",hg.edit.getImgInfo("startBtnImg").path[1]);
+        setTimeout(arguments.callee,theTime);
+    }else{
+        // hg.sound.play(1);
         setTimeout(function(){
-            // $(".startBtnImg").attr("src",hg.edit.getImgInfo("startBtnImg").path[0]);
-            decideImg(".startBtnImg",hg.edit.getImgInfo("startBtnImg").path[0]);
-           luckDraw(function(arg,result){
-                zhuanpanArg = arg;
-                $("#outer").show();
-                if(arg.isSuc){
-                    start(result.awardIndex);
-                }else{
-                    start(0);
-                }
-            });
-        },200)
+            HdGame.resulePoup.show(zhuanpanArg);
+        },1000);
     }
-    function decideImg(obj,url){
-        (function(theObj,theUrl){
-            HdGame.imgReady(theUrl,function(){
-                if(typeof theObj === "string"){
-                    theObj = $(theObj);
-                }
-                var originSize = {width:theObj.outerWidth(),height:theObj.outerHeight()};
-                var nowSize = HdGame.Img.calcSize(this.width,this.height,originSize.width,originSize.height,HdGame.Img.MODE_SCALE_DEFLATE_FILL);
-                theObj.css({
-                    'background-image':'url("'+theUrl+'")',
-                    "background-position":"center center",
-                    "background-repeat":"no-repeat",
-                    "background-size":nowSize.width+"px "+nowSize.height+"px"
-                })
-            })
-        })(obj,url)
+  }
+  // 缓动函数
+  /*
+      t : 初始记步数
+      b : 开始位置
+      c : x轴的变化量,固定的
+      d : x轴的长度
+  */
+  function easeInOut(t,b,c,d){
+    if ((t/=d/2) < 1) return c/2*t*t + b;
+    return -c/2 * ((--t)*(t-2) - 1) + b;
+  }
+  function getRandomFromArray(arr){
+    if(HdGame.getType(arr) !== "array"){
+        return -1;
     }
-    function getRandomNum(a,b){
-        return a+Math.floor(Math.random()*(b-a+1));
-    }
-    function setFlashLight() {
-        $.each($(".theRealFlashLight"),function(index,value){
-            if(index < 6){
-                $(this).css({
-                    top : "-0.05rem",
-                    left : (0.65 + 1.9*index)*g_rem
-                });
-            }else if( index < 12 ){
-                var theleft = (index == 6 ? 12.05*g_rem : 12.3*g_rem);
-                var theTop = (index == 6 ? 0.05*g_rem : (0.2 + 1.9*(index - 6))*g_rem );
-                $(this).css({
-                    left : theleft,
-                    top : theTop
-                });
-            }else if( index < 18 ){
-                var theTop = (index == 12 ? 11.75*g_rem : 11.9*g_rem)
-                $(this).css({
-                    top : theTop,
-                    left : (0.65 + 1.9*(18 - index))*g_rem
-                });
+    var a = getRandom(0,(arr.length - 1));
+    return arr[a];
+  }
+
+  function getRandom(a,b){
+    if(typeof a === "undefined" ) a = 0;
+    if(typeof b === "undefined" ) b = 10;
+    if(a == b) return a;
+    return a+Math.floor(Math.random()*(b-a+1));
+  }
+
+  function draw(){
+    // 拿到数据之后，先显示动画再显示结果
+    if(!startStatus) return;
+    startStatus = false;
+    // $(".startBtnImg").attr("src",hg.edit.getImgInfo("startBtnImg").path[1]);
+    decideImg(".startBtnImg",hg.edit.getImgInfo("startBtnImg").path[1]);
+    setTimeout(function(){
+        // $(".startBtnImg").attr("src",hg.edit.getImgInfo("startBtnImg").path[0]);
+        decideImg(".startBtnImg",hg.edit.getImgInfo("startBtnImg").path[0]);
+       luckDraw(function(arg,result){
+            zhuanpanArg = arg;
+            $("#outer").show();
+            if(arg.isSuc){
+                start(result.awardIndex);
             }else{
-                var theleft = (index == 18 ? 0.45*g_rem : 0.35*g_rem);
-                var theTop = (index == 18 ? 11.7*g_rem : (11.9 + 2*(18 - index))*g_rem );
-                $(this).css({
-                    left : theleft,
-                    top : theTop
-                });
+                start(0);
             }
-            if(index == ($(".theRealFlashLight").length - 1) && !_manage){
-                startFlash();
-            }
+        });
+    },200)
+  }
+  function decideImg(obj,url){
+    (function(theObj,theUrl){
+      HdGame.imgReady(theUrl,function(){
+        if(typeof theObj === "string"){
+            theObj = $(theObj);
+        }
+        var originSize = {width:theObj.outerWidth(),height:theObj.outerHeight()};
+        var nowSize = HdGame.Img.calcSize(this.width,this.height,originSize.width,originSize.height,HdGame.Img.MODE_SCALE_DEFLATE_FILL);
+        theObj.css({
+            'background-image':'url("'+theUrl+'")',
+            "background-position":"center center",
+            "background-repeat":"no-repeat",
+            "background-size":nowSize.width+"px "+nowSize.height+"px"
         })
-    }
-    var theFlashSrc = hg.edit.getImgInfo('flashLight').path;
-    var theDarkSrc = hg.edit.getImgInfo('darkLight').path;
-    var theSrcArray = [];
-    theSrcArray.push(theFlashSrc);
-    theSrcArray.push(theDarkSrc);
-    var arraySize = new Array(2);
-    $.each(theSrcArray,function(index,value){
-        (function(index,value){
-            HdGame.imgReady(value,function(){
-                var originSize = {width:$(".theRealFlashLight").outerWidth(),height:$(".theRealFlashLight").outerHeight()};
-                var nowSize = HdGame.Img.calcSize(this.width,this.height,originSize.width,originSize.height,HdGame.Img.MODE_SCALE_DEFLATE_FILL);
-                var pL = 100 * nowSize.width / originSize.width;
-                var pt = 100 * nowSize.height / originSize.height;
-                arraySize[index] = {
-                    "background-image" : 'url("'+value+'")',
-                    "background-size"  : pL+"% "+pt+"%",
-                };
-                if(!_manage && index == 1){
-                    setFlashLight();
-                }
-            })
-        })(index,value);
+      })
+    })(obj,url)
+  }
+  function getRandomNum(a,b){
+    return a+Math.floor(Math.random()*(b-a+1));
+  }
+
+  function setFlashLight() {
+    $.each($(".theRealFlashLight"),function(index,value){
+        if(index < 6){
+            $(this).css({
+                top : "-0.05rem",
+                left : (0.65 + 1.9*index)*g_rem
+            });
+        }else if( index < 12 ){
+            var theleft = (index == 6 ? 12.05*g_rem : 12.3*g_rem);
+            var theTop = (index == 6 ? 0.05*g_rem : (0.2 + 1.9*(index - 6))*g_rem );
+            $(this).css({
+                left : theleft,
+                top : theTop
+            });
+        }else if( index < 18 ){
+            var theTop = (index == 12 ? 11.75*g_rem : 11.9*g_rem)
+            $(this).css({
+                top : theTop,
+                left : (0.65 + 1.9*(18 - index))*g_rem
+            });
+        }else{
+            var theleft = (index == 18 ? 0.45*g_rem : 0.35*g_rem);
+            var theTop = (index == 18 ? 11.7*g_rem : (11.9 + 2*(18 - index))*g_rem );
+            $(this).css({
+                left : theleft,
+                top : theTop
+            });
+        }
+        if(index == ($(".theRealFlashLight").length - 1)){
+            startFlash();
+        }
     })
-    function startFlash(){
-        $.each($(".theRealFlashLight"),function(index,value){
-            var theSrc = arraySize[1];
-            var otherSrc = arraySize[0];
-            var theFlag = $(this).hasClass("editTarget-darkLight");
-            if(theFlag){
-                theSrc = arraySize[0];
-                otherSrc = arraySize[1];
-            }
-            // A亮
-            if(!g.num){
-                $(this).css(theSrc);
-            }else{
-            // B闪
-                $(this).css(otherSrc);
-            }
-        })
-        if(!g.num){
-            g.num = 1;
-        }else{
-            delete g.num;
-        }
-        setTimeout(arguments.callee,500);
+  }
+  var theFlashSrc = hg.edit.getImgInfo('flashLight').path;
+  var theDarkSrc = hg.edit.getImgInfo('darkLight').path;
+  var theSrcArray = [];
+  theSrcArray.push(theFlashSrc);
+  theSrcArray.push(theDarkSrc);
+  var arraySize = new Array(2);
+  $.each(theSrcArray,function(index,value){
+      (function(index,value){
+          HdGame.imgReady(value,function(){
+              var originSize = {width:$(".theRealFlashLight").outerWidth(),height:$(".theRealFlashLight").outerHeight()};
+              var nowSize = HdGame.Img.calcSize(this.width,this.height,originSize.width,originSize.height,HdGame.Img.MODE_SCALE_DEFLATE_FILL);
+              var pL = 100 * nowSize.width / originSize.width;
+              var pt = 100 * nowSize.height / originSize.height;
+              arraySize[index] = {
+                  "background-image" : 'url("'+value+'")',
+                  "background-size"  : pL+"% "+pt+"%",
+              };
+              if(index == 1){
+                  setFlashLight();
+              }
+          })
+      })(index,value);
+  })
+  function startFlash(){
+    $.each($(".theRealFlashLight"),function(index,value){
+      var theSrc = arraySize[1];
+      var otherSrc = arraySize[0];
+      var theFlag = $(this).hasClass("editTarget-darkLight");
+      if(theFlag){
+        theSrc = arraySize[0];
+        otherSrc = arraySize[1];
+      }
+      // A亮
+      if(!g.num){
+        $(this).css(theSrc);
+      }else{
+      // B闪
+        $(this).css(otherSrc);
+      }
+    })
+    if(!g.num){
+      g.num = 1;
+    }else{
+      delete g.num;
     }
-    $(function() {
-        if(_manage) {
-            HdGame.moduleDraggale(".showGifBoxer",false,"#limitRanage");
-        }
-        if(_manage){
-            var theBoxerForEdit = $(".theBoxerForEdit");
-            var arr = [0,1,2,3,4,5,6,7,8,900];
-            for (var i = 0;i < arr.length;i++){
-                theBoxerForEdit.append('<img class="editTarget-thePrice'+arr[i]+'">');
-            };
-            g.setzpByAwardnum();
-            hg.on('jsFootEnd',updateImg);
-        }else{
-            g.sliceArray = g.awardNum > 6 ? morePricePos : lessPricePos;
-            setPriceAndStart();
-            decideImg(".startBtnImg",hg.edit.getImgInfo("startBtnImg").path[0]);
-            hg.showGameBox = false;
-            hg.assets.onload(function(){
-                g.w = 11.25*g_rem;
-                g.h = 11.25*g_rem;
-                var canvas = $('#outer')[0];
-                if(typeof canvas === 'undefined') return;
-                var ratio = LF.setCanvasePixelRatio();
-                //压缩画布
-                canvas.width = g.w*ratio;
-                canvas.height = g.h*ratio;
-                canvas.style.height = g.w + 'px';
-                canvas.style.width = g.h + 'px';
-                g.ctx = canvas.getContext("2d");
-            });
-            hg.on('startGame',draw);
-            // hg.on('startGamehead',function(){
-            //     if(false && totalCount >= drawTotalLimit){
-            //         HdGame.statusMsg(6);
-            //         return false;
-            //     }
-            //     if (count >= drawTimesLimit) {
-            //         HdGame.statusMsg(4);
-            //         return false;
-            //     }
-            // });
-        }
+    setTimeout(arguments.callee,500);
+  }
+  $(function() {
+    g.sliceArray = g.awardNum > 6 ? morePricePos : lessPricePos;
+    setPriceAndStart();
+    decideImg(".startBtnImg",hg.edit.getImgInfo("startBtnImg").path[0]);
+
+    hg.assets.onload(function(){
+        g.w = 11.25*g_rem;
+        g.h = 11.25*g_rem;
+        var canvas = $('#outer')[0];
+        if(typeof canvas === 'undefined') return;
+        var ratio = LF.setCanvasePixelRatio();
+        //压缩画布
+        canvas.width = g.w*ratio;
+        canvas.height = g.h*ratio;
+        canvas.style.height = g.w + 'px';
+        canvas.style.width = g.h + 'px';
+        g.ctx = canvas.getContext("2d");
     });
+    hg.on('startGame',draw);
+  });
 })(GameArg);
-function home(){
-    if(!_manage){
-        $("#outer").hide();
-        startStatus = true;
-    }
-    $('#poupInfoBox').hide();
-    $('.resuleBox').hide();
-    $('#ruleImg').show();
-    $('.homeBtnBox').show();
-    $('.footerBox').show();
-    hg.fire('home');
-}
+
 </script>
 
 <script type="text/javascript">
-    var count = 9999;
-    var drawTimesLimit = 9999;
-    var drawTotalLimit = 6;
-    var playTimesLimit = 5;
-    var playTotalLimit = 10;
-    var totalCount = 1;
-    var isLimitDraw = false;
-    var isLimitPlay = false;
-    var otherPlayerInfo = {};
-    var showAwardList = false;
-    var informNum = 2;
-    var playerAwardList = [];
-    var skillSupportType = 2;
-    var skillName = HdGame.decodeHtml('凡科互动（点击了解）');
-    var skillLink = HdGame.decodeUrl(HdGame.decodeHtml('http%3A%2F%2Fmp.weixin.qq.com%2Fs%3F__biz%3DMjM5MTk5MjI3OA%3D%3D%26mid%3D209854000%26idx%3D1%26sn%3D82241d924839270d3ea820ad2d56c01b%23wechat_redirect'));
-	var gameType = 0;
-    var rankShowNum = 100;
-    var helpType = 1;
-    var addDrawTime = 1;
-    var remainHelpNum = 10;
-	PlayInfo.initData(0,0,5,5,10,false);
-    //改版前的联系兑奖提示语
-    HdGame._awardLinkMsg = '获奖者需填写联系电话方可查看兑奖码兑奖';
-    HdGame._luckDrawFunc = luckDraw;
-    if(!_manage){
-        if(false){
-            HdGame._luckDrawFunc = luckDrawZhuli;
-        }else if(false){
-            HdGame._luckDrawFunc = luckDrawZhuliNew;
-        }
-    }
+var count = 9999;
+var drawTimesLimit = 9999;
+var drawTotalLimit = 6;
+var playTimesLimit = 5;
+var playTotalLimit = 10;
+var otherPlayerInfo = {};
+var showAwardList = false;
+var informNum = 2;
+var playerAwardList = [];
+var skillSupportType = 2;
+var gameType = 0;
+var rankShowNum = 100;
+var helpType = 1;
+var addDrawTime = 1;
+var remainHelpNum = 10;
 
-	if(false){
-        $('#awardContactInfo').remove();
-	}
-	HdGame.initChangePoup({
-		rankUrl        : 'hdgame_h?cmd=getRankList&aid=7020498&gameId=344&style=57&openId=tryPlay_15801086',
-		awardUrl       : 'hdgame_h?cmd=getGiftList&aid=7020498&style=57',
-		getRegAwardUrl : 'hdgame_h?cmd=getRegAwardList&aid=7020498&gameId=344&style=57&openId=tryPlay_15801086',
-		openId         : 'tryPlay_15801086',
-		gameId         : 344,
-		mhaveScore     : (false && gameType != 3),
-		informUrl      : 'hdgame_h?cmd=setInformNum&aid=7020498&gameId=344&openId=tryPlay_15801086',
-		hasReport      : false,
-		afterWxCard    : true
-	});
-    HdGame.resulePoup.init({
-        drawType  : 0,
-        checkRegUrl:'hdgame_h?cmd=checkRegNum&aid=7020498&gameId=344&openId=tryPlay_15801086',
-        regUrl    : 'hdgame_h?cmd=setPlayerReg&aid=7020498&gameId=344&openId=tryPlay_15801086&flag1=true',
-        home      : typeof home !== 'undefined' ? home : null,
-        again     : typeof gameRestart !== 'undefined' ? gameRestart : null,
-        giftInit  : HdGame._luckDrawFunc,
-    });
-   HdGame.initJsFoot({
-     "rulesortstr":"abcde","drawType":0,"hostName":"","hostLink":"http://","menuLink":"","fromFav":"","openAwardExp":true,"isHideFxts":true,
-     "supportUrl":"http://mp.weixin.qq.com/s?__biz=MjM5MTk5MjI3OA==&mid=209854000&idx=1&sn=82241d924839270d3ea820ad2d56c01b#rd","isAdverQRCode":false,
-     "skillSupport":"凡科互动","showJoinNum":true,"showRedDot":false,"showMDRedDot":false,"showAwardBtn":true,"isSelAwardLine":false,"showSkillSup":true,"menuStyle":3,
-     "soundIcon_l":"0.75rem","soundIcon_t":"1rem","awardImage":"/static/zp/gift.png",
-     "titleImg_path_def":"/static/zp/title.png",
-     "startImg_path_def":"/static/zp/startBtn.png",
-     "awardIconImgPath_def":"/static/zp/ruleImg_special.png",
-     "titleImg_w_def":"15.8rem","titleImg_h_def":"7.5rem","startBtn_w_def":"","startBtn_h_def":"","logoImg_w_def":"2rem","logoImg_h_def":"2rem",
-     "awardImg_w_def":"6rem","awardImg_h_def":"6rem",
-     "homeBgPath_def":"/static/zp/homeBg.jpg","gameBg2Path_def":"",
-     "gameBgPath_def":"","headImg2":"","headImg3":"","headImg4":"","dangerType":0,"isZhuLi":false,
-     "getRegAwardUrl":"ajax/hdgame_h?cmd=getRegAwardList&aid=7020498&gameId=344&style=57&openId=tryPlay_15801086"
-   })
-
-    function startBtnDelay(){
-        $('.titleImg').removeClass('titleDown').addClass('titleDown');
-        $('#startBtnImg').removeClass('startTada');
-
-        var soundPauseCord = 'soundPause|7020498|344|tryPlay_15801086';
-        if((false || false) && !HdGame.getLocalStorage(soundPauseCord) && true){
-            hg.sound.allowPlay = true;
-        }
-        hg.sound.readyPlay(0,0,'loop');
-
-        setTimeout(function(){
-            $('#startBtnImg').addClass('startTada');
-        },1000);
-    }
-    function showAwardDetail4Draw(fromFav){
-        HdGame.changePoup(3,'',true);
-        home('showAward',fromFav);
-        if(g_config.isYKY){
-            $('#poupInfoBox').show();
-        }
-    }
-    function setAwardImgHeight(){
-        $('#resule-gift-foot').css("margin-top",($('#resule-gift-sucImg').height()+35)/g_rem + 'rem');
-    }
-	function showRank(){
-		HdGame.changePoup(1,'',true);
-        $('#awardDetailBox').hide();
-	}
-	function showRule(isAnimation){
-        $('#activityKit').hide();
-        if(g_config.withAwardFinish){
-            HdGame.changePoup(2,'',true);
-        }else{
-            HdGame.changePoup(2,'',isAnimation);
-        }
-        $('#awardDetailBox').hide();
-	}
-    function activateSound(){ //兼容ios下 WebAudio类型的对象无法自动播放，必须在点击事件中播放过一次，才允许播放
-        try{
-            if(HdGame.isIPhone() && hg.sound.list && hg.sound.list.length > 0 && !hg.sound._activate){
-                $.each(hg.sound.list, function(i, val) {
-                    var data = hg.sound.cache[i];
-                    if(i > 0 && data && data.soundType == "LWebAudio"){
-                        data.play();
-                        data.stop();
-                    }
-                });
-                hg.sound._activate = true;
-            }
-        }catch(e){
-            HdGame.logStd("activateSoundErr",e);
-        }
-    }
-	function startBtnAjax(event,data,callBack,pass){
-        var that = this;
-        if(!pass){
-            activateSound();
-            if(g_config.isOpenAreaLimit){
-                return HdGame.getAreaByWx(g_config.ipInfo,function(){
-                    if( checkAreaLimit(g_config.ipInfo,g_config.areaLimitList) != 'ok' ){ //不在限制的地区内，直接返回
-                        return rt(false);
-                    }
-                    return startBtnAjax.call(that,event,data,callBack,true);
-                });
-            }
-        }
-        if(false){
-            HdGame.statusMsg(0);
-            hg.sound.allowPlay = false;
-            hg.sound.pauseAll();
-            return rt(false);
-        }
-        if(!hg.fireWith('startGamehead',that,[event,data])){
-            return rt(false);
-        }
-        if (HdGame.getIsOutofJoinNumFlowFlag) {
-            return rt(false);
-        }
-
-        if (!HdGame.isGetIsOutofJoinNumFlag && !HdGame.getIsOutofJoinNumFlowFlag) {
-            // HdGame.getIsOutofJoinNumFlowFlag = true;
-
-            HdGame.getIsOutofJoinNumFlowFlag = false;
-            HdGame.isGetIsOutofJoinNumFlag = true;
-            HdGame.isOutofJoinNum = false;
-            return startBtnAjax.call(that,event,data,callBack,true);
+PlayInfo.initData(0,0,5,5,10,false);
 
 
-            // return HdGame.getIsOutofJoinNumFlag(function(flag){
-            //     HdGame.getIsOutofJoinNumFlowFlag = false;
-            //     if (flag == 'error') {
-            //         HdGame.statusMsg("网络错误，请稍后再试！");
-            //         return rt(false);
-            //     }
-            //     HdGame.isGetIsOutofJoinNumFlag = true;
-            //     HdGame.isOutofJoinNum = (flag == 'true' ? true :false);
-            //     return startBtnAjax.call(that,event,data,callBack,true);
-            // })
-        }
+HdGame._awardLinkMsg = '获奖者需填写联系电话方可查看兑奖码兑奖';
 
-
-        if(HdGame.isOutofJoinNum){
-            if(false || false){//报名型游戏
-                HdGame.statusMsg("本活动报名人数已达到最大限制。如有疑问，请与主办方联系。");
-            }else{
-                if(false){
-                    HdGame.statusMsg("本活动团长人数已达到最大限制。如有疑问，请与主办方联系。");
-                }else{
-                    HdGame.statusMsg("本活动参与人数已达到最大限制。如有疑问，请与主办方联系。");
-                }
-            }
-            return rt(false);
-        }
-
-        if(false){
-            HdGame.statusMsg('你有疑似作弊行为，已被列入黑名单','');
-            return rt(false);
-        }
-
-
-        if(g_config.afterLinkModify && HdGame.shouldRegInfo(2,arguments,this)){
-            return rt(false);
-        }
-
-
-        if( gameType == 3 && g_config.isCheckPlayTimes && PlayInfo.getTotalRemainTimes() <= 0 ){
-            HdGame.statusMsg(8);
-            return rt(false);
-        }
-        if( gameType == 3 && g_config.isCheckPlayTimes && PlayInfo.getTodayRemainTimes() <= 0 ){
-            HdGame.statusMsg(7);
-            return rt(false);
-        }
-
-        if(!hg.fireWith('beforeStartGame',that,[false,event,data])){
-            return rt(false);
-        }
-        hg.showGameBox && showGame();
-        console.log("showGameBox: "+hg.showGameBox);
-        HdGame.logDog(1000002, 57);
-        HdGame.logDog(1000179, g_config.authVer + 1);
-        if(isJoinThemeGame){
-            HdGame.logDog(1000219, 3 + g_config.isAOpenId);
-        }
-        HdGame.logObjDog(1000092, 1, 344);
-
-            //HdGame.addJoinGameBehavior();
-
-        HdGame.setCookie('gps_province',HdGame.encodeUrl(g_config.ipInfo.provice),1);
-        HdGame.setCookie('gps_city', HdGame.encodeUrl(g_config.ipInfo.city),1);
-        var cookOpt = {};
-        cookOpt.domain=HdGame.gameDomain;
-        cookOpt.expires=1;
-        cookOpt.path="/";
-        $.cookie('gps_province',HdGame.encodeUrl(g_config.ipInfo.provice),cookOpt);
-        $.cookie('gps_city',HdGame.encodeUrl(g_config.ipInfo.city),cookOpt);
-        hg.fireWith('startGame',that,[false,event,data,showGame]);
-        return rt(true);
-        function rt(r){
-            callBack && callBack.call(that,r,event,data,showGame);
-            return r;
-        }
-        function showGame(){
-            if(false)return;
-            $('.homeBtnBox,.bottomSkill').hide();
-            $('.footerBox').hide();
-            $('.home,#ruleImg').hide();
-            $('.gameBox').show();
-            if(typeof hg.sound.cache[0] !== 'undefined' && typeof hg.sound.cache[0].playing !== 'undefined' && !hg.sound.cache[0].playing && g_config.style != 48 && g_config.style != 49 && g_config.style != 69){
-                hg.sound.readyPlay(0,0,'loop');
-            }
-        }
-    }
-
-
-function checkAreaLimit(ipInfo,areaLimitList,isShowMsg){
-	isShowMsg = isShowMsg !== false;
-	var now_province = ipInfo.provice;
-	var now_city = ipInfo.city;
-	if(areaLimitList.length > 0){
-		if( now_province && now_city ){ //有当前地理位置信息
-            var isLimit = true;
-            for(var i = 0; i < areaLimitList.length; i++){
-                var info = site_cityUtil.getInfo(areaLimitList[i]);
-                if(info.parentId == 1){
-                    if(info.name.indexOf(now_province) > -1 || now_province.indexOf(info.name) > -1){
-                        isLimit = false;
-                        break;
-                    }
-                }else{
-                    if(info.name.indexOf(now_city) > -1 || now_city.indexOf(info.name) > -1){
-                        isLimit = false;
-                        break;
-                    }
-                }
-            }
-            if(isLimit){
-                isShowMsg && HdGame.statusMsg('您当前所在的地区（' + now_city + '）不在可参与区域范围','');
-                return 'limit';
-            }
-		}else{ //没有查到当前ip信息，显示服务繁忙
-			isShowMsg && HdGame.statusMsg("服务繁忙，请稍候重试",'');
-			return 'busyness';
-		}
-	}
-    return 'ok';
-}
-
-hg.on('beforeDraw',function(_arguments){
-	var thisInfoType = 2;
-	if(g_config.afterLinkModify && HdGame.shouldRegInfo(thisInfoType,_arguments,this)){
-
-		return false;
-	}
-	thisInfoType = 3;
-	if(g_config.afterLinkModify && HdGame.shouldRegInfo(thisInfoType,_arguments,this)){
-
-		return false;
-	}
+HdGame.initChangePoup({
+  rankUrl        : 'hdgame_h?cmd=getRankList&aid=7020498&gameId=344&style=57&openId=tryPlay_15801086',
+  awardUrl       : 'hdgame_h?cmd=getGiftList&aid=7020498&style=57',
+  getRegAwardUrl : 'hdgame_h?cmd=getRegAwardList&aid=7020498&gameId=344&style=57&openId=tryPlay_15801086',
+  openId         : 'tryPlay_15801086',
+  gameId         : 344,
+  mhaveScore     : (false && gameType != 3),
+  informUrl      : 'hdgame_h?cmd=setInformNum&aid=7020498&gameId=344&openId=tryPlay_15801086',
+  hasReport      : false,
+  afterWxCard    : true
 });
 
-var drawStatusLuckDraw = true;
-function luckDraw(fn,option,pass){
+HdGame.resulePoup.init({
+  drawType  : 0,
+  checkRegUrl:'hdgame_h?cmd=checkRegNum&aid=7020498&gameId=344&openId=tryPlay_15801086',
+  regUrl    : 'hdgame_h?cmd=setPlayerReg&aid=7020498&gameId=344&openId=tryPlay_15801086&flag1=true',
+  home      : typeof home !== 'undefined' ? home : null,
+  again     : typeof gameRestart !== 'undefined' ? gameRestart : null,
+  giftInit  : HdGame._luckDrawFunc,
+});
 
-	if(hg.fireWith('beforeDraw',this,[arguments]) === false){
-		return false;
-	}
-    if(!drawStatusLuckDraw){
-        return;
+HdGame.initJsFoot({
+  "rulesortstr":"abcde","drawType":0,"hostName":"","hostLink":"http://","menuLink":"","fromFav":"","openAwardExp":true,"isHideFxts":true,
+  "supportUrl":"http://mp.weixin.qq.com/s?__biz=MjM5MTk5MjI3OA==&mid=209854000&idx=1&sn=82241d924839270d3ea820ad2d56c01b#rd","isAdverQRCode":false,
+  "skillSupport":"凡科互动","showJoinNum":true,"showRedDot":false,"showMDRedDot":false,"showAwardBtn":true,"isSelAwardLine":false,"showSkillSup":true,"menuStyle":3,
+  "soundIcon_l":"0.75rem","soundIcon_t":"1rem","awardImage":"/static/zp/gift.png",
+  "titleImg_path_def":"/static/zp/title.png",
+  "startImg_path_def":"/static/zp/startBtn.png",
+  "awardIconImgPath_def":"/static/zp/ruleImg_special.png",
+  "titleImg_w_def":"15.8rem","titleImg_h_def":"7.5rem","startBtn_w_def":"","startBtn_h_def":"","logoImg_w_def":"2rem","logoImg_h_def":"2rem",
+  "awardImg_w_def":"6rem","awardImg_h_def":"6rem",
+  "homeBgPath_def":"/static/zp/homeBg.jpg","gameBg2Path_def":"",
+  "gameBgPath_def":"","headImg2":"","headImg3":"","headImg4":"","dangerType":0,"isZhuLi":false,
+  "getRegAwardUrl":"ajax/hdgame_h?cmd=getRegAwardList&aid=7020498&gameId=344&style=57&openId=tryPlay_15801086"
+})
+
+function startBtnDelay() {
+  $('.titleImg').removeClass('titleDown').addClass('titleDown');
+  $('#startBtnImg').removeClass('startTada');
+
+  var soundPauseCord = 'soundPause|7020498|344|tryPlay_15801086';
+  if ((false || false) && !HdGame.getLocalStorage(soundPauseCord) && true) {
+    hg.sound.allowPlay = true;
+  }
+  hg.sound.readyPlay(0, 0, 'loop');
+
+  setTimeout(function() {
+    $('#startBtnImg').addClass('startTada');
+  },
+  1000);
+}
+
+function showAwardDetail4Draw(fromFav) {
+  HdGame.changePoup(3, '', true);
+  home('showAward', fromFav);
+  if (g_config.isYKY) {
+    $('#poupInfoBox').show();
+  }
+}
+
+function setAwardImgHeight(){
+  $('#resule-gift-foot').css("margin-top",($('#resule-gift-sucImg').height()+35)/g_rem + 'rem');
+}
+
+function showRank() {
+  HdGame.changePoup(1, '', true);
+  $('#awardDetailBox').hide();
+}
+
+function showRule(isAnimation) {
+  $('#activityKit').hide();
+  if (g_config.withAwardFinish) {
+    HdGame.changePoup(2, '', true);
+  } else {
+    HdGame.changePoup(2, '', isAnimation);
+  }
+  $('#awardDetailBox').hide();
+}
+
+
+function activateSound() { //兼容ios下 WebAudio类型的对象无法自动播放，必须在点击事件中播放过一次，才允许播放
+  try {
+    if (HdGame.isIPhone() && hg.sound.list && hg.sound.list.length > 0 && !hg.sound._activate) {
+      $.each(hg.sound.list,
+      function(i, val) {
+        var data = hg.sound.cache[i];
+        if (i > 0 && data && data.soundType == "LWebAudio") {
+          data.play();
+          data.stop();
+        }
+      });
+      hg.sound._activate = true;
     }
-    HdGame.showLoadToast('数据加载中');
-    drawStatusLuckDraw=false;
-    $('.ajaxLoadBg').show();
-    $('.ajaxLoadBar').addClass('ajaxLoad');
+  } catch(e) {
+    HdGame.logStd("activateSoundErr", e);
+  }
+}
 
-    HdGame.hideLoadToast();
-    HdGame.otherAjaxComplete();
-    drawStatusLuckDraw=true;
-    clearTimeout(HdGame.lotTimer);
 
-    hg.fireWith('afterDraw',this);
-
-    if(gameType != 4){
-      count++;
-      $(".dayDrawCount").text(drawTimesLimit-count<0 ? 0:(drawTimesLimit-count));
-      totalCount++;
-      $(".totalDrawCount").text(drawTotalLimit-totalCount<0 ? 0:(drawTotalLimit-totalCount));
+function startBtnAjax(event, data, callBack, pass) {
+  var that = this;
+  if (!pass) {
+    activateSound();
+    if (g_config.isOpenAreaLimit) {
+      return HdGame.getAreaByWx(g_config.ipInfo,
+      function() {
+        if (checkAreaLimit(g_config.ipInfo, g_config.areaLimitList) != 'ok') { //不在限制的地区内，直接返回
+          return rt(false);
+        }
+        return startBtnAjax.call(that, event, data, callBack, true);
+      });
     }
-    $('#resule-gift-box').attr('_level',1);
-    g_config.haveAward = true;
-    $('.resule-status-send').html("查看我的奖品");
+  }
 
-    var arg={
-        isSuc:true,
-        giftStyle:'一等奖',
-        giftCode:'110',
-        awardTypeNum:'',
-        giftImage:'',
-        awardImageW:'',
-        awardImageH:'',
-        awardIndex:1,
-    };
+  if (!hg.fireWith('startGamehead', that, [event, data])) {
+    return rt(false);
+  }
+  if (HdGame.getIsOutofJoinNumFlowFlag) {
+    return rt(false);
+  }
 
-    var member_id = localStorage.getItem('member_id');
+  if (!HdGame.isGetIsOutofJoinNumFlag && !HdGame.getIsOutofJoinNumFlowFlag) {
+    // HdGame.getIsOutofJoinNumFlowFlag = true;
+    HdGame.getIsOutofJoinNumFlowFlag = false;
+    HdGame.isGetIsOutofJoinNumFlag = true;
+    HdGame.isOutofJoinNum = false;
+    return startBtnAjax.call(that, event, data, callBack, true);
 
-    $.getJSON('/api/member/'+member_id+'/raffleInfo').then(function(ri){
+    // return HdGame.getIsOutofJoinNumFlag(function(flag){
+    //     HdGame.getIsOutofJoinNumFlowFlag = false;
+    //     if (flag == 'error') {
+    //         HdGame.statusMsg("网络错误，请稍后再试！");
+    //         return rt(false);
+    //     }
+    //     HdGame.isGetIsOutofJoinNumFlag = true;
+    //     HdGame.isOutofJoinNum = (flag == 'true' ? true :false);
+    //     return startBtnAjax.call(that,event,data,callBack,true);
+    // })
+  }
 
-      $.getJSON('/api/coupon/relatecoupons?mallId=1').then(function(rcList){
-        var idx = Math.floor(Math.random() * rcList.length);
-        arg.awardIndex = idx % 5 + 1;
-        var rc = rcList[idx]
+  if (HdGame.isOutofJoinNum) {
+    if (false || false) { //报名型游戏
+      HdGame.statusMsg("本活动报名人数已达到最大限制。如有疑问，请与主办方联系。");
+    } else {
+      if (false) {
+        HdGame.statusMsg("本活动团长人数已达到最大限制。如有疑问，请与主办方联系。");
+      } else {
+        HdGame.statusMsg("本活动参与人数已达到最大限制。如有疑问，请与主办方联系。");
+      }
+    }
+    return rt(false);
+  }
 
-        $.ajax({
-          type: 'post',
-          url: '/api/member/'+member_id+'/raffle/' + ri.raffle_id,
-          data: JSON.stringify({ couponId: rc.coupon_id, mallId: 1, win: true}),
-          contentType: 'application/json;charset=UTF-8',
-          success: function(result){
-            console.log(result);
-            arg.giftStyle = rc.coupon_name
-            fn(arg, arg);
-          },
-          error: function(error){
-            const josn = JSON.parse(error.responseText);
-            arg.giftStyle = josn.content;
-            fn(arg, arg);
+  if (false) {
+    HdGame.statusMsg('你有疑似作弊行为，已被列入黑名单', '');
+    return rt(false);
+  }
+
+  if (g_config.afterLinkModify && HdGame.shouldRegInfo(2, arguments, this)) {
+    return rt(false);
+  }
+
+  if (gameType == 3 && g_config.isCheckPlayTimes && PlayInfo.getTotalRemainTimes() <= 0) {
+    HdGame.statusMsg(8);
+    return rt(false);
+  }
+  if (gameType == 3 && g_config.isCheckPlayTimes && PlayInfo.getTodayRemainTimes() <= 0) {
+    HdGame.statusMsg(7);
+    return rt(false);
+  }
+
+  if (!hg.fireWith('beforeStartGame', that, [false, event, data])) {
+    return rt(false);
+  }
+
+
+  //HdGame.addJoinGameBehavior();
+  var cookOpt = {};
+  cookOpt.domain = HdGame.gameDomain;
+  cookOpt.expires = 1;
+  cookOpt.path = "/";
+  hg.fireWith('startGame', that, [false, event, data, showGame]);
+  return rt(true);
+  function rt(r) {
+    callBack && callBack.call(that, r, event, data, showGame);
+    return r;
+  }
+  function showGame() {
+    if (false) return;
+    $('.homeBtnBox,.bottomSkill').hide();
+    $('.footerBox').hide();
+    $('.home,#ruleImg').hide();
+    $('.gameBox').show();
+    if (typeof hg.sound.cache[0] !== 'undefined' && typeof hg.sound.cache[0].playing !== 'undefined' && !hg.sound.cache[0].playing && g_config.style != 48 && g_config.style != 49 && g_config.style != 69) {
+      hg.sound.readyPlay(0, 0, 'loop');
+    }
+  }
+}
+
+
+function checkAreaLimit(ipInfo, areaLimitList, isShowMsg) {
+  isShowMsg = isShowMsg !== false;
+  var now_province = ipInfo.provice;
+  var now_city = ipInfo.city;
+  if (areaLimitList.length > 0) {
+    if (now_province && now_city) { //有当前地理位置信息
+      var isLimit = true;
+      for (var i = 0; i < areaLimitList.length; i++) {
+        var info = site_cityUtil.getInfo(areaLimitList[i]);
+        if (info.parentId == 1) {
+          if (info.name.indexOf(now_province) > -1 || now_province.indexOf(info.name) > -1) {
+            isLimit = false;
+            break;
           }
-        })
+        } else {
+          if (info.name.indexOf(now_city) > -1 || now_city.indexOf(info.name) > -1) {
+            isLimit = false;
+            break;
+          }
+        }
+      }
+      if (isLimit) {
+        isShowMsg && HdGame.statusMsg('您当前所在的地区（' + now_city + '）不在可参与区域范围', '');
+        return 'limit';
+      }
+    } else { //没有查到当前ip信息，显示服务繁忙
+      isShowMsg && HdGame.statusMsg("服务繁忙，请稍候重试", '');
+      return 'busyness';
+    }
+  }
+  return 'ok';
+}
+
+
+function luckDraw(fn, option, pass) {
+  var arg = {
+    isSuc: true,
+    giftStyle: '一等奖',
+    giftCode: '110',
+    awardTypeNum: '',
+    giftImage: '',
+    awardImageW: '',
+    awardImageH: '',
+    awardIndex: 1,
+  };
+
+  var member_id = localStorage.getItem('member_id');
+
+  arg.awardIndex = 1;
+  arg.giftStyle = '1111';
+  return fn(arg, arg);
+
+  $.getJSON('/api/member/' + member_id + '/raffleInfo').then(function(ri) {
+
+    $.getJSON('/api/coupon/relatecoupons?mallId=1').then(function(rcList) {
+      var idx = Math.floor(Math.random() * rcList.length);
+      arg.awardIndex = idx % 5 + 1;
+      var rc = rcList[idx]
+
+      $.ajax({
+        type: 'post',
+        url: '/api/member/' + member_id + '/raffle/' + ri.raffle_id,
+        data: JSON.stringify({
+          couponId: rc.coupon_id,
+          mallId: 1,
+          win: true
+        }),
+        contentType: 'application/json;charset=UTF-8',
+        success: function(result) {
+          console.log(result);
+          arg.giftStyle = rc.coupon_name
+          fn(arg, arg);
+        },
+        error: function(error) {
+          const josn = JSON.parse(error.responseText);
+          arg.giftStyle = josn.content;
+          fn(arg, arg);
+        }
       })
     })
-
-
+  })
 }
-function luckDrawZhuliNew(fn,option){
-    if(!drawStatusLuckDraw || _manage){
-        return;
-    }
-    HdGame.showLoadToast('数据加载中');
-    drawStatusLuckDraw=false;
-    $('.ajaxLoadBg').show();
-    $('.ajaxLoadBar').addClass('ajaxLoad');
-    var params = new Array();
-    params.push("gameId=",344);
-    params.push("&zlid=",g_config.style == 61 ? zlid : -1);
-	params.city_gps = typeof g_config.ipInfo.city != 'undefined' ? g_config.ipInfo.city : '';;
-	params.province_gps = typeof g_config.ipInfo.provice != 'undefined' ? g_config.ipInfo.provice : '';;
-    $.extend(params,option);
-    $.ajax({
-        type : 'post',
-        url : 'hdzhuli_h.jsp?cmd=getResult&aid=7020498&openId=tryPlay_15801086',
-        data : params.join(''),
-        error : function(err,errObj){
-            if(m_debug){
-                alert( '服务繁忙，请稍候重试' );
-            }
-            HdGame.hideLoadToast();
-            HdGame.otherAjaxComplete();
-            drawStatusLuckDraw=true;
-        },
-        success : function(data){
-            HdGame.hideLoadToast();
-            HdGame.tlog('luckDrawZhuliNew',data);
-            HdGame.otherAjaxComplete();
-            drawStatusLuckDraw=true;
-            var result = $.parseJSON(data);
-            setNoLiheWxShare && setNoLiheWxShare();
-            if(result.success){
-                var arg={
-                    isSuc:result.success,
-                    giftStyle:result.awardStyle,
-                    giftName:result.awardName,
-                    giftCode:result.awardCode,
-                    giftImage:result.awardImage,
-                    awardImageW:result.awardImageW,
-                    awardImageH:result.awardImageH,
-                    awardIndex:result.awardIndex,
-                };
-                g_config.haveAward = true;
-
-                if(HdGame.getType(fn) === 'function'){
-                    fn(arg,result);
-                }else{
-                    HdGame.resulePoup.show(arg);
-                }
-
-            }else{
-                if( result.rt === 8 || result.rt === 23 ){
-                    HdGame.statusMsg(result.msg);
-                    return;
-                }else{
-                    var arg={
-                        isSuc:result.success
-                    };
-                    if(HdGame.getType(fn) === 'function'){
-                        fn(arg,result);
-                    }else{
-                        HdGame.resulePoup.show(arg);
-                    }
-                }
-            }
-        }
-    });
-}
-$(function(){
-    if(_manage){
-        $("#resule-gift-sucImg").parent().append('<span class="hd-left-arrow theArrowSpan hide"></span><span class="hd-right-arrow theArrowSpan hide"></span>');
-    }
-    HdGame.imgReady("/static/zp/ACgIABAEGAAgj4u8zwUowIeFkQIwbThi.png",function(){
-        var originSize = {width:$("#ruleImg").width(),height:$("#ruleImg").height()};
-        var nowSize = HdGame.Img.calcSize(this.width,this.height,originSize.width,originSize.height,HdGame.Img.MODE_SCALE_DEFLATE_FILL);
-        $("#ruleImg").css({
-            "background-size": nowSize.width+"px "+nowSize.height+"px",
-            "background-image":"url("+"/static/zp/ACgIABAEGAAgj4u8zwUowIeFkQIwbThi.png"+")",
-        }).attr("_src","/static/zp/ACgIABAEGAAgj4u8zwUowIeFkQIwbThi.png");
-    })
-    hg.fire('jsFootEnd');
-})
 </script>
 </body>
 </html>
