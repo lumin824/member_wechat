@@ -71,5 +71,6 @@ export default new Router({
     { path: '/zhuanpan', component: ()=>import('@/pages/zhuanpan')},
     { path: '/suggest', component: ()=>import('@/pages/suggest')},
     { path: '/suggest_list', component: () => import('@/pages/suggestList')},
+    { path: '/myreward', component: () => import('@/pages/memVoucher/myReward')},
   ]
 })

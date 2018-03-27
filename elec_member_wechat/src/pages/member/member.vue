@@ -66,7 +66,7 @@
           </div>
         </router-link>
 
-        <router-link to="/memVoucher?type=prizes" style="display:flex;">
+        <router-link to="/myreward" style="display:flex;">
           <div style="display:flex;align-items:center;">
             <img src="static/img/cash.png" style="width:0.7rem;height:0.7rem;margin:0 0.5rem;">
           </div>

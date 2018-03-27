@@ -63,8 +63,6 @@
       }, false);
       refreshRem();
   })(window);
-
-  function loadGamePreAssets(){}
 </script>
 
 <link href="/static/zp/base.min.css" rel="stylesheet" type="text/css" />
@@ -204,466 +202,385 @@
       </div>
     </div>
 
-    <script type="text/javascript">
-      function loadGamePreAssets(){
 
-      }
-    </script>
-
-<script type="text/javascript">
-    var tryPlay = true,
-        _resRoot = '/static/zp',
-        _ruleInfo = {};
-        hg = {};
-
-  (function(hg) {
-      var imgPaths = [],
-          readyCallBack = [],
-          loadCallBack = [];
-      hg.assets = {
-          complete: false,
-          loadComplete: false,
-          increment: 0,
-          loadingStyle: 1,
-          loadTimeout: 120000,
-          getPath: function() {
-              return imgPaths
-          },
-          setPath: function(path) {
-              imgPaths = path
-          },
-          add: function(src) {
-              var self = this;
-              if (self.complete) {
-                  return
-              }
-              if (_.isArray(src)) {
-                  for (var i = src.length - 1; i >= 0; i--) {
-                      self.add(src[i])
-                  }
-              } else if (typeof src === 'string') {
-                  imgPaths.push(src)
-              }
-              return this
-          },
-          onReady: function(callBack) {
-              var self = this;
-              if (self.complete) {
-                  callBack()
-              } else {
-                  readyCallBack.push(callBack)
-              }
-              return self
-          },
-          onload: function(callBack) {
-              var self = this;
-              if (self.loadComplete) {
-                  callBack()
-              } else {
-                  loadCallBack.push(callBack)
-              }
-              return self
-          },
-          loadPage: function() {
-              var self = this,
-                  percent = 1,
-                  numLoaded = 0,
-                  $loadPercent = document.getElementById("loadPercent"),
-                  loadPallet;
-              window.scrollTo(0, 0);
-              if (self.loadingStyle === 1) {
-                  loadimg(imgPaths)
-              } else if (self.loadingStyle === 3) {
-                  var logoImg = document.getElementById("preloadImg");
-                  var initLogoImg = function(img) {
-                      var img = logoImg;
-                      var h = img.height;
-                      var w = img.width;
-                      var bottomPageInfoDeg = -Math.atan(w / h) - Math.PI / 2;
-                      var canvas = document.getElementById("preloadCanvas");
-                      var ctx = canvas.getContext("2d");
-                      var ratio = (window.devicePixelRatio || 1) / (ctx.backingStorePixelRatio || ctx.webkitBackingStorePixelRatio || ctx.mozBackingStorePixelRatio || ctx.msBackingStorePixelRatio || ctx.oBackingStorePixelRatio || ctx.backingStorePixelRatio || 1);
-                      var drawImg = function() {
-                          ctx.fillStyle = "#fff";
-                          ctx.fillRect(0.2 * g_rem * ratio, 0.2 * g_rem * ratio, w * ratio, h * ratio);
-                          ctx.drawImage(img, 0.2 * g_rem * ratio, 0.2 * g_rem * ratio, w * ratio, h * ratio)
-                      };
-                      if (h === w) {
-                          if (h > 3.5 * g_rem) {
-                              h = w = 3.5 * g_rem
-                          }
-                          drawImg = function() {
-                              ctx.save();
-                              ctx.beginPath();
-                              ctx.arc(canvas.width / 2, canvas.height / 2, w / 2 * ratio, 0, 2 * Math.PI);
-                              ctx.clip();
-                              ctx.fillStyle = "#fff";
-                              ctx.fill();
-                              ctx.drawImage(img, 0.2 * g_rem * ratio, 0.2 * g_rem * ratio, w * ratio, h * ratio);
-                              ctx.restore()
-                          }
-                      } else {
-                          if (w > h && w > 8 * g_rem) {
-                              h = 8 * g_rem * h / w;
-                              w = 8 * g_rem
-                          } else {
-                              if (h > w && h > 8 * g_rem) {
-                                  w = 8 * g_rem * w / h;
-                                  h = 8 * g_rem
-                              }
-                          }
-                      }
-                      canvas.width = (w + 0.4 * g_rem) * ratio;
-                      canvas.height = (h + 0.4 * g_rem) * ratio;
-                      canvas.style.width = w + 0.4 * g_rem + "px";
-                      canvas.style.height = h + 0.4 * g_rem + "px";
-                      if (h === w) {
-                          ctx.beginPath();
-                          ctx.arc(canvas.width / 2, canvas.height / 2, canvas.width / 2, 0, 2 * Math.PI);
-                          ctx.clip()
-                      }
-                      ctx.strokeStyle = "#69c5ff";
-                      ctx.lineWidth = 8 * g_rem * ratio;
-                      loadPallet = function(tmp) {
-                          ctx.beginPath();
-                          ctx.arc(canvas.width / 2, canvas.height / 2, 4 * g_rem * ratio, bottomPageInfoDeg, bottomPageInfoDeg + tmp * (2 * Math.PI / 100));
-                          ctx.stroke();
-                          drawImg()
-                      };
-                      loadimg(imgPaths)
-                  };
-                  if (logoImg.complete) {
-                      initLogoImg()
-                  } else {
-                      logoImg.onload = initLogoImg
-                  }
-              }
-
-              function setPercent(percent) {
-                  $loadPercent.innerHTML = percent;
-                  if (percent === 100) {
-                      var index = 0;
-                      setTimeout(function() {
-                          index++;
-                          if (index < 10) {
-                              loadPallet && loadPallet(120);
-                              setTimeout(arguments.callee, 17)
-                          } else {
-                              loadPallet = null
-                          }
-                      }, 17)
-                  }
-                  loadPallet && loadPallet(percent)
-              }
-
-              function loading() {
-                  if (numLoaded < imgPaths.length) {
-                      if (percent < 100 - imgPaths.length + numLoaded) {
-                          percent++;
-                          setPercent(percent - 1)
-                      }
-                  } else {
-                      percent += 10;
-                      percent > 100 && (percent = 100);
-                      setPercent(percent - 1)
-                  } if (percent >= 100 && typeof $ != 'undefined') {
-                      loadEnd()
-                      return
-                  }
-                  setTimeout(arguments.callee, 10)
-              }
-
-              function loadEnd() {
-                  setPercent(100);
-                  var flag = $(window).height() / $(window).width() < 1.575;
-                  var bgHeight = flag ? $(window).width() * 1.575 : $(window).height();
-                  setTimeout(function() {
-                      !HdGame.nootNeedFixHeight && $("#homeBgBox,.gameBgBox").css("height", bgHeight / g_rem + "rem");
-                      var theObject = g_config.style == 55 ? $(".gameBox .bottomSkill,#bottomSkill") : $(".home .bottomSkill,#bottomSkill");
-                      flag && theObject.css("top", (bgHeight - $(".bottomSkill").outerHeight()) / g_rem + "rem");
-                      setTimeout(function() {
-                          $loadPercent = null;
-                          $("#preloadPage").hide()
-                      }, 500);
-                      complete();
-                      self.loadComplete = true;
-                      for (var n = loadCallBack.length, i = 0; i < n; i++) {
-                          loadCallBack[i]()
-                      }
-                      loadCallBack = null;
-                      logoImg = null;
-                      $loadPercent = null;
-                      $("#preloadPage").addClass("leftClose")
-                  }, 300)
-              }
-
-              function loadimg(arr) {
-                  loading();
-                  for (var i = arr.length - 1; i >= 0; i--) {
-                      var img = new Image();
-                      img.onload = loadCheckComplete;
-                      img.onerror = loadCheckComplete;
-                      img.src = arr[i];
-                      self[arr[i]] = img
-                  }
-                  if (self.loadTimeout) {
-                      self._loadTimer = setTimeout(loadTimeout, self.loadTimeout)
-                  }
-              }
-
-              function loadTimeout() {}
-
-              function loadCheckComplete() {
-                  numLoaded++;
-                  this.assets_complete = true;
-                  if (numLoaded === imgPaths.length) {
-                      complete()
-                  }
-              }
-
-              function complete() {
-                  if (self.complete) return;
-                  clearTimeout(self._loadTimer);
-                  numLoaded = imgPaths.length;
-                  self.complete = true;
-                  for (var n = readyCallBack.length, i = 0; i < n; i++) {
-                      readyCallBack[i]()
-                  }
-                  readyCallBack = null
-              }
-          }
-      }
-  })(hg);
-      /*----------------------------可编辑元素包装------------------------------------*/
-
-    hg.edit = null;
-
-    hg.edit = {};
-    (function(hg){
-        var origin = [
-          {"name":"startBtnImg","path":[["/static/zp/ACgIABAEGAAgyIu8zwUo3JPwigMwhgE4hgE.png"],["/static/zp/ACgIABAEGAAgy4u8zwUogKSG9AEwhgE4hgE.png"]]},
-          {"name":"showGifBoxer","pos":{"left":"1.4rem","top":"8rem"},"path":["/static/zp/ACgIABAEGAAg0Iu8zwUo9MzdpwYwlgQ4lgQ.png"]},
-          {"name":"flashLight","path":["/static/zp/ACgIABAEGAAg34u8zwUotNbH_QcwHDgc.png"]},
-          {"name":"darkLight","path":["/static/zp/ACgIABAEGAAg4ou8zwUo2Kyn6AEwHDgc.png"]},
-          {"name":"priceD","path":["/static/zp/ACgIABAEGAAg6Iu8zwUo8_fMgAcwhgE4hgE.png"]},
-          {"name":"thePrice1","path":["/upload/images/raffle_reward_1521787218172.jpg"]},
-          {"name":"thePrice2","path":["/static/zp/ACgIABAEGAAg8ou8zwUojPDHgQcwhgE4hgE.png"]},
-          {"name":"thePrice3","path":["/static/zp/ACgIABAEGAAg9Yu8zwUovPSpjQcwhgE4hgE.png"]},
-          {"name":"thePrice4","path":["/static/zp/ACgIABAEGAAg_Yu8zwUog--NtgMwhgE4hgE.png"]},
-          {"name":"thePrice5","path":["/static/zp/ACgIABAEGAAg-Iu8zwUo1bLkggcwhgE4hgE.png"]},
-          {"name":"thePrice6","path":["/static/zp/ACgIABAEGAAggYy8zwUo8MvS9QIwhgE4hgE.png"]},
-          {"name":"thePrice7","path":["/static/zp/ACgIABAEGAAgkIy8zwUo0L-VuQcwhgE4hgE.png"]},
-          {"name":"thePrice8","path":["/static/zp/ACgIABAEGAAgh4y8zwUoxP3Y6AQwhgE4hgE.png"]},
-          {"name":"thePrice900","path":["/static/zp/ACgIABAEGAAgmYy8zwUo0uyq-QYwhgE4hgE.png"]},
-          {"name":"thePrice0","path":["/static/zp/ACgIABAEGAAgnoy8zwUo1JrA4wIwhgE4hgE.png"]},
-          {"name":"drawInfo","pos":{"left":"2.5rem","top":"22.3rem"},"css":[{"css":[{"opt":1,"val":"14","defVal":"14"},{"opt":0,"val":"rgb(255,226,2)","defVal":"rgb(255,226,2)","tra":1,"defTra":1},{"opt":0,"val":"none","defVal":"none"}],"opt":1},{"css":[{"opt":0,"val":"14","defVal":"14"},{"opt":0,"val":"rgb(255,255,255)","defVal":"rgb(255,255,255)","tra":1,"defTra":1},{"opt":0,"val":"none","defVal":"none"}],"opt":0}]},
-          {"name":"theGetPricePic","pos":{"left":"0.75rem","top":"0.15rem"},"size":{"width":"14.5rem","height":"18rem"},"path":[["/static/zp/faiImg.png"]]},
-          {"name":"theGetPricePicTwo","pos":{"left":"0rem","top":"0rem"},"size":{"width":"4rem","height":"4rem"},"path":[["/static/zp/faiImg2.png"]]},
-          {"name":"theGetPricePicThree","pos":{"left":"0rem","top":"0rem"},"size":{"width":"4rem","height":"4rem"},"path":[["/static/zp/faiImg3.png"]]},
-          {"name":"lotsPot","pos":{"left":"4.9rem","top":"3rem"},"size":{"width":"6.15rem","height":"12.4rem"},"path":[["/static/zp/lots1.png"]]},
-          {"name":"lotsShakeHand","pos":{"left":"4.5rem","top":"17.9rem"}},
-          {"name":"playInfo","pos":{"left":"3.5rem","top":"13.6rem"},"css":[{"css":[{"opt":0,"val":14,"defVal":14},{"opt":0,"val":"#000","defVal":"#000","tra":-1,"defTra":-1},{"opt":0,"val":"#fff","defVal":"#fff","tra":-1,"defTra":-1}],"opt":0},{"css":[{"opt":0,"val":14,"defVal":14},{"opt":0,"val":"","defVal":"","tra":-1,"defTra":-1},{"opt":0,"val":"","defVal":"","tra":-1,"defTra":-1}],"opt":0}]},
-          {"name":"advertising","path":["/static/zp/gg.jpg"]}];
-        var originDef = [
-          {"name":"startBtnImg","path":[["*_resRoot*/image/hlcbt/startBtn.png","抽奖按钮","5000k"],["*_resRoot*/image/hlcbt/startBtnhover.png","点击效果","5000k"]],"rsize":{"width":"3.35rem","height":"3.35rem"}},
-          {"name":"showGifBoxer","pos":{"left":"1.35rem","top":"8rem"},"path":["*_resRoot*/image/hlcbt/awardD.png","九宫格图片","5000k"],"rsize":{"width":"13.35rem","height":"13.35rem"},"edit":"all"},
-          {"name":"flashLight","path":["*_resRoot*/image/hlcbt/brightFlash.png","灯泡图片一","5000k","28px*28px"],"rsize":{"width":"0.7rem","height":"0.7rem"}},
-          {"name":"darkLight","path":["*_resRoot*/image/hlcbt/darkFlash.png","灯泡图片二","5000k","28px*28px"],"rsize":{"width":"0.7rem","height":"0.7rem"}},
-          {"name":"priceD","path":["*_resRoot*/image/hlcbt/priceD.png","奖品背景","5000k"],"rsize":{"width":"3.35rem","height":"3.35rem"},"edit":"_none"},
-          {"name":"thePrice1","path":["","奖项一","5000k"],"rsize":{"width":"3.35rem","height":"3.35rem"},"edit":"_none"},
-          {"name":"thePrice2","path":["","奖项二","5000k"],"rsize":{"width":"3.35rem","height":"3.35rem"},"edit":"_none"},
-          {"name":"thePrice3","path":["","奖项三","5000k"],"rsize":{"width":"3.35rem","height":"3.35rem"},"edit":"_none"},
-          {"name":"thePrice4","path":["","奖项四","5000k"],"rsize":{"width":"3.35rem","height":"3.35rem"},"edit":"_none"},
-          {"name":"thePrice5","path":["","奖项五","5000k"],"rsize":{"width":"3.35rem","height":"3.35rem"},"edit":"_none"},
-          {"name":"thePrice6","path":["","奖项六","5000k"],"rsize":{"width":"3.35rem","height":"3.35rem"},"edit":"_none"},
-          {"name":"thePrice7","path":["","奖项七","5000k"],"rsize":{"width":"3.35rem","height":"3.35rem"},"edit":"_none"},
-          {"name":"thePrice8","path":["","奖项八","5000k"],"rsize":{"width":"3.35rem","height":"3.35rem"},"edit":"_none"},
-          {"name":"thePrice900","path":["*_resRoot*/image/hlcbt/price900.png","安慰奖","5000k"],"rsize":{"width":"3.35rem","height":"3.35rem"},"edit":"_none"},
-          {"name":"thePrice0","path":["*_resRoot*/image/hlcbt/price0.png","谢谢参与","5000k"],"rsize":{"width":"3.35rem","height":"3.35rem"},"edit":"_none"},
-          {"name":"drawInfo","pos":{"left":"2.5rem","top":"22.3rem","forParent":"false"},"css":[
-            {"title":"常规文字","opt":0,"from":"#drawInfo","css":[
-              {"type":"size","name":"font-size","val":14,"defVal":14,"opt":0},
-              {"type":"color","name":"color","defVal":"#ffe202","val":"","tra":-1,"defTra":-1,"opt":0},
-              {"type":"color","name":"text-shadow","val":"","defVal":"","opt":0}]},
-            {"title":"抽奖次数","opt":0,"from":"#drawInfo .specil","css":[
-              {"type":"size","name":"font-size","val":14,"defVal":14,"opt":0},
-              {"type":"color","name":"color","val":"","defVal":"#ffffff","tra":-1,"defTra":-1,"opt":0},
-              {"type":"color","name":"text-shadow","val":"","defVal":"","opt":0}]}],"edit":3},
-          {"name":"theGetPricePic","pos":{"left":"2.1rem","top":"1.3rem"},"size":{"width":"11.5rem","height":"11.2rem"},"path":[["*_resRoot*/image/faiImg1-2.png","图片01","5000k"]],"edit":"theGetPricePic","formDefaultStyle":true},
-          {"name":"theGetPricePicTwo","pos":{"left":"2.1rem","top":"1.3rem"},"size":{"width":"11.5rem","height":"11.2rem"},"path":[["*_resRoot*/image/faiImg2-2.png","图片01","5000k"]],"edit":"theGetPricePicTwo","formDefaultStyle":true},
-          {"name":"theGetPricePicThree","pos":{"left":"2.1rem","top":"1.3rem"},"size":{"width":"11.5rem","height":"11.2rem"},"path":[["*_resRoot*/image/faiImg3-2.png","图片01","5000k"]],"edit":"theGetPricePicThree","formDefaultStyle":true},
-          {"name":"lotsPot","pos":{"left":"4.925rem","top":"3rem"},"size":{"width":"6.15rem","height":"12.4rem"},"path":[["*_resRoot*/image/lots1.png","图片01","5000k"]],"edit":"lotsPot","formDefaultStyle":true},
-          {"name":"lotsShakeHand","pos":{"left":"4.5rem","top":"17.9rem","forParent":"false"},"edit":"_none","formDefaultStyle":true},
-          {"name":"playInfo","pos":{"left":"3.5rem","top":"13.6rem","forParent":"false"},"css":[
-            {"title":"常规文字","opt":0,"from":"#playInfo","css":[
-              {"type":"size","name":"font-size","val":14,"defVal":14,"opt":0},
-              {"type":"color","name":"color","val":"","defVal":"#000","tra":-1,"defTra":-1,"opt":0},
-              {"type":"color","name":"text-shadow","val":"","defVal":"#fff","tra":-1,"defTra":-1,"opt":0}]},
-              {"title":"参与机会","opt":0,"from":"#playInfo .specil","css":[
-                {"type":"size","name":"font-size","val":14,"defVal":14,"opt":0},
-                {"type":"color","name":"color","val":"","defVal":"","tra":-1,"defTra":-1,"opt":0},
-                {"type":"color","name":"text-shadow","val":"","defVal":"","tra":-1,"defTra":-1,"opt":0}]}],"edit":3,"formDefaultStyle":true},
-          {"name":"advertising","rsize":{"width":"16rem","height":"40rem"},"path":["*_resRoot*/image/gg.jpg"],"edit":"_background","formDefaultStyle":true}
-        ];
-
-        hg.edit.origin = origin;
-        hg.edit.originDef = originDef;
-    })(hg);
-
-    //全局变量
-    var g_config = {
-      "showSkillSup":true,"showSlide":false,"isOpenAreaLimit":false,"isCheckPlayTimes":true,"showMenu":true,"buy":false,"isNewGame":false,"isModel":false,"test":true,"isOem":false,"scoreType":false,"showLogo":false,"flag":10390,"flagB":2304,"countsTimeType":-1,"sortType":-1,
-      "drawLimitDef":0,"scoreSet":0,"style":57,"aid":7020498,"gameId":344,"openId":"tryPlay_15801086","playerId":623160,
-      "userName":"tp_15801086","headImg":"/static/zp/manImg.jpg","authVer":2,
-      "scoreUnit":"分","testCMD":"","ajaxUrl":"","startTime":"2017-10-24 17:18","$startTime":1508836680000,"$endTime":1509441480000,
-      "awardList":[
-        {"amount":0,"awardtype":2,"cashtype":2,"attention":1,"cashsite":"请填写您的兑奖地址或者门店地址","pot":0,
-          "style":"一等奖","t_type":"DATE_TYPE_FIX_TIME_RANGE","cbt":1508774400000,"cet":1509465599000,
-          "cft":30,"cfbt":0,"tlmt":"[8]","ocimg":false,"opqrc":true,"optx":false,"oct":false,"oplink":false,"genewxcard":false,"iscuscode":false,"iscancelver":false,
-          "stl":"","opti":"凭券联系现场工作人员兑奖","txn":"兑奖须知","txc":"联系商家出示兑奖码","btn":"了解更多","btl":"","servicepho":"","cashinfo":"",
-          "aimg":"/upload/images/raffle_reward_1521787218172.jpg","aimgw":"6rem","aimgh":"6rem","attentionimg":"","onlinect":1,"continfo":3,
-          "excelName":"","hbtype":0,"hbAverage":1000,"floatBegin":500,"floatEnd":1500,"name":"价值100元礼品","level":1,"passwordrednum":100,"payment":1,"storeType":1},
-        {"amount":0,"awardtype":2,"cashtype":2,"attention":1,"cashsite":"请填写您的兑奖地址或者门店地址","pot":0,
-          "style":"二等奖","t_type":"DATE_TYPE_FIX_TIME_RANGE","cbt":1508774400000,"cet":1509465599000,
-          "cft":30,"cfbt":0,"tlmt":"[8]","ocimg":false,"opqrc":true,"optx":false,"oct":false,"oplink":false,"genewxcard":false,"iscuscode":false,"iscancelver":false,
-          "stl":"","opti":"凭券联系现场工作人员兑奖","txn":"兑奖须知","txc":"联系商家出示兑奖码","btn":"了解更多","btl":"","servicepho":"","cashinfo":"",
-          "aimg":"/static/zp/gift.png","aimgw":"6rem","aimgh":"6rem","attentionimg":"","onlinect":1,"continfo":3,
-          "excelName":"","hbtype":0,"hbAverage":1000,"floatBegin":500,"floatEnd":1500,"name":"价值50元礼品","level":2,"passwordrednum":100,"payment":1,"storeType":1},
-        {"amount":0,"awardtype":2,"cashtype":2,"attention":1,"cashsite":"请填写您的兑奖地址或者门店地址","pot":0,
-          "style":"三等奖","t_type":"DATE_TYPE_FIX_TIME_RANGE","cbt":1508774400000,"cet":1509465599000,
-          "cft":30,"cfbt":0,"tlmt":"[8]","ocimg":false,"opqrc":true,"optx":false,"oct":false,"oplink":false,"genewxcard":false,"iscuscode":false,"iscancelver":false,
-          "stl":"","opti":"凭券联系现场工作人员兑奖","txn":"兑奖须知","txc":"联系商家出示兑奖码","btn":"了解更多","btl":"","servicepho":"","cashinfo":"",
-          "aimg":"/static/zp/gift.png","aimgw":"6rem","aimgh":"6rem","attentionimg":"","onlinect":1,"continfo":3,
-          "excelName":"","hbtype":0,"hbAverage":1000,"floatBegin":500,"floatEnd":1500,"name":"价值10元礼品","level":3,"passwordrednum":100,"payment":1,"storeType":1},
-        {"amount":0,"awardtype":2,"cashtype":2,"attention":1,"cashsite":"请填写您的兑奖地址或者门店地址","pot":0,
-          "style":"四等奖","t_type":"DATE_TYPE_FIX_TIME_RANGE","cbt":1508774400000,"cet":1509465599000,
-          "cft":30,"cfbt":0,"tlmt":"[8]","ocimg":false,"opqrc":true,"optx":false,"oct":false,"oplink":false,"genewxcard":false,"iscuscode":false,"iscancelver":false,
-          "stl":"","opti":"凭券联系现场工作人员兑奖","txn":"兑奖须知","txc":"联系商家出示兑奖码","btn":"了解更多","btl":"","servicepho":"","cashinfo":"",
-          "aimg":"/static/zp/gift.png","aimgw":"6rem","aimgh":"6rem","attentionimg":"","onlinect":1,"continfo":3,
-          "excelName":"","hbtype":0,"hbAverage":1000,"floatBegin":500,"floatEnd":1500,"name":"价值5元小礼品","level":4,"passwordrednum":100,"payment":1,"wxcardid":"","storeType":1},
-        {"amount":0,"awardtype":2,"cashtype":2,"attention":1,"cashsite":"请填写您的兑奖地址或者门店地址","pot":0,
-          "style":"五等奖","t_type":"DATE_TYPE_FIX_TIME_RANGE","cbt":1508774400000,"cet":1509465599000,
-          "cft":30,"cfbt":0,"tlmt":"[8]","ocimg":false,"opqrc":true,"optx":false,"oct":false,"oplink":false,"genewxcard":false,"iscuscode":false,"iscancelver":false,
-          "stl":"","opti":"凭券联系现场工作人员兑奖","txn":"兑奖须知","txc":"联系商家出示兑奖码","btn":"了解更多","btl":"","servicepho":"","cashinfo":"",
-          "aimg":"/static/zp/gift.png","aimgw":"6rem","aimgh":"6rem","attentionimg":"","onlinect":1,"continfo":3,
-          "excelName":"","hbtype":0,"hbAverage":1000,"floatBegin":500,"floatEnd":1500,"name":"价值5元小礼品","level":5,"passwordrednum":100,"payment":1,"wxcardid":"","storeType":1},
-        {"amount":0,"awardtype":2,"cashtype":2,"attention":1,"cashsite":"请填写您的兑奖地址或者门店地址","pot":0,
-          "style":"六等奖","t_type":"DATE_TYPE_FIX_TIME_RANGE","cbt":1508774400000,"cet":1509465599000,
-          "cft":30,"cfbt":0,"tlmt":"[8]","ocimg":false,"opqrc":true,"optx":false,"oct":false,"oplink":false,"genewxcard":false,"iscuscode":false,"iscancelver":false,
-          "stl":"","opti":"凭券联系现场工作人员兑奖","txn":"兑奖须知","txc":"联系商家出示兑奖码","btn":"了解更多","btl":"","servicepho":"","cashinfo":"",
-          "aimg":"/static/zp/gift.png","aimgw":"6rem","aimgh":"6rem","attentionimg":"/static/zp/qrcodeImg.jpg","onlinect":1,"continfo":0,
-          "excelName":"","hbtype":0,"hbAverage":1000,"floatBegin":500,"floatEnd":1500,"name":"价值5元小礼品","level":6,"passwordrednum":100,"payment":1,"wxcardid":"","storeType":1},
-        {"amount":0,"awardtype":2,"cashtype":2,"attention":1,"cashsite":"请填写您的兑奖地址或者门店地址","pot":0,
-          "style":"七等奖","t_type":"DATE_TYPE_FIX_TIME_RANGE","cbt":1508774400000,"cet":1509465599000,
-          "cft":30,"cfbt":0,"tlmt":"[8]","ocimg":false,"opqrc":true,"optx":false,"oct":false,"oplink":false,"genewxcard":false,"iscuscode":false,"iscancelver":false,
-          "stl":"","opti":"凭券联系现场工作人员兑奖","txn":"兑奖须知","txc":"联系商家出示兑奖码","btn":"了解更多","btl":"","servicepho":"","cashinfo":"",
-          "aimg":"/static/zp/gift.png","aimgw":"6rem","aimgh":"6rem","attentionimg":"/static/zp/qrcodeImg.jpg","onlinect":1,"continfo":0,
-          "excelName":"","hbtype":0,"hbAverage":1000,"floatBegin":500,"floatEnd":1500,"name":"价值5元小礼品","level":7,"passwordrednum":100,"payment":1,"wxcardid":"","storeType":1},
-        {"amount":0,"awardtype":2,"cashtype":2,"attention":1,"cashsite":"请填写您的兑奖地址或者门店地址","pot":0,
-          "style":"八等奖","t_type":"DATE_TYPE_FIX_TIME_RANGE","cbt":1508774400000,"cet":1509465599000,
-          "cft":30,"cfbt":0,"tlmt":"[8]","ocimg":false,"opqrc":true,"optx":false,"oct":false,"oplink":false,"genewxcard":false,"iscuscode":false,"iscancelver":false,
-          "stl":"","opti":"凭券联系现场工作人员兑奖","txn":"兑奖须知","txc":"联系商家出示兑奖码","btn":"了解更多","btl":"","servicepho":"","cashinfo":"",
-          "aimg":"/static/zp/gift.png","aimgw":"6rem","aimgh":"6rem","attentionimg":"/static/zp/qrcodeImg.jpg","onlinect":1,"continfo":0,
-          "excelName":"","hbtype":0,"hbAverage":1000,"floatBegin":500,"floatEnd":1500,"name":"价值5元小礼品","level":8,"passwordrednum":100,"payment":1,"wxcardid":"","storeType":1}
-      ],
-      "comfort":{
-        "comLimitNum":false,"ccc":"","comNum":0,"cc":"","amount":0,"comModNum":0,"comoptx":false,"cas":"安慰奖","comtxc":"联系商家出示兑奖码","ca":"价值5元小礼品","comimgw":"6rem","comcashinfo":"","combtl":"","comfbt":0,
-        "combtn":"了解更多","comiscuscode":false,"comimgh":"6rem","cttype":"DATE_TYPE_FIX_TIME_RANGE","comattention":1,"comiscancelver":false,"comimg":"/static/zp/gift.png","comcbt":1508774400000,
-        "comcontinfo":3,"comservicephone":"","comcet":1509465599000,"conlinect":1,"ctlmt":"[8]","comattentionimg":"","comOpqrc":true,"comcashsite":"请填写您的兑奖地址或者门店地址","comAwardtype":2,"comcashtype":2,
-        "comopti":"凭券联系现场工作人员兑奖","comtxn":"兑奖须知","comft":30,"comoci":false,"comoct":false,"comstl":"","comOplink":false,"comStoreType":1
-      },
-      "awardInfoB":"",
-
-      "awardUsername":"","awardPhone":"","awardAddress":"","addressNum":"","status":0,
-      "haveAward":true,
-      "shareDeep":0,"isFromZhuliShare":false,
-      "$$awardTypeInfo":{
-        "def":{
-          "collect":"收藏兑奖券","showcashtype":false,"showsitebox":true,"qrcode":false,"showcopy":true,"opti":"凭券联系现场工作人员兑奖","codename":"兑奖码","details":"兑奖券详情","deadline":"兑奖期限","showwxcard":true,"notice":"兑奖须知",
-          "cuscode":true,"cashsite":"请填写您的兑奖地址或者门店地址","sitetype":"text","site":"","term":true,"btn":""
-        },"2":{
-          "showcashtype":true,
-          "1":{"1":{"sitetype":"img"},"2":{"cashsite":"http://","sitetype":"url"}},
-          "2":{"qrcode":true,"btn":""},
-          "3":{"showsitebox":false,"sitetype":"img","opti":"复制券码发送到公众号"},
-          "4":{"opti":"点击\u201C立即兑奖\u201D跳转到兑奖界面","cashsite":"http://","sitetype":"url","site":"网页链接"},
-          "btn":"立即兑奖","site":"兑奖地址"
-        },"0":{
-          "collect":"收藏优惠券","qrcode":true,"opti":"到店后向店员出示","codename":"优惠码","details":"优惠券详情","deadline":"使用期限","notice":"使用须知","cashsite":"请填写您的门店地址","site":"门店地址"
-        },"1":{
-          "collect":"收藏优惠券","opti":"购物时凭优惠码联系客服兑奖","codename":"优惠码","details":"优惠券详情","deadline":"使用期限","notice":"使用须知","sitetype":"url","cashsite":"http://m.jd.com","site":"商城地址","btn":"进入商城"
-        },"5":{
-          "collect":"收藏口令码","showsitebox":false,"codename":"口令码","deadline":"领取期限","showwxcard":false,"notice":"领取须知","cuscode":false,"term":false,"btn":"立即领取",
-          "0":{"sitetype":"img","opti":"复制口令发送到公众号"},
-          "1":{"sitetype":"url","opti":"点击下方\"立即领取\"进行兑奖","showcopy":false}
-        },"4":{
-          "collect":"放入微信卡包","opti":"到店后向店员出示","codename":"优惠码","details":"优惠券详情","deadline":"使用期限","qrcode":"auto","showwxcard":false,
-          "notice":"使用须知","sitetype":"none","btn":""
-        }
-      },
-      "drawType":0,
-      "awardNum":5,"openComfort":true,"theDefaultGiftImgSrc":"/static/zp/gift.png",
-      "clickTips":{"clickSrc":"/static/zp/clickView.png","pointW":"2rem","pointH":"2rem","clickW":"3.3rem","clickH":"3.65rem"},
-    };
-    // function isArray(arr){
-    //     return Object.prototype.toString.call(arr) === "[object Array]";
-    // }
-</script>
 <script src="https://cdn.bootcss.com/lodash.js/4.17.5/lodash.min.js"></script>
-<script type="text/javascript" src="/static/zp/jquery-core.min.js"></script>
-<!-- <script src="https://cdn.bootcss.com/jquery/1.8.2/jquery.min.js"></script> -->
+<script src="https://cdn.bootcss.com/jquery/1.8.2/jquery.min.js"></script>
 <script type="text/javascript" src="/static/zp/hdUtil.min.js"></script>
 <script type="text/javascript" src="/static/zp/hdgame.min.js"></script>
 <script type="text/javascript" src="/static/zp/lufylegend.min.js"></script>
-<script type="text/javascript" src="/static/zp/city2.min.js"></script>
+
 <script type="text/javascript">
+    var tryPlay = true, _resRoot = '/static/zp', hg = {};
 
-var initHG = function(){
+    (function(hg) {
+        var imgPaths = [],
+            readyCallBack = [],
+            loadCallBack = [];
+        hg.assets = {
+            complete: false,
+            loadComplete: false,
+            increment: 0,
+            loadingStyle: 1,
+            loadTimeout: 120000,
+            getPath: function() {
+                return imgPaths
+            },
+            setPath: function(path) {
+                imgPaths = path
+            },
+            add: function(src) {
+                var self = this;
+                if (self.complete) {
+                    return
+                }
+                if (_.isArray(src)) {
+                    for (var i = src.length - 1; i >= 0; i--) {
+                        self.add(src[i])
+                    }
+                } else if (typeof src === 'string') {
+                    imgPaths.push(src)
+                }
+                return this
+            },
+            onReady: function(callBack) {
+                var self = this;
+                if (self.complete) {
+                    callBack()
+                } else {
+                    readyCallBack.push(callBack)
+                }
+                return self
+            },
+            onload: function(callBack) {
+                var self = this;
+                if (self.loadComplete) {
+                    callBack()
+                } else {
+                    loadCallBack.push(callBack)
+                }
+                return self
+            },
+            loadPage: function() {
+                var self = this,
+                    percent = 1,
+                    numLoaded = 0,
+                    $loadPercent = document.getElementById("loadPercent"),
+                    loadPallet;
+                window.scrollTo(0, 0);
+                if (self.loadingStyle === 1) {
+                    loadimg(imgPaths)
+                } else if (self.loadingStyle === 3) {
+                    var logoImg = document.getElementById("preloadImg");
+                    var initLogoImg = function(img) {
+                        var img = logoImg;
+                        var h = img.height;
+                        var w = img.width;
+                        var bottomPageInfoDeg = -Math.atan(w / h) - Math.PI / 2;
+                        var canvas = document.getElementById("preloadCanvas");
+                        var ctx = canvas.getContext("2d");
+                        var ratio = (window.devicePixelRatio || 1) / (ctx.backingStorePixelRatio || ctx.webkitBackingStorePixelRatio || ctx.mozBackingStorePixelRatio || ctx.msBackingStorePixelRatio || ctx.oBackingStorePixelRatio || ctx.backingStorePixelRatio || 1);
+                        var drawImg = function() {
+                            ctx.fillStyle = "#fff";
+                            ctx.fillRect(0.2 * g_rem * ratio, 0.2 * g_rem * ratio, w * ratio, h * ratio);
+                            ctx.drawImage(img, 0.2 * g_rem * ratio, 0.2 * g_rem * ratio, w * ratio, h * ratio)
+                        };
+                        if (h === w) {
+                            if (h > 3.5 * g_rem) {
+                                h = w = 3.5 * g_rem
+                            }
+                            drawImg = function() {
+                                ctx.save();
+                                ctx.beginPath();
+                                ctx.arc(canvas.width / 2, canvas.height / 2, w / 2 * ratio, 0, 2 * Math.PI);
+                                ctx.clip();
+                                ctx.fillStyle = "#fff";
+                                ctx.fill();
+                                ctx.drawImage(img, 0.2 * g_rem * ratio, 0.2 * g_rem * ratio, w * ratio, h * ratio);
+                                ctx.restore()
+                            }
+                        } else {
+                            if (w > h && w > 8 * g_rem) {
+                                h = 8 * g_rem * h / w;
+                                w = 8 * g_rem
+                            } else {
+                                if (h > w && h > 8 * g_rem) {
+                                    w = 8 * g_rem * w / h;
+                                    h = 8 * g_rem
+                                }
+                            }
+                        }
+                        canvas.width = (w + 0.4 * g_rem) * ratio;
+                        canvas.height = (h + 0.4 * g_rem) * ratio;
+                        canvas.style.width = w + 0.4 * g_rem + "px";
+                        canvas.style.height = h + 0.4 * g_rem + "px";
+                        if (h === w) {
+                            ctx.beginPath();
+                            ctx.arc(canvas.width / 2, canvas.height / 2, canvas.width / 2, 0, 2 * Math.PI);
+                            ctx.clip()
+                        }
+                        ctx.strokeStyle = "#69c5ff";
+                        ctx.lineWidth = 8 * g_rem * ratio;
+                        loadPallet = function(tmp) {
+                            ctx.beginPath();
+                            ctx.arc(canvas.width / 2, canvas.height / 2, 4 * g_rem * ratio, bottomPageInfoDeg, bottomPageInfoDeg + tmp * (2 * Math.PI / 100));
+                            ctx.stroke();
+                            drawImg()
+                        };
+                        loadimg(imgPaths)
+                    };
+                    if (logoImg.complete) {
+                        initLogoImg()
+                    } else {
+                        logoImg.onload = initLogoImg
+                    }
+                }
 
+                function setPercent(percent) {
+                    $loadPercent.innerHTML = percent;
+                    if (percent === 100) {
+                        var index = 0;
+                        setTimeout(function() {
+                            index++;
+                            if (index < 10) {
+                                loadPallet && loadPallet(120);
+                                setTimeout(arguments.callee, 17)
+                            } else {
+                                loadPallet = null
+                            }
+                        }, 17)
+                    }
+                    loadPallet && loadPallet(percent)
+                }
 
-  hg.assets.add([
-      "/static/zp/ACgIABACGAAguZ28zwUoiM-W2AUwgAU4wAw.jpg",
-      "/static/zp/logo.jpg",
-      "/static/zp/ruleImg.png",
-      "/static/zp/success.png",
-      "/static/zp/light.png",
-      "/static/zp/bird.png",
-      "/static/zp/musicOff.png",
-      "/static/zp/musicOn.png",
-      "/static/zp/auBg.jpg",
-      "/static/zp/manImg.jpg",
-      '/static/zp/faiImg.png',
-  ]);
+                function loading() {
+                    if (numLoaded < imgPaths.length) {
+                        if (percent < 100 - imgPaths.length + numLoaded) {
+                            percent++;
+                            setPercent(percent - 1)
+                        }
+                    } else {
+                        percent += 10;
+                        percent > 100 && (percent = 100);
+                        setPercent(percent - 1)
+                    } if (percent >= 100 && typeof $ != 'undefined') {
+                        loadEnd()
+                        return
+                    }
+                    setTimeout(arguments.callee, 10)
+                }
 
-  hg.assets.loadPage();//开始loading页面
-}
+                function loadEnd() {
+                    setPercent(100);
+                    var flag = $(window).height() / $(window).width() < 1.575;
+                    var bgHeight = flag ? $(window).width() * 1.575 : $(window).height();
+                    setTimeout(function() {
+                        !HdGame.nootNeedFixHeight && $("#homeBgBox,.gameBgBox").css("height", bgHeight / g_rem + "rem");
+                        var theObject = $(".home .bottomSkill,#bottomSkill");
+                        flag && theObject.css("top", (bgHeight - $(".bottomSkill").outerHeight()) / g_rem + "rem");
+                        setTimeout(function() {
+                            $loadPercent = null;
+                            $("#preloadPage").hide()
+                        }, 500);
+                        complete();
+                        self.loadComplete = true;
+                        for (var n = loadCallBack.length, i = 0; i < n; i++) {
+                            loadCallBack[i]()
+                        }
+                        loadCallBack = null;
+                        logoImg = null;
+                        $loadPercent = null;
+                        $("#preloadPage").addClass("leftClose")
+                    }, 300)
+                }
 
-$(function(){
-  var activityCode = 'asda';
-  $.ajax({
-    url: '/api/raffle/'+activityCode+'/verify',
-    type: 'head',
-    data: { activityCode: 'asda', memberId: member_id },
-    success: function(resp) {
+                function loadimg(arr) {
+                    loading();
+                    for (var i = arr.length - 1; i >= 0; i--) {
+                        var img = new Image();
+                        img.onload = loadCheckComplete;
+                        img.onerror = loadCheckComplete;
+                        img.src = arr[i];
+                        self[arr[i]] = img
+                    }
+                    if (self.loadTimeout) {
+                        self._loadTimer = setTimeout(loadTimeout, self.loadTimeout)
+                    }
+                }
 
-      $.ajax({
-        url: '/api/raffle/' + activityCode + '/info',
-        type: 'get',
-        data: {activityCode: activityCode, mallId: 1},
-        success: function(resp) {
+                function loadTimeout() {}
 
-          initHG();
-          console.log(resp);
+                function loadCheckComplete() {
+                    numLoaded++;
+                    this.assets_complete = true;
+                    if (numLoaded === imgPaths.length) {
+                        complete()
+                    }
+                }
+
+                function complete() {
+                    if (self.complete) return;
+                    clearTimeout(self._loadTimer);
+                    numLoaded = imgPaths.length;
+                    self.complete = true;
+                    for (var n = readyCallBack.length, i = 0; i < n; i++) {
+                        readyCallBack[i]()
+                    }
+                    readyCallBack = null
+                }
+            }
         }
-      })
+    })(hg);
+
+    hg.edit = null;
+    hg.edit = {};
 
 
-    },error: function(err){
-      if(err.status == 403) { alert('积分不足'); location.href="/member"}
-    }
-  })
 
-})
+</script>
+
+<script type="text/javascript">
+var g_config = {};
+
+var trrId = null;
+var g_awardIndex = null;
+var g_giftStyle = null;
+var g_activityCode = 'asda';
+var initHG = function(resp){
+  var rewards = resp.rewards;
+
+  var sum_value = _.sumBy(rewards, 'hit_rate');
+  var random_value = _.random(1, sum_value);
+  g_awardIndex = 0;
+  do {
+    random_value -= rewards[g_awardIndex].hit_rate;
+    g_awardIndex ++;
+  } while (random_value > 0)
+  trrId = rewards[g_awardIndex-1].trr_id;
+  g_giftStyle = rewards[g_awardIndex-1].reward_name;
+
+(function(hg){
+    var origin = [
+      {"name":"startBtnImg","path":[["/static/zp/ACgIABAEGAAgyIu8zwUo3JPwigMwhgE4hgE.png"],["/static/zp/ACgIABAEGAAgy4u8zwUogKSG9AEwhgE4hgE.png"]]},
+      {"name":"showGifBoxer","pos":{"left":"1.4rem","top":"8rem"},"path":["/static/zp/ACgIABAEGAAg0Iu8zwUo9MzdpwYwlgQ4lgQ.png"]},
+      {"name":"flashLight","path":["/static/zp/ACgIABAEGAAg34u8zwUotNbH_QcwHDgc.png"]},
+      {"name":"darkLight","path":["/static/zp/ACgIABAEGAAg4ou8zwUo2Kyn6AEwHDgc.png"]},
+      {"name":"priceD","path":["/static/zp/ACgIABAEGAAg6Iu8zwUo8_fMgAcwhgE4hgE.png"]},
+
+      {"name":"thePrice1","path":[rewards.length >= 1 ? rewards[0].reward_picture : '/static/zp/ACgIABAEGAAgmYy8zwUo0uyq-QYwhgE4hgE.png']},
+      {"name":"thePrice2","path":[rewards.length >= 2 ? rewards[1].reward_picture : '/static/zp/ACgIABAEGAAgmYy8zwUo0uyq-QYwhgE4hgE.png']},
+      {"name":"thePrice3","path":[rewards.length >= 3 ? rewards[2].reward_picture : '/static/zp/ACgIABAEGAAgmYy8zwUo0uyq-QYwhgE4hgE.png']},
+      {"name":"thePrice4","path":[rewards.length >= 4 ? rewards[3].reward_picture : '/static/zp/ACgIABAEGAAgmYy8zwUo0uyq-QYwhgE4hgE.png']},
+      {"name":"thePrice5","path":[rewards.length >= 5 ? rewards[4].reward_picture : '/static/zp/ACgIABAEGAAgmYy8zwUo0uyq-QYwhgE4hgE.png']},
+      {"name":"thePrice6","path":[rewards.length >= 6 ? rewards[5].reward_picture : '/static/zp/ACgIABAEGAAgmYy8zwUo0uyq-QYwhgE4hgE.png']},
+      {"name":"thePrice7","path":[rewards.length >= 7 ? rewards[6].reward_picture : '/static/zp/ACgIABAEGAAgmYy8zwUo0uyq-QYwhgE4hgE.png']},
+      {"name":"thePrice8","path":[rewards.length >= 8 ? rewards[7].reward_picture : '/static/zp/ACgIABAEGAAgmYy8zwUo0uyq-QYwhgE4hgE.png']},
+
+      {"name":"thePrice900","path":["/static/zp/ACgIABAEGAAgmYy8zwUo0uyq-QYwhgE4hgE.png"]},
+      {"name":"thePrice0","path":["/static/zp/ACgIABAEGAAgnoy8zwUo1JrA4wIwhgE4hgE.png"]},
+      {"name":"theGetPricePic","pos":{"left":"0.75rem","top":"0.15rem"},"size":{"width":"14.5rem","height":"18rem"},"path":[["/static/zp/faiImg.png"]]},
+      {"name":"theGetPricePicTwo","pos":{"left":"0rem","top":"0rem"},"size":{"width":"4rem","height":"4rem"},"path":[["/static/zp/faiImg2.png"]]},
+      {"name":"theGetPricePicThree","pos":{"left":"0rem","top":"0rem"},"size":{"width":"4rem","height":"4rem"},"path":[["/static/zp/faiImg3.png"]]},
+      {"name":"lotsPot","pos":{"left":"4.9rem","top":"3rem"},"size":{"width":"6.15rem","height":"12.4rem"},"path":[["/static/zp/lots1.png"]]},
+      {"name":"lotsShakeHand","pos":{"left":"4.5rem","top":"17.9rem"}},
+      {"name":"advertising","path":["/static/zp/gg.jpg"]}];
+    var originDef = [
+      {"name":"startBtnImg","path":[["*_resRoot*/image/hlcbt/startBtn.png","抽奖按钮","5000k"],["*_resRoot*/image/hlcbt/startBtnhover.png","点击效果","5000k"]],"rsize":{"width":"3.35rem","height":"3.35rem"}},
+      {"name":"showGifBoxer","pos":{"left":"1.35rem","top":"8rem"},"path":["*_resRoot*/image/hlcbt/awardD.png","九宫格图片","5000k"],"rsize":{"width":"13.35rem","height":"13.35rem"},"edit":"all"},
+      {"name":"flashLight","path":["*_resRoot*/image/hlcbt/brightFlash.png","灯泡图片一","5000k","28px*28px"],"rsize":{"width":"0.7rem","height":"0.7rem"}},
+      {"name":"darkLight","path":["*_resRoot*/image/hlcbt/darkFlash.png","灯泡图片二","5000k","28px*28px"],"rsize":{"width":"0.7rem","height":"0.7rem"}},
+      {"name":"priceD","path":["*_resRoot*/image/hlcbt/priceD.png","奖品背景","5000k"],"rsize":{"width":"3.35rem","height":"3.35rem"}},
+      {"name":"thePrice1","path":["","奖项一","5000k"],"rsize":{"width":"3.35rem","height":"3.35rem"}},
+      {"name":"thePrice2","path":["","奖项二","5000k"],"rsize":{"width":"3.35rem","height":"3.35rem"}},
+      {"name":"thePrice3","path":["","奖项三","5000k"],"rsize":{"width":"3.35rem","height":"3.35rem"}},
+      {"name":"thePrice4","path":["","奖项四","5000k"],"rsize":{"width":"3.35rem","height":"3.35rem"}},
+      {"name":"thePrice5","path":["","奖项五","5000k"],"rsize":{"width":"3.35rem","height":"3.35rem"}},
+      {"name":"thePrice6","path":["","奖项六","5000k"],"rsize":{"width":"3.35rem","height":"3.35rem"}},
+      {"name":"thePrice7","path":["","奖项七","5000k"],"rsize":{"width":"3.35rem","height":"3.35rem"}},
+      {"name":"thePrice8","path":["","奖项八","5000k"],"rsize":{"width":"3.35rem","height":"3.35rem"}},
+      {"name":"thePrice900","path":["*_resRoot*/image/hlcbt/price900.png","安慰奖","5000k"],"rsize":{"width":"3.35rem","height":"3.35rem"}},
+      {"name":"thePrice0","path":["*_resRoot*/image/hlcbt/price0.png","谢谢参与","5000k"],"rsize":{"width":"3.35rem","height":"3.35rem"}},
+      {"name":"theGetPricePic","pos":{"left":"2.1rem","top":"1.3rem"},"size":{"width":"11.5rem","height":"11.2rem"},"path":[["*_resRoot*/image/faiImg1-2.png","图片01","5000k"]],"edit":"theGetPricePic","formDefaultStyle":true},
+      {"name":"theGetPricePicTwo","pos":{"left":"2.1rem","top":"1.3rem"},"size":{"width":"11.5rem","height":"11.2rem"},"path":[["*_resRoot*/image/faiImg2-2.png","图片01","5000k"]],"edit":"theGetPricePicTwo","formDefaultStyle":true},
+      {"name":"theGetPricePicThree","pos":{"left":"2.1rem","top":"1.3rem"},"size":{"width":"11.5rem","height":"11.2rem"},"path":[["*_resRoot*/image/faiImg3-2.png","图片01","5000k"]],"edit":"theGetPricePicThree","formDefaultStyle":true},
+      {"name":"lotsPot","pos":{"left":"4.925rem","top":"3rem"},"size":{"width":"6.15rem","height":"12.4rem"},"path":[["*_resRoot*/image/lots1.png","图片01","5000k"]],"edit":"lotsPot","formDefaultStyle":true},
+      {"name":"lotsShakeHand","pos":{"left":"4.5rem","top":"17.9rem","forParent":"false"},"formDefaultStyle":true},
+      {"name":"advertising","rsize":{"width":"16rem","height":"40rem"},"path":["*_resRoot*/image/gg.jpg"],"edit":"_background","formDefaultStyle":true}
+    ];
+
+    hg.edit.origin = origin;
+    hg.edit.originDef = originDef;
+})(hg);
+
+//全局变量
+g_config = {
+  "isOpenAreaLimit":false,"isCheckPlayTimes":true,"showMenu":true,"buy":false,"isNewGame":false,"isOem":false,"scoreType":false,"showLogo":false,"flag":10390,"flagB":2304,"countsTimeType":-1,"sortType":-1,
+  "drawLimitDef":0,"style":57,"gameId":344,"openId":"tryPlay_15801086","playerId":623160,
+  "userName":"tp_15801086","headImg":"/static/zp/manImg.jpg","authVer":2,
+  "scoreUnit":"分","testCMD":"","ajaxUrl":"","startTime":"2017-10-24 17:18","$startTime":1508836680000,"$endTime":1509441480000,
+  "awardList":[
+    {"amount":0,"awardtype":2,"cashtype":2,"attention":1,"cashsite":"请填写您的兑奖地址或者门店地址","pot":0,
+      "style":"一等奖","cbt":1508774400000,"cet":1509465599000,
+      "cft":30,"cfbt":0,"oct":false,"oplink":false,"genewxcard":false,"iscuscode":false,"iscancelver":false,
+      "stl":"","btn":"了解更多","btl":"","servicepho":"","cashinfo":"",
+      "aimg":rewards.length >= 1 ? rewards[0].reward_picture : '/static/zp/ACgIABAEGAAgmYy8zwUo0uyq-QYwhgE4hgE.png',"aimgw":"6rem","aimgh":"6rem","attentionimg":"","onlinect":1,"continfo":3,
+      "excelName":"","hbtype":0,"hbAverage":1000,"floatBegin":500,"floatEnd":1500,"name":"价值100元礼品","level":1,"passwordrednum":100,"payment":1,"storeType":1},
+    {"amount":0,"awardtype":2,"cashtype":2,"attention":1,"cashsite":"请填写您的兑奖地址或者门店地址","pot":0,
+      "style":"二等奖","cbt":1508774400000,"cet":1509465599000,
+      "cft":30,"cfbt":0,"oct":false,"oplink":false,"genewxcard":false,"iscuscode":false,"iscancelver":false,
+      "stl":"","btn":"了解更多","btl":"","servicepho":"","cashinfo":"",
+      "aimg":rewards.length >= 2 ? rewards[1].reward_picture : '/static/zp/ACgIABAEGAAgmYy8zwUo0uyq-QYwhgE4hgE.png',"aimgw":"6rem","aimgh":"6rem","attentionimg":"","onlinect":1,"continfo":3,
+      "excelName":"","hbtype":0,"hbAverage":1000,"floatBegin":500,"floatEnd":1500,"name":"价值50元礼品","level":2,"passwordrednum":100,"payment":1,"storeType":1},
+    {"amount":0,"awardtype":2,"cashtype":2,"attention":1,"cashsite":"请填写您的兑奖地址或者门店地址","pot":0,
+      "style":"三等奖","cbt":1508774400000,"cet":1509465599000,
+      "cft":30,"cfbt":0,"oct":false,"oplink":false,"genewxcard":false,"iscuscode":false,"iscancelver":false,
+      "stl":"","btn":"了解更多","btl":"","servicepho":"","cashinfo":"",
+      "aimg":rewards.length >= 3 ? rewards[2].reward_picture : '/static/zp/ACgIABAEGAAgmYy8zwUo0uyq-QYwhgE4hgE.png',"aimgw":"6rem","aimgh":"6rem","attentionimg":"","onlinect":1,"continfo":3,
+      "excelName":"","hbtype":0,"hbAverage":1000,"floatBegin":500,"floatEnd":1500,"name":"价值10元礼品","level":3,"passwordrednum":100,"payment":1,"storeType":1},
+    {"amount":0,"awardtype":2,"cashtype":2,"attention":1,"cashsite":"请填写您的兑奖地址或者门店地址","pot":0,
+      "style":"四等奖","cbt":1508774400000,"cet":1509465599000,
+      "cft":30,"cfbt":0,"oct":false,"oplink":false,"genewxcard":false,"iscuscode":false,"iscancelver":false,
+      "stl":"","btn":"了解更多","btl":"","servicepho":"","cashinfo":"",
+      "aimg":rewards.length >= 4 ? rewards[3].reward_picture : '/static/zp/ACgIABAEGAAgmYy8zwUo0uyq-QYwhgE4hgE.png',"aimgw":"6rem","aimgh":"6rem","attentionimg":"","onlinect":1,"continfo":3,
+      "excelName":"","hbtype":0,"hbAverage":1000,"floatBegin":500,"floatEnd":1500,"name":"价值5元小礼品","level":4,"passwordrednum":100,"payment":1,"wxcardid":"","storeType":1},
+    {"amount":0,"awardtype":2,"cashtype":2,"attention":1,"cashsite":"请填写您的兑奖地址或者门店地址","pot":0,
+      "style":"五等奖","cbt":1508774400000,"cet":1509465599000,
+      "cft":30,"cfbt":0,"oct":false,"oplink":false,"genewxcard":false,"iscuscode":false,"iscancelver":false,
+      "stl":"","btn":"了解更多","btl":"","servicepho":"","cashinfo":"",
+      "aimg":rewards.length >= 5 ? rewards[4].reward_picture : '/static/zp/ACgIABAEGAAgmYy8zwUo0uyq-QYwhgE4hgE.png',"aimgw":"6rem","aimgh":"6rem","attentionimg":"","onlinect":1,"continfo":3,
+      "excelName":"","hbtype":0,"hbAverage":1000,"floatBegin":500,"floatEnd":1500,"name":"价值5元小礼品","level":5,"passwordrednum":100,"payment":1,"wxcardid":"","storeType":1},
+    {"amount":0,"awardtype":2,"cashtype":2,"attention":1,"cashsite":"请填写您的兑奖地址或者门店地址","pot":0,
+      "style":"六等奖","cbt":1508774400000,"cet":1509465599000,
+      "cft":30,"cfbt":0,"oct":false,"oplink":false,"genewxcard":false,"iscuscode":false,"iscancelver":false,
+      "stl":"","btn":"了解更多","btl":"","servicepho":"","cashinfo":"",
+      "aimg":rewards.length >= 6 ? rewards[5].reward_picture : '/static/zp/ACgIABAEGAAgmYy8zwUo0uyq-QYwhgE4hgE.png',"aimgw":"6rem","aimgh":"6rem","attentionimg":"/static/zp/qrcodeImg.jpg","onlinect":1,"continfo":0,
+      "excelName":"","hbtype":0,"hbAverage":1000,"floatBegin":500,"floatEnd":1500,"name":"价值5元小礼品","level":6,"passwordrednum":100,"payment":1,"wxcardid":"","storeType":1},
+    {"amount":0,"awardtype":2,"cashtype":2,"attention":1,"cashsite":"请填写您的兑奖地址或者门店地址","pot":0,
+      "style":"七等奖","cbt":1508774400000,"cet":1509465599000,
+      "cft":30,"cfbt":0,"oct":false,"oplink":false,"genewxcard":false,"iscuscode":false,"iscancelver":false,
+      "stl":"","btn":"了解更多","btl":"","servicepho":"","cashinfo":"",
+      "aimg":rewards.length >= 7 ? rewards[6].reward_picture : '/static/zp/ACgIABAEGAAgmYy8zwUo0uyq-QYwhgE4hgE.png',"aimgw":"6rem","aimgh":"6rem","attentionimg":"/static/zp/qrcodeImg.jpg","onlinect":1,"continfo":0,
+      "excelName":"","hbtype":0,"hbAverage":1000,"floatBegin":500,"floatEnd":1500,"name":"价值5元小礼品","level":7,"passwordrednum":100,"payment":1,"wxcardid":"","storeType":1},
+    {"amount":0,"awardtype":2,"cashtype":2,"attention":1,"cashsite":"请填写您的兑奖地址或者门店地址","pot":0,
+      "style":"八等奖","cbt":1508774400000,"cet":1509465599000,
+      "cft":30,"cfbt":0,"oct":false,"oplink":false,"genewxcard":false,"iscuscode":false,"iscancelver":false,
+      "stl":"","btn":"了解更多","btl":"","servicepho":"","cashinfo":"",
+      "aimg":rewards.length >= 8 ? rewards[7].reward_picture : '/static/zp/ACgIABAEGAAgmYy8zwUo0uyq-QYwhgE4hgE.png',"aimgw":"6rem","aimgh":"6rem","attentionimg":"/static/zp/qrcodeImg.jpg","onlinect":1,"continfo":0,
+      "excelName":"","hbtype":0,"hbAverage":1000,"floatBegin":500,"floatEnd":1500,"name":"价值5元小礼品","level":8,"passwordrednum":100,"payment":1,"wxcardid":"","storeType":1}
+  ],
+  "comfort":{
+    "comLimitNum":false,"ccc":"","comNum":0,"cc":"","amount":0,"comModNum":0,"comoptx":false,"cas":"安慰奖","comtxc":"联系商家出示兑奖码","ca":"价值5元小礼品","comimgw":"6rem","comcashinfo":"","combtl":"","comfbt":0,
+    "combtn":"了解更多","comiscuscode":false,"comimgh":"6rem","cttype":"DATE_TYPE_FIX_TIME_RANGE","comattention":1,"comiscancelver":false,"comimg":"/static/zp/gift.png","comcbt":1508774400000,
+    "comcontinfo":3,"comservicephone":"","comcet":1509465599000,"conlinect":1,"ctlmt":"[8]","comattentionimg":"","comOpqrc":true,"comcashsite":"请填写您的兑奖地址或者门店地址","comAwardtype":2,"comcashtype":2,
+    "comopti":"凭券联系现场工作人员兑奖","comtxn":"兑奖须知","comft":30,"comoci":false,"comoct":false,"comstl":"","comOplink":false,"comStoreType":1
+  },
+  "awardInfoB":"",
+
+  "awardUsername":"","awardPhone":"","awardAddress":"","addressNum":"","status":0,
+  "haveAward":true,
+  "shareDeep":0,"isFromZhuliShare":false,
+  "awardNum":5,"theDefaultGiftImgSrc":"/static/zp/gift.png",
+  "clickTips":{"clickSrc":"/static/zp/clickView.png","pointW":"2rem","pointH":"2rem","clickW":"3.3rem","clickH":"3.65rem"},
+};
 
 HdGame.gameDomain = 'hd.faisco.cn';
 HdGame.gameDomainIgnoreStyle = 'hd.faisco.cn';
@@ -674,99 +591,21 @@ HdGame.initEdit(hg.edit);
 hg.sound = HdGame.initSound([{"path":"/static/zp/bgmusic29H.mp3","fileName":"背景音乐.mp3","optFlag":0},{"path":"/static/zp/startDraw.mp3","fileName":"滚动音效.mp3","optFlag":2}],[{"path":"*_resRoot*/image/hlcbt/bgmusic29H.mp3","fileName":"背景音乐.mp3","optFlag":0},{"path":"*_resRoot*/image/hlcbt/startDraw.mp3","fileName":"滚动音效.mp3","optFlag":2}],null);
 hg.sound.readyPlay(0,0,'loop');
 
-function parseRemToPx(rem){
-    if(rem.indexOf('rem') === -1){
-        return parseFloat(rem);
-    }
-    return parseFloat(rem)*g_rem;
-}
-function parsePxToRem(px){
-    if(px.indexOf('px') === -1){
-        return px;
-    }
-    return parseFloat(px)/g_rem + 'rem';
-}
-
-
-/*----------------------------------获取ip信息-----------------------------------*/
-(function(){
-    var curFontSize = parseFloat($("html").css("font-size"));
-    if(curFontSize != g_rem) {
-        var rate = 1;
-        if((curFontSize / g_rem) < 0.9 || (curFontSize / g_rem) > 1.1) {
-            rate = curFontSize / g_rem;
-        }
-        refreshRemForSpecial(g_rem,rate);
-    }
-    function refreshRemForSpecial(rem,rate) {
-        var newFontSize = rem / rate;
-        $("html").css("font-size",newFontSize + "px");
-    }
-})();
-</script>
-
-<script type="text/javascript">
-// HdGame.initWxConfig({
-//   "plInfo": {
-//     "id": 623160,
-//     "aid": 7020498,
-//     "name": "tp_15801086",
-//     "awardLevel": 900,
-//     "achievement": "",
-//     "gameId": 344,
-//     "codeStatus": 2,
-//     "info": "{\"headImg\":\"/static/zp/manImg.jpg\",\"ip\":\"112.11.7.72\",\"ipProvince\":\"浙江省\",\"ipCity\":\"嘉兴市\"}",
-//     "award": "价值5元小礼品",
-//     "openId": "tryPlay_15801086",
-//     "flag": 2,
-//     "openIdB": "",
-//     "drawTotal": 1,
-//     "awardTime": 1514413063265,
-//     "codeList": "[\"8658160344\"]",
-//     "jointime": 1514413063265,
-//     "prop": "",
-//     "prop1": "",
-//     "code1": "",
-//     "playInfo": "",
-//     "currentAchievement": "",
-//     "faiOpenId": ""
-//   },
-//   "nameList": ["一等奖", "二等奖", "三等奖", "四等奖", "五等奖", "六等奖", "七等奖", "八等奖", "安慰奖"],
-//   "jsSdkAppid": "wx25367438c8ce0799",
-//   "timestamp": "1514413124",
-//   "nonce_str": "a79c393f-9b34-4bd4-80e5-149fe17d0ed3",
-//   "signature": "0eff5add90b2007bba224877016cd307ef2bf127",
-//   "cardTicket": "",
-//   "dynamicShareUrlRoot": "http://hd.faisco.cn/",
-//   "fsl": "a",
-//   "shareDeep": 0,
-//   "checkControlLevel": 0,
-//   "openStrongAttention": false,
-//   "shareImg": "http://7020498.h40.faiusr.com/2/344/ACgIABACGAAg-4y8zwUot8XuswMwyAE4yAE!160x160.jpg",
-//   "activeName": "元旦跨年抽大奖",
-//   "wxShareText_def": "轻轻松松就能抽到大奖，积攒多年的人品终于有用了，你也赶紧来抽奖吧！！",
-//   "wxShareText_award": "我已经在活动中抽到了<span class=\"tag\" contenteditable=\"false\">奖品名称<\/span>，你也快来抽大奖吧！",
-//   "wxShareText_rank": "",
-//   "addDrawTime": 1
-// })
-</script>
-<script type="text/javascript">
 var GameArg = {
-    awardNum : 5,
-    openComfort : true
+    awardNum : rewards.length,
 };
 var startStatus = true;
 (function(g){
     // 排列的奖品的等级，顺时针排列
     var prizeDeg = [
-        [0,1,0,1,0,0,900,1],
-        [0,1,0,0,2,0,900,2],
-        [3,1,2,3,3,900,3,0],
-        [1,4,3,900,4,2,4,0],
-        [1,2,0,3,4,5,900,5],
-        [1,2,0,3,4,5,900,6],
-        [1,2,3,0,4,5,7,6,7,900,7,7],
-        [1,2,8,0,4,5,8,7,6,900,8,3],
+        [1,1,1,1,1,1,1,1],
+        [2,1,1,1,2,2,1,2],
+        [3,1,2,3,3,1,3,2],
+        [1,4,3,1,4,2,4,1],
+        [1,2,2,3,4,5,1,5],
+        [1,2,3,3,4,5,1,6],
+        [1,2,3,2,4,5,7,6,7,1,7,7],
+        [1,2,8,3,4,5,8,7,6,1,8,3],
     ];
     var morePricePos=[],lessPricePos = [];
     for(var i = 0;i < 12;i++){
@@ -919,7 +758,6 @@ var startStatus = true;
                     theleft = ' left6 ';
                 }
             }
-            (!g.openComfort && value == 900) && (value = 0);
             var theBoxer = $('.theBoxerForEdit .editTarget-priceD').clone();
             var theSrc = hg.edit.getImgInfo('thePrice'+value).path;
             var theIndex = '<img class="editTarget-thePrice'+value+'" src="'+theSrc+'" onload="HdGame.Img.optimize(this, {width:'+maxSize+', height:'+maxSize+', mode:HdGame.Img.MODE_SCALE_DEFLATE_FILL});"/>'
@@ -947,9 +785,6 @@ var startStatus = true;
         $.each(theArray,function(index,value){
             if(value == level){
                newArray.push(index);
-            }
-            if(value == 900 && !g.openComfort && level == 0){
-                newArray.push(index);
             }
         })
         g.turningTime = getRandom(8000,12000);
@@ -1161,20 +996,27 @@ var startStatus = true;
   });
 })(GameArg);
 
-</script>
+/*----------------------------------获取ip信息-----------------------------------*/
+(function(){
+    var curFontSize = parseFloat($("html").css("font-size"));
+    if(curFontSize != g_rem) {
+        var rate = 1;
+        if((curFontSize / g_rem) < 0.9 || (curFontSize / g_rem) > 1.1) {
+            rate = curFontSize / g_rem;
+        }
+        refreshRemForSpecial(g_rem,rate);
+    }
+    function refreshRemForSpecial(rem,rate) {
+        var newFontSize = rem / rate;
+        $("html").css("font-size",newFontSize + "px");
+    }
+})();
 
-<script type="text/javascript">
+
 var gameType = 0;
 
 
-HdGame.initChangePoup({
-  awardUrl       : 'hdgame_h?cmd=getGiftList&aid=7020498&style=57',
-  openId         : 'tryPlay_15801086',
-  gameId         : 344
-});
-
 HdGame.resulePoup.init({
-  drawType  : 0,
   regUrl    : 'hdgame_h?cmd=setPlayerReg&aid=7020498&gameId=344&openId=tryPlay_15801086&flag1=true',
   home      : typeof home !== 'undefined' ? home : null,
   again     : typeof gameRestart !== 'undefined' ? gameRestart : null,
@@ -1182,10 +1024,10 @@ HdGame.resulePoup.init({
 });
 
 HdGame.initJsFoot({
-  "rulesortstr":"abcde","drawType":0,"hostName":"",
+  "rulesortstr":"abcde",
   "hostLink":"http://","menuLink":"",
-  "fromFav":"","openAwardExp":true,"isHideFxts":true,
-  "skillSupport":"凡科互动","showJoinNum":true,"showRedDot":false,"showMDRedDot":false,"showAwardBtn":true,"isSelAwardLine":false,"showSkillSup":true,"menuStyle":3,
+  "fromFav":"",
+  "menuStyle":3,
   "soundIcon_l":"0.75rem","soundIcon_t":"1rem","awardImage":"/static/zp/gift.png",
   "titleImg_path_def":"/static/zp/title.png",
   "startImg_path_def":"/static/zp/startBtn.png",
@@ -1196,14 +1038,69 @@ HdGame.initJsFoot({
   "gameBgPath_def":"","headImg2":"","headImg3":"","headImg4":"","dangerType":0,"isZhuLi":false,
 })
 
+
+  hg.assets.add([
+      "/static/zp/ACgIABACGAAguZ28zwUoiM-W2AUwgAU4wAw.jpg",
+      "/static/zp/logo.jpg",
+      "/static/zp/ruleImg.png",
+      "/static/zp/success.png",
+      "/static/zp/light.png",
+      "/static/zp/bird.png",
+      "/static/zp/musicOff.png",
+      "/static/zp/musicOn.png",
+      "/static/zp/auBg.jpg",
+      "/static/zp/manImg.jpg",
+      '/static/zp/faiImg.png',
+  ]);
+
+  hg.assets.loadPage();//开始loading页面
+}
+
+
+$(function(){
+
+  $.ajax({
+    url: '/api/raffle/'+g_activityCode+'/verify',
+    type: 'head',
+    data: { activityCode: g_activityCode, memberId: member_id },
+    success: function(resp) {
+
+      $.ajax({
+        url: '/api/raffle/' + g_activityCode + '/info',
+        type: 'get',
+        data: {activityCode: g_activityCode, mallId: 1},
+        success: initHG
+      })
+
+
+    },error: function(err){
+      if(err.status == 403) { alert('积分不足'); location.href="/member"}
+    }
+  })
+
+})
+
+
+
+function parseRemToPx(rem){
+    if(rem.indexOf('rem') === -1){
+        return parseFloat(rem);
+    }
+    return parseFloat(rem)*g_rem;
+}
+function parsePxToRem(px){
+    if(px.indexOf('px') === -1){
+        return px;
+    }
+    return parseFloat(px)/g_rem + 'rem';
+}
+
+
+
+
 function startBtnDelay() {
   $('.titleImg').removeClass('titleDown').addClass('titleDown');
   $('#startBtnImg').removeClass('startTada');
-
-  var soundPauseCord = 'soundPause|7020498|344|tryPlay_15801086';
-  if ((false || false) && !HdGame.getLocalStorage(soundPauseCord) && true) {
-    hg.sound.allowPlay = true;
-  }
   hg.sound.readyPlay(0, 0, 'loop');
 
   setTimeout(function() {
@@ -1251,11 +1148,10 @@ function startBtnAjax(event, data, callBack, pass) {
     return r;
   }
   function showGame() {
-    $('.homeBtnBox,.bottomSkill').hide();
     $('.footerBox').hide();
     $('.home,#ruleImg').hide();
     $('.gameBox').show();
-    if (typeof hg.sound.cache[0] !== 'undefined' && typeof hg.sound.cache[0].playing !== 'undefined' && !hg.sound.cache[0].playing && g_config.style != 48 && g_config.style != 49 && g_config.style != 69) {
+    if (typeof hg.sound.cache[0] !== 'undefined' && typeof hg.sound.cache[0].playing !== 'undefined' && !hg.sound.cache[0].playing) {
       hg.sound.readyPlay(0, 0, 'loop');
     }
   }
@@ -1275,40 +1171,19 @@ function luckDraw(fn, option, pass) {
   };
 
   var member_id = localStorage.getItem('member_id');
-
-  arg.awardIndex = 1;
-  arg.giftStyle = '1111';
-  return fn(arg, arg);
-
-  $.getJSON('/api/member/' + member_id + '/raffleInfo').then(function(ri) {
-
-    $.getJSON('/api/coupon/relatecoupons?mallId=1').then(function(rcList) {
-      var idx = Math.floor(Math.random() * rcList.length);
-      arg.awardIndex = idx % 5 + 1;
-      var rc = rcList[idx]
-
-      $.ajax({
-        type: 'post',
-        url: '/api/member/' + member_id + '/raffle/' + ri.raffle_id,
-        data: JSON.stringify({
-          couponId: rc.coupon_id,
-          mallId: 1,
-          win: true
-        }),
-        contentType: 'application/json;charset=UTF-8',
-        success: function(result) {
-          console.log(result);
-          arg.giftStyle = rc.coupon_name
-          fn(arg, arg);
-        },
-        error: function(error) {
-          const josn = JSON.parse(error.responseText);
-          arg.giftStyle = josn.content;
-          fn(arg, arg);
-        }
-      })
-    })
+  arg.awardIndex = g_awardIndex;
+  arg.giftStyle = g_giftStyle;
+  $.ajax({
+    url: '/api/raffle/'+g_activityCode+'/toRaffle',
+    type: 'post',
+    contentType: 'application/json',
+    dataType: 'json',
+    data: JSON.stringify({trrId: trrId, memberId: member_id, mallId: 1}),
+    success: function(resp){
+      return fn(arg, arg);
+    }
   })
+
 }
 </script>
 </body>
