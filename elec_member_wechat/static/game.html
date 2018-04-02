@@ -457,13 +457,13 @@ var g_giftStyle = null;
 var g_activityCode = 'asda';//GetQueryString('code');
 var initHG = function(resp){
 
-  // var rewards = resp.rewards;
-  //
-  // rewards = _.map(rewards, o => ({
-  //   ...o,
-  //   hit_rate: o.hit_rate * 100
-  // }))
-  //
+  var rewards = resp.rewards;
+
+  rewards = _.map(rewards, o => ({
+    ...o,
+    hit_rate: o.hit_rate * 100
+  }))
+
   // var sum_value = _.sumBy(rewards, 'hit_rate');
   // var random_value = _.random(1, sum_value);
   // g_awardIndex = 0;
