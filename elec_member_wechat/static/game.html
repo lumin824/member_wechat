@@ -602,8 +602,8 @@ HdGame.isReg = false;
 HdGame.initCallBack(hg,['startGame','beforeStartGame','startGamehead','home','again','jsFootEnd','showResult','changeBottomBar','showPoup','hidePoup','timeChange','updateRankList','afterDraw','editBackground']); //hdgame
 hg.register(['setGameType','hpInit','hgLoadEnd','save','changeShow','showTabByStyle']); //hdportal
 HdGame.initEdit(hg.edit);
-hg.sound = HdGame.initSound([{"path":"/static/zp/bgmusic29H.mp3","fileName":"背景音乐.mp3","optFlag":0},{"path":"/static/zp/startDraw.mp3","fileName":"滚动音效.mp3","optFlag":2}],[{"path":"*_resRoot*/image/hlcbt/bgmusic29H.mp3","fileName":"背景音乐.mp3","optFlag":0},{"path":"*_resRoot*/image/hlcbt/startDraw.mp3","fileName":"滚动音效.mp3","optFlag":2}],null);
-hg.sound.readyPlay(0,0,'loop');
+// hg.sound = HdGame.initSound([{"path":"/static/zp/bgmusic29H.mp3","fileName":"背景音乐.mp3","optFlag":0},{"path":"/static/zp/startDraw.mp3","fileName":"滚动音效.mp3","optFlag":2}],[{"path":"*_resRoot*/image/hlcbt/bgmusic29H.mp3","fileName":"背景音乐.mp3","optFlag":0},{"path":"*_resRoot*/image/hlcbt/startDraw.mp3","fileName":"滚动音效.mp3","optFlag":2}],null);
+// hg.sound.readyPlay(0,0,'loop');
 
 var GameArg = {
     awardNum : rewards.length,
@@ -829,7 +829,7 @@ var startStatus = true;
             g.ctx.clearRect(0,0,g.w*g_rem,g.h*g_rem);
             drawThePrice({},true);
             drawThePrice(theObject);
-            hg.sound.play(1);
+            // hg.sound.play(1);
         }else{
            g.nowGoingStep = 0;
         }
@@ -1115,7 +1115,7 @@ function parsePxToRem(px){
 function startBtnDelay() {
   $('.titleImg').removeClass('titleDown').addClass('titleDown');
   $('#startBtnImg').removeClass('startTada');
-  hg.sound.readyPlay(0, 0, 'loop');
+  // hg.sound.readyPlay(0, 0, 'loop');
 
   setTimeout(function() {
     $('#startBtnImg').addClass('startTada');
@@ -1151,7 +1151,7 @@ function activateSound() { //兼容ios下 WebAudio类型的对象无法自动播
 function startBtnAjax(event, data, callBack, pass) {
   var that = this;
   if (!pass) {
-    activateSound();
+    // activateSound();
   }
 
 
@@ -1165,9 +1165,9 @@ function startBtnAjax(event, data, callBack, pass) {
     $('.footerBox').hide();
     $('.home,#ruleImg').hide();
     $('.gameBox').show();
-    if (typeof hg.sound.cache[0] !== 'undefined' && typeof hg.sound.cache[0].playing !== 'undefined' && !hg.sound.cache[0].playing) {
-      hg.sound.readyPlay(0, 0, 'loop');
-    }
+    // if (typeof hg.sound.cache[0] !== 'undefined' && typeof hg.sound.cache[0].playing !== 'undefined' && !hg.sound.cache[0].playing) {
+    //   hg.sound.readyPlay(0, 0, 'loop');
+    // }
   }
 }
 
