@@ -443,7 +443,7 @@
 
 <script type="text/javascript">
 
-
+alert(11)
 function GetQueryString(name)
 {
    var reg = new RegExp("(^|&)"+ name +"=([^&]*)(&|$)");
@@ -599,6 +599,7 @@ g_config = {
   "clickTips":{"clickSrc":"/static/zp/clickView.png","pointW":"2rem","pointH":"2rem","clickW":"3.3rem","clickH":"3.65rem"},
 };
 
+alert(333)
 HdGame.gameDomain = 'hd.faisco.cn';
 HdGame.gameDomainIgnoreStyle = 'hd.faisco.cn';
 HdGame.isReg = false;
@@ -1030,30 +1031,30 @@ var startStatus = true;
 })();
 
 
-var gameType = 0;
+  var gameType = 0;
 
 
-HdGame.resulePoup.init({
-  regUrl    : 'hdgame_h?cmd=setPlayerReg&aid=7020498&gameId=344&openId=tryPlay_15801086&flag1=true',
-  home      : typeof home !== 'undefined' ? home : null,
-  again     : typeof gameRestart !== 'undefined' ? gameRestart : null,
-  giftInit  : HdGame._luckDrawFunc,
-});
+  HdGame.resulePoup.init({
+    regUrl    : 'hdgame_h?cmd=setPlayerReg&aid=7020498&gameId=344&openId=tryPlay_15801086&flag1=true',
+    home      : typeof home !== 'undefined' ? home : null,
+    again     : typeof gameRestart !== 'undefined' ? gameRestart : null,
+    giftInit  : HdGame._luckDrawFunc,
+  });
 
-HdGame.initJsFoot({
-  "rulesortstr":"abcde",
-  "hostLink":"http://","menuLink":"",
-  "fromFav":"",
-  "menuStyle":3,
-  "soundIcon_l":"0.75rem","soundIcon_t":"1rem","awardImage":"/static/zp/gift.png",
-  "titleImg_path_def":"/static/zp/title.png",
-  "startImg_path_def":"/static/zp/startBtn.png",
-  "awardIconImgPath_def":"/static/zp/ruleImg_special.png",
-  "titleImg_w_def":"15.8rem","titleImg_h_def":"7.5rem","startBtn_w_def":"","startBtn_h_def":"","logoImg_w_def":"2rem","logoImg_h_def":"2rem",
-  "awardImg_w_def":"6rem","awardImg_h_def":"6rem",
-  "homeBgPath_def":"/static/zp/homeBg.jpg","gameBg2Path_def":"",
-  "gameBgPath_def":"","headImg2":"","headImg3":"","headImg4":"","dangerType":0,"isZhuLi":false,
-})
+  HdGame.initJsFoot({
+    "rulesortstr":"abcde",
+    "hostLink":"http://","menuLink":"",
+    "fromFav":"",
+    "menuStyle":3,
+    "soundIcon_l":"0.75rem","soundIcon_t":"1rem","awardImage":"/static/zp/gift.png",
+    "titleImg_path_def":"/static/zp/title.png",
+    "startImg_path_def":"/static/zp/startBtn.png",
+    "awardIconImgPath_def":"/static/zp/ruleImg_special.png",
+    "titleImg_w_def":"15.8rem","titleImg_h_def":"7.5rem","startBtn_w_def":"","startBtn_h_def":"","logoImg_w_def":"2rem","logoImg_h_def":"2rem",
+    "awardImg_w_def":"6rem","awardImg_h_def":"6rem",
+    "homeBgPath_def":"/static/zp/homeBg.jpg","gameBg2Path_def":"",
+    "gameBgPath_def":"","headImg2":"","headImg3":"","headImg4":"","dangerType":0,"isZhuLi":false,
+  })
 
 
   hg.assets.add([
@@ -1075,7 +1076,7 @@ HdGame.initJsFoot({
 
 
 $(function(){
-
+  alert(22)
   $.ajax({
     url: '/api/raffle/'+g_activityCode+'/verify',
     type: 'head',
@@ -1097,7 +1098,7 @@ $(function(){
 
 })
 
-
+alert(33)
 
 function parseRemToPx(rem){
     if(rem.indexOf('rem') === -1){
