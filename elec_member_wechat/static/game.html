@@ -611,466 +611,466 @@ var GameArg = {
     awardNum : rewards.length,
 };
 var startStatus = true;
-alert('1234');
-// (function(g){
-//     // 排列的奖品的等级，顺时针排列
-//     var prizeDeg = [
-//         [1,1,1,1,1,1,1,1],
-//         [2,1,1,1,2,2,1,2],
-//         [3,1,2,3,3,1,3,2],
-//         [1,4,3,1,4,2,4,1],
-//         [1,2,2,3,4,5,1,5],
-//         [1,2,3,3,4,5,1,6],
-//         [1,2,3,2,4,5,7,6,7,1,7,7],
-//         [1,2,8,3,4,5,8,7,6,1,8,3],
-//     ];
-//     var morePricePos=[],lessPricePos = [];
-//     for(var i = 0;i < 12;i++){
-//         var a = {};
-//         var left,top;
-//         if(i < 4){
-//             top = 0.45;
-//         }else if(i == 4 || i == 11){
-//             top = 3.1;
-//         }else if( i == 5 || i == 10){
-//             top = 5.85;
-//         }else{
-//             top = 8.6;
-//         }
-//         if( i == 0 || i == 11 || i == 10 || i == 9){
-//             left = 0.3;
-//         }else if( i == 1 || i == 8){
-//             left = 3.05;
-//         }else if( i == 2 || i == 7){
-//             left = 5.8;
-//         }else{
-//             left = 8.55;
-//         }
-//         a.left = left;
-//         a.top = top;
-//         morePricePos.push(a);
-//     }
-//     for(var i = 0 ; i < 8; i++){
-//         var a = {};
-//         var left,top;
-//         if(i < 3){
-//             top = 0.45;
-//         }else if(i == 3 || i == 7){
-//             top = 4;
-//         }else{
-//             top = 7.7;
-//         }
-//         if( i == 0 || i == 6 || i == 7){
-//            left = 0.3;
-//         }else if( i == 1 || i == 5){
-//             left = 3.95;
-//         }else{
-//             left = 7.6;
-//         }
-//         a.left = left;
-//         a.top = top;
-//         lessPricePos.push(a);
-//     }
-//     var steps = [];
-//     steps.now = 0;
-//     var zhuanpanArg = null;//结果弹出层参数
-//
-//     // 画一个圆角矩形
-//     function drawThePrice(theObject,flag){
-//         if(typeof theObject === "undefined" || (typeof theObject.left === "undefined" && !flag)){
-//             return;
-//         }
-//         var r = 0.2*g_rem,                                    //圆角半径
-//             x = theObject.left * g_rem,                       //目标矩形的左边距离
-//             y = theObject.top  * g_rem,                       //目标矩形的右边距离
-//             w = g.awardNum > 6 ? 2.45 * g_rem : 3.35 * g_rem, //目标矩形的宽
-//             h = w,                                            //目标句型的高
-//             fillStyle = "#ffffff",                            //填充颜色
-//             alpha = 0.0;                                      //透明度
-//         if(flag){
-//             x = 0;
-//             y = 0;
-//             r = 0.55 * g_rem;
-//             w = g.w;
-//             h = g.h;
-//             fillStyle = "#000000";
-//             alpha = 0.35;
-//         }
-//         g.ctx.save();
-//         g.ctx.beginPath();
-//         g.ctx.moveTo(x,(y + h - r));
-//         g.ctx.lineTo(x,( y + r));
-//         g.ctx.arcTo(x,y,(x + r),y,r);
-//         g.ctx.lineTo((x + w - r),y);
-//         g.ctx.arcTo((x + w),y,(w + x),(y + r),r);
-//         g.ctx.lineTo((w + x),(y + h - r));
-//         g.ctx.arcTo((w + x),(y + h),(w + x - r),(y + h),r);
-//         g.ctx.lineTo((x + r),(y + h));
-//         g.ctx.arcTo(x,(y + h),x,(y + h - r),r);
-//         g.ctx.clip();
-//         if(!flag){
-//             g.ctx.clearRect(0,0,g.w*g_rem,g.h*g_rem);
-//         }else{
-//             g.ctx.fillStyle = fillStyle;
-//             g.ctx.globalAlpha = alpha;
-//             g.ctx.fillRect(0,0,g.w*g_rem,g.h*g_rem);
-//         }
-//         g.ctx.restore();
-//     }
-//
-//     // 设置奖项以及开始按钮的大小
-//     function setPriceAndStart(){
-//         $(".theShowerGiftBoxer .priceBox").html('');
-//         var maxSize;
-//
-//         if(g.awardNum < 7){
-//             $(".startBtnImg").width("3.35rem").height("3.35rem").addClass("abs").css({
-//                 "top": 4.8 * g_rem,
-//                 "left": 4.95 * g_rem,
-//             });
-//             maxSize = 3.35*g_rem;
-//         }else{
-//             $(".startBtnImg").width("4.4rem").height("4.4rem").addClass("abs").css({
-//                     "top" : 4.25 * g_rem,
-//                     "left": ((5.2 - 4.4) / 2 + 4.05) * g_rem,
-//                 });
-//             maxSize = 2.45*g_rem;
-//         }
-//         var theClassName = g.awardNum < 7 ? " biggerBoxer " : " littleBoxer ";
-//         var theArray = prizeDeg[ g.awardNum - 1 ];
-//         $.each(theArray,function(index,value){
-//             var theLei,theleft;
-//             if(g.awardNum < 7){
-//                 if(index < 3){
-//                     theLei = ' top1 ';
-//                 }else if(index == 3 || index == 7){
-//                     theLei = ' top2 ';
-//                 }else{
-//                     theLei = ' top3 ';
-//                 }
-//                 if( index == 0 || index == 6 || index == 7){
-//                    theleft = ' left1 ';
-//                 }else if( index == 1 || index == 5){
-//                     theleft = ' left2 ';
-//                 }else{
-//                     theleft = ' left3 ';
-//                 }
-//             }else{
-//                 if(index < 4){
-//                     theLei = ' top1 ';
-//                 }else if(index == 4 || index == 11){
-//                     theLei = ' top4 ';
-//                 }else if( index == 5 || index == 10){
-//                     theLei = ' top5 ';
-//                 }else{
-//                     theLei = ' top6 ';
-//                 }
-//                 if( index == 0 || index == 11 || index == 10 || index == 9){
-//                    theleft = ' left1 ';
-//                 }else if( index == 1 || index == 8){
-//                     theleft = ' left4 ';
-//                 }else if( index == 2 || index == 7){
-//                     theleft = ' left5 ';
-//                 }else{
-//                     theleft = ' left6 ';
-//                 }
-//             }
-//             var theBoxer = $('.theBoxerForEdit .editTarget-priceD').clone();
-//             var theSrc = hg.edit.getImgInfo('thePrice'+value).path;
-//             var theIndex = '<img class="editTarget-thePrice'+value+'" src="'+theSrc+'" onload="HdGame.Img.optimize(this, {width:'+maxSize+', height:'+maxSize+', mode:HdGame.Img.MODE_SCALE_DEFLATE_FILL});"/>'
-//             theBoxer.addClass("theImgBox abs " + theClassName+theLei+theleft).appendTo('.theShowerGiftBoxer .priceBox');
-//             $(".theShowerGiftBoxer .priceBox .editTarget-priceD").eq(index).append(theIndex);
-//         })
-//         var theAwardBg = hg.edit.getImgInfo("priceD").path;
-//         console.log(theAwardBg);
-//         HdGame.imgReady(theAwardBg,function(){
-//             var size = {width:$(".editTarget-priceD").width(),height:$(".editTarget-priceD").height()};
-//             var theSize = HdGame.Img.calcSize(this.width,this.height,size.width,size.height,HdGame.Img.MODE_SCALE_DEFLATE_FILL);
-//             $(".editTarget-priceD").css({
-//                 "background-size" : theSize.width + "px " + theSize.height+"px"
-//             })
-//         });
-//     }
-//     function returnTheUrl(url){
-//         url = url.split("\"");
-//         return url[1];
-//     }
-//     // 生成需要转动的圈数
-//     function start(level) {
-//         var theArray = prizeDeg[g.awardNum - 1];
-//         var newArray = [];
-//         $.each(theArray,function(index,value){
-//             if(value == level){
-//                newArray.push(index);
-//             }
-//         })
-//         g.turningTime = getRandom(8000,12000);
-//         var theDecideNum = getRandomFromArray(newArray) + 1;
-//         g.turningZero = 6 * theArray.length + theDecideNum;  //要转的圈数
-//         g.nowGoingStep = 6 * theArray.length + theDecideNum; //目前的步数
-//         g.turningAngl = g.turningTime / g.turningZero;       //平均步数
-//         g.turnIngArray = [];
-//         for(var i = 0 ; i < 3 ; i++){
-//             g.turnIngArray = g.turnIngArray.concat(g.sliceArray);
-//         }
-//         for(var j = 0; j <= theDecideNum ; j++){
-//             g.turnIngArray.push(g.sliceArray[j]);
-//         }
-//         g.nnn = 0;
-//         startAnimation();
-//     }
-//
-//   function startAnimation(){
-//     if(g.nowGoingStep > 0){
-//         var theTime = easeInOut((g.turningZero - g.nowGoingStep),0,g.turningTime,g.turningZero);
-//         g.nowGoingStep -= 1;
-//         theTime -= g.nnn;
-//         g.nnn += theTime;
-//         var theObject = g.turnIngArray[0];
-//         g.turnIngArray.shift();
-//         if(g.turnIngArray.length != 0){
-//             g.ctx.clearRect(0,0,g.w*g_rem,g.h*g_rem);
-//             drawThePrice({},true);
-//             drawThePrice(theObject);
-//             hg.sound.play(1);
-//         }else{
-//            g.nowGoingStep = 0;
-//         }
-//         setTimeout(arguments.callee,theTime);
-//     }else{
-//         // hg.sound.play(1);
-//         setTimeout(function(){
-//             HdGame.resulePoup.show(zhuanpanArg);
-//         },1000);
-//     }
-//   }
-//   // 缓动函数
-//   /*
-//       t : 初始记步数
-//       b : 开始位置
-//       c : x轴的变化量,固定的
-//       d : x轴的长度
-//   */
-//   function easeInOut(t,b,c,d){
-//     if ((t/=d/2) < 1) return c/2*t*t + b;
-//     return -c/2 * ((--t)*(t-2) - 1) + b;
-//   }
-//   function getRandomFromArray(arr){
-//     if(HdGame.getType(arr) !== "array"){
-//         return -1;
-//     }
-//     var a = getRandom(0,(arr.length - 1));
-//     return arr[a];
-//   }
-//
-//   function getRandom(a,b){
-//     if(typeof a === "undefined" ) a = 0;
-//     if(typeof b === "undefined" ) b = 10;
-//     if(a == b) return a;
-//     return a+Math.floor(Math.random()*(b-a+1));
-//   }
-//
-//   function draw(){
-//     // 拿到数据之后，先显示动画再显示结果
-//     if(!startStatus) return;
-//     startStatus = false;
-//     // $(".startBtnImg").attr("src",hg.edit.getImgInfo("startBtnImg").path[1]);
-//     decideImg(".startBtnImg",hg.edit.getImgInfo("startBtnImg").path[1]);
-//     setTimeout(function(){
-//         // $(".startBtnImg").attr("src",hg.edit.getImgInfo("startBtnImg").path[0]);
-//         decideImg(".startBtnImg",hg.edit.getImgInfo("startBtnImg").path[0]);
-//        luckDraw(function(arg,result){
-//             zhuanpanArg = arg;
-//             $("#outer").show();
-//             if(arg.isSuc){
-//                 start(result.awardIndex);
-//             }else{
-//                 start(0);
-//             }
-//         });
-//     },200)
-//   }
-//   function decideImg(obj,url){
-//     (function(theObj,theUrl){
-//       HdGame.imgReady(theUrl,function(){
-//         if(typeof theObj === "string"){
-//             theObj = $(theObj);
-//         }
-//         var originSize = {width:theObj.outerWidth(),height:theObj.outerHeight()};
-//         var nowSize = HdGame.Img.calcSize(this.width,this.height,originSize.width,originSize.height,HdGame.Img.MODE_SCALE_DEFLATE_FILL);
-//         theObj.css({
-//             'background-image':'url("'+theUrl+'")',
-//             "background-position":"center center",
-//             "background-repeat":"no-repeat",
-//             "background-size":nowSize.width+"px "+nowSize.height+"px"
-//         })
-//       })
-//     })(obj,url)
-//   }
-//   function getRandomNum(a,b){
-//     return a+Math.floor(Math.random()*(b-a+1));
-//   }
-//
-//   function setFlashLight() {
-//     $.each($(".theRealFlashLight"),function(index,value){
-//         if(index < 6){
-//             $(this).css({
-//                 top : "-0.05rem",
-//                 left : (0.65 + 1.9*index)*g_rem
-//             });
-//         }else if( index < 12 ){
-//             var theleft = (index == 6 ? 12.05*g_rem : 12.3*g_rem);
-//             var theTop = (index == 6 ? 0.05*g_rem : (0.2 + 1.9*(index - 6))*g_rem );
-//             $(this).css({
-//                 left : theleft,
-//                 top : theTop
-//             });
-//         }else if( index < 18 ){
-//             var theTop = (index == 12 ? 11.75*g_rem : 11.9*g_rem)
-//             $(this).css({
-//                 top : theTop,
-//                 left : (0.65 + 1.9*(18 - index))*g_rem
-//             });
-//         }else{
-//             var theleft = (index == 18 ? 0.45*g_rem : 0.35*g_rem);
-//             var theTop = (index == 18 ? 11.7*g_rem : (11.9 + 2*(18 - index))*g_rem );
-//             $(this).css({
-//                 left : theleft,
-//                 top : theTop
-//             });
-//         }
-//         if(index == ($(".theRealFlashLight").length - 1)){
-//             startFlash();
-//         }
-//     })
-//   }
-//   var theFlashSrc = hg.edit.getImgInfo('flashLight').path;
-//   var theDarkSrc = hg.edit.getImgInfo('darkLight').path;
-//   var theSrcArray = [];
-//   theSrcArray.push(theFlashSrc);
-//   theSrcArray.push(theDarkSrc);
-//   var arraySize = new Array(2);
-//   $.each(theSrcArray,function(index,value){
-//       (function(index,value){
-//           HdGame.imgReady(value,function(){
-//               var originSize = {width:$(".theRealFlashLight").outerWidth(),height:$(".theRealFlashLight").outerHeight()};
-//               var nowSize = HdGame.Img.calcSize(this.width,this.height,originSize.width,originSize.height,HdGame.Img.MODE_SCALE_DEFLATE_FILL);
-//               var pL = 100 * nowSize.width / originSize.width;
-//               var pt = 100 * nowSize.height / originSize.height;
-//               arraySize[index] = {
-//                   "background-image" : 'url("'+value+'")',
-//                   "background-size"  : pL+"% "+pt+"%",
-//               };
-//               if(index == 1){
-//                   setFlashLight();
-//               }
-//           })
-//       })(index,value);
-//   })
-//   function startFlash(){
-//     $.each($(".theRealFlashLight"),function(index,value){
-//       var theSrc = arraySize[1];
-//       var otherSrc = arraySize[0];
-//       var theFlag = $(this).hasClass("editTarget-darkLight");
-//       if(theFlag){
-//         theSrc = arraySize[0];
-//         otherSrc = arraySize[1];
-//       }
-//       // A亮
-//       if(!g.num){
-//         $(this).css(theSrc);
-//       }else{
-//       // B闪
-//         $(this).css(otherSrc);
-//       }
-//     })
-//     if(!g.num){
-//       g.num = 1;
-//     }else{
-//       delete g.num;
-//     }
-//     setTimeout(arguments.callee,500);
-//   }
-//   $(function() {
-//     g.sliceArray = g.awardNum > 6 ? morePricePos : lessPricePos;
-//     setPriceAndStart();
-//     decideImg(".startBtnImg",hg.edit.getImgInfo("startBtnImg").path[0]);
-//
-//     hg.assets.onload(function(){
-//         g.w = 11.25*g_rem;
-//         g.h = 11.25*g_rem;
-//         var canvas = $('#outer')[0];
-//         if(typeof canvas === 'undefined') return;
-//         var ratio = LF.setCanvasePixelRatio();
-//         //压缩画布
-//         canvas.width = g.w*ratio;
-//         canvas.height = g.h*ratio;
-//         canvas.style.height = g.w + 'px';
-//         canvas.style.width = g.h + 'px';
-//         g.ctx = canvas.getContext("2d");
-//     });
-//     hg.on('startGame',draw);
-//   });
-// })(GameArg);
-//
-// /*----------------------------------获取ip信息-----------------------------------*/
-// (function(){
-//     var curFontSize = parseFloat($("html").css("font-size"));
-//     if(curFontSize != g_rem) {
-//         var rate = 1;
-//         if((curFontSize / g_rem) < 0.9 || (curFontSize / g_rem) > 1.1) {
-//             rate = curFontSize / g_rem;
-//         }
-//         refreshRemForSpecial(g_rem,rate);
-//     }
-//     function refreshRemForSpecial(rem,rate) {
-//         var newFontSize = rem / rate;
-//         $("html").css("font-size",newFontSize + "px");
-//     }
-// })();
-//
-//
-// var gameType = 0;
-//
-//
-// HdGame.resulePoup.init({
-//   regUrl    : 'hdgame_h?cmd=setPlayerReg&aid=7020498&gameId=344&openId=tryPlay_15801086&flag1=true',
-//   home      : typeof home !== 'undefined' ? home : null,
-//   again     : typeof gameRestart !== 'undefined' ? gameRestart : null,
-//   giftInit  : HdGame._luckDrawFunc,
-// });
-//
-// HdGame.initJsFoot({
-//   "rulesortstr":"abcde",
-//   "hostLink":"http://","menuLink":"",
-//   "fromFav":"",
-//   "menuStyle":3,
-//   "soundIcon_l":"0.75rem","soundIcon_t":"1rem","awardImage":"/static/zp/gift.png",
-//   "titleImg_path_def":"/static/zp/title.png",
-//   "startImg_path_def":"/static/zp/startBtn.png",
-//   "awardIconImgPath_def":"/static/zp/ruleImg_special.png",
-//   "titleImg_w_def":"15.8rem","titleImg_h_def":"7.5rem","startBtn_w_def":"","startBtn_h_def":"","logoImg_w_def":"2rem","logoImg_h_def":"2rem",
-//   "awardImg_w_def":"6rem","awardImg_h_def":"6rem",
-//   "homeBgPath_def":"/static/zp/homeBg.jpg","gameBg2Path_def":"",
-//   "gameBgPath_def":"","headImg2":"","headImg3":"","headImg4":"","dangerType":0,"isZhuLi":false,
-// })
-//
-//
-//   hg.assets.add([
-//       "/static/zp/ACgIABACGAAguZ28zwUoiM-W2AUwgAU4wAw.jpg",
-//       "/static/zp/logo.jpg",
-//       "/static/zp/ruleImg.png",
-//       "/static/zp/success.png",
-//       "/static/zp/light.png",
-//       "/static/zp/bird.png",
-//       "/static/zp/musicOff.png",
-//       "/static/zp/musicOn.png",
-//       "/static/zp/auBg.jpg",
-//       "/static/zp/manImg.jpg",
-//       '/static/zp/faiImg.png',
-//   ]);
-//
-//   hg.assets.loadPage();//开始loading页面
+
+(function(g){
+    // 排列的奖品的等级，顺时针排列
+    var prizeDeg = [
+        [1,1,1,1,1,1,1,1],
+        [2,1,1,1,2,2,1,2],
+        [3,1,2,3,3,1,3,2],
+        [1,4,3,1,4,2,4,1],
+        [1,2,2,3,4,5,1,5],
+        [1,2,3,3,4,5,1,6],
+        [1,2,3,2,4,5,7,6,7,1,7,7],
+        [1,2,8,3,4,5,8,7,6,1,8,3],
+    ];
+    var morePricePos=[],lessPricePos = [];
+    for(var i = 0;i < 12;i++){
+        var a = {};
+        var left,top;
+        if(i < 4){
+            top = 0.45;
+        }else if(i == 4 || i == 11){
+            top = 3.1;
+        }else if( i == 5 || i == 10){
+            top = 5.85;
+        }else{
+            top = 8.6;
+        }
+        if( i == 0 || i == 11 || i == 10 || i == 9){
+            left = 0.3;
+        }else if( i == 1 || i == 8){
+            left = 3.05;
+        }else if( i == 2 || i == 7){
+            left = 5.8;
+        }else{
+            left = 8.55;
+        }
+        a.left = left;
+        a.top = top;
+        morePricePos.push(a);
+    }
+    for(var i = 0 ; i < 8; i++){
+        var a = {};
+        var left,top;
+        if(i < 3){
+            top = 0.45;
+        }else if(i == 3 || i == 7){
+            top = 4;
+        }else{
+            top = 7.7;
+        }
+        if( i == 0 || i == 6 || i == 7){
+           left = 0.3;
+        }else if( i == 1 || i == 5){
+            left = 3.95;
+        }else{
+            left = 7.6;
+        }
+        a.left = left;
+        a.top = top;
+        lessPricePos.push(a);
+    }
+    var steps = [];
+    steps.now = 0;
+    var zhuanpanArg = null;//结果弹出层参数
+
+    // 画一个圆角矩形
+    function drawThePrice(theObject,flag){
+        if(typeof theObject === "undefined" || (typeof theObject.left === "undefined" && !flag)){
+            return;
+        }
+        var r = 0.2*g_rem,                                    //圆角半径
+            x = theObject.left * g_rem,                       //目标矩形的左边距离
+            y = theObject.top  * g_rem,                       //目标矩形的右边距离
+            w = g.awardNum > 6 ? 2.45 * g_rem : 3.35 * g_rem, //目标矩形的宽
+            h = w,                                            //目标句型的高
+            fillStyle = "#ffffff",                            //填充颜色
+            alpha = 0.0;                                      //透明度
+        if(flag){
+            x = 0;
+            y = 0;
+            r = 0.55 * g_rem;
+            w = g.w;
+            h = g.h;
+            fillStyle = "#000000";
+            alpha = 0.35;
+        }
+        g.ctx.save();
+        g.ctx.beginPath();
+        g.ctx.moveTo(x,(y + h - r));
+        g.ctx.lineTo(x,( y + r));
+        g.ctx.arcTo(x,y,(x + r),y,r);
+        g.ctx.lineTo((x + w - r),y);
+        g.ctx.arcTo((x + w),y,(w + x),(y + r),r);
+        g.ctx.lineTo((w + x),(y + h - r));
+        g.ctx.arcTo((w + x),(y + h),(w + x - r),(y + h),r);
+        g.ctx.lineTo((x + r),(y + h));
+        g.ctx.arcTo(x,(y + h),x,(y + h - r),r);
+        g.ctx.clip();
+        if(!flag){
+            g.ctx.clearRect(0,0,g.w*g_rem,g.h*g_rem);
+        }else{
+            g.ctx.fillStyle = fillStyle;
+            g.ctx.globalAlpha = alpha;
+            g.ctx.fillRect(0,0,g.w*g_rem,g.h*g_rem);
+        }
+        g.ctx.restore();
+    }
+
+    // 设置奖项以及开始按钮的大小
+    function setPriceAndStart(){
+        $(".theShowerGiftBoxer .priceBox").html('');
+        var maxSize;
+
+        if(g.awardNum < 7){
+            $(".startBtnImg").width("3.35rem").height("3.35rem").addClass("abs").css({
+                "top": 4.8 * g_rem,
+                "left": 4.95 * g_rem,
+            });
+            maxSize = 3.35*g_rem;
+        }else{
+            $(".startBtnImg").width("4.4rem").height("4.4rem").addClass("abs").css({
+                    "top" : 4.25 * g_rem,
+                    "left": ((5.2 - 4.4) / 2 + 4.05) * g_rem,
+                });
+            maxSize = 2.45*g_rem;
+        }
+        var theClassName = g.awardNum < 7 ? " biggerBoxer " : " littleBoxer ";
+        var theArray = prizeDeg[ g.awardNum - 1 ];
+        $.each(theArray,function(index,value){
+            var theLei,theleft;
+            if(g.awardNum < 7){
+                if(index < 3){
+                    theLei = ' top1 ';
+                }else if(index == 3 || index == 7){
+                    theLei = ' top2 ';
+                }else{
+                    theLei = ' top3 ';
+                }
+                if( index == 0 || index == 6 || index == 7){
+                   theleft = ' left1 ';
+                }else if( index == 1 || index == 5){
+                    theleft = ' left2 ';
+                }else{
+                    theleft = ' left3 ';
+                }
+            }else{
+                if(index < 4){
+                    theLei = ' top1 ';
+                }else if(index == 4 || index == 11){
+                    theLei = ' top4 ';
+                }else if( index == 5 || index == 10){
+                    theLei = ' top5 ';
+                }else{
+                    theLei = ' top6 ';
+                }
+                if( index == 0 || index == 11 || index == 10 || index == 9){
+                   theleft = ' left1 ';
+                }else if( index == 1 || index == 8){
+                    theleft = ' left4 ';
+                }else if( index == 2 || index == 7){
+                    theleft = ' left5 ';
+                }else{
+                    theleft = ' left6 ';
+                }
+            }
+            var theBoxer = $('.theBoxerForEdit .editTarget-priceD').clone();
+            var theSrc = hg.edit.getImgInfo('thePrice'+value).path;
+            var theIndex = '<img class="editTarget-thePrice'+value+'" src="'+theSrc+'" onload="HdGame.Img.optimize(this, {width:'+maxSize+', height:'+maxSize+', mode:HdGame.Img.MODE_SCALE_DEFLATE_FILL});"/>'
+            theBoxer.addClass("theImgBox abs " + theClassName+theLei+theleft).appendTo('.theShowerGiftBoxer .priceBox');
+            $(".theShowerGiftBoxer .priceBox .editTarget-priceD").eq(index).append(theIndex);
+        })
+        var theAwardBg = hg.edit.getImgInfo("priceD").path;
+        console.log(theAwardBg);
+        HdGame.imgReady(theAwardBg,function(){
+            var size = {width:$(".editTarget-priceD").width(),height:$(".editTarget-priceD").height()};
+            var theSize = HdGame.Img.calcSize(this.width,this.height,size.width,size.height,HdGame.Img.MODE_SCALE_DEFLATE_FILL);
+            $(".editTarget-priceD").css({
+                "background-size" : theSize.width + "px " + theSize.height+"px"
+            })
+        });
+    }
+    function returnTheUrl(url){
+        url = url.split("\"");
+        return url[1];
+    }
+    // 生成需要转动的圈数
+    function start(level) {
+        var theArray = prizeDeg[g.awardNum - 1];
+        var newArray = [];
+        $.each(theArray,function(index,value){
+            if(value == level){
+               newArray.push(index);
+            }
+        })
+        g.turningTime = getRandom(8000,12000);
+        var theDecideNum = getRandomFromArray(newArray) + 1;
+        g.turningZero = 6 * theArray.length + theDecideNum;  //要转的圈数
+        g.nowGoingStep = 6 * theArray.length + theDecideNum; //目前的步数
+        g.turningAngl = g.turningTime / g.turningZero;       //平均步数
+        g.turnIngArray = [];
+        for(var i = 0 ; i < 3 ; i++){
+            g.turnIngArray = g.turnIngArray.concat(g.sliceArray);
+        }
+        for(var j = 0; j <= theDecideNum ; j++){
+            g.turnIngArray.push(g.sliceArray[j]);
+        }
+        g.nnn = 0;
+        startAnimation();
+    }
+
+  function startAnimation(){
+    if(g.nowGoingStep > 0){
+        var theTime = easeInOut((g.turningZero - g.nowGoingStep),0,g.turningTime,g.turningZero);
+        g.nowGoingStep -= 1;
+        theTime -= g.nnn;
+        g.nnn += theTime;
+        var theObject = g.turnIngArray[0];
+        g.turnIngArray.shift();
+        if(g.turnIngArray.length != 0){
+            g.ctx.clearRect(0,0,g.w*g_rem,g.h*g_rem);
+            drawThePrice({},true);
+            drawThePrice(theObject);
+            hg.sound.play(1);
+        }else{
+           g.nowGoingStep = 0;
+        }
+        setTimeout(arguments.callee,theTime);
+    }else{
+        // hg.sound.play(1);
+        setTimeout(function(){
+            HdGame.resulePoup.show(zhuanpanArg);
+        },1000);
+    }
+  }
+  // 缓动函数
+  /*
+      t : 初始记步数
+      b : 开始位置
+      c : x轴的变化量,固定的
+      d : x轴的长度
+  */
+  function easeInOut(t,b,c,d){
+    if ((t/=d/2) < 1) return c/2*t*t + b;
+    return -c/2 * ((--t)*(t-2) - 1) + b;
+  }
+  function getRandomFromArray(arr){
+    if(HdGame.getType(arr) !== "array"){
+        return -1;
+    }
+    var a = getRandom(0,(arr.length - 1));
+    return arr[a];
+  }
+
+  function getRandom(a,b){
+    if(typeof a === "undefined" ) a = 0;
+    if(typeof b === "undefined" ) b = 10;
+    if(a == b) return a;
+    return a+Math.floor(Math.random()*(b-a+1));
+  }
+
+  function draw(){
+    // 拿到数据之后，先显示动画再显示结果
+    if(!startStatus) return;
+    startStatus = false;
+    // $(".startBtnImg").attr("src",hg.edit.getImgInfo("startBtnImg").path[1]);
+    decideImg(".startBtnImg",hg.edit.getImgInfo("startBtnImg").path[1]);
+    setTimeout(function(){
+        // $(".startBtnImg").attr("src",hg.edit.getImgInfo("startBtnImg").path[0]);
+        decideImg(".startBtnImg",hg.edit.getImgInfo("startBtnImg").path[0]);
+       luckDraw(function(arg,result){
+            zhuanpanArg = arg;
+            $("#outer").show();
+            if(arg.isSuc){
+                start(result.awardIndex);
+            }else{
+                start(0);
+            }
+        });
+    },200)
+  }
+  function decideImg(obj,url){
+    (function(theObj,theUrl){
+      HdGame.imgReady(theUrl,function(){
+        if(typeof theObj === "string"){
+            theObj = $(theObj);
+        }
+        var originSize = {width:theObj.outerWidth(),height:theObj.outerHeight()};
+        var nowSize = HdGame.Img.calcSize(this.width,this.height,originSize.width,originSize.height,HdGame.Img.MODE_SCALE_DEFLATE_FILL);
+        theObj.css({
+            'background-image':'url("'+theUrl+'")',
+            "background-position":"center center",
+            "background-repeat":"no-repeat",
+            "background-size":nowSize.width+"px "+nowSize.height+"px"
+        })
+      })
+    })(obj,url)
+  }
+  function getRandomNum(a,b){
+    return a+Math.floor(Math.random()*(b-a+1));
+  }
+
+  function setFlashLight() {
+    $.each($(".theRealFlashLight"),function(index,value){
+        if(index < 6){
+            $(this).css({
+                top : "-0.05rem",
+                left : (0.65 + 1.9*index)*g_rem
+            });
+        }else if( index < 12 ){
+            var theleft = (index == 6 ? 12.05*g_rem : 12.3*g_rem);
+            var theTop = (index == 6 ? 0.05*g_rem : (0.2 + 1.9*(index - 6))*g_rem );
+            $(this).css({
+                left : theleft,
+                top : theTop
+            });
+        }else if( index < 18 ){
+            var theTop = (index == 12 ? 11.75*g_rem : 11.9*g_rem)
+            $(this).css({
+                top : theTop,
+                left : (0.65 + 1.9*(18 - index))*g_rem
+            });
+        }else{
+            var theleft = (index == 18 ? 0.45*g_rem : 0.35*g_rem);
+            var theTop = (index == 18 ? 11.7*g_rem : (11.9 + 2*(18 - index))*g_rem );
+            $(this).css({
+                left : theleft,
+                top : theTop
+            });
+        }
+        if(index == ($(".theRealFlashLight").length - 1)){
+            startFlash();
+        }
+    })
+  }
+  var theFlashSrc = hg.edit.getImgInfo('flashLight').path;
+  var theDarkSrc = hg.edit.getImgInfo('darkLight').path;
+  var theSrcArray = [];
+  theSrcArray.push(theFlashSrc);
+  theSrcArray.push(theDarkSrc);
+  var arraySize = new Array(2);
+  $.each(theSrcArray,function(index,value){
+      (function(index,value){
+          HdGame.imgReady(value,function(){
+              var originSize = {width:$(".theRealFlashLight").outerWidth(),height:$(".theRealFlashLight").outerHeight()};
+              var nowSize = HdGame.Img.calcSize(this.width,this.height,originSize.width,originSize.height,HdGame.Img.MODE_SCALE_DEFLATE_FILL);
+              var pL = 100 * nowSize.width / originSize.width;
+              var pt = 100 * nowSize.height / originSize.height;
+              arraySize[index] = {
+                  "background-image" : 'url("'+value+'")',
+                  "background-size"  : pL+"% "+pt+"%",
+              };
+              if(index == 1){
+                  setFlashLight();
+              }
+          })
+      })(index,value);
+  })
+  function startFlash(){
+    $.each($(".theRealFlashLight"),function(index,value){
+      var theSrc = arraySize[1];
+      var otherSrc = arraySize[0];
+      var theFlag = $(this).hasClass("editTarget-darkLight");
+      if(theFlag){
+        theSrc = arraySize[0];
+        otherSrc = arraySize[1];
+      }
+      // A亮
+      if(!g.num){
+        $(this).css(theSrc);
+      }else{
+      // B闪
+        $(this).css(otherSrc);
+      }
+    })
+    if(!g.num){
+      g.num = 1;
+    }else{
+      delete g.num;
+    }
+    setTimeout(arguments.callee,500);
+  }
+  $(function() {
+    g.sliceArray = g.awardNum > 6 ? morePricePos : lessPricePos;
+    setPriceAndStart();
+    decideImg(".startBtnImg",hg.edit.getImgInfo("startBtnImg").path[0]);
+
+    hg.assets.onload(function(){
+        g.w = 11.25*g_rem;
+        g.h = 11.25*g_rem;
+        var canvas = $('#outer')[0];
+        if(typeof canvas === 'undefined') return;
+        var ratio = LF.setCanvasePixelRatio();
+        //压缩画布
+        canvas.width = g.w*ratio;
+        canvas.height = g.h*ratio;
+        canvas.style.height = g.w + 'px';
+        canvas.style.width = g.h + 'px';
+        g.ctx = canvas.getContext("2d");
+    });
+    hg.on('startGame',draw);
+  });
+})(GameArg);
+
+/*----------------------------------获取ip信息-----------------------------------*/
+(function(){
+    var curFontSize = parseFloat($("html").css("font-size"));
+    if(curFontSize != g_rem) {
+        var rate = 1;
+        if((curFontSize / g_rem) < 0.9 || (curFontSize / g_rem) > 1.1) {
+            rate = curFontSize / g_rem;
+        }
+        refreshRemForSpecial(g_rem,rate);
+    }
+    function refreshRemForSpecial(rem,rate) {
+        var newFontSize = rem / rate;
+        $("html").css("font-size",newFontSize + "px");
+    }
+})();
+
+
+var gameType = 0;
+
+
+HdGame.resulePoup.init({
+  regUrl    : 'hdgame_h?cmd=setPlayerReg&aid=7020498&gameId=344&openId=tryPlay_15801086&flag1=true',
+  home      : typeof home !== 'undefined' ? home : null,
+  again     : typeof gameRestart !== 'undefined' ? gameRestart : null,
+  giftInit  : HdGame._luckDrawFunc,
+});
+
+HdGame.initJsFoot({
+  "rulesortstr":"abcde",
+  "hostLink":"http://","menuLink":"",
+  "fromFav":"",
+  "menuStyle":3,
+  "soundIcon_l":"0.75rem","soundIcon_t":"1rem","awardImage":"/static/zp/gift.png",
+  "titleImg_path_def":"/static/zp/title.png",
+  "startImg_path_def":"/static/zp/startBtn.png",
+  "awardIconImgPath_def":"/static/zp/ruleImg_special.png",
+  "titleImg_w_def":"15.8rem","titleImg_h_def":"7.5rem","startBtn_w_def":"","startBtn_h_def":"","logoImg_w_def":"2rem","logoImg_h_def":"2rem",
+  "awardImg_w_def":"6rem","awardImg_h_def":"6rem",
+  "homeBgPath_def":"/static/zp/homeBg.jpg","gameBg2Path_def":"",
+  "gameBgPath_def":"","headImg2":"","headImg3":"","headImg4":"","dangerType":0,"isZhuLi":false,
+})
+
+
+  hg.assets.add([
+      "/static/zp/ACgIABACGAAguZ28zwUoiM-W2AUwgAU4wAw.jpg",
+      "/static/zp/logo.jpg",
+      "/static/zp/ruleImg.png",
+      "/static/zp/success.png",
+      "/static/zp/light.png",
+      "/static/zp/bird.png",
+      "/static/zp/musicOff.png",
+      "/static/zp/musicOn.png",
+      "/static/zp/auBg.jpg",
+      "/static/zp/manImg.jpg",
+      '/static/zp/faiImg.png',
+  ]);
+
+  hg.assets.loadPage();//开始loading页面
 }
 
 
