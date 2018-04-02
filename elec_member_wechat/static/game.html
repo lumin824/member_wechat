@@ -210,10 +210,10 @@
 <script type="text/javascript" src="/static/zp/lufylegend.min.js"></script>
 
 <script type="text/javascript">
-  alert('0000')
     var tryPlay = true, _resRoot = '/static/zp', hg = {};
 
     (function(hg) {
+      alert('111')
         var imgPaths = [],
             readyCallBack = [],
             loadCallBack = [];
@@ -269,6 +269,73 @@
                     loadPallet;
                 window.scrollTo(0, 0);
                 alert('2')
+                if (self.loadingStyle === 1) {
+                    loadimg(imgPaths)
+                } else if (self.loadingStyle === 3) {
+                    var logoImg = document.getElementById("preloadImg");
+                    var initLogoImg = function(img) {
+                        var img = logoImg;
+                        var h = img.height;
+                        var w = img.width;
+                        var bottomPageInfoDeg = -Math.atan(w / h) - Math.PI / 2;
+                        var canvas = document.getElementById("preloadCanvas");
+                        var ctx = canvas.getContext("2d");
+                        var ratio = (window.devicePixelRatio || 1) / (ctx.backingStorePixelRatio || ctx.webkitBackingStorePixelRatio || ctx.mozBackingStorePixelRatio || ctx.msBackingStorePixelRatio || ctx.oBackingStorePixelRatio || ctx.backingStorePixelRatio || 1);
+                        var drawImg = function() {
+                            ctx.fillStyle = "#fff";
+                            ctx.fillRect(0.2 * g_rem * ratio, 0.2 * g_rem * ratio, w * ratio, h * ratio);
+                            ctx.drawImage(img, 0.2 * g_rem * ratio, 0.2 * g_rem * ratio, w * ratio, h * ratio)
+                        };
+                        if (h === w) {
+                            if (h > 3.5 * g_rem) {
+                                h = w = 3.5 * g_rem
+                            }
+                            drawImg = function() {
+                                ctx.save();
+                                ctx.beginPath();
+                                ctx.arc(canvas.width / 2, canvas.height / 2, w / 2 * ratio, 0, 2 * Math.PI);
+                                ctx.clip();
+                                ctx.fillStyle = "#fff";
+                                ctx.fill();
+                                ctx.drawImage(img, 0.2 * g_rem * ratio, 0.2 * g_rem * ratio, w * ratio, h * ratio);
+                                ctx.restore()
+                            }
+                        } else {
+                            if (w > h && w > 8 * g_rem) {
+                                h = 8 * g_rem * h / w;
+                                w = 8 * g_rem
+                            } else {
+                                if (h > w && h > 8 * g_rem) {
+                                    w = 8 * g_rem * w / h;
+                                    h = 8 * g_rem
+                                }
+                            }
+                        }
+                        canvas.width = (w + 0.4 * g_rem) * ratio;
+                        canvas.height = (h + 0.4 * g_rem) * ratio;
+                        canvas.style.width = w + 0.4 * g_rem + "px";
+                        canvas.style.height = h + 0.4 * g_rem + "px";
+                        if (h === w) {
+                            ctx.beginPath();
+                            ctx.arc(canvas.width / 2, canvas.height / 2, canvas.width / 2, 0, 2 * Math.PI);
+                            ctx.clip()
+                        }
+                        ctx.strokeStyle = "#69c5ff";
+                        ctx.lineWidth = 8 * g_rem * ratio;
+                        loadPallet = function(tmp) {
+                            ctx.beginPath();
+                            ctx.arc(canvas.width / 2, canvas.height / 2, 4 * g_rem * ratio, bottomPageInfoDeg, bottomPageInfoDeg + tmp * (2 * Math.PI / 100));
+                            ctx.stroke();
+                            drawImg()
+                        };
+                        loadimg(imgPaths)
+                    };
+                    if (logoImg.complete) {
+                        initLogoImg()
+                    } else {
+                        logoImg.onload = initLogoImg
+                    }
+                }
 
                 function setPercent(percent) {
                     $loadPercent.innerHTML = percent;
@@ -364,76 +431,6 @@
                     }
                     readyCallBack = null
                 }
-
-                if (self.loadingStyle === 1) {
-                    loadimg(imgPaths)
-                } else if (self.loadingStyle === 3) {
-                    var logoImg = document.getElementById("preloadImg");
-                    var initLogoImg = function(img) {
-                        var img = logoImg;
-                        var h = img.height;
-                        var w = img.width;
-                        var bottomPageInfoDeg = -Math.atan(w / h) - Math.PI / 2;
-                        var canvas = document.getElementById("preloadCanvas");
-                        var ctx = canvas.getContext("2d");
-                        var ratio = (window.devicePixelRatio || 1) / (ctx.backingStorePixelRatio || ctx.webkitBackingStorePixelRatio || ctx.mozBackingStorePixelRatio || ctx.msBackingStorePixelRatio || ctx.oBackingStorePixelRatio || ctx.backingStorePixelRatio || 1);
-                        var drawImg = function() {
-                            ctx.fillStyle = "#fff";
-                            ctx.fillRect(0.2 * g_rem * ratio, 0.2 * g_rem * ratio, w * ratio, h * ratio);
-                            ctx.drawImage(img, 0.2 * g_rem * ratio, 0.2 * g_rem * ratio, w * ratio, h * ratio)
-                        };
-                        if (h === w) {
-                            if (h > 3.5 * g_rem) {
-                                h = w = 3.5 * g_rem
-                            }
-                            drawImg = function() {
-                                ctx.save();
-                                ctx.beginPath();
-                                ctx.arc(canvas.width / 2, canvas.height / 2, w / 2 * ratio, 0, 2 * Math.PI);
-                                ctx.clip();
-                                ctx.fillStyle = "#fff";
-                                ctx.fill();
-                                ctx.drawImage(img, 0.2 * g_rem * ratio, 0.2 * g_rem * ratio, w * ratio, h * ratio);
-                                ctx.restore()
-                            }
-                        } else {
-                            if (w > h && w > 8 * g_rem) {
-                                h = 8 * g_rem * h / w;
-                                w = 8 * g_rem
-                            } else {
-                                if (h > w && h > 8 * g_rem) {
-                                    w = 8 * g_rem * w / h;
-                                    h = 8 * g_rem
-                                }
-                            }
-                        }
-                        canvas.width = (w + 0.4 * g_rem) * ratio;
-                        canvas.height = (h + 0.4 * g_rem) * ratio;
-                        canvas.style.width = w + 0.4 * g_rem + "px";
-                        canvas.style.height = h + 0.4 * g_rem + "px";
-                        if (h === w) {
-                            ctx.beginPath();
-                            ctx.arc(canvas.width / 2, canvas.height / 2, canvas.width / 2, 0, 2 * Math.PI);
-                            ctx.clip()
-                        }
-                        ctx.strokeStyle = "#69c5ff";
-                        ctx.lineWidth = 8 * g_rem * ratio;
-                        loadPallet = function(tmp) {
-                            ctx.beginPath();
-                            ctx.arc(canvas.width / 2, canvas.height / 2, 4 * g_rem * ratio, bottomPageInfoDeg, bottomPageInfoDeg + tmp * (2 * Math.PI / 100));
-                            ctx.stroke();
-                            drawImg()
-                        };
-                        loadimg(imgPaths)
-                    };
-                    if (logoImg.complete) {
-                        initLogoImg()
-                    } else {
-                        logoImg.onload = initLogoImg
-                    }
-                }
-
-
             }
         }
     })(hg);
