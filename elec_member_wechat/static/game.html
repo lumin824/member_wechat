@@ -440,21 +440,21 @@
 
 <script type="text/javascript">
 
-alert('aaa')
-function GetQueryString(name)
-{
-   var reg = new RegExp("(^|&)"+ name +"=([^&]*)(&|$)");
-   var r = window.location.search.substr(1).match(reg);
-   if(r!=null)return  unescape(r[2]); return null;
-}
-
-alert('bbb')
+// alert('aaa')
+// function GetQueryString(name)
+// {
+//    var reg = new RegExp("(^|&)"+ name +"=([^&]*)(&|$)");
+//    var r = window.location.search.substr(1).match(reg);
+//    if(r!=null)return  unescape(r[2]); return null;
+// }
+//
+// alert('bbb')
 var g_config = {};
 
 var trrId = null;
 var g_awardIndex = null;
 var g_giftStyle = null;
-var g_activityCode = GetQueryString('code');
+var g_activityCode = 'asda';//GetQueryString('code');
 var initHG = function(resp){
   var rewards = resp.rewards;
 
