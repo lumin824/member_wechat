@@ -596,21 +596,22 @@ g_config = {
   "awardNum":5,"theDefaultGiftImgSrc":"/static/zp/gift.png",
   "clickTips":{"clickSrc":"/static/zp/clickView.png","pointW":"2rem","pointH":"2rem","clickW":"3.3rem","clickH":"3.65rem"},
 };
+
+
+HdGame.gameDomain = 'hd.faisco.cn';
+HdGame.gameDomainIgnoreStyle = 'hd.faisco.cn';
+HdGame.isReg = false;
+HdGame.initCallBack(hg,['startGame','beforeStartGame','startGamehead','home','again','jsFootEnd','showResult','changeBottomBar','showPoup','hidePoup','timeChange','updateRankList','afterDraw','editBackground']); //hdgame
+hg.register(['setGameType','hpInit','hgLoadEnd','save','changeShow','showTabByStyle']); //hdportal
+HdGame.initEdit(hg.edit);
+hg.sound = HdGame.initSound([{"path":"/static/zp/bgmusic29H.mp3","fileName":"背景音乐.mp3","optFlag":0},{"path":"/static/zp/startDraw.mp3","fileName":"滚动音效.mp3","optFlag":2}],[{"path":"*_resRoot*/image/hlcbt/bgmusic29H.mp3","fileName":"背景音乐.mp3","optFlag":0},{"path":"*_resRoot*/image/hlcbt/startDraw.mp3","fileName":"滚动音效.mp3","optFlag":2}],null);
+hg.sound.readyPlay(0,0,'loop');
+
+var GameArg = {
+    awardNum : rewards.length,
+};
+var startStatus = true;
 alert('1234');
-//
-// HdGame.gameDomain = 'hd.faisco.cn';
-// HdGame.gameDomainIgnoreStyle = 'hd.faisco.cn';
-// HdGame.isReg = false;
-// HdGame.initCallBack(hg,['startGame','beforeStartGame','startGamehead','home','again','jsFootEnd','showResult','changeBottomBar','showPoup','hidePoup','timeChange','updateRankList','afterDraw','editBackground']); //hdgame
-// hg.register(['setGameType','hpInit','hgLoadEnd','save','changeShow','showTabByStyle']); //hdportal
-// HdGame.initEdit(hg.edit);
-// hg.sound = HdGame.initSound([{"path":"/static/zp/bgmusic29H.mp3","fileName":"背景音乐.mp3","optFlag":0},{"path":"/static/zp/startDraw.mp3","fileName":"滚动音效.mp3","optFlag":2}],[{"path":"*_resRoot*/image/hlcbt/bgmusic29H.mp3","fileName":"背景音乐.mp3","optFlag":0},{"path":"*_resRoot*/image/hlcbt/startDraw.mp3","fileName":"滚动音效.mp3","optFlag":2}],null);
-// hg.sound.readyPlay(0,0,'loop');
-//
-// var GameArg = {
-//     awardNum : rewards.length,
-// };
-// var startStatus = true;
 // (function(g){
 //     // 排列的奖品的等级，顺时针排列
 //     var prizeDeg = [
