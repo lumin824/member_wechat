@@ -457,22 +457,22 @@ var g_giftStyle = null;
 var g_activityCode = 'asda';//GetQueryString('code');
 var initHG = function(resp){
 
-  var rewards = resp.rewards;
-
-  rewards = _.map(rewards, o => ({
-    ...o,
-    hit_rate: o.hit_rate * 100
-  }))
-
-  var sum_value = _.sumBy(rewards, 'hit_rate');
-  var random_value = _.random(1, sum_value);
-  g_awardIndex = 0;
-  do {
-    random_value -= rewards[g_awardIndex].hit_rate;
-    g_awardIndex ++;
-  } while (random_value > 0)
-  trrId = rewards[g_awardIndex-1].trr_id;
-  g_giftStyle = rewards[g_awardIndex-1].reward_name;
+  // var rewards = resp.rewards;
+  //
+  // rewards = _.map(rewards, o => ({
+  //   ...o,
+  //   hit_rate: o.hit_rate * 100
+  // }))
+  //
+  // var sum_value = _.sumBy(rewards, 'hit_rate');
+  // var random_value = _.random(1, sum_value);
+  // g_awardIndex = 0;
+  // do {
+  //   random_value -= rewards[g_awardIndex].hit_rate;
+  //   g_awardIndex ++;
+  // } while (random_value > 0)
+  // trrId = rewards[g_awardIndex-1].trr_id;
+  // g_giftStyle = rewards[g_awardIndex-1].reward_name;
 
   // (function(hg){
   //     var origin = [
