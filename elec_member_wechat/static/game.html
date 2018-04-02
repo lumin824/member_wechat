@@ -611,7 +611,6 @@ var GameArg = {
     awardNum : rewards.length,
 };
 var startStatus = true;
-alert('1234');
 (function(g){
     // 排列的奖品的等级，顺时针排列
     var prizeDeg = [
@@ -1013,8 +1012,6 @@ alert('1234');
   });
 })(GameArg);
 
-alert('23456');
-
 /*----------------------------------获取ip信息-----------------------------------*/
 (function(){
     var curFontSize = parseFloat($("html").css("font-size"));
@@ -1030,7 +1027,6 @@ alert('23456');
         $("html").css("font-size",newFontSize + "px");
     }
 })();
-alert('34567');
 
 var gameType = 0;
 
@@ -1042,7 +1038,6 @@ HdGame.resulePoup.init({
   giftInit  : HdGame._luckDrawFunc,
 });
 
-alert('45678');
 
 HdGame.initJsFoot({
   "rulesortstr":"abcde",
@@ -1059,7 +1054,6 @@ HdGame.initJsFoot({
   "gameBgPath_def":"","headImg2":"","headImg3":"","headImg4":"","dangerType":0,"isZhuLi":false,
 })
 
-alert('56789');
 
   hg.assets.add([
       "/static/zp/ACgIABACGAAguZ28zwUoiM-W2AUwgAU4wAw.jpg",
@@ -1123,7 +1117,7 @@ function parsePxToRem(px){
 function startBtnDelay() {
   $('.titleImg').removeClass('titleDown').addClass('titleDown');
   $('#startBtnImg').removeClass('startTada');
-  hg.sound.readyPlay(0, 0, 'loop');
+  // hg.sound.readyPlay(0, 0, 'loop');
 
   setTimeout(function() {
     $('#startBtnImg').addClass('startTada');
