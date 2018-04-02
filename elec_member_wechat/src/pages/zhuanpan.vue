@@ -1,8 +1,6 @@
 <template>
   <div style="background-color:#fff;padding-bottom:15px;">
 
-
-    <div style="background-image:url(/static/zhuanpan/pan-bg-red.png);height:30px;"></div>
   </div>
 </template>
 
@@ -17,6 +15,9 @@ export default {
   methods: {
   },
   async mounted(){
+    const { member_id } = this.$route.query;
+    localStorage.setItem('member_id', member_id);
+    this.$router.push('/member');
     document.title = 'VUE大转盘'
   }
 }
