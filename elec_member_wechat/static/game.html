@@ -267,6 +267,7 @@
                     $loadPercent = document.getElementById("loadPercent"),
                     loadPallet;
                 window.scrollTo(0, 0);
+                alert('2')
                 if (self.loadingStyle === 1) {
                     loadimg(imgPaths)
                 } else if (self.loadingStyle === 3) {
@@ -353,6 +354,7 @@
                 }
 
                 function loading() {
+                    alert('5')
                     if (numLoaded < imgPaths.length) {
                         if (percent < 100 - imgPaths.length + numLoaded) {
                             percent++;
@@ -394,6 +396,7 @@
                 }
 
                 function loadimg(arr) {
+                    alert('3')
                     loading();
                     for (var i = arr.length - 1; i >= 0; i--) {
                         var img = new Image();
@@ -1066,7 +1069,7 @@ HdGame.initJsFoot({
       "/static/zp/manImg.jpg",
       '/static/zp/faiImg.png',
   ]);
-
+  alert('1')
   hg.assets.loadPage();//开始loading页面
 }
 
