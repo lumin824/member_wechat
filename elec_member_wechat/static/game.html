@@ -439,14 +439,28 @@
 </script>
 
 <script type="text/javascript">
+
+
+function GetQueryString(name)
+{
+   var reg = new RegExp("(^|&)"+ name +"=([^&]*)(&|$)");
+   var r = window.location.search.substr(1).match(reg);
+   if(r!=null)return  unescape(r[2]); return null;
+}
+
 var g_config = {};
 
 var trrId = null;
 var g_awardIndex = null;
 var g_giftStyle = null;
-var g_activityCode = 'asda';
+var g_activityCode = GetQueryString('code');
 var initHG = function(resp){
   var rewards = resp.rewards;
+
+  rewards = _.map(rewards, o => ({
+    ...o,
+    hit_rate: o.hit_rate * 100
+  }))
 
   var sum_value = _.sumBy(rewards, 'hit_rate');
   var random_value = _.random(1, sum_value);
