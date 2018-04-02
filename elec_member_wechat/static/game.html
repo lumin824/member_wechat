@@ -472,130 +472,131 @@ var initHG = function(resp){
   } while (random_value > 0)
   trrId = rewards[g_awardIndex-1].trr_id;
   g_giftStyle = rewards[g_awardIndex-1].reward_name;
-  alert('123');
-// (function(hg){
-//     var origin = [
-//       {"name":"startBtnImg","path":[["/static/zp/ACgIABAEGAAgyIu8zwUo3JPwigMwhgE4hgE.png"],["/static/zp/ACgIABAEGAAgy4u8zwUogKSG9AEwhgE4hgE.png"]]},
-//       {"name":"showGifBoxer","pos":{"left":"1.4rem","top":"8rem"},"path":["/static/zp/ACgIABAEGAAg0Iu8zwUo9MzdpwYwlgQ4lgQ.png"]},
-//       {"name":"flashLight","path":["/static/zp/ACgIABAEGAAg34u8zwUotNbH_QcwHDgc.png"]},
-//       {"name":"darkLight","path":["/static/zp/ACgIABAEGAAg4ou8zwUo2Kyn6AEwHDgc.png"]},
-//       {"name":"priceD","path":["/static/zp/ACgIABAEGAAg6Iu8zwUo8_fMgAcwhgE4hgE.png"]},
-//
-//       {"name":"thePrice1","path":[rewards.length >= 1 ? rewards[0].reward_picture : '/static/zp/ACgIABAEGAAgmYy8zwUo0uyq-QYwhgE4hgE.png']},
-//       {"name":"thePrice2","path":[rewards.length >= 2 ? rewards[1].reward_picture : '/static/zp/ACgIABAEGAAgmYy8zwUo0uyq-QYwhgE4hgE.png']},
-//       {"name":"thePrice3","path":[rewards.length >= 3 ? rewards[2].reward_picture : '/static/zp/ACgIABAEGAAgmYy8zwUo0uyq-QYwhgE4hgE.png']},
-//       {"name":"thePrice4","path":[rewards.length >= 4 ? rewards[3].reward_picture : '/static/zp/ACgIABAEGAAgmYy8zwUo0uyq-QYwhgE4hgE.png']},
-//       {"name":"thePrice5","path":[rewards.length >= 5 ? rewards[4].reward_picture : '/static/zp/ACgIABAEGAAgmYy8zwUo0uyq-QYwhgE4hgE.png']},
-//       {"name":"thePrice6","path":[rewards.length >= 6 ? rewards[5].reward_picture : '/static/zp/ACgIABAEGAAgmYy8zwUo0uyq-QYwhgE4hgE.png']},
-//       {"name":"thePrice7","path":[rewards.length >= 7 ? rewards[6].reward_picture : '/static/zp/ACgIABAEGAAgmYy8zwUo0uyq-QYwhgE4hgE.png']},
-//       {"name":"thePrice8","path":[rewards.length >= 8 ? rewards[7].reward_picture : '/static/zp/ACgIABAEGAAgmYy8zwUo0uyq-QYwhgE4hgE.png']},
-//
-//       {"name":"thePrice900","path":["/static/zp/ACgIABAEGAAgmYy8zwUo0uyq-QYwhgE4hgE.png"]},
-//       {"name":"thePrice0","path":["/static/zp/ACgIABAEGAAgnoy8zwUo1JrA4wIwhgE4hgE.png"]},
-//       {"name":"theGetPricePic","pos":{"left":"0.75rem","top":"0.15rem"},"size":{"width":"14.5rem","height":"18rem"},"path":[["/static/zp/faiImg.png"]]},
-//       {"name":"theGetPricePicTwo","pos":{"left":"0rem","top":"0rem"},"size":{"width":"4rem","height":"4rem"},"path":[["/static/zp/faiImg2.png"]]},
-//       {"name":"theGetPricePicThree","pos":{"left":"0rem","top":"0rem"},"size":{"width":"4rem","height":"4rem"},"path":[["/static/zp/faiImg3.png"]]},
-//       {"name":"lotsPot","pos":{"left":"4.9rem","top":"3rem"},"size":{"width":"6.15rem","height":"12.4rem"},"path":[["/static/zp/lots1.png"]]},
-//       {"name":"lotsShakeHand","pos":{"left":"4.5rem","top":"17.9rem"}},
-//       {"name":"advertising","path":["/static/zp/gg.jpg"]}];
-//     var originDef = [
-//       {"name":"startBtnImg","path":[["*_resRoot*/image/hlcbt/startBtn.png","抽奖按钮","5000k"],["*_resRoot*/image/hlcbt/startBtnhover.png","点击效果","5000k"]],"rsize":{"width":"3.35rem","height":"3.35rem"}},
-//       {"name":"showGifBoxer","pos":{"left":"1.35rem","top":"8rem"},"path":["*_resRoot*/image/hlcbt/awardD.png","九宫格图片","5000k"],"rsize":{"width":"13.35rem","height":"13.35rem"},"edit":"all"},
-//       {"name":"flashLight","path":["*_resRoot*/image/hlcbt/brightFlash.png","灯泡图片一","5000k","28px*28px"],"rsize":{"width":"0.7rem","height":"0.7rem"}},
-//       {"name":"darkLight","path":["*_resRoot*/image/hlcbt/darkFlash.png","灯泡图片二","5000k","28px*28px"],"rsize":{"width":"0.7rem","height":"0.7rem"}},
-//       {"name":"priceD","path":["*_resRoot*/image/hlcbt/priceD.png","奖品背景","5000k"],"rsize":{"width":"3.35rem","height":"3.35rem"}},
-//       {"name":"thePrice1","path":["","奖项一","5000k"],"rsize":{"width":"3.35rem","height":"3.35rem"}},
-//       {"name":"thePrice2","path":["","奖项二","5000k"],"rsize":{"width":"3.35rem","height":"3.35rem"}},
-//       {"name":"thePrice3","path":["","奖项三","5000k"],"rsize":{"width":"3.35rem","height":"3.35rem"}},
-//       {"name":"thePrice4","path":["","奖项四","5000k"],"rsize":{"width":"3.35rem","height":"3.35rem"}},
-//       {"name":"thePrice5","path":["","奖项五","5000k"],"rsize":{"width":"3.35rem","height":"3.35rem"}},
-//       {"name":"thePrice6","path":["","奖项六","5000k"],"rsize":{"width":"3.35rem","height":"3.35rem"}},
-//       {"name":"thePrice7","path":["","奖项七","5000k"],"rsize":{"width":"3.35rem","height":"3.35rem"}},
-//       {"name":"thePrice8","path":["","奖项八","5000k"],"rsize":{"width":"3.35rem","height":"3.35rem"}},
-//       {"name":"thePrice900","path":["*_resRoot*/image/hlcbt/price900.png","安慰奖","5000k"],"rsize":{"width":"3.35rem","height":"3.35rem"}},
-//       {"name":"thePrice0","path":["*_resRoot*/image/hlcbt/price0.png","谢谢参与","5000k"],"rsize":{"width":"3.35rem","height":"3.35rem"}},
-//       {"name":"theGetPricePic","pos":{"left":"2.1rem","top":"1.3rem"},"size":{"width":"11.5rem","height":"11.2rem"},"path":[["*_resRoot*/image/faiImg1-2.png","图片01","5000k"]],"edit":"theGetPricePic","formDefaultStyle":true},
-//       {"name":"theGetPricePicTwo","pos":{"left":"2.1rem","top":"1.3rem"},"size":{"width":"11.5rem","height":"11.2rem"},"path":[["*_resRoot*/image/faiImg2-2.png","图片01","5000k"]],"edit":"theGetPricePicTwo","formDefaultStyle":true},
-//       {"name":"theGetPricePicThree","pos":{"left":"2.1rem","top":"1.3rem"},"size":{"width":"11.5rem","height":"11.2rem"},"path":[["*_resRoot*/image/faiImg3-2.png","图片01","5000k"]],"edit":"theGetPricePicThree","formDefaultStyle":true},
-//       {"name":"lotsPot","pos":{"left":"4.925rem","top":"3rem"},"size":{"width":"6.15rem","height":"12.4rem"},"path":[["*_resRoot*/image/lots1.png","图片01","5000k"]],"edit":"lotsPot","formDefaultStyle":true},
-//       {"name":"lotsShakeHand","pos":{"left":"4.5rem","top":"17.9rem","forParent":"false"},"formDefaultStyle":true},
-//       {"name":"advertising","rsize":{"width":"16rem","height":"40rem"},"path":["*_resRoot*/image/gg.jpg"],"edit":"_background","formDefaultStyle":true}
-//     ];
-//
-//     hg.edit.origin = origin;
-//     hg.edit.originDef = originDef;
-// })(hg);
-//
-// //全局变量
-// g_config = {
-//   "isOpenAreaLimit":false,"isCheckPlayTimes":true,"showMenu":true,"buy":false,"isNewGame":false,"isOem":false,"scoreType":false,"showLogo":false,"flag":10390,"flagB":2304,"countsTimeType":-1,"sortType":-1,
-//   "drawLimitDef":0,"style":57,"gameId":344,"openId":"tryPlay_15801086","playerId":623160,
-//   "userName":"tp_15801086","headImg":"/static/zp/manImg.jpg","authVer":2,
-//   "scoreUnit":"分","testCMD":"","ajaxUrl":"","startTime":"2017-10-24 17:18","$startTime":1508836680000,"$endTime":1509441480000,
-//   "awardList":[
-//     {"amount":0,"awardtype":2,"cashtype":2,"attention":1,"cashsite":"请填写您的兑奖地址或者门店地址","pot":0,
-//       "style":"一等奖","cbt":1508774400000,"cet":1509465599000,
-//       "cft":30,"cfbt":0,"oct":false,"oplink":false,"genewxcard":false,"iscuscode":false,"iscancelver":false,
-//       "stl":"","btn":"了解更多","btl":"","servicepho":"","cashinfo":"",
-//       "aimg":rewards.length >= 1 ? rewards[0].reward_picture : '/static/zp/ACgIABAEGAAgmYy8zwUo0uyq-QYwhgE4hgE.png',"aimgw":"6rem","aimgh":"6rem","attentionimg":"","onlinect":1,"continfo":3,
-//       "excelName":"","hbtype":0,"hbAverage":1000,"floatBegin":500,"floatEnd":1500,"name":"价值100元礼品","level":1,"passwordrednum":100,"payment":1,"storeType":1},
-//     {"amount":0,"awardtype":2,"cashtype":2,"attention":1,"cashsite":"请填写您的兑奖地址或者门店地址","pot":0,
-//       "style":"二等奖","cbt":1508774400000,"cet":1509465599000,
-//       "cft":30,"cfbt":0,"oct":false,"oplink":false,"genewxcard":false,"iscuscode":false,"iscancelver":false,
-//       "stl":"","btn":"了解更多","btl":"","servicepho":"","cashinfo":"",
-//       "aimg":rewards.length >= 2 ? rewards[1].reward_picture : '/static/zp/ACgIABAEGAAgmYy8zwUo0uyq-QYwhgE4hgE.png',"aimgw":"6rem","aimgh":"6rem","attentionimg":"","onlinect":1,"continfo":3,
-//       "excelName":"","hbtype":0,"hbAverage":1000,"floatBegin":500,"floatEnd":1500,"name":"价值50元礼品","level":2,"passwordrednum":100,"payment":1,"storeType":1},
-//     {"amount":0,"awardtype":2,"cashtype":2,"attention":1,"cashsite":"请填写您的兑奖地址或者门店地址","pot":0,
-//       "style":"三等奖","cbt":1508774400000,"cet":1509465599000,
-//       "cft":30,"cfbt":0,"oct":false,"oplink":false,"genewxcard":false,"iscuscode":false,"iscancelver":false,
-//       "stl":"","btn":"了解更多","btl":"","servicepho":"","cashinfo":"",
-//       "aimg":rewards.length >= 3 ? rewards[2].reward_picture : '/static/zp/ACgIABAEGAAgmYy8zwUo0uyq-QYwhgE4hgE.png',"aimgw":"6rem","aimgh":"6rem","attentionimg":"","onlinect":1,"continfo":3,
-//       "excelName":"","hbtype":0,"hbAverage":1000,"floatBegin":500,"floatEnd":1500,"name":"价值10元礼品","level":3,"passwordrednum":100,"payment":1,"storeType":1},
-//     {"amount":0,"awardtype":2,"cashtype":2,"attention":1,"cashsite":"请填写您的兑奖地址或者门店地址","pot":0,
-//       "style":"四等奖","cbt":1508774400000,"cet":1509465599000,
-//       "cft":30,"cfbt":0,"oct":false,"oplink":false,"genewxcard":false,"iscuscode":false,"iscancelver":false,
-//       "stl":"","btn":"了解更多","btl":"","servicepho":"","cashinfo":"",
-//       "aimg":rewards.length >= 4 ? rewards[3].reward_picture : '/static/zp/ACgIABAEGAAgmYy8zwUo0uyq-QYwhgE4hgE.png',"aimgw":"6rem","aimgh":"6rem","attentionimg":"","onlinect":1,"continfo":3,
-//       "excelName":"","hbtype":0,"hbAverage":1000,"floatBegin":500,"floatEnd":1500,"name":"价值5元小礼品","level":4,"passwordrednum":100,"payment":1,"wxcardid":"","storeType":1},
-//     {"amount":0,"awardtype":2,"cashtype":2,"attention":1,"cashsite":"请填写您的兑奖地址或者门店地址","pot":0,
-//       "style":"五等奖","cbt":1508774400000,"cet":1509465599000,
-//       "cft":30,"cfbt":0,"oct":false,"oplink":false,"genewxcard":false,"iscuscode":false,"iscancelver":false,
-//       "stl":"","btn":"了解更多","btl":"","servicepho":"","cashinfo":"",
-//       "aimg":rewards.length >= 5 ? rewards[4].reward_picture : '/static/zp/ACgIABAEGAAgmYy8zwUo0uyq-QYwhgE4hgE.png',"aimgw":"6rem","aimgh":"6rem","attentionimg":"","onlinect":1,"continfo":3,
-//       "excelName":"","hbtype":0,"hbAverage":1000,"floatBegin":500,"floatEnd":1500,"name":"价值5元小礼品","level":5,"passwordrednum":100,"payment":1,"wxcardid":"","storeType":1},
-//     {"amount":0,"awardtype":2,"cashtype":2,"attention":1,"cashsite":"请填写您的兑奖地址或者门店地址","pot":0,
-//       "style":"六等奖","cbt":1508774400000,"cet":1509465599000,
-//       "cft":30,"cfbt":0,"oct":false,"oplink":false,"genewxcard":false,"iscuscode":false,"iscancelver":false,
-//       "stl":"","btn":"了解更多","btl":"","servicepho":"","cashinfo":"",
-//       "aimg":rewards.length >= 6 ? rewards[5].reward_picture : '/static/zp/ACgIABAEGAAgmYy8zwUo0uyq-QYwhgE4hgE.png',"aimgw":"6rem","aimgh":"6rem","attentionimg":"/static/zp/qrcodeImg.jpg","onlinect":1,"continfo":0,
-//       "excelName":"","hbtype":0,"hbAverage":1000,"floatBegin":500,"floatEnd":1500,"name":"价值5元小礼品","level":6,"passwordrednum":100,"payment":1,"wxcardid":"","storeType":1},
-//     {"amount":0,"awardtype":2,"cashtype":2,"attention":1,"cashsite":"请填写您的兑奖地址或者门店地址","pot":0,
-//       "style":"七等奖","cbt":1508774400000,"cet":1509465599000,
-//       "cft":30,"cfbt":0,"oct":false,"oplink":false,"genewxcard":false,"iscuscode":false,"iscancelver":false,
-//       "stl":"","btn":"了解更多","btl":"","servicepho":"","cashinfo":"",
-//       "aimg":rewards.length >= 7 ? rewards[6].reward_picture : '/static/zp/ACgIABAEGAAgmYy8zwUo0uyq-QYwhgE4hgE.png',"aimgw":"6rem","aimgh":"6rem","attentionimg":"/static/zp/qrcodeImg.jpg","onlinect":1,"continfo":0,
-//       "excelName":"","hbtype":0,"hbAverage":1000,"floatBegin":500,"floatEnd":1500,"name":"价值5元小礼品","level":7,"passwordrednum":100,"payment":1,"wxcardid":"","storeType":1},
-//     {"amount":0,"awardtype":2,"cashtype":2,"attention":1,"cashsite":"请填写您的兑奖地址或者门店地址","pot":0,
-//       "style":"八等奖","cbt":1508774400000,"cet":1509465599000,
-//       "cft":30,"cfbt":0,"oct":false,"oplink":false,"genewxcard":false,"iscuscode":false,"iscancelver":false,
-//       "stl":"","btn":"了解更多","btl":"","servicepho":"","cashinfo":"",
-//       "aimg":rewards.length >= 8 ? rewards[7].reward_picture : '/static/zp/ACgIABAEGAAgmYy8zwUo0uyq-QYwhgE4hgE.png',"aimgw":"6rem","aimgh":"6rem","attentionimg":"/static/zp/qrcodeImg.jpg","onlinect":1,"continfo":0,
-//       "excelName":"","hbtype":0,"hbAverage":1000,"floatBegin":500,"floatEnd":1500,"name":"价值5元小礼品","level":8,"passwordrednum":100,"payment":1,"wxcardid":"","storeType":1}
-//   ],
-//   "comfort":{
-//     "comLimitNum":false,"ccc":"","comNum":0,"cc":"","amount":0,"comModNum":0,"comoptx":false,"cas":"安慰奖","comtxc":"联系商家出示兑奖码","ca":"价值5元小礼品","comimgw":"6rem","comcashinfo":"","combtl":"","comfbt":0,
-//     "combtn":"了解更多","comiscuscode":false,"comimgh":"6rem","cttype":"DATE_TYPE_FIX_TIME_RANGE","comattention":1,"comiscancelver":false,"comimg":"/static/zp/gift.png","comcbt":1508774400000,
-//     "comcontinfo":3,"comservicephone":"","comcet":1509465599000,"conlinect":1,"ctlmt":"[8]","comattentionimg":"","comOpqrc":true,"comcashsite":"请填写您的兑奖地址或者门店地址","comAwardtype":2,"comcashtype":2,
-//     "comopti":"凭券联系现场工作人员兑奖","comtxn":"兑奖须知","comft":30,"comoci":false,"comoct":false,"comstl":"","comOplink":false,"comStoreType":1
-//   },
-//   "awardInfoB":"",
-//
-//   "awardUsername":"","awardPhone":"","awardAddress":"","addressNum":"","status":0,
-//   "haveAward":true,
-//   "shareDeep":0,"isFromZhuliShare":false,
-//   "awardNum":5,"theDefaultGiftImgSrc":"/static/zp/gift.png",
-//   "clickTips":{"clickSrc":"/static/zp/clickView.png","pointW":"2rem","pointH":"2rem","clickW":"3.3rem","clickH":"3.65rem"},
-// };
+
+(function(hg){
+    var origin = [
+      {"name":"startBtnImg","path":[["/static/zp/ACgIABAEGAAgyIu8zwUo3JPwigMwhgE4hgE.png"],["/static/zp/ACgIABAEGAAgy4u8zwUogKSG9AEwhgE4hgE.png"]]},
+      {"name":"showGifBoxer","pos":{"left":"1.4rem","top":"8rem"},"path":["/static/zp/ACgIABAEGAAg0Iu8zwUo9MzdpwYwlgQ4lgQ.png"]},
+      {"name":"flashLight","path":["/static/zp/ACgIABAEGAAg34u8zwUotNbH_QcwHDgc.png"]},
+      {"name":"darkLight","path":["/static/zp/ACgIABAEGAAg4ou8zwUo2Kyn6AEwHDgc.png"]},
+      {"name":"priceD","path":["/static/zp/ACgIABAEGAAg6Iu8zwUo8_fMgAcwhgE4hgE.png"]},
+
+      {"name":"thePrice1","path":[rewards.length >= 1 ? rewards[0].reward_picture : '/static/zp/ACgIABAEGAAgmYy8zwUo0uyq-QYwhgE4hgE.png']},
+      {"name":"thePrice2","path":[rewards.length >= 2 ? rewards[1].reward_picture : '/static/zp/ACgIABAEGAAgmYy8zwUo0uyq-QYwhgE4hgE.png']},
+      {"name":"thePrice3","path":[rewards.length >= 3 ? rewards[2].reward_picture : '/static/zp/ACgIABAEGAAgmYy8zwUo0uyq-QYwhgE4hgE.png']},
+      {"name":"thePrice4","path":[rewards.length >= 4 ? rewards[3].reward_picture : '/static/zp/ACgIABAEGAAgmYy8zwUo0uyq-QYwhgE4hgE.png']},
+      {"name":"thePrice5","path":[rewards.length >= 5 ? rewards[4].reward_picture : '/static/zp/ACgIABAEGAAgmYy8zwUo0uyq-QYwhgE4hgE.png']},
+      {"name":"thePrice6","path":[rewards.length >= 6 ? rewards[5].reward_picture : '/static/zp/ACgIABAEGAAgmYy8zwUo0uyq-QYwhgE4hgE.png']},
+      {"name":"thePrice7","path":[rewards.length >= 7 ? rewards[6].reward_picture : '/static/zp/ACgIABAEGAAgmYy8zwUo0uyq-QYwhgE4hgE.png']},
+      {"name":"thePrice8","path":[rewards.length >= 8 ? rewards[7].reward_picture : '/static/zp/ACgIABAEGAAgmYy8zwUo0uyq-QYwhgE4hgE.png']},
+
+      {"name":"thePrice900","path":["/static/zp/ACgIABAEGAAgmYy8zwUo0uyq-QYwhgE4hgE.png"]},
+      {"name":"thePrice0","path":["/static/zp/ACgIABAEGAAgnoy8zwUo1JrA4wIwhgE4hgE.png"]},
+      {"name":"theGetPricePic","pos":{"left":"0.75rem","top":"0.15rem"},"size":{"width":"14.5rem","height":"18rem"},"path":[["/static/zp/faiImg.png"]]},
+      {"name":"theGetPricePicTwo","pos":{"left":"0rem","top":"0rem"},"size":{"width":"4rem","height":"4rem"},"path":[["/static/zp/faiImg2.png"]]},
+      {"name":"theGetPricePicThree","pos":{"left":"0rem","top":"0rem"},"size":{"width":"4rem","height":"4rem"},"path":[["/static/zp/faiImg3.png"]]},
+      {"name":"lotsPot","pos":{"left":"4.9rem","top":"3rem"},"size":{"width":"6.15rem","height":"12.4rem"},"path":[["/static/zp/lots1.png"]]},
+      {"name":"lotsShakeHand","pos":{"left":"4.5rem","top":"17.9rem"}},
+      {"name":"advertising","path":["/static/zp/gg.jpg"]}];
+    var originDef = [
+      {"name":"startBtnImg","path":[["*_resRoot*/image/hlcbt/startBtn.png","抽奖按钮","5000k"],["*_resRoot*/image/hlcbt/startBtnhover.png","点击效果","5000k"]],"rsize":{"width":"3.35rem","height":"3.35rem"}},
+      {"name":"showGifBoxer","pos":{"left":"1.35rem","top":"8rem"},"path":["*_resRoot*/image/hlcbt/awardD.png","九宫格图片","5000k"],"rsize":{"width":"13.35rem","height":"13.35rem"},"edit":"all"},
+      {"name":"flashLight","path":["*_resRoot*/image/hlcbt/brightFlash.png","灯泡图片一","5000k","28px*28px"],"rsize":{"width":"0.7rem","height":"0.7rem"}},
+      {"name":"darkLight","path":["*_resRoot*/image/hlcbt/darkFlash.png","灯泡图片二","5000k","28px*28px"],"rsize":{"width":"0.7rem","height":"0.7rem"}},
+      {"name":"priceD","path":["*_resRoot*/image/hlcbt/priceD.png","奖品背景","5000k"],"rsize":{"width":"3.35rem","height":"3.35rem"}},
+      {"name":"thePrice1","path":["","奖项一","5000k"],"rsize":{"width":"3.35rem","height":"3.35rem"}},
+      {"name":"thePrice2","path":["","奖项二","5000k"],"rsize":{"width":"3.35rem","height":"3.35rem"}},
+      {"name":"thePrice3","path":["","奖项三","5000k"],"rsize":{"width":"3.35rem","height":"3.35rem"}},
+      {"name":"thePrice4","path":["","奖项四","5000k"],"rsize":{"width":"3.35rem","height":"3.35rem"}},
+      {"name":"thePrice5","path":["","奖项五","5000k"],"rsize":{"width":"3.35rem","height":"3.35rem"}},
+      {"name":"thePrice6","path":["","奖项六","5000k"],"rsize":{"width":"3.35rem","height":"3.35rem"}},
+      {"name":"thePrice7","path":["","奖项七","5000k"],"rsize":{"width":"3.35rem","height":"3.35rem"}},
+      {"name":"thePrice8","path":["","奖项八","5000k"],"rsize":{"width":"3.35rem","height":"3.35rem"}},
+      {"name":"thePrice900","path":["*_resRoot*/image/hlcbt/price900.png","安慰奖","5000k"],"rsize":{"width":"3.35rem","height":"3.35rem"}},
+      {"name":"thePrice0","path":["*_resRoot*/image/hlcbt/price0.png","谢谢参与","5000k"],"rsize":{"width":"3.35rem","height":"3.35rem"}},
+      {"name":"theGetPricePic","pos":{"left":"2.1rem","top":"1.3rem"},"size":{"width":"11.5rem","height":"11.2rem"},"path":[["*_resRoot*/image/faiImg1-2.png","图片01","5000k"]],"edit":"theGetPricePic","formDefaultStyle":true},
+      {"name":"theGetPricePicTwo","pos":{"left":"2.1rem","top":"1.3rem"},"size":{"width":"11.5rem","height":"11.2rem"},"path":[["*_resRoot*/image/faiImg2-2.png","图片01","5000k"]],"edit":"theGetPricePicTwo","formDefaultStyle":true},
+      {"name":"theGetPricePicThree","pos":{"left":"2.1rem","top":"1.3rem"},"size":{"width":"11.5rem","height":"11.2rem"},"path":[["*_resRoot*/image/faiImg3-2.png","图片01","5000k"]],"edit":"theGetPricePicThree","formDefaultStyle":true},
+      {"name":"lotsPot","pos":{"left":"4.925rem","top":"3rem"},"size":{"width":"6.15rem","height":"12.4rem"},"path":[["*_resRoot*/image/lots1.png","图片01","5000k"]],"edit":"lotsPot","formDefaultStyle":true},
+      {"name":"lotsShakeHand","pos":{"left":"4.5rem","top":"17.9rem","forParent":"false"},"formDefaultStyle":true},
+      {"name":"advertising","rsize":{"width":"16rem","height":"40rem"},"path":["*_resRoot*/image/gg.jpg"],"edit":"_background","formDefaultStyle":true}
+    ];
+
+    hg.edit.origin = origin;
+    hg.edit.originDef = originDef;
+})(hg);
+
+//全局变量
+g_config = {
+  "isOpenAreaLimit":false,"isCheckPlayTimes":true,"showMenu":true,"buy":false,"isNewGame":false,"isOem":false,"scoreType":false,"showLogo":false,"flag":10390,"flagB":2304,"countsTimeType":-1,"sortType":-1,
+  "drawLimitDef":0,"style":57,"gameId":344,"openId":"tryPlay_15801086","playerId":623160,
+  "userName":"tp_15801086","headImg":"/static/zp/manImg.jpg","authVer":2,
+  "scoreUnit":"分","testCMD":"","ajaxUrl":"","startTime":"2017-10-24 17:18","$startTime":1508836680000,"$endTime":1509441480000,
+  "awardList":[
+    {"amount":0,"awardtype":2,"cashtype":2,"attention":1,"cashsite":"请填写您的兑奖地址或者门店地址","pot":0,
+      "style":"一等奖","cbt":1508774400000,"cet":1509465599000,
+      "cft":30,"cfbt":0,"oct":false,"oplink":false,"genewxcard":false,"iscuscode":false,"iscancelver":false,
+      "stl":"","btn":"了解更多","btl":"","servicepho":"","cashinfo":"",
+      "aimg":rewards.length >= 1 ? rewards[0].reward_picture : '/static/zp/ACgIABAEGAAgmYy8zwUo0uyq-QYwhgE4hgE.png',"aimgw":"6rem","aimgh":"6rem","attentionimg":"","onlinect":1,"continfo":3,
+      "excelName":"","hbtype":0,"hbAverage":1000,"floatBegin":500,"floatEnd":1500,"name":"价值100元礼品","level":1,"passwordrednum":100,"payment":1,"storeType":1},
+    {"amount":0,"awardtype":2,"cashtype":2,"attention":1,"cashsite":"请填写您的兑奖地址或者门店地址","pot":0,
+      "style":"二等奖","cbt":1508774400000,"cet":1509465599000,
+      "cft":30,"cfbt":0,"oct":false,"oplink":false,"genewxcard":false,"iscuscode":false,"iscancelver":false,
+      "stl":"","btn":"了解更多","btl":"","servicepho":"","cashinfo":"",
+      "aimg":rewards.length >= 2 ? rewards[1].reward_picture : '/static/zp/ACgIABAEGAAgmYy8zwUo0uyq-QYwhgE4hgE.png',"aimgw":"6rem","aimgh":"6rem","attentionimg":"","onlinect":1,"continfo":3,
+      "excelName":"","hbtype":0,"hbAverage":1000,"floatBegin":500,"floatEnd":1500,"name":"价值50元礼品","level":2,"passwordrednum":100,"payment":1,"storeType":1},
+    {"amount":0,"awardtype":2,"cashtype":2,"attention":1,"cashsite":"请填写您的兑奖地址或者门店地址","pot":0,
+      "style":"三等奖","cbt":1508774400000,"cet":1509465599000,
+      "cft":30,"cfbt":0,"oct":false,"oplink":false,"genewxcard":false,"iscuscode":false,"iscancelver":false,
+      "stl":"","btn":"了解更多","btl":"","servicepho":"","cashinfo":"",
+      "aimg":rewards.length >= 3 ? rewards[2].reward_picture : '/static/zp/ACgIABAEGAAgmYy8zwUo0uyq-QYwhgE4hgE.png',"aimgw":"6rem","aimgh":"6rem","attentionimg":"","onlinect":1,"continfo":3,
+      "excelName":"","hbtype":0,"hbAverage":1000,"floatBegin":500,"floatEnd":1500,"name":"价值10元礼品","level":3,"passwordrednum":100,"payment":1,"storeType":1},
+    {"amount":0,"awardtype":2,"cashtype":2,"attention":1,"cashsite":"请填写您的兑奖地址或者门店地址","pot":0,
+      "style":"四等奖","cbt":1508774400000,"cet":1509465599000,
+      "cft":30,"cfbt":0,"oct":false,"oplink":false,"genewxcard":false,"iscuscode":false,"iscancelver":false,
+      "stl":"","btn":"了解更多","btl":"","servicepho":"","cashinfo":"",
+      "aimg":rewards.length >= 4 ? rewards[3].reward_picture : '/static/zp/ACgIABAEGAAgmYy8zwUo0uyq-QYwhgE4hgE.png',"aimgw":"6rem","aimgh":"6rem","attentionimg":"","onlinect":1,"continfo":3,
+      "excelName":"","hbtype":0,"hbAverage":1000,"floatBegin":500,"floatEnd":1500,"name":"价值5元小礼品","level":4,"passwordrednum":100,"payment":1,"wxcardid":"","storeType":1},
+    {"amount":0,"awardtype":2,"cashtype":2,"attention":1,"cashsite":"请填写您的兑奖地址或者门店地址","pot":0,
+      "style":"五等奖","cbt":1508774400000,"cet":1509465599000,
+      "cft":30,"cfbt":0,"oct":false,"oplink":false,"genewxcard":false,"iscuscode":false,"iscancelver":false,
+      "stl":"","btn":"了解更多","btl":"","servicepho":"","cashinfo":"",
+      "aimg":rewards.length >= 5 ? rewards[4].reward_picture : '/static/zp/ACgIABAEGAAgmYy8zwUo0uyq-QYwhgE4hgE.png',"aimgw":"6rem","aimgh":"6rem","attentionimg":"","onlinect":1,"continfo":3,
+      "excelName":"","hbtype":0,"hbAverage":1000,"floatBegin":500,"floatEnd":1500,"name":"价值5元小礼品","level":5,"passwordrednum":100,"payment":1,"wxcardid":"","storeType":1},
+    {"amount":0,"awardtype":2,"cashtype":2,"attention":1,"cashsite":"请填写您的兑奖地址或者门店地址","pot":0,
+      "style":"六等奖","cbt":1508774400000,"cet":1509465599000,
+      "cft":30,"cfbt":0,"oct":false,"oplink":false,"genewxcard":false,"iscuscode":false,"iscancelver":false,
+      "stl":"","btn":"了解更多","btl":"","servicepho":"","cashinfo":"",
+      "aimg":rewards.length >= 6 ? rewards[5].reward_picture : '/static/zp/ACgIABAEGAAgmYy8zwUo0uyq-QYwhgE4hgE.png',"aimgw":"6rem","aimgh":"6rem","attentionimg":"/static/zp/qrcodeImg.jpg","onlinect":1,"continfo":0,
+      "excelName":"","hbtype":0,"hbAverage":1000,"floatBegin":500,"floatEnd":1500,"name":"价值5元小礼品","level":6,"passwordrednum":100,"payment":1,"wxcardid":"","storeType":1},
+    {"amount":0,"awardtype":2,"cashtype":2,"attention":1,"cashsite":"请填写您的兑奖地址或者门店地址","pot":0,
+      "style":"七等奖","cbt":1508774400000,"cet":1509465599000,
+      "cft":30,"cfbt":0,"oct":false,"oplink":false,"genewxcard":false,"iscuscode":false,"iscancelver":false,
+      "stl":"","btn":"了解更多","btl":"","servicepho":"","cashinfo":"",
+      "aimg":rewards.length >= 7 ? rewards[6].reward_picture : '/static/zp/ACgIABAEGAAgmYy8zwUo0uyq-QYwhgE4hgE.png',"aimgw":"6rem","aimgh":"6rem","attentionimg":"/static/zp/qrcodeImg.jpg","onlinect":1,"continfo":0,
+      "excelName":"","hbtype":0,"hbAverage":1000,"floatBegin":500,"floatEnd":1500,"name":"价值5元小礼品","level":7,"passwordrednum":100,"payment":1,"wxcardid":"","storeType":1},
+    {"amount":0,"awardtype":2,"cashtype":2,"attention":1,"cashsite":"请填写您的兑奖地址或者门店地址","pot":0,
+      "style":"八等奖","cbt":1508774400000,"cet":1509465599000,
+      "cft":30,"cfbt":0,"oct":false,"oplink":false,"genewxcard":false,"iscuscode":false,"iscancelver":false,
+      "stl":"","btn":"了解更多","btl":"","servicepho":"","cashinfo":"",
+      "aimg":rewards.length >= 8 ? rewards[7].reward_picture : '/static/zp/ACgIABAEGAAgmYy8zwUo0uyq-QYwhgE4hgE.png',"aimgw":"6rem","aimgh":"6rem","attentionimg":"/static/zp/qrcodeImg.jpg","onlinect":1,"continfo":0,
+      "excelName":"","hbtype":0,"hbAverage":1000,"floatBegin":500,"floatEnd":1500,"name":"价值5元小礼品","level":8,"passwordrednum":100,"payment":1,"wxcardid":"","storeType":1}
+  ],
+  "comfort":{
+    "comLimitNum":false,"ccc":"","comNum":0,"cc":"","amount":0,"comModNum":0,"comoptx":false,"cas":"安慰奖","comtxc":"联系商家出示兑奖码","ca":"价值5元小礼品","comimgw":"6rem","comcashinfo":"","combtl":"","comfbt":0,
+    "combtn":"了解更多","comiscuscode":false,"comimgh":"6rem","cttype":"DATE_TYPE_FIX_TIME_RANGE","comattention":1,"comiscancelver":false,"comimg":"/static/zp/gift.png","comcbt":1508774400000,
+    "comcontinfo":3,"comservicephone":"","comcet":1509465599000,"conlinect":1,"ctlmt":"[8]","comattentionimg":"","comOpqrc":true,"comcashsite":"请填写您的兑奖地址或者门店地址","comAwardtype":2,"comcashtype":2,
+    "comopti":"凭券联系现场工作人员兑奖","comtxn":"兑奖须知","comft":30,"comoci":false,"comoct":false,"comstl":"","comOplink":false,"comStoreType":1
+  },
+  "awardInfoB":"",
+
+  "awardUsername":"","awardPhone":"","awardAddress":"","addressNum":"","status":0,
+  "haveAward":true,
+  "shareDeep":0,"isFromZhuliShare":false,
+  "awardNum":5,"theDefaultGiftImgSrc":"/static/zp/gift.png",
+  "clickTips":{"clickSrc":"/static/zp/clickView.png","pointW":"2rem","pointH":"2rem","clickW":"3.3rem","clickH":"3.65rem"},
+};
+alert('1234');
 //
 // HdGame.gameDomain = 'hd.faisco.cn';
 // HdGame.gameDomainIgnoreStyle = 'hd.faisco.cn';
