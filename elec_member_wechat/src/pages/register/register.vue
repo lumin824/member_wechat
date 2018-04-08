@@ -118,7 +118,8 @@ export default {
 
       }
 
-      alert(wx_openid)
+      
+
 
       if(!wx_openid){
         const { redirect } = this.$route.query

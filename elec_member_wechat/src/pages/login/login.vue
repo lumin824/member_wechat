@@ -41,7 +41,6 @@
     },
     mounted:function () {
       let { wx_openid } = this.$route.query
-      alert(wx_openid)
       this.$emit('title',this.title,this.closeButton);
     },
     // const TIME_COUNT = 60;
