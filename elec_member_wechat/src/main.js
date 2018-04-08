@@ -39,7 +39,7 @@ let member_id = null;
 //   member_id = localStorage.getItem('member_id')
 // }
 
-member_id = localStorage.getItem('member_id')
+// member_id = localStorage.getItem('member_id')
 const store = new Vuex.Store({
   state: {
     member_id: member_id,
@@ -78,8 +78,6 @@ router.beforeEach(async (to, from, next) => {
     next()
   }
 
-  console.log(store.state.member_id)
-  console.log(to)
   if (store.state.member_id || ~['/getPosition','/registerInfo','/register','/squareInfo', '/sellers','/voucher','/sell','/getPosition','/car','/carDetail','/activities'].indexOf(to.path)) {
     next()
   } else {
