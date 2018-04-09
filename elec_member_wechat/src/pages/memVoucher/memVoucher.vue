@@ -1,8 +1,8 @@
 <template>
   <div>
     <mt-navbar v-model="selected" style="position:fixed;top:0;left:0;right:0;">
-      <mt-tab-item id="1">未使用</mt-tab-item>
-      <mt-tab-item id="3">已使用</mt-tab-item>
+      <mt-tab-item id="1">可使用</mt-tab-item>
+      <mt-tab-item id="3">全部</mt-tab-item>
     </mt-navbar>
 
     <!-- tab-container -->
@@ -10,7 +10,7 @@
       <mt-tab-container-item id="1">
         <scroller lock-x>
           <div>
-            <router-link :class="{gray:o.past}" :to="{path:'/memVouDetail', query:{id:o.crl_id}}" style="display:flex;background-color:#fff;margin-top:1px;" key="crl_id" v-for="o in list">
+            <router-link :class="{gray:o.past}" :to="{path:'/memVouDetail', query:{id:o.crl_id}}" style="display:flex;background-color:#fff;margin-top:1px;" :key="o.crl_id" v-for="o in list">
               <div style="width:2.5rem;height:2.5rem;display:flex;align-items:center;justify-content:center;">
                 <img :src="o.picture  || '/static/img/default-icon.jpg'" style="max-width:2rem;max-height:2rem;">
               </div>
@@ -31,7 +31,7 @@
       <mt-tab-container-item id="3">
         <scroller lock-x>
           <div class="gray">
-            <router-link :to="{path:'/memVouDetail', query:{id:o.crl_id}}" style="display:flex;background-color:#fff;margin-top:1px;" key="crl_id" v-for="o in list2">
+            <router-link :to="{path:'/memVouDetail', query:{id:o.crl_id}}" style="display:flex;background-color:#fff;margin-top:1px;" :key="o.crl_id" v-for="o in list2">
               <div style="width:2.5rem;height:2.5rem;display:flex;align-items:center;justify-content:center;">
                 <img :src="o.picture  || '/static/img/default-icon.jpg'" style="max-width:2rem;max-height:2rem;">
               </div>
