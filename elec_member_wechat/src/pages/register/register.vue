@@ -127,7 +127,7 @@ export default {
           localStorage.setItem('redirect', redirect)
         }
         const redirectUri = `http://${location.hostname}/wx/code2openid`
-        location.href = `https://open.weixin.qq.com/connect/oauth2/authorize?appid=${wx_app_id}&redirect_uri=${redirectUri}&response_type=code&scope=snsapi_userinfo&state=STATE#wechat_redirect`
+        location.href = `http://open.weixin.qq.com/connect/oauth2/authorize?appid=${wx_app_id}&redirect_uri=${redirectUri}&response_type=code&scope=snsapi_userinfo&state=STATE#wechat_redirect`
         return;
       }else{
         try{
