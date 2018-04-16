@@ -1,11 +1,11 @@
 <template>
   <div>
     <div>
-      <div style="margin-top:10px;background:#fff;border-top:1px solid #e1e1e1;">
+      <div style="margin-top:10px;background:#fff;border-top:1px solid #e1e1e1;font-size:0.4rem;">
         <div style="display:flex;border-bottom:1px solid #e1e1e1;">
           <div style="width:70px;padding:10px;margin-left:10px;color:#00c9b2;">姓名</div>
           <div style="flex:1;padding:10px;">
-            <input type="text" placeholder="请输入姓名" v-model="user.name" />
+            <input style="font-size:0.4rem;" type="text" placeholder="请输入姓名" v-model="user.name" />
           </div>
         </div>
 

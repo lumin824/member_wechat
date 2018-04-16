@@ -6,41 +6,36 @@
                <slot></slot>
           </figcaption>
       </figure>
-    <slot name="staff"></slot>
+      <slot name="staff"></slot>
   </div>
 </template>
 
 <style lang="less" scoped>
   div{
-    max-width: 640px;
     margin-top: 0.12rem;
     border-top: 0.5px solid #e1e1e1;
     border-bottom: 0.5px solid #e1e1e1;
-    height: 1.5rem;
     line-height: 1.2rem;
     background-color: #fff;
     text-align: center;
   }
   figure{
-     margin: 0.3rem 0 0 40%;
+
   }
   figure figcaption{
     color:#06c1ae;
-    position: relative;
-    top:-0.4rem;
-    right: 35%;
-
-
+    text-align: center;
+    font-size: 0.4rem;
   }
   img{
-    height: 0.7rem;
-    width: 0.7rem;
+    height: 3rem;
+    width: 3rem;
+    margin: 10px auto;
   }
   .staff{
     color: #333;
-    font-size: 0.12rem;
+    font-size: 0.3rem;
     position: relative;
-    top:-1.42rem;
   }
 
 </style>

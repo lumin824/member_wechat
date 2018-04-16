@@ -184,7 +184,7 @@
         <div id="faiImgBox">
           <div class="cannotGetThePriceBox oldGame"></div>
           <img class="abs editTarget-theGetPricePic theUnPriceImg" id="theGetPricePic" />
-          <div class='resule-gift-home menuAgain'>再来一次</div>
+          <!-- <div class='resule-gift-home menuAgain'>再来一次</div> -->
         </div>
 
         <div id="resule-gift-buttonMenu-bottom">
@@ -194,9 +194,9 @@
         </div>
 
         <div class='attentionBox'>
-        	<div class='menuBtnBox'>
+        	<!-- <div class='menuBtnBox'>
             <a class='menuName'></a>
-          </div>
+          </div> -->
           <div class="holdBox"></div>
         </div>
       </div>
@@ -457,26 +457,26 @@ var g_activityCode = GetQueryString('code');
 var initHG = function(resp){
   var rewards = resp.rewards;
 
-  // rewards = _.map(rewards, o => ({
-  //   ...o,
-  //   hit_rate: o.hit_rate * 100
-  // }))
-
   rewards = _.map(rewards, function(o){
     return _.merge(o, {
-      hit_rate: o.hit_rate * 100
+      hit_rate: o.hit_rate * 10000
     })
   })
 
-  var sum_value = _.sumBy(rewards, 'hit_rate');
+  var sum_value = 10000;//_.sumBy(rewards, 'hit_rate');
   var random_value = _.random(1, sum_value);
   g_awardIndex = 0;
   do {
     random_value -= rewards[g_awardIndex].hit_rate;
     g_awardIndex ++;
-  } while (random_value > 0)
-  trrId = rewards[g_awardIndex-1].trr_id;
-  g_giftStyle = rewards[g_awardIndex-1].reward_name;
+  } while (random_value > 0 && g_awardIndex < rewards.length)
+  if(g_awardIndex >= rewards.length){
+    g_awardIndex = 0;
+
+  }else{
+    trrId = rewards[g_awardIndex-1].trr_id;
+    g_giftStyle = rewards[g_awardIndex-1].reward_name;
+  }
 
 (function(hg){
     var origin = [
@@ -618,14 +618,14 @@ var startStatus = true;
 (function(g){
     // 排列的奖品的等级，顺时针排列
     var prizeDeg = [
-        [1,1,1,1,1,1,1,1],
-        [2,1,1,1,2,2,1,2],
-        [3,1,2,3,3,1,3,2],
-        [1,4,3,1,4,2,4,1],
-        [1,2,2,3,4,5,1,5],
-        [1,2,3,3,4,5,1,6],
-        [1,2,3,2,4,5,7,6,7,1,7,7],
-        [1,2,8,3,4,5,8,7,6,1,8,3],
+        [1,1,0,1,1,0,1,1],
+        [2,1,1,0,2,2,1,0],
+        [3,1,2,0,3,1,0,2],
+        [1,4,3,1,0,2,4,0],
+        [1,2,0,3,4,0,1,5],
+        [1,2,3,0,4,5,1,6],
+        [1,2,3,2,4,5,0,6,7,1,7,7],
+        [1,2,8,3,4,5,0,7,6,1,8,3],
     ];
     var morePricePos=[],lessPricePos = [];
     for(var i = 0;i < 12;i++){
@@ -1189,6 +1189,14 @@ function luckDraw(fn, option, pass) {
     awardImageH: '',
     awardIndex: 1,
   };
+
+  if(!trrId){
+    arg.isSuc = false;
+    arg.awardIndex = g_awardIndex;
+    arg.giftStyle = '谢谢参与';
+    return fn(arg, arg)
+  }
+
 
   var member_id = localStorage.getItem('member_id');
   arg.awardIndex = g_awardIndex;
