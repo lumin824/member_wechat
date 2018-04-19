@@ -25,17 +25,17 @@
           </div>
         </div>
 
-        <div v-if="form.leibie==0" @click="openPopup('department', '请选择部门')" style="display:flex;border-bottom:1px solid #e1e1e1;">
-          <div style="width:70px;padding:10px;margin-left:10px;color:#00c9b2;">部门</div>
-          <div style="flex:1;padding:10px;">{{popupName('department')}}</div>
+        <div v-if="form.leibie==1" @click="shopSelect()" style="display:flex;border-bottom:1px solid #e1e1e1;">
+          <div style="width:70px;padding:10px;margin-left:10px;color:#00c9b2;">商户</div>
+          <div style="flex:1;padding:10px;">{{form.shopName}}</div>
           <div style="padding:10px;padding-left:0;width:16px;">
             <span class="iconfont icon-right" style="color:#797979;"></span>
           </div>
         </div>
 
-        <div v-else @click="shopSelect()" style="display:flex;border-bottom:1px solid #e1e1e1;">
-          <div style="width:70px;padding:10px;margin-left:10px;color:#00c9b2;">商户</div>
-          <div style="flex:1;padding:10px;">{{form.shopName}}</div>
+        <div v-else-if="form.leibie==0" @click="openPopup('department', '请选择部门')" style="display:flex;border-bottom:1px solid #e1e1e1;">
+          <div style="width:70px;padding:10px;margin-left:10px;color:#00c9b2;">部门</div>
+          <div style="flex:1;padding:10px;">{{popupName('department')}}</div>
           <div style="padding:10px;padding-left:0;width:16px;">
             <span class="iconfont icon-right" style="color:#797979;"></span>
           </div>
@@ -126,7 +126,7 @@ export default {
       form: {
         name:'',
         phone: '',
-        leibie:0,
+        leibie: 1,
         department:0,
         shopId:null,
         shopName:null,
@@ -181,19 +181,34 @@ export default {
       this.$router.push('/shopSelect')
     },
     async handleSubmit(){
-      const { name, phone, department, shopId, leibie } = this.form;
+      const { shopName, department, shopId, leibie, ...form } = this.form;
       const { member_id: memberId } = this
+      form.mallId = mallId;
+      form.memberId = memberId;
+      let url;
+      if(leibie === 1){
+        form.shopId = shopId;
+        url = '/api/member/registClerk';
+      } else if(leibie === 0){
+        form.department = department;
+        url = '/api/member/registServices'
+      }
+
+
+
+      const [ errno, errmsg ] =
+                              (!form.name && [1, '请输入姓名'])
+                              || (!form.phone && [2, '请输入联系电话'])
+                              || ((leibie === 1 && !form.shopId) && [ 1, '请选择商户'])
+                              || [];
+
+      if(errno && errmsg) {
+        this.$vux.toast.text(errmsg)
+        return
+      }
 
       try{
-        // if(leibie == 0){
-        //   await this.$http.post(`/api/member/registServices`, {
-        //     mallId, memberId, name, phone, department
-        //   })
-        // }else{
-          await this.$http.post(`/api/member/registClerk`, {
-            mallId, memberId, name, phone, shopId
-          })
-        // }
+        await this.$http.post(url, form)
         this.$vux.toast.text('注册申请已提交')
         this.$router.push('/member')
       }catch(e){
