@@ -46,6 +46,16 @@
           </div>
         </router-link>
 
+        <router-link to="/gift_voucher" style="display:flex;">
+          <div style="display:flex;align-items:center;">
+            <img src="static/img/certificate.png" style="width:0.7rem;height:0.7rem;margin:0 0.5rem;">
+          </div>
+          <div style="flex:1;display:flex;border-top:1px solid #e1e1e1;align-items:center;padding-right:0.25rem;">
+            <div style="flex:1;margin:0.25rem;">积分兑礼</div>
+            <span class="iconfont icon-right" style="color:#797979;"></span>
+          </div>
+        </router-link>
+
         <router-link to="/activities" style="display:flex;">
           <div style="display:flex;align-items:center;">
             <img src="static/img/latestactive.png" style="width:0.7rem;height:0.7rem;margin:0 0.5rem;">

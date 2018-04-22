@@ -72,5 +72,13 @@ export default new Router({
     { path: '/suggest', component: ()=>import('@/pages/suggest')},
     { path: '/suggest_list', component: () => import('@/pages/suggestList')},
     { path: '/myreward', component: () => import('@/pages/memVoucher/myReward')},
+
+    { path:'/gift_voucher', component: () =>import('@/pages/gift_voucher/voucher') }, //优惠券
+    { path:'/gift_memVoucher', component: () =>import('@/pages/gift_memVoucher/memVoucher') }, //优惠券(会员)
+    { path:'/gift_voucherDetail', component: () =>import('@/pages/gift_voucherDetail/voucherDetail') }, //券详情
+    { path:'/gift_memVouDetail', component: () =>import('@/pages/gift_memVouDetail/memVouDetail') }, //活动详情
+    { path:'/gift_verify', component: ()=>import('@/pages/gift_verify')},
+
+
   ]
 })

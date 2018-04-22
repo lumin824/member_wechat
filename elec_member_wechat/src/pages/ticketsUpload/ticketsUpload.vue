@@ -4,6 +4,28 @@
     <div style="font-size:0.5rem;text-align:center;color:red;margin-top:0.5rem;">12月2日不见不散!</div>
   </div>
   <div v-else style="display:flex;flex-direction:column;min-height:100%;background-color:#fff;align-items:center;">
+
+    <div @click="shopSelect()" style="display:flex;border-bottom:1px solid #e1e1e1;width:100%;">
+      <div style="width:70px;padding:10px;margin-left:10px;color:#00c9b2;">商户</div>
+      <div style="flex:1;padding:10px;">{{form.shopName}}</div>
+      <div style="padding:10px;padding-left:0;width:16px;">
+        <span class="iconfont icon-right" style="color:#797979;"></span>
+      </div>
+    </div>
+    <div @click="openDatetime('time', '请选择消费时间', 'YYYY-MM-DD', 'ms')" style="display:flex;border-bottom:1px solid #e1e1e1;width:100%;">
+      <div style="width:70px;padding:10px;margin-left:10px;color:#00c9b2;">消费时间</div>
+      <div style="flex:1;padding:10px;color:#7f8081;">{{form.time | unix('YYYY-MM-DD', 'ms')}}</div>
+      <div style="padding:10px;padding-left:0;width:16px;">
+        <span class="iconfont icon-right" style="color:#797979;"></span>
+      </div>
+    </div>
+    <div style="display:flex;border-bottom:1px solid #e1e1e1;width:100%;">
+      <div style="width:70px;padding:10px;margin-left:10px;color:#00c9b2;">消费金额</div>
+      <div style="flex:1;padding:10px;">
+        <input type="text" placeholder="请输入小费金额" v-model="form.money" />
+      </div>
+    </div>
+
     <figure>
       <img @click="clickCamera" src="static/img/camera.png" alt="">
       <figcaption> 点击上传
@@ -68,22 +90,29 @@
        </ul>
     </div>
     <p style="font-size: 0.3rem;color: #333;margin: 0.7rem 0 0.1rem 0;position: relative;bottom:0.25rem;">最终解释权归本公司所有</p>
+    <datetime :show="valueFalse"></datetime>
   </div>
   </scroller>
 </template>
 <script>
   import global from '../../../src/components/common/Global'
   import moment from 'moment';
-  import { Scroller } from 'vux'
+  import { Scroller, Datetime } from 'vux'
   import lrz from 'lrz';
   import {
     mapState,
   } from 'vuex';
 
   export default {
-    components: {Scroller},
+    components: {Scroller, Datetime},
     data(){
         return {
+          valueFalse: false,
+          form: {
+            shopId:null,
+            shopName:null,
+            time:moment().unix() * 1000,
+          },
           closeUse: false,
              defaultResult:'',
              searchCondition:{  //
@@ -208,6 +237,35 @@
           this.allLoaded = false;
         }
       },
+
+      shopSelect(){
+        this.$store.commit('staffshop', this.form)
+        this.$router.push('/shopSelect')
+      },
+
+      openDatetime(key, title, format, unit){
+        const scale = (unit == 'ms') ? 1000 : 1;
+        this.$vux.datetime.show({
+          startDate: '1900-01-01',
+          endDate: moment().format(format),
+          cancelText: '取消',
+          confirmText: '确定',
+          format,
+          value: moment.unix(this.form[key] / scale).format(format),
+          onConfirm: val => {
+            this.form[key] = moment(val).unix() * scale;
+          }
+        })
+      },
+    },
+
+    mounted() {
+      const { staffreg } = this.$store.state
+
+      this.form = {
+        ...this.form,
+        ...staffreg,
+      }
     }
   }
 </script>
@@ -236,5 +294,9 @@
      border: 0.01rem solid #ccc;
      -webkit-appearance: none;
      width: 1.2rem;
+  }
+
+  .weui-cell_access {
+    display: none;
   }
 </style>
