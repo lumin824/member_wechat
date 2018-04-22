@@ -22,7 +22,7 @@
     <div style="display:flex;border-bottom:1px solid #e1e1e1;width:100%;">
       <div style="width:70px;padding:10px;margin-left:10px;color:#00c9b2;">消费金额</div>
       <div style="flex:1;padding:10px;">
-        <input type="text" placeholder="请输入小费金额" v-model="form.money" />
+        <input type="text" v-model="form.money" />
       </div>
     </div>
 
