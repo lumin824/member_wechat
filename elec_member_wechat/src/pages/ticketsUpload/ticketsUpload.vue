@@ -200,7 +200,7 @@
         formData.append('shopId', this.form.shopId);
         formData.append('shoppingDate', this.form.time);
         formData.append('amount', this.form.money);
-        formData.append('points', points);
+        formData.append('points', points.toFixed(0));
         $loading.show({
           text: '开始上传小票'
         })
