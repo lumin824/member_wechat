@@ -5,26 +5,26 @@
   </div>
   <div v-else style="display:flex;flex-direction:column;min-height:100%;background-color:#fff;align-items:center;">
 
-    <div @click="shopSelect()" style="display:flex;border-bottom:1px solid #e1e1e1;width:100%;">
+    <div @click="shopSelect()" style="display:flex;border-bottom:1px solid #e1e1e1;width:100%;font-size:0.4rem;">
       <div style="width:70px;padding:10px;margin-left:10px;color:#00c9b2;">商户</div>
       <div style="flex:1;padding:10px;">{{form.shopName}}</div>
       <div style="padding:10px;padding-left:0;width:16px;">
         <span class="iconfont icon-right" style="color:#797979;"></span>
       </div>
     </div>
-    <div @click="openDatetime('time', '请选择消费时间', 'YYYY-MM-DD', 'ms')" style="display:flex;border-bottom:1px solid #e1e1e1;width:100%;">
+    <div @click="openDatetime('time', '请选择消费时间', 'YYYY-MM-DD', 'ms')" style="display:flex;border-bottom:1px solid #e1e1e1;width:100%;font-size:0.4rem;">
       <div style="width:70px;padding:10px;margin-left:10px;color:#00c9b2;">消费时间</div>
       <div style="flex:1;padding:10px;color:#7f8081;">{{form.time | unix('YYYY-MM-DD', 'ms')}}</div>
       <div style="padding:10px;padding-left:0;width:16px;">
         <span class="iconfont icon-right" style="color:#797979;"></span>
       </div>
     </div>
-    <div style="display:flex;border-bottom:1px solid #e1e1e1;width:100%;">
-      <div style="width:70px;padding:10px;margin-left:10px;color:#00c9b2;">消费金额</div>
-      <div style="flex:1;padding:10px;">
-        <input type="text" v-model="form.money" />
-      </div>
-    </div>
+
+    <x-input class="input-money" style="width:100%;font-size:0.4rem;" type="number" v-model="form.money">
+      <template slot="label">
+        <div style="padding:10px;margin-left:10px;color:#00c9b2;width:70px;">消费金额</div>
+      </template>
+    </x-input>
 
     <figure>
       <img @click="clickCamera" src="static/img/camera.png" alt="">
@@ -97,14 +97,14 @@
 <script>
   import global from '../../../src/components/common/Global'
   import moment from 'moment';
-  import { Scroller, Datetime } from 'vux'
+  import { Scroller, Datetime, XInput } from 'vux'
   import lrz from 'lrz';
   import {
     mapState,
   } from 'vuex';
 
   export default {
-    components: {Scroller, Datetime},
+    components: {Scroller, Datetime, XInput},
     data(){
         return {
           valueFalse: false,
@@ -167,6 +167,7 @@
         document.getElementById('uploadFile').click();
       },
       async createImage(files){
+        console.log(files)
         var $loading = this.$vux.loading;
 
         let config = {
@@ -181,8 +182,25 @@
           }
         };
 
+        let points = parseFloat(this.form.money)
+        let member = (await this.$http.get(`/api/member/${this.member_id}?mallId=${global.mallId}`)).data;
+        try{
+          let promotion = (await this.$http.get(`/api/points/promotion?levelId=${member.level_id}&shopId=${this.form.shopId}&today=${moment().unix()*1000}&birthday=${member.birthday}`)).data;
+          points = points / promotion;
+        }catch(e) {
+
+          try{
+            let simple = (await this.$http.get(`/api/points/simple?levelId=${member.level_id}&shopId=${this.form.shopId}`)).data;
+            points = points / simple;
+          }catch(e) {}
+        }
+
         let {formData} = await lrz(files[0]);
         formData.append('mallId', 1);
+        formData.append('shopId', this.form.shopId);
+        formData.append('shoppingDate', this.form.time);
+        formData.append('amount', this.form.money);
+        formData.append('points', points);
         $loading.show({
           text: '开始上传小票'
         })
@@ -193,10 +211,10 @@
 
 
       },
-      onFileChange (e) {
+      async onFileChange (e) {
         let files = e.target.files || e.dataTransfer.files
         if (!files.length) return
-        this.createImage(files)
+        await this.createImage(files)
         e.target.value = ''
       },
       loadBottom(){
@@ -261,7 +279,7 @@
 
     mounted() {
       const { staffreg } = this.$store.state
-
+      this.reload();
       this.form = {
         ...this.form,
         ...staffreg,
@@ -299,4 +317,17 @@
   .weui-cell_access {
     display: none;
   }
+</style>
+
+<style scoped>
+.input-money::before {
+  border: 0;
+}
+.input-money {
+  padding: 0;
+  border-bottom: 1px solid #e1e1e1;
+}
+.input-money >>> .weui-cell__bd {
+  padding: 10px;
+}
 </style>
