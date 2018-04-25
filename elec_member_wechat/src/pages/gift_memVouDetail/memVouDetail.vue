@@ -81,7 +81,7 @@ export default {
     }
   },
   async mounted(){
-    document.title = '积分换礼详情'
+    document.title = '积分兑礼详情'
     const { id } = this.$route.query;
     this.item = (await this.$http.get(`/api/giftCoupon/coupon/${id}`)).data
   },

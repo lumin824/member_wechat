@@ -34,7 +34,7 @@ export default {
   methods: {
   },
   async mounted(){
-    document.title = '积分换礼核销'
+    document.title = '积分兑礼核销'
     const { id, type='verify' } = this.$route.query;
 
     if(type == 'verify'){

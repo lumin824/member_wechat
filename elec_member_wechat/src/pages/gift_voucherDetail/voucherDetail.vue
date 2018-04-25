@@ -4,7 +4,7 @@
     <div style="border:1px solid #ddd;background-color:#fff;margin:0 10px;">
       <div style="display:flex;align-items:center;">
         <div style="border-left:2px solid #000;height:0.5rem;"> </div>
-        <div style="flex:1;margin:5px 10px;font-size:0.4rem;">积分换礼详情</div>
+        <div style="flex:1;margin:5px 10px;font-size:0.4rem;">积分兑礼详情</div>
       </div>
 
       <div style="display:flex;">
@@ -109,7 +109,7 @@ export default {
     }
   },
   async mounted() {
-    document.title = '积分换礼详情'
+    document.title = '积分兑礼详情'
     const { id } = this.$route.query;
 
     this.item = (await this.$http.get(`/api/giftCoupon/info/${id}?memberId=${this.member_id}`)).data

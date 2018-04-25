@@ -84,7 +84,7 @@ export default {
     }
   },
   async mounted(){
-    document.title = '我的积分换礼'
+    document.title = '我的积分兑礼'
 
     try{
       let list = (await this.$http.post(`/api/giftCoupon/member/${this.member_id}/list`, {

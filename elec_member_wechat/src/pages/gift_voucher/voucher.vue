@@ -117,7 +117,7 @@ export  default {
   async mounted(){
     const { type } = this.$route.query;
     this.type = type;
-    document.title = '积分换礼'
+    document.title = '积分兑礼'
     this.reload()
   }
 }
