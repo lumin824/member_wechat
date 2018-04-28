@@ -27,11 +27,14 @@
     </x-input>
 
     <figure>
-      <img @click="clickCamera" src="static/img/camera.png" alt="">
+      <img @click="clickCamera" :src="form.base64 || 'static/img/camera.png'" alt="">
       <figcaption> 点击上传
-        <div style="display: none;"><input id="uploadFile" type="file" accept="image/*" @change="onFileChange"></div>
+        <div style="display: none;"><input ref="uploadFile" id="uploadFile" type="file" accept="image/*" @change="onFileChange"></div>
       </figcaption>
     </figure>
+
+    <div @click="handleSubmit" style="width:100%;background-color:#00c9b2;color:#fff;padding:10px;text-align:center;margin-top:20px;margin: 20px;border-radius:5px;">提交</div>
+
 
     <div style="display:flex;align-items:center;width:100%;">
       <div style="flex:1;border-top:1px solid #ccc;"></div>
@@ -95,13 +98,21 @@
   </scroller>
 </template>
 <script>
-  import global from '../../../src/components/common/Global'
-  import moment from 'moment';
-  import { Scroller, Datetime, XInput } from 'vux'
-  import lrz from 'lrz';
-  import {
-    mapState,
-  } from 'vuex';
+import global from '../../../src/components/common/Global'
+import moment from 'moment';
+import { Scroller, Datetime, XInput } from 'vux'
+import lrz from 'lrz';
+import {
+  mapState,
+} from 'vuex';
+
+const file2base64 = file => new Promise((resolve, reject) => {
+  const reader = new FileReader();
+  reader.readAsDataURL(file);
+  reader.onload = function(e) {
+    resolve(this.result);
+  }
+});
 
   export default {
     components: {Scroller, Datetime, XInput},
@@ -113,6 +124,7 @@
             shopName:null,
             time:moment().unix() * 1000,
           },
+          formData: null,
           closeUse: false,
              defaultResult:'',
              searchCondition:{  //
@@ -167,8 +179,32 @@
         document.getElementById('uploadFile').click();
       },
       async createImage(files){
-        console.log(files)
+
+        this.form = {
+          ...this.form,
+          formData: (await lrz(files[0])).formData,
+          base64: await file2base64(files[0])
+        };
+
+      },
+      async onFileChange (e) {
+        let files = e.target.files || e.dataTransfer.files
+        if (!files.length) return
+        await this.createImage(files)
+      },
+
+      async handleSubmit() {
         var $loading = this.$vux.loading;
+
+        const [errno, errmsg] = (!this.form.shopId && [ 1, '请选择商户'])
+                              || (!this.form.money && [ 2, '请输入金额'])
+                              // || (/^[0-9]+(.[0-9]{2})?$/.test(this.form.money) && [22, '请输入正确格式的金额'])
+                              || (!this.form.formData && [3, '请上传小票'])
+                              || [0, ''];
+        if(errno) {
+          this.$vux.toast.text(errmsg)
+          return
+        }
 
         let config = {
           headers: {
@@ -195,65 +231,25 @@
           }catch(e) {}
         }
 
-        let {formData} = await lrz(files[0]);
-        formData.append('mallId', 1);
-        formData.append('shopId', this.form.shopId);
-        formData.append('shoppingDate', this.form.time);
-        formData.append('amount', this.form.money);
-        formData.append('points', points.toFixed(0));
+        this.form.formData.append('mallId', 1);
+        this.form.formData.append('shopId', this.form.shopId);
+        this.form.formData.append('shoppingDate', this.form.time);
+        this.form.formData.append('amount', this.form.money);
+        this.form.formData.append('points', points.toFixed(0));
         $loading.show({
           text: '开始上传小票'
         })
-        await this.$http.post(`/api/member/uploadTicket/${this.member_id}`,formData,config)
+        await this.$http.post(`/api/member/uploadTicket/${this.member_id}`,this.form.formData,config);
+        this.$refs.uploadFile.value = '';
+        this.form = {
+          shopId:null,
+          shopName:null,
+          time:moment().unix() * 1000,
+        };
         $loading.hide()
         this.$vux.toast.text('小票上传成功')
         await this.reload();
 
-
-      },
-      async onFileChange (e) {
-        let files = e.target.files || e.dataTransfer.files
-        if (!files.length) return
-        await this.createImage(files)
-        e.target.value = ''
-      },
-      loadBottom(){
-          // 上拉加载
-          this.more();// 上拉触发的分页查询
-          this.$refs.loadmore.onBottomLoaded();// 固定方法，查询完要调用一次，用于重新定位
-        },
-      loadPageList() {
-        let member_id = this.member_id;
-/*        this.$http.get(`/api/member/${member_id}/tickets`,{page:this.searchCondition.pageNo,size:this.searchCondition.pageSize}).then(data =>{
-          this.pageList = data.data;
-        },err=>{
-        });  */
-        this.searchCondition.pageNo = parseInt(this.searchCondition.pageNo) + 1;
-        this.$http({
-          method: 'get',
-          url: `/api/member/${this.member_id}/tickets?page=${this.searchCondition.pageNo}&&size=${this.searchCondition.pageSize}`,
-        }).then(resp => {
-          this.pageList = this.pageList.concat(resp.data);
-          this.$nextTick(function () {
-            this.scrollMode = "touch"
-          });
-        }, error => {
-          this.isHaveMore(false);
-        })
-      },
-      more(){
-        this.loadPageList();
-        /*    this.loadPageList(this.searchCondition).then(data=>{
-             /!* this.pageList = this.pageList.concat(data.data.pageList);*!/
-             // this.isHaveMore(data.result.haveMore);
-            });*/
-      },
-      isHaveMore(isHaveMore){
-        // 是否还有下一页，如果没有就禁止上拉刷新
-        this.allLoaded = true; //true是禁止上拉加载
-        if(isHaveMore){
-          this.allLoaded = false;
-        }
       },
 
       shopSelect(){
