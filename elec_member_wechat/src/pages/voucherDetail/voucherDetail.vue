@@ -14,12 +14,12 @@
         <div style="display:flex;color:#777879;font-size:0.35rem;flex:1;">
           <div style="display:flex;flex-direction:column;">
             <div style="flex:1;border-bottom:1px solid #ddd;display:flex;align-items:center;">活动时间</div>
-            <div style="flex:1;border-bottom:1px solid #ddd;display:flex;align-items:center;">已领取</div>
+            <!-- <div style="flex:1;border-bottom:1px solid #ddd;display:flex;align-items:center;">已领取</div> -->
             <div style="flex:1;display:flex;align-items:center;">领取条件</div>
           </div>
           <div style="flex:1;display:flex;flex-direction:column;">
             <div style="flex:1;border-bottom:1px solid #ddd;display:flex;align-items:center;padding-left:0.5em;">{{item.expiry_date_start | unix('YYYY-MM-DD', 'ms')}} ~ {{item.expiry_date_end | unix('YYYY-MM-DD', 'ms')}}</div>
-            <div style="flex:1;border-bottom:1px solid #ddd;display:flex;align-items:center;padding-left:0.5em;color:#ff8b00;">{{item.receivedTotal}}</div>
+            <!-- <div style="flex:1;border-bottom:1px solid #ddd;display:flex;align-items:center;padding-left:0.5em;color:#ff8b00;">{{item.receivedTotal}}</div> -->
             <div style="flex:1;display:flex;align-items:center;padding-left:0.5em;color:#ff8b00;"> {{item.required_points}} 积分</div>
           </div>
         </div>

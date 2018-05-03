@@ -14,7 +14,7 @@
         <div style="display:flex;color:#777879;font-size:0.35rem;flex:1;">
           <div style="display:flex;flex-direction:column;">
             <div style="flex:1;border-bottom:1px solid #ddd;display:flex;align-items:center;">兑换时间</div>
-            <div style="flex:1;border-bottom:1px solid #ddd;display:flex;align-items:center;">已领取</div>
+            <!-- <div style="flex:1;border-bottom:1px solid #ddd;display:flex;align-items:center;">已领取</div> -->
             <div style="flex:1;display:flex;align-items:center;">领取条件</div>
           </div>
           <div style="flex:1;display:flex;flex-direction:column;">
